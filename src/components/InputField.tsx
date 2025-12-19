@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/InputField.css';
 
 interface InputFieldProps {
 	label: string;
@@ -24,8 +25,10 @@ export const InputField: React.FC<InputFieldProps> = ({
 	error,
 }) => {
 	return (
-		<div>
-			<label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+		<div className="input-field-group">
+			<label className="input-field-label" htmlFor={id}>
+				{label}
+			</label>
 			<input
 				type={type}
 				id={id}
@@ -34,11 +37,9 @@ export const InputField: React.FC<InputFieldProps> = ({
 				value={value}
 				onChange={onChange}
 				required={required}
-				className={`appearance-none block w-full px-3 py-3 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-900 focus:border-blue-900 sm:text-sm transition-colors ${
-					error ? 'border-red-500 bg-red-50' : 'border-gray-300 bg-white'
-				}`}
+				className={`input-field-input ${error ? 'error' : ''}`}
 			/>
-			{error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+			{error && <p className="input-field-error">{error}</p>}
 		</div>
 	);
 };
