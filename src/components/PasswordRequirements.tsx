@@ -30,7 +30,9 @@ export const PasswordRequirements: React.FC<PasswordRequirementsProps> = ({ pass
 							checks[key as keyof typeof checks] ? 'text-green-600' : 'text-red-600'
 						}`}
 					>
-						<span className="mr-2 text-lg">{checks[key as keyof typeof checks] ? '✓' : '✗'}</span>
+						<span className="mr-2 text-lg">
+							{checks[key as keyof typeof checks] ? '✓' : '✗'}
+						</span>
 						{label}
 					</li>
 				))}

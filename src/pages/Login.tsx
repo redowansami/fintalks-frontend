@@ -67,7 +67,9 @@ export const Login = () => {
 
 				{showResponse && token && (
 					<div className="mb-4 p-4 bg-green-50 border border-green-300 rounded-md">
-						<p className="text-sm font-semibold text-green-700 mb-3">✓ {successMessage}</p>
+						<p className="text-sm font-semibold text-green-700 mb-3">
+							✓ {successMessage}
+						</p>
 						<div className="bg-white p-3 rounded border border-green-200">
 							<p className="text-gray-600 text-xs font-medium mb-2">Token:</p>
 							<p className="text-gray-700 text-xs break-all font-mono bg-gray-50 p-2 rounded border border-gray-200">
@@ -91,7 +93,9 @@ export const Login = () => {
 					/>
 
 					<div>
-						<label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+						<label className="block text-sm font-medium text-gray-700 mb-1">
+							Password
+						</label>
 						<div className="relative">
 							<input
 								type={showPassword ? 'text' : 'password'}
@@ -101,7 +105,9 @@ export const Login = () => {
 								onChange={handleInputChange}
 								required
 								className={`appearance-none block w-full px-3 py-3 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-900 focus:border-blue-900 sm:text-sm transition-colors ${
-									errors.password ? 'border-red-500 bg-red-50' : 'border-gray-300 bg-white'
+									errors.password
+										? 'border-red-500 bg-red-50'
+										: 'border-gray-300 bg-white'
 								}`}
 							/>
 							<button
@@ -112,7 +118,9 @@ export const Login = () => {
 								{showPassword ? '🙈' : '👁️'}
 							</button>
 						</div>
-						{errors.password && <p className="mt-1 text-sm text-red-600">{errors.password}</p>}
+						{errors.password && (
+							<p className="mt-1 text-sm text-red-600">{errors.password}</p>
+						)}
 					</div>
 
 					<Button type="submit" disabled={loading}>

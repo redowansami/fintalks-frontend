@@ -36,7 +36,9 @@ export const Register = () => {
 			<div className="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-300 overflow-hidden p-8 sm:p-10">
 				<div className="text-center mb-6">
 					<h2 className="text-3xl font-serif font-bold text-blue-900">Register</h2>
-					<p className="mt-2 text-sm text-gray-600">Create your account to join the conversation</p>
+					<p className="mt-2 text-sm text-gray-600">
+						Create your account to join the conversation
+					</p>
 				</div>
 
 				{apiError && (
@@ -81,7 +83,9 @@ export const Register = () => {
 					/>
 
 					<div>
-						<label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+						<label className="block text-sm font-medium text-gray-700 mb-1">
+							Password
+						</label>
 						<div className="relative">
 							<input
 								type={showPassword ? 'text' : 'password'}
@@ -91,7 +95,9 @@ export const Register = () => {
 								onChange={handleInputChange}
 								required
 								className={`appearance-none block w-full px-3 py-3 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-900 focus:border-blue-900 sm:text-sm transition-colors ${
-									errors.password ? 'border-red-500 bg-red-50' : 'border-gray-300 bg-white'
+									errors.password
+										? 'border-red-500 bg-red-50'
+										: 'border-gray-300 bg-white'
 								}`}
 							/>
 							<button
@@ -102,7 +108,9 @@ export const Register = () => {
 								{showPassword ? '🙈' : '👁️'}
 							</button>
 						</div>
-						{errors.password && <p className="mt-1 text-sm text-red-600">{errors.password}</p>}
+						{errors.password && (
+							<p className="mt-1 text-sm text-red-600">{errors.password}</p>
+						)}
 
 						<PasswordRequirements password={formData.password} />
 					</div>
