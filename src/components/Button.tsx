@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/Button.css';
 
 interface ButtonProps {
 	children: React.ReactNode;
@@ -16,12 +17,7 @@ export const Button: React.FC<ButtonProps> = ({
 	className = '',
 }) => {
 	return (
-		<button
-			type={type}
-			onClick={onClick}
-			disabled={disabled}
-			className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-bold text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
-		>
+		<button type={type} onClick={onClick} disabled={disabled} className={`button ${className}`}>
 			{children}
 		</button>
 	);

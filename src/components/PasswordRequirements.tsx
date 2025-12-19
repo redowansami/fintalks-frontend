@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/PasswordRequirements.css';
 
 interface PasswordRequirementsProps {
 	password: string;
@@ -13,11 +14,9 @@ export const PasswordRequirements: React.FC<PasswordRequirementsProps> = ({ pass
 	};
 
 	return (
-		<div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-300">
-			<p className="text-xs font-semibold uppercase tracking-wider text-gray-600 mb-3">
-				Password Requirements
-			</p>
-			<ul className="space-y-2 text-sm">
+		<div className="password-requirements">
+			<p className="password-requirements-title">Password Requirements</p>
+			<ul className="requirements-list">
 				{[
 					{ key: 'lowercase', label: 'Lowercase character' },
 					{ key: 'digit', label: 'One digit' },
@@ -26,11 +25,11 @@ export const PasswordRequirements: React.FC<PasswordRequirementsProps> = ({ pass
 				].map(({ key, label }) => (
 					<li
 						key={key}
-						className={`flex items-center ${
-							checks[key as keyof typeof checks] ? 'text-green-600' : 'text-red-600'
+						className={`requirement-item ${
+							checks[key as keyof typeof checks] ? 'valid' : 'invalid'
 						}`}
 					>
-						<span className="mr-2 text-lg">
+						<span className="requirement-icon">
 							{checks[key as keyof typeof checks] ? '✓' : '✗'}
 						</span>
 						{label}

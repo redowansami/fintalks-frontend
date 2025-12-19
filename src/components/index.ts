@@ -1,6 +1,10 @@
 export { Button } from './Button';
 export { InputField } from './InputField';
 export { PasswordRequirements } from './PasswordRequirements';
-export { PageLayout } from './PageLayout';
 export { Header } from './Header';
 export { Footer } from './Footer';
+export { Navbar } from './Navbar';
+export { BlogCard } from './BlogCard';
+export { TaxCalculator } from './TaxCalculator';
+export { AdvertisementSpace } from './AdvertisementSpace';
+export { MarketMovers } from './MarketMovers';
