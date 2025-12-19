@@ -1,13 +1,14 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Register, Login } from './pages';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Register, Login, HomePage } from './pages';
+import './styles/globals.css';
 
 function App() {
 	return (
 		<Router>
 			<Routes>
+				<Route path="/" element={<HomePage />} />
 				<Route path="/signup" element={<Register />} />
 				<Route path="/login" element={<Login />} />
-				<Route path="/" element={<Navigate to="/login" />} />
 			</Routes>
 		</Router>
 	);
