@@ -11,6 +11,7 @@ export const PasswordRequirements: React.FC<PasswordRequirementsProps> = ({ pass
 		digit: /\d/.test(password),
 		uppercase: /[A-Z]/.test(password),
 		special: /[!@#$%^&*]/.test(password),
+		length: password.length >= 8,
 	};
 
 	return (
@@ -22,6 +23,7 @@ export const PasswordRequirements: React.FC<PasswordRequirementsProps> = ({ pass
 					{ key: 'digit', label: 'One digit' },
 					{ key: 'uppercase', label: 'Uppercase character' },
 					{ key: 'special', label: 'Special character (!@#$)' },
+					{ key: 'length', label: 'At least 8 characters' },
 				].map(({ key, label }) => (
 					<li
 						key={key}

@@ -8,3 +8,4 @@ export { BlogCard } from './BlogCard';
 export { TaxCalculator } from './TaxCalculator';
 export { AdvertisementSpace } from './AdvertisementSpace';
 export { MarketMovers } from './MarketMovers';
+export { Modal } from './Modal';

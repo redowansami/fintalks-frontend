@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, InputField, PasswordRequirements, Footer } from '../components';
+import { Button, InputField, PasswordRequirements, Footer, Modal } from '../components';
 import { Header } from '../components/Blank_Header';
 import { useForm } from '../hooks/useForm';
 import { signUp } from '../services/authService';
@@ -10,6 +10,7 @@ export const Register = () => {
 	const [loading, setLoading] = useState(false);
 	const [apiError, setApiError] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
+	const [showSuccessModal, setShowSuccessModal] = useState(false);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -25,7 +26,7 @@ export const Register = () => {
 		try {
 			await signUp(formData);
 			resetForm();
-			alert('Registration successful! Please log in.');
+			setShowSuccessModal(true);
 		} catch (error) {
 			setApiError(error instanceof Error ? error.message : 'Registration failed');
 		} finally {
@@ -36,6 +37,12 @@ export const Register = () => {
 	return (
 		<>
 			<Header />
+			<Modal
+				isOpen={showSuccessModal}
+				onClose={() => setShowSuccessModal(false)}
+				message="The registration email was sent successfully, check your email address"
+				actionButtonText="OK"
+			/>
 			<div
 				style={{
 					display: 'flex',
