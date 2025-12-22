@@ -2,7 +2,6 @@
 
 .homepage {
 	width: 100vw;
-	margin-left: calc(-50vw + 50%);
 	padding: 2rem 1rem;
 	background-color: var(--background-light);
 }
@@ -16,10 +15,6 @@
 	gap: 2rem;
 }
 
-.main-content.no-sidebar {
-	grid-template-columns: 1fr;
-}
-
 @media (min-width: 1024px) {
 	.main-content {
 		grid-template-columns: 2fr 1fr;
@@ -28,10 +23,6 @@
 	.main-content.no-sidebar {
 		grid-template-columns: 1fr;
 	}
-}
-
-.section {
-	margin-bottom: 2rem;
 }
 
 .section-header {
