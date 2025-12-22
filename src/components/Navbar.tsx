@@ -1,53 +1,39 @@
-import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { NavLink } from './NavLink';
+import { CategoryList } from './CategoryList';
 import '../styles/Navbar.css';
 
-interface Category {
-	id: string;
-	name: string;
-	slug?: string;
+interface NavbarProps {
+	activeCategory?: string | null;
+	onCategoryClick?: (category: string | null) => void;
 }
 
-export const Navbar: React.FC = () => {
-	const [categories, setCategories] = useState<Category[]>([]);
-	const [loading, setLoading] = useState(true);
+export const Navbar: React.FC<NavbarProps> = ({ activeCategory = null, onCategoryClick }) => {
+	const navigate = useNavigate();
+	const location = useLocation();
+	const isHomePage = location.pathname === '/';
 
-	useEffect(() => {
-		fetch('http://localhost:3000/api/v1/categories/')
-			.then((res) => res.json())
-			.then((data) => {
-				const catArray = Array.isArray(data) ? data : data?.data || data?.categories || [];
-				setCategories(catArray);
-				setLoading(false);
-			})
-			.catch((err) => {
-				console.error('Error fetching categories:', err);
-				setLoading(false);
-			});
-	}, []);
+	const handleCategoryClick = (category: string | null) => {
+		if (isHomePage && onCategoryClick) {
+			onCategoryClick(category);
+		} else {
+			navigate('/');
+		}
+	};
 
 	return (
 		<nav className="navbar">
 			<div className="navbar-content">
 				<ul className="nav-list">
-					<li>
-						<a href="/" className="nav-link">
-							Home
-						</a>
-					</li>
-					{loading
-						? null
-						: categories && Array.isArray(categories)
-						? categories.map((cat) => (
-								<li key={cat.id}>
-									<a
-										href={`/category/${cat.slug || cat.name.toLowerCase()}`}
-										className="nav-link"
-									>
-										{cat.name}
-									</a>
-								</li>
-						  ))
-						: null}
+					<NavLink
+						label="Home"
+						isActive={isHomePage && !activeCategory}
+						onClick={() => handleCategoryClick(null)}
+					/>
+					<CategoryList
+						activeCategory={isHomePage ? activeCategory : null}
+						onCategoryClick={handleCategoryClick}
+					/>
 				</ul>
 			</div>
 		</nav>
