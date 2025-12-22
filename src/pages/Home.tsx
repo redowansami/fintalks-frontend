@@ -77,6 +77,7 @@ export const HomePage: React.FC = () => {
 								blogs.map((blog) => (
 									<BlogCard
 										key={blog.storyId}
+										storyId={blog.storyId}
 										title={blog.title}
 										body={blog.body}
 										reliabilityScore={blog.reliabilityScore}
