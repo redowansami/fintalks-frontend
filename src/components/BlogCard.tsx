@@ -1,6 +1,8 @@
 import '../styles/BlogCard.css';
+import { useNavigate } from 'react-router-dom';
 
 interface BlogCardProps {
+	storyId: string;
 	title: string;
 	body: string;
 	reliabilityScore: number;
@@ -9,12 +11,15 @@ interface BlogCardProps {
 }
 
 export const BlogCard: React.FC<BlogCardProps> = ({
+	storyId,
 	title,
 	body,
 	reliabilityScore,
 	categories,
 	image,
 }) => {
+	const navigate = useNavigate();
+	const handleClick = () => navigate(`/api/v1/stories/${storyId}`);
 	const truncateText = (text: string, limit: number) => {
 		return text.length > limit ? text.substring(0, limit) + '...' : text;
 	};
@@ -30,7 +35,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 		'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="200"%3E%3Crect fill="%23d4d4d8" width="300" height="200"/%3E%3C/svg%3E';
 
 	return (
-		<article className="blog-card">
+		<article className="blog-card" onClick={handleClick} style={{ cursor: 'pointer' }}>
 			<img src={image || placeholderImage} alt={title} className="blog-image" />
 			<div className="blog-content">
 				<h3 className="blog-title">{title}</h3>
