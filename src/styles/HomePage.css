@@ -16,9 +16,17 @@
 	gap: 2rem;
 }
 
+.main-content.no-sidebar {
+	grid-template-columns: 1fr;
+}
+
 @media (min-width: 1024px) {
 	.main-content {
 		grid-template-columns: 2fr 1fr;
+	}
+
+	.main-content.no-sidebar {
+		grid-template-columns: 1fr;
 	}
 }
 
@@ -48,6 +56,10 @@
 	color: var(--primary);
 	text-decoration: none;
 	transition: color 0.2s;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
 }
 
 .view-all-link:hover {
