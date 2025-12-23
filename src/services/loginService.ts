@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 interface LoginRequest {
 	email: string;
 	password: string;
@@ -19,26 +21,32 @@ export interface LoginResponse {
 	message?: string;
 }
 
+export interface ValidationError {
+	[key: string]: string;
+}
+
 const API_URL = 'http://localhost:3000/api/v1/auth/login';
+
+export class LoginError extends Error {
+	validationErrors?: ValidationError;
+
+	constructor(message: string, validationErrors?: ValidationError) {
+		super(message);
+		this.validationErrors = validationErrors;
+	}
+}
 
 export const login = async (credentials: LoginRequest): Promise<LoginResponse> => {
 	try {
-		const response = await fetch(API_URL, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(credentials),
-		});
-
-		const data = await response.json();
-
-		if (!response.ok) {
-			throw new Error(data.message || 'Login failed');
-		}
-
-		return data;
+		const response = await axios.post<LoginResponse>(API_URL, credentials);
+		return response.data;
 	} catch (error) {
+		if (axios.isAxiosError(error) && error.response?.data) {
+			const data = error.response.data as Record<string, unknown>;
+			const message = (data.message as string) || 'Login failed';
+			const validationErrors = (data.errors as ValidationError) || undefined;
+			throw new LoginError(message, validationErrors);
+		}
 		throw error instanceof Error ? error : new Error('An unexpected error occurred');
 	}
 };
