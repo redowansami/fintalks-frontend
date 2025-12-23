@@ -1,46 +1,33 @@
 import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../services/loginService';
+import { saveAuth } from '../utils/authUtils';
 
 interface UseLoginHandlerReturn {
-	loading: boolean;
-	apiError: string;
-	successMessage: string;
-	showResponse: boolean;
-	token: string | null;
-	handleSubmit: (
-		formData: { email: string; password: string },
-		validateForm: () => boolean,
-	) => (e: React.FormEvent) => Promise<void>;
+	isLoading: boolean;
+	isError: boolean;
+	error: Error | null;
+	mutate: (credentials: { email: string; password: string }) => void;
 }
 
 export const useLoginHandler = (): UseLoginHandlerReturn => {
 	const navigate = useNavigate();
-	const [loading, setLoading] = useState(false);
-	const [apiError, setApiError] = useState('');
-	const [successMessage, setSuccessMessage] = useState('');
-	const [showResponse, setShowResponse] = useState(false);
-	const [token, setToken] = useState<string | null>(null);
+	const [isRedirecting, setIsRedirecting] = useState(false);
 
-	const handleSubmit =
-		(formData: { email: string; password: string }, validateForm: () => boolean) =>
-		async (e: React.FormEvent) => {
-			e.preventDefault();
-			if (!validateForm()) return;
+	const mutation = useMutation({
+		mutationFn: (credentials: { email: string; password: string }) => login(credentials),
+		onSuccess: (data) => {
+			saveAuth(data.token, data.user);
+			setIsRedirecting(true);
+			setTimeout(() => navigate('/'), 2000);
+		},
+	});
 
-			setLoading(true);
-			try {
-				const response = await login(formData);
-				setToken(response.token);
-				setShowResponse(true);
-				setSuccessMessage('Login successful!');
-				setTimeout(() => navigate('/'), 2000);
-			} catch (error) {
-				setApiError(error instanceof Error ? error.message : 'Login failed');
-			} finally {
-				setLoading(false);
-			}
-		};
-
-	return { loading, apiError, successMessage, showResponse, token, handleSubmit };
+	return {
+		isLoading: mutation.isPending || isRedirecting,
+		isError: mutation.isError,
+		error: mutation.error,
+		mutate: mutation.mutate,
+	};
 };
