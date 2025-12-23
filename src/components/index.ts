@@ -18,3 +18,4 @@ export { RegisterHeader } from './RegisterHeader';
 export { RegisterFooter } from './RegisterFooter';
 export { RegisterForm } from './RegisterForm';
 export { Spinner } from './Spinner';
+export { ValidationTooltip } from './ValidationTooltip';
