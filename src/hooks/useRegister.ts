@@ -2,7 +2,8 @@ import { useMutation } from '@tanstack/react-query';
 
 interface UseRegisterReturn {
 	loading: boolean;
-	apiError: string;
+	error: string;
+	validationErrors?: Record<string, string | string[]>;
 	handleSubmit: (e: React.FormEvent) => void;
 	showSuccessModal: boolean;
 	setShowSuccessModal: (show: boolean) => void;
@@ -28,9 +29,12 @@ export const useRegister = (
 		}
 	};
 
+	const error = mutation.error as Error & { errors?: Record<string, string | string[]> };
+
 	return {
 		loading: mutation.isPending,
-		apiError: mutation.error instanceof Error ? mutation.error.message : '',
+		error: mutation.error instanceof Error ? mutation.error.message : '',
+		validationErrors: error?.errors,
 		handleSubmit,
 		showSuccessModal: mutation.isSuccess,
 		setShowSuccessModal,
