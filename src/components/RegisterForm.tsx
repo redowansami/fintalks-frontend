@@ -6,6 +6,7 @@ interface FormFieldConfig {
 	name: string;
 	type?: string;
 	placeholder: string;
+	validationCriteria?: string[];
 }
 
 interface RegisterFormProps {
@@ -21,13 +22,15 @@ const FORM_FIELDS: FormFieldConfig[] = [
 		label: 'Username',
 		id: 'username',
 		name: 'username',
-		placeholder: 'johndoe',
+		placeholder: 'john_doe',
+		validationCriteria: ['3-10 characters long', 'Letters, numbers, and underscores only'],
 	},
 	{
 		label: 'Name',
 		id: 'name',
 		name: 'name',
 		placeholder: 'John Doe',
+		validationCriteria: ['3-20 characters long'],
 	},
 	{
 		label: 'Email address',
@@ -35,6 +38,7 @@ const FORM_FIELDS: FormFieldConfig[] = [
 		name: 'email',
 		type: 'email',
 		placeholder: 'john@example.com',
+		validationCriteria: ['Valid email format (e.g., user@domain.com)'],
 	},
 ];
 
@@ -58,6 +62,7 @@ export const RegisterForm = ({
 				onChange={onInputChange}
 				required
 				error={errors[field.name]}
+				validationCriteria={field.validationCriteria}
 			/>
 		))}
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ValidationTooltip } from './ValidationTooltip';
 import '../styles/InputField.css';
 
 interface InputFieldProps {
@@ -11,6 +12,7 @@ interface InputFieldProps {
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	required?: boolean;
 	error?: string;
+	validationCriteria?: string[];
 }
 
 export const InputField: React.FC<InputFieldProps> = ({
@@ -23,12 +25,16 @@ export const InputField: React.FC<InputFieldProps> = ({
 	onChange,
 	required = false,
 	error,
+	validationCriteria,
 }) => {
 	return (
 		<div className="input-field-group">
-			<label className="input-field-label" htmlFor={id}>
-				{label}
-			</label>
+			<div className="input-field-header">
+				<label className="input-field-label" htmlFor={id}>
+					{label}
+				</label>
+				{validationCriteria && <ValidationTooltip criteria={validationCriteria} />}
+			</div>
 			<input
 				type={type}
 				id={id}
