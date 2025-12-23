@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Register, Login, HomePage, StoryDetail } from './pages';
+import { Register, Login, HomePage, StoryDetail, Profile } from './pages';
 import './styles/App.css';
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
 				<Route path="/" element={<HomePage />} />
 				<Route path="/signup" element={<Register />} />
 				<Route path="/login" element={<Login />} />
+				<Route path="/profile" element={<Profile />} />
 				<Route path="/api/v1/stories/:storyId" element={<StoryDetail />} />
 			</Routes>
 		</Router>
