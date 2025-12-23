@@ -4,7 +4,7 @@ import { Button, InputField } from './index';
 interface LoginFormProps {
 	formData: { email: string; password: string };
 	errors: { [key: string]: string };
-	loading: boolean;
+	isPending: boolean;
 	showPassword: boolean;
 	onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	onSubmit: (e: React.FormEvent) => void;
@@ -14,7 +14,7 @@ interface LoginFormProps {
 export const LoginForm = ({
 	formData,
 	errors,
-	loading,
+	isPending,
 	showPassword,
 	onInputChange,
 	onSubmit,
@@ -56,8 +56,8 @@ export const LoginForm = ({
 				{errors.password && <p className="error-text">{errors.password}</p>}
 			</div>
 
-			<Button type="submit" disabled={loading}>
-				{loading ? 'Logging in...' : 'Log in'}
+			<Button type="submit" disabled={isPending}>
+				{isPending ? 'Logging in...' : 'Log in'}
 			</Button>
 		</form>
 	);
