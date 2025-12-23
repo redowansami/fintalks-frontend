@@ -1,7 +1,7 @@
 import { Footer } from '../components';
 import { Header } from '../components/Blank_Header';
 import { LoginForm } from '../components/LoginForm';
-import { LoginResponse } from '../components/LoginResponse';
+import { Spinner } from '../components/Spinner';
 import { useLoginForm } from '../hooks/useLoginForm';
 import { useLoginHandler } from '../hooks/useLoginHandler';
 import '../styles/Login.css';
@@ -16,19 +16,17 @@ export const Login = () => {
 		togglePasswordVisibility,
 	} = useLoginForm();
 
-	const {
-		loading,
-		apiError,
-		successMessage,
-		showResponse,
-		token,
-		handleSubmit: createSubmitHandler,
-	} = useLoginHandler();
+	const { isLoading, isError, error, mutate } = useLoginHandler();
 
-	const handleSubmit = createSubmitHandler(formData, validateForm);
+	const handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+		if (!validateForm()) return;
+		mutate(formData);
+	};
 
 	return (
 		<>
+			{isLoading && <Spinner />}
 			<Header />
 			<div
 				style={{
@@ -44,17 +42,26 @@ export const Login = () => {
 						<h2>Log in</h2>
 					</div>
 
-					<LoginResponse
-						apiError={apiError}
-						showResponse={showResponse}
-						successMessage={successMessage}
-						token={token}
-					/>
+					{isError && (
+						<div
+							style={{
+								padding: '1rem',
+								marginBottom: '1rem',
+								backgroundColor: '#fee2e2',
+								color: '#dc2626',
+								borderRadius: '0.375rem',
+								fontSize: '0.875rem',
+								textAlign: 'center',
+							}}
+						>
+							{error?.message || 'Login failed. Please try again.'}
+						</div>
+					)}
 
 					<LoginForm
 						formData={formData}
 						errors={errors}
-						loading={loading}
+						isPending={isLoading}
 						showPassword={showPassword}
 						onInputChange={handleInputChange}
 						onSubmit={handleSubmit}
