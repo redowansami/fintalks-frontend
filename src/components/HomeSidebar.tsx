@@ -1,6 +1,6 @@
-import { TaxCalculator } from './TaxCalculator';
-import { AdvertisementSpace } from './AdvertisementSpace';
-import { MarketMovers } from './MarketMovers';
+import { TaxCalculator } from './SideBar/TaxCalculator';
+import { AdvertisementSpace } from './SideBar/AdvertisementSpace';
+import { MarketMovers } from './SideBar/MarketMovers';
 
 interface HomeSidebarProps {
 	show: boolean;
