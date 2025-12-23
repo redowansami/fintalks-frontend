@@ -5,12 +5,18 @@
 	flex-direction: column;
 }
 
+.input-field-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 0.25rem;
+}
+
 .input-field-label {
 	display: block;
 	font-size: 0.875rem;
 	font-weight: 500;
 	color: #374151;
-	margin-bottom: 0.25rem;
 }
 
 .input-field-input {
