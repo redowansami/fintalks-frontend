@@ -1,0 +1,19 @@
+import { TaxCalculator } from './TaxCalculator';
+import { AdvertisementSpace } from './AdvertisementSpace';
+import { MarketMovers } from './MarketMovers';
+
+interface HomeSidebarProps {
+	show: boolean;
+}
+
+export const HomeSidebar: React.FC<HomeSidebarProps> = ({ show }) => {
+	if (!show) return null;
+
+	return (
+		<div className="sidebar">
+			<TaxCalculator />
+			<AdvertisementSpace />
+			<MarketMovers />
+		</div>
+	);
+};
