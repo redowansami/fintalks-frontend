@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
 					</a>
 				</div>
 				<div className="header-right">
-					<button className="btn-secondary">Create Blog</button>
+					<button className="btn-secondary">Create Story</button>
 					<button className="btn-primary" onClick={() => navigate('/login')}>
 						<Icon icon="mdi:user" /> Login
 					</button>

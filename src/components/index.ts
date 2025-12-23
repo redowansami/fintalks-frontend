@@ -4,7 +4,7 @@ export { PasswordRequirements } from './PasswordRequirements';
 export { Header } from './Header';
 export { Footer } from './Footer';
 export { Navbar } from './Navbar';
-export { BlogCard } from './BlogCard';
+export { StoryCard } from './StoryCard';
 export { TaxCalculator } from './TaxCalculator';
 export { AdvertisementSpace } from './AdvertisementSpace';
 export { MarketMovers } from './MarketMovers';

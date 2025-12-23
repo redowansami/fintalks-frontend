@@ -1,13 +1,13 @@
 import { Header } from '../components/Header';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
-import { BlogListSection } from '../components/BlogListSection';
+import { StoryListSection } from '../components/StoryListSection';
 import { HomeSidebar } from '../components/HomeSidebar';
 import { useStoryList } from '../hooks/useStoryList';
 import '../styles/HomePage.css';
 
 export const HomePage: React.FC = () => {
-	const { blogs, activeCategory, isPending, pageTitle, handleCategoryClick } = useStoryList();
+	const { stories, activeCategory, isPending, pageTitle, handleCategoryClick } = useStoryList();
 
 	return (
 		<>
@@ -16,8 +16,8 @@ export const HomePage: React.FC = () => {
 			<main className="homepage">
 				<div className={`main-content ${activeCategory ? 'no-sidebar' : ''}`}>
 					<div>
-						<BlogListSection
-							blogs={blogs}
+						<StoryListSection
+							stories={stories}
 							isPending={isPending}
 							pageTitle={pageTitle}
 						/>
