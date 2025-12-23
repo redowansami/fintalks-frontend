@@ -1,4 +1,4 @@
-import '../styles/SidebarComponents.css';
+import '../../styles/SidebarComponents.css';
 
 interface Mover {
 	symbol: string;

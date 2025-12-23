@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react';
-import '../styles/SidebarComponents.css';
+import '../../styles/SidebarComponents.css';
 
 export const TaxCalculator: React.FC = () => {
 	return (
