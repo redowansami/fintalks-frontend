@@ -29,11 +29,13 @@ export const useForm = (): UseFormReturn => {
 	const validateForm = (): boolean => {
 		const newErrors: FormErrors = {};
 
-		if (!formData.username.trim()) {
-			newErrors.username = 'Username is required';
+		if (formData.username.trim().length < 3 || formData.username.trim().length > 10) {
+			newErrors.username = 'Username must be between 3-10 characters';
+		} else if (!/^[a-zA-Z0-9_]+$/.test(formData.username.trim())) {
+			newErrors.username = 'Username can only contain letters, numbers, and underscores';
 		}
-		if (!formData.name.trim()) {
-			newErrors.name = 'Name is required';
+		if (formData.name.trim().length < 3 || formData.name.trim().length > 20) {
+			newErrors.name = 'Name must be between 3-20 characters';
 		}
 		if (!formData.email.trim()) {
 			newErrors.email = 'Email is required';
