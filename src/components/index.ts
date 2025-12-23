@@ -16,3 +16,4 @@ export { ErrorBanner } from './ErrorBanner';
 export { RegisterHeader } from './RegisterHeader';
 export { RegisterFooter } from './RegisterFooter';
 export { RegisterForm } from './RegisterForm';
+export { Spinner } from './Spinner';
