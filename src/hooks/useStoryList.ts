@@ -1,9 +1,9 @@
 import { useState, useEffect, useTransition } from 'react';
 import { storyService } from '../services/storyService';
-import type { BlogStory } from '../services/storyService';
+import type { Story } from '../services/storyService';
 
 interface UseStoryListReturn {
-	blogs: BlogStory[];
+	stories: Story[];
 	activeCategory: string | null;
 	isPending: boolean;
 	pageTitle: string;
@@ -11,7 +11,7 @@ interface UseStoryListReturn {
 }
 
 export const useStoryList = (): UseStoryListReturn => {
-	const [blogs, setBlogs] = useState<BlogStory[]>([]);
+	const [stories, setStories] = useState<Story[]>([]);
 	const [activeCategory, setActiveCategory] = useState<string | null>(null);
 	const [isPending, startTransition] = useTransition();
 
@@ -19,10 +19,10 @@ export const useStoryList = (): UseStoryListReturn => {
 		startTransition(async () => {
 			try {
 				const data = await storyService.fetchStories(activeCategory);
-				setBlogs(data.list || []);
+				setStories(data.list || []);
 			} catch (err) {
-				console.error('Error fetching blogs:', err);
-				setBlogs([]);
+				console.error('Error fetching stories:', err);
+				setStories([]);
 			}
 		});
 	}, [activeCategory]);
@@ -36,7 +36,7 @@ export const useStoryList = (): UseStoryListReturn => {
 		: 'Latest Articles';
 
 	return {
-		blogs,
+		stories,
 		activeCategory,
 		isPending,
 		pageTitle,
