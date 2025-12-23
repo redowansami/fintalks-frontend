@@ -1,13 +1,13 @@
-// import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../services/loginService';
+import { login, LoginError, type ValidationError } from '../services/loginService';
 import { saveAuth } from '../utils/authUtils';
 
 interface UseLoginHandlerReturn {
 	isPending: boolean;
 	isError: boolean;
 	error: Error | null;
+	validationErrors: ValidationError | undefined;
 	mutate: (credentials: { email: string; password: string }) => void;
 }
 
@@ -22,10 +22,14 @@ export const useLoginHandler = (): UseLoginHandlerReturn => {
 		},
 	});
 
+	const validationErrors =
+		mutation.error instanceof LoginError ? mutation.error.validationErrors : undefined;
+
 	return {
 		isPending: mutation.isPending,
 		isError: mutation.isError,
 		error: mutation.error,
+		validationErrors,
 		mutate: mutation.mutate,
 	};
 };
