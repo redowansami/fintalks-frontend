@@ -8,6 +8,7 @@ interface SignUpRequest {
 interface SignUpResponse {
 	success: boolean;
 	message: string;
+	errors?: Record<string, string | string[]>;
 	data?: {
 		id: string;
 		username: string;
@@ -30,7 +31,9 @@ export const signUp = async (userData: SignUpRequest): Promise<SignUpResponse> =
 		const data = await response.json();
 
 		if (!response.ok) {
-			throw new Error(data.message || 'Registration failed');
+			const error = new Error(data.message || 'Registration failed') as Error & { errors?: Record<string, string | string[]> };
+			error.errors = data.errors;
+			throw error;
 		}
 
 		return data;

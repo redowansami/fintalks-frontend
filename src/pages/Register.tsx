@@ -1,7 +1,7 @@
 import {
 	Footer,
 	Modal,
-	ErrorBanner,
+	ErrorDialog,
 	RegisterHeader,
 	RegisterFooter,
 	RegisterForm,
@@ -14,13 +14,17 @@ import '../styles/Register.css';
 
 export const Register = () => {
 	const { formData, errors, handleInputChange, validateForm, resetForm } = useForm();
-	const { apiError, loading, handleSubmit, showSuccessModal, setShowSuccessModal } = useRegister(
-		validateForm,
-		async () => {
-			await signUp(formData);
-			resetForm();
-		},
-	);
+	const {
+		error,
+		validationErrors,
+		loading,
+		handleSubmit,
+		showSuccessModal,
+		setShowSuccessModal,
+	} = useRegister(validateForm, async () => {
+		await signUp(formData);
+		resetForm();
+	});
 
 	return (
 		<>
@@ -35,7 +39,15 @@ export const Register = () => {
 				<div className="register-container">
 					<RegisterHeader />
 
-					{apiError && <ErrorBanner message={apiError} />}
+					{error && (
+						<ErrorDialog
+							message={error}
+							validationErrors={
+								validationErrors ||
+								(Object.keys(errors).length > 0 ? errors : undefined)
+							}
+						/>
+					)}
 
 					<RegisterForm
 						formData={formData}
