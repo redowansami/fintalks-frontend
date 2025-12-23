@@ -11,3 +11,8 @@ export { MarketMovers } from './MarketMovers';
 export { Modal } from './Modal';
 export { LoginForm } from './LoginForm';
 export { LoginResponse } from './LoginResponse';
+export { PasswordInput } from './PasswordInput';
+export { ErrorBanner } from './ErrorBanner';
+export { RegisterHeader } from './RegisterHeader';
+export { RegisterFooter } from './RegisterFooter';
+export { RegisterForm } from './RegisterForm';
