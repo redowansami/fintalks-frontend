@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 
 interface UseRegisterReturn {
 	loading: boolean;
 	apiError: string;
-	handleSubmit: (e: React.FormEvent) => Promise<void>;
+	handleSubmit: (e: React.FormEvent) => void;
 	showSuccessModal: boolean;
 	setShowSuccessModal: (show: boolean) => void;
 }
@@ -12,30 +12,27 @@ export const useRegister = (
 	validateForm: () => boolean,
 	onSuccess: () => Promise<void>,
 ): UseRegisterReturn => {
-	const [loading, setLoading] = useState(false);
-	const [apiError, setApiError] = useState('');
-	const [showSuccessModal, setShowSuccessModal] = useState(false);
+	const mutation = useMutation({
+		mutationFn: onSuccess,
+	});
 
-	const handleSubmit = async (e: React.FormEvent) => {
+	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		if (!validateForm()) return;
+		mutation.mutate();
+	};
 
-		setLoading(true);
-		try {
-			await onSuccess();
-			setShowSuccessModal(true);
-		} catch (error) {
-			setApiError(error instanceof Error ? error.message : 'Registration failed');
-		} finally {
-			setLoading(false);
+	const setShowSuccessModal = (show: boolean) => {
+		if (!show) {
+			mutation.reset();
 		}
 	};
 
 	return {
-		loading,
-		apiError,
+		loading: mutation.isPending,
+		apiError: mutation.error instanceof Error ? mutation.error.message : '',
 		handleSubmit,
-		showSuccessModal,
+		showSuccessModal: mutation.isSuccess,
 		setShowSuccessModal,
 	};
 };
