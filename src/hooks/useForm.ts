@@ -12,14 +12,7 @@ interface UseFormReturn {
 		password: string;
 	};
 	errors: FormErrors;
-	setFormData: React.Dispatch<
-		React.SetStateAction<{
-			username: string;
-			name: string;
-			email: string;
-			password: string;
-		}>
-	>;
+	handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	validateForm: () => boolean;
 	resetForm: () => void;
 }
@@ -57,10 +50,15 @@ export const useForm = (): UseFormReturn => {
 		return Object.keys(newErrors).length === 0;
 	};
 
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = e.target;
+		setFormData((prev) => ({ ...prev, [name]: value }));
+	};
+
 	const resetForm = () => {
 		setFormData({ username: '', name: '', email: '', password: '' });
 		setErrors({});
 	};
 
-	return { formData, errors, setFormData, validateForm, resetForm };
+	return { formData, errors, handleInputChange, validateForm, resetForm };
 };

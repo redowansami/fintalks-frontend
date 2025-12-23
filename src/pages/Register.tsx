@@ -13,7 +13,7 @@ import { signUp } from '../services/authService';
 import '../styles/Register.css';
 
 export const Register = () => {
-	const { formData, errors, setFormData, validateForm, resetForm } = useForm();
+	const { formData, errors, handleInputChange, validateForm, resetForm } = useForm();
 	const { apiError, loading, handleSubmit, showSuccessModal, setShowSuccessModal } = useRegister(
 		validateForm,
 		async () => {
@@ -21,11 +21,6 @@ export const Register = () => {
 			resetForm();
 		},
 	);
-
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-		setFormData((prev) => ({ ...prev, [name]: value }));
-	};
 
 	return (
 		<>
