@@ -17,6 +17,16 @@ export interface StoriesResponse {
 	list: Story[];
 }
 
+export interface StoryDetailResponse {
+	story: Story & {
+		image?: string;
+		summary?: string;
+		predictionComparison?: string;
+		categories: Array<{ categoryId: string; name: string }>;
+		updatedAt?: string;
+	};
+}
+
 export const storyService = {
 	async fetchStories(category?: string | null): Promise<StoriesResponse> {
 		const url = category
@@ -24,6 +34,11 @@ export const storyService = {
 			: `${API_BASE_URL}/stories/`;
 
 		const response = await axios.get<StoriesResponse>(url);
+		return response.data;
+	},
+
+	async fetchStoryDetail(storyId: string): Promise<StoryDetailResponse> {
+		const response = await axios.get<StoryDetailResponse>(`${API_BASE_URL}/stories/${storyId}`);
 		return response.data;
 	},
 };
