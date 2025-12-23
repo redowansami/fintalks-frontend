@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_BASE_URL = 'http://localhost:3000/api/v1';
 
-export interface BlogStory {
+export interface Story {
 	storyId: string;
 	title: string;
 	body: string;
@@ -14,7 +14,7 @@ export interface BlogStory {
 }
 
 export interface StoriesResponse {
-	list: BlogStory[];
+	list: Story[];
 }
 
 export const storyService = {
