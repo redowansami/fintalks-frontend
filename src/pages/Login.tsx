@@ -16,7 +16,7 @@ export const Login = () => {
 		togglePasswordVisibility,
 	} = useLoginForm();
 
-	const { isLoading, isError, error, mutate } = useLoginHandler();
+	const { isPending, isError, error, mutate } = useLoginHandler();
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -26,7 +26,7 @@ export const Login = () => {
 
 	return (
 		<>
-			{isLoading && <Spinner />}
+			{isPending && <Spinner />}
 			<Header />
 			<div
 				style={{
@@ -61,7 +61,7 @@ export const Login = () => {
 					<LoginForm
 						formData={formData}
 						errors={errors}
-						isPending={isLoading}
+						isPending={isPending}
 						showPassword={showPassword}
 						onInputChange={handleInputChange}
 						onSubmit={handleSubmit}
