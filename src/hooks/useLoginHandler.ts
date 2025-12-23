@@ -1,46 +1,35 @@
-import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../services/loginService';
+import { login, LoginError, type ValidationError } from '../services/loginService';
+import { saveAuth } from '../utils/authUtils';
 
 interface UseLoginHandlerReturn {
-	loading: boolean;
-	apiError: string;
-	successMessage: string;
-	showResponse: boolean;
-	token: string | null;
-	handleSubmit: (
-		formData: { email: string; password: string },
-		validateForm: () => boolean,
-	) => (e: React.FormEvent) => Promise<void>;
+	isPending: boolean;
+	isError: boolean;
+	error: Error | null;
+	validationErrors: ValidationError | undefined;
+	mutate: (credentials: { email: string; password: string }) => void;
 }
 
 export const useLoginHandler = (): UseLoginHandlerReturn => {
 	const navigate = useNavigate();
-	const [loading, setLoading] = useState(false);
-	const [apiError, setApiError] = useState('');
-	const [successMessage, setSuccessMessage] = useState('');
-	const [showResponse, setShowResponse] = useState(false);
-	const [token, setToken] = useState<string | null>(null);
 
-	const handleSubmit =
-		(formData: { email: string; password: string }, validateForm: () => boolean) =>
-		async (e: React.FormEvent) => {
-			e.preventDefault();
-			if (!validateForm()) return;
+	const mutation = useMutation({
+		mutationFn: (credentials: { email: string; password: string }) => login(credentials),
+		onSuccess: (data) => {
+			saveAuth(data.token, data.user);
+			navigate('/');
+		},
+	});
 
-			setLoading(true);
-			try {
-				const response = await login(formData);
-				setToken(response.token);
-				setShowResponse(true);
-				setSuccessMessage('Login successful!');
-				setTimeout(() => navigate('/'), 2000);
-			} catch (error) {
-				setApiError(error instanceof Error ? error.message : 'Login failed');
-			} finally {
-				setLoading(false);
-			}
-		};
+	const validationErrors =
+		mutation.error instanceof LoginError ? mutation.error.validationErrors : undefined;
 
-	return { loading, apiError, successMessage, showResponse, token, handleSubmit };
+	return {
+		isPending: mutation.isPending,
+		isError: mutation.isError,
+		error: mutation.error,
+		validationErrors,
+		mutate: mutation.mutate,
+	};
 };

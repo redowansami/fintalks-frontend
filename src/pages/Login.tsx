@@ -1,34 +1,26 @@
 import { Footer } from '../components';
 import { Header } from '../components/Blank_Header';
 import { LoginForm } from '../components/LoginForm';
-import { LoginResponse } from '../components/LoginResponse';
+import { Spinner } from '../components/Spinner';
+import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import { useLoginForm } from '../hooks/useLoginForm';
 import { useLoginHandler } from '../hooks/useLoginHandler';
 import '../styles/Login.css';
 
 export const Login = () => {
-	const {
-		formData,
-		errors,
-		showPassword,
-		handleInputChange,
-		validateForm,
-		togglePasswordVisibility,
-	} = useLoginForm();
+	const { formData, errors, handleInputChange, validateForm } = useLoginForm();
 
-	const {
-		loading,
-		apiError,
-		successMessage,
-		showResponse,
-		token,
-		handleSubmit: createSubmitHandler,
-	} = useLoginHandler();
+	const { isPending, isError, error, validationErrors, mutate } = useLoginHandler();
 
-	const handleSubmit = createSubmitHandler(formData, validateForm);
+	const handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+		if (!validateForm()) return;
+		mutate(formData);
+	};
 
 	return (
 		<>
+			{isPending && <Spinner />}
 			<Header />
 			<div
 				style={{
@@ -44,21 +36,19 @@ export const Login = () => {
 						<h2>Log in</h2>
 					</div>
 
-					<LoginResponse
-						apiError={apiError}
-						showResponse={showResponse}
-						successMessage={successMessage}
-						token={token}
-					/>
+					{isError && (
+						<ErrorDialog
+							message={error?.message || 'Login failed. Please try again.'}
+							validationErrors={validationErrors}
+						/>
+					)}
 
 					<LoginForm
 						formData={formData}
 						errors={errors}
-						loading={loading}
-						showPassword={showPassword}
+						isPending={isPending}
 						onInputChange={handleInputChange}
 						onSubmit={handleSubmit}
-						onTogglePassword={togglePasswordVisibility}
 					/>
 
 					<div className="login-footer">
