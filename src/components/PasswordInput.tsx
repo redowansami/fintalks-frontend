@@ -7,15 +7,25 @@ interface PasswordInputProps {
 	value: string;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	error?: string;
+	placeholder?: string;
+	label?: string;
 }
 
-export const PasswordInput = ({ id, name, value, onChange, error }: PasswordInputProps) => {
+export const PasswordInput = ({
+	id,
+	name,
+	value,
+	onChange,
+	error,
+	placeholder,
+	label = 'Password',
+}: PasswordInputProps) => {
 	const [showPassword, setShowPassword] = useState(false);
 
 	return (
 		<div className="form-group">
 			<label className="form-label" htmlFor={id}>
-				Password
+				{label}
 			</label>
 			<div className="password-wrapper">
 				<input
@@ -24,6 +34,7 @@ export const PasswordInput = ({ id, name, value, onChange, error }: PasswordInpu
 					name={name}
 					value={value}
 					onChange={onChange}
+					placeholder={placeholder}
 					required
 					className={`form-input ${error ? 'error' : ''}`}
 				/>

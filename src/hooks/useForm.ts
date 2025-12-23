@@ -10,6 +10,7 @@ interface UseFormReturn {
 		name: string;
 		email: string;
 		password: string;
+		confirmPassword: string;
 	};
 	errors: FormErrors;
 	handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -23,6 +24,7 @@ export const useForm = (): UseFormReturn => {
 		name: '',
 		email: '',
 		password: '',
+		confirmPassword: '',
 	});
 	const [errors, setErrors] = useState<FormErrors>({});
 
@@ -47,6 +49,11 @@ export const useForm = (): UseFormReturn => {
 		} else if (formData.password.length < 8) {
 			newErrors.password = 'Password must be at least 8 characters';
 		}
+		if (!formData.confirmPassword) {
+			newErrors.confirmPassword = 'Please confirm your password';
+		} else if (formData.password !== formData.confirmPassword) {
+			newErrors.confirmPassword = 'Passwords do not match';
+		}
 
 		setErrors(newErrors);
 		return Object.keys(newErrors).length === 0;
@@ -58,7 +65,7 @@ export const useForm = (): UseFormReturn => {
 	};
 
 	const resetForm = () => {
-		setFormData({ username: '', name: '', email: '', password: '' });
+		setFormData({ username: '', name: '', email: '', password: '', confirmPassword: '' });
 		setErrors({});
 	};
 

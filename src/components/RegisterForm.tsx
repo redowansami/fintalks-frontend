@@ -74,6 +74,16 @@ export const RegisterForm = ({
 			error={errors.password}
 		/>
 
+		<PasswordInput
+			id="confirmPassword"
+			name="confirmPassword"
+			label="Confirm Password"
+			placeholder="Re-enter your password"
+			value={formData.confirmPassword || ''}
+			onChange={onInputChange}
+			error={errors.confirmPassword}
+		/>
+
 		<PasswordRequirements password={formData.password || ''} />
 
 		<Button type="submit" disabled={loading}>

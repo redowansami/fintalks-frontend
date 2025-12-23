@@ -64,7 +64,7 @@
 .register-form {
 	display: flex;
 	flex-direction: column;
-	gap: 1.25rem;
+	gap: 1rem;
 }
 
 .form-group {
@@ -82,6 +82,7 @@
 
 .password-wrapper {
 	position: relative;
+	margin-bottom: -1rem;
 }
 
 .form-input {
