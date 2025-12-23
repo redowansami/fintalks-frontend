@@ -1,7 +1,7 @@
-import '../styles/BlogCard.css';
+import '../styles/StoryCard.css';
 import { useNavigate } from 'react-router-dom';
 
-interface BlogCardProps {
+interface StoryCardProps {
 	storyId: string;
 	title: string;
 	body: string;
@@ -10,7 +10,7 @@ interface BlogCardProps {
 	image?: string;
 }
 
-export const BlogCard: React.FC<BlogCardProps> = ({
+export const StoryCard: React.FC<StoryCardProps> = ({
 	storyId,
 	title,
 	body,
@@ -35,11 +35,11 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 		'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="200"%3E%3Crect fill="%23d4d4d8" width="300" height="200"/%3E%3C/svg%3E';
 
 	return (
-		<article className="blog-card" onClick={handleClick} style={{ cursor: 'pointer' }}>
-			<img src={image || placeholderImage} alt={title} className="blog-image" />
-			<div className="blog-content">
-				<h3 className="blog-title">{title}</h3>
-				<div className="blog-meta">
+		<article className="story-card" onClick={handleClick} style={{ cursor: 'pointer' }}>
+			<img src={image || placeholderImage} alt={title} className="story-image" />
+			<div className="story-content">
+				<h3 className="story-title">{title}</h3>
+				<div className="story-meta">
 					{categories.map((cat, idx) => (
 						<span
 							key={idx}
@@ -53,7 +53,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 						</span>
 					))}
 				</div>
-				<p className="blog-excerpt">{truncateText(body, 200)}</p>
+				<p className="story-excerpt">{truncateText(body, 200)}</p>
 				<div className="reliability-section">
 					<span style={{ fontSize: '0.875rem', fontWeight: 600, color: scoreColor }}>
 						Reliability: {reliabilityScore}%
