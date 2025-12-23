@@ -1,6 +1,6 @@
 @import '../styles/variables.css';
 
-.blog-card {
+.story-card {
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
@@ -9,12 +9,12 @@
 }
 
 @media (min-width: 640px) {
-	.blog-card {
+	.story-card {
 		flex-direction: row;
 	}
 }
 
-.blog-image {
+.story-image {
 	width: 100%;
 	height: 12rem;
 	object-fit: cover;
@@ -24,25 +24,25 @@
 }
 
 @media (min-width: 640px) {
-	.blog-image {
+	.story-image {
 		width: 33.333%;
 		flex-shrink: 0;
 	}
 }
 
-.blog-content {
+.story-content {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 }
 
 @media (min-width: 640px) {
-	.blog-content {
+	.story-content {
 		width: 66.667%;
 	}
 }
 
-.blog-title {
+.story-title {
 	font-size: 1.25rem;
 	font-weight: bold;
 	color: var(--primary);
@@ -50,11 +50,11 @@
 	transition: color 0.2s;
 }
 
-.blog-title:hover {
+.story-title:hover {
 	color: var(--secondary);
 }
 
-.blog-meta {
+.story-meta {
 	font-size: 0.75rem;
 	color: var(--text-muted-light);
 	margin-bottom: 0.75rem;
@@ -63,7 +63,7 @@
 	gap: 0.5rem;
 }
 
-.blog-excerpt {
+.story-excerpt {
 	color: var(--text-muted-light);
 	margin-bottom: 0.75rem;
 	font-size: 0.875rem;
