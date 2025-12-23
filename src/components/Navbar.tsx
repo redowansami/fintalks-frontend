@@ -1,4 +1,3 @@
-import { useNavigate, useLocation } from 'react-router-dom';
 import { NavLink } from './NavLink';
 import { CategoryList } from './CategoryList';
 import '../styles/Navbar.css';
@@ -9,16 +8,8 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ activeCategory = null, onCategoryClick }) => {
-	const navigate = useNavigate();
-	const location = useLocation();
-	const isHomePage = location.pathname === '/';
-
 	const handleCategoryClick = (category: string | null) => {
-		if (isHomePage && onCategoryClick) {
-			onCategoryClick(category);
-		} else {
-			navigate('/');
-		}
+		onCategoryClick?.(category);
 	};
 
 	return (
@@ -27,11 +18,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeCategory = null, onCategor
 				<ul className="nav-list">
 					<NavLink
 						label="Home"
-						isActive={isHomePage && !activeCategory}
+						isActive={!activeCategory}
 						onClick={() => handleCategoryClick(null)}
 					/>
 					<CategoryList
-						activeCategory={isHomePage ? activeCategory : null}
+						activeCategory={activeCategory}
 						onCategoryClick={handleCategoryClick}
 					/>
 				</ul>

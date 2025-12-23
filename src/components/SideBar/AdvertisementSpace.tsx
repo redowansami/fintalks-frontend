@@ -1,4 +1,4 @@
-import '../styles/SidebarComponents.css';
+import '../../styles/SidebarComponents.css';
 
 export const AdvertisementSpace: React.FC = () => {
 	return (

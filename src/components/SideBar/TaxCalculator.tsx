@@ -1,10 +1,13 @@
-import '../styles/SidebarComponents.css';
+import { Icon } from '@iconify/react';
+import '../../styles/SidebarComponents.css';
 
 export const TaxCalculator: React.FC = () => {
 	return (
 		<div className="sidebar-card">
 			<div className="card-header">
-				<span style={{ fontSize: '1.25rem', marginRight: '0.5rem' }}>🧮</span>
+				<span style={{ fontSize: '1.25rem', marginRight: '0.5rem' }}>
+					<Icon icon="flat-color-icons:calculator" />
+				</span>
 				<div className="card-title">Tax Calculator</div>
 			</div>
 			<form className="space-y-4">

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Register, Login, HomePage, StoryDetail } from './pages';
-import './styles/globals.css';
+import './styles/App.css';
 
 function App() {
 	return (

@@ -1,4 +1,5 @@
 import '../styles/Header.css';
+import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
 
 export const Header: React.FC = () => {
@@ -8,7 +9,7 @@ export const Header: React.FC = () => {
 			<div className="header-content">
 				<div className="header-left">
 					<button className="icon-button" aria-label="Search">
-						🔍
+						<Icon icon="material-symbols:search" />
 					</button>
 					<span
 						style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--primary)' }}
@@ -22,9 +23,9 @@ export const Header: React.FC = () => {
 					</a>
 				</div>
 				<div className="header-right">
-					<button className="btn-secondary">Create Blog</button>
+					<button className="btn-secondary">Create Story</button>
 					<button className="btn-primary" onClick={() => navigate('/login')}>
-						👤 Login
+						<Icon icon="mdi:user" /> Login
 					</button>
 				</div>
 			</div>
