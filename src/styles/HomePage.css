@@ -41,22 +41,6 @@
 	color: var(--primary);
 }
 
-.view-all-link {
-	font-size: 0.875rem;
-	font-weight: 500;
-	color: var(--primary);
-	text-decoration: none;
-	transition: color 0.2s;
-	background: none;
-	border: none;
-	cursor: pointer;
-	padding: 0;
-}
-
-.view-all-link:hover {
-	color: var(--secondary);
-}
-
 .sidebar {
 	display: flex;
 	flex-direction: column;
