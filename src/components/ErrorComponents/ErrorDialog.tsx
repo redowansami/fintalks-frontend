@@ -1,11 +1,13 @@
+import type { ReactNode } from 'react';
 import { ErrorList } from './ErrorList';
 
 interface ErrorDialogProps {
 	message: string;
 	validationErrors?: Record<string, string | string[]>;
+	children?: ReactNode;
 }
 
-export const ErrorDialog = ({ message, validationErrors }: ErrorDialogProps) => {
+export const ErrorDialog = ({ message, validationErrors, children }: ErrorDialogProps) => {
 	return (
 		<div
 			style={{
@@ -23,6 +25,8 @@ export const ErrorDialog = ({ message, validationErrors }: ErrorDialogProps) => 
 			{validationErrors && Object.keys(validationErrors).length > 0 && (
 				<ErrorList errors={validationErrors} />
 			)}
+
+			{children}
 		</div>
 	);
 };

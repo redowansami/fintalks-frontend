@@ -3,8 +3,10 @@ import { Header } from '../components/Blank_Header';
 import { LoginForm } from '../components/LoginForm';
 import { Spinner } from '../components/Spinner';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
+import { ResendEmailLink } from '../components/ResendEmailLink';
 import { useLoginForm } from '../hooks/useLoginForm';
 import { useLoginHandler } from '../hooks/useLoginHandler';
+import { resendConfirmationEmail } from '../services/authService';
 import '../styles/Login.css';
 
 export const Login = () => {
@@ -40,9 +42,15 @@ export const Login = () => {
 						<ErrorDialog
 							message={error?.message || 'Login failed. Please try again.'}
 							validationErrors={validationErrors}
-						/>
+						>
+							{error?.message?.includes('confirm your email') && (
+								<ResendEmailLink
+									email={formData.email}
+									onResend={resendConfirmationEmail}
+								/>
+							)}
+						</ErrorDialog>
 					)}
-
 					<LoginForm
 						formData={formData}
 						errors={errors}
