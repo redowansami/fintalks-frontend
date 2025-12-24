@@ -43,7 +43,7 @@ export const PasswordInput = ({
 					onClick={() => setShowPassword(!showPassword)}
 					className="password-toggle"
 				>
-					{showPassword ? <Icon icon="el:eye-close" /> : <Icon icon="mdi:eye" />}
+					{showPassword ? <Icon icon="mdi:eye" /> : <Icon icon="el:eye-close" />}
 				</button>
 			</div>
 			{error && <p className="error-text">{error}</p>}
