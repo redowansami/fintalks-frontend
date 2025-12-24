@@ -12,8 +12,8 @@ export const validateRegistrationForm = (formData: {
 	} else if (!/^[a-zA-Z0-9_]+$/.test(formData.username.trim())) {
 		newErrors.username = 'Username can only contain letters, numbers, and underscores';
 	}
-	if (formData.name.trim().length < 3 || formData.name.trim().length > 20) {
-		newErrors.name = 'Name must be between 3-20 characters';
+	if (formData.name.trim().length < 3 || formData.name.trim().length > 25) {
+		newErrors.name = 'Name must be between 3-25 characters';
 	}
 	if (!formData.email.trim()) {
 		newErrors.email = 'Email is required';
