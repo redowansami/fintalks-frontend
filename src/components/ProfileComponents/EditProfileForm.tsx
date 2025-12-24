@@ -3,6 +3,7 @@ import type { UseMutationResult } from '@tanstack/react-query';
 import { Button } from '../Button';
 import { ErrorDialog } from '../ErrorComponents/ErrorDialog';
 import { InputField } from '../InputField';
+import { TextAreaField } from '../TextAreaField';
 import { PROFILE_FORM_VALIDATIONS } from '../../constants/profileFormConstants';
 import { extractValidationErrors } from '../../utils/errorExtractor';
 
@@ -35,17 +36,16 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
 				name="name"
 				type="text"
 				value={formData.name}
-				onChange={handleChange}
+				onChange={handleChange as React.ChangeEventHandler<HTMLInputElement>}
 				required
 				validationCriteria={PROFILE_FORM_VALIDATIONS.NAME.criteria}
 			/>
-			<InputField
+			<TextAreaField
 				label={PROFILE_FORM_VALIDATIONS.BIO.label}
 				id="bio"
 				name="bio"
-				type="textarea"
 				value={formData.bio}
-				onChange={handleChange}
+				onChange={handleChange as React.ChangeEventHandler<HTMLTextAreaElement>}
 				rows={4}
 				validationCriteria={PROFILE_FORM_VALIDATIONS.BIO.criteria}
 			/>
