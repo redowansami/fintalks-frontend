@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createInputChangeHandler } from '../utils/formInputHandlers';
 
 interface FormErrors {
 	[key: string]: string;
@@ -27,6 +28,7 @@ export const useForm = (): UseFormReturn => {
 		confirmPassword: '',
 	});
 	const [errors, setErrors] = useState<FormErrors>({});
+	const handleInputChange = createInputChangeHandler(setFormData);
 
 	const validateForm = (): boolean => {
 		const newErrors: FormErrors = {};
@@ -57,11 +59,6 @@ export const useForm = (): UseFormReturn => {
 
 		setErrors(newErrors);
 		return Object.keys(newErrors).length === 0;
-	};
-
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
 
 	const resetForm = () => {
