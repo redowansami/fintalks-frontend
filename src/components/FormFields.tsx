@@ -28,6 +28,7 @@ export const FormFields = ({ formData, errors, onInputChange }: FormFieldsProps)
 		<PasswordInput
 			id="password"
 			name="password"
+			placeholder="Enter your password"
 			value={formData.password || ''}
 			onChange={onInputChange}
 			error={errors.password}
