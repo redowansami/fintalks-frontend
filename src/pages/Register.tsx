@@ -7,8 +7,8 @@ import {
 	RegisterForm,
 } from '../components';
 import { Header } from '../components/Blank_Header';
-import { useForm } from '../hooks/useForm';
-import { useRegister } from '../hooks/useRegister';
+import { useForm } from '../hooks/useRegistrationForm';
+import { useRegister } from '../hooks/useRegisterHandler';
 import { signUp } from '../services/authService';
 import '../styles/Register.css';
 
