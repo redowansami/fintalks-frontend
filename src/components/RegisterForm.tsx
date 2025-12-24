@@ -1,5 +1,6 @@
 import { Button, PasswordRequirements } from '../components';
 import { FormFields } from './FormFields';
+import { checkPasswordRequirements } from '../utils/passwordValidator';
 
 interface RegisterFormProps {
 	formData: Record<string, string>;
@@ -15,12 +16,19 @@ export const RegisterForm = ({
 	loading,
 	onInputChange,
 	onSubmit,
-}: RegisterFormProps) => (
-	<form onSubmit={onSubmit} className="register-form">
-		<FormFields formData={formData} errors={errors} onInputChange={onInputChange} />
-		<PasswordRequirements password={formData.password || ''} />
-		<Button type="submit" disabled={loading}>
-			{loading ? 'Registering...' : 'Register'}
-		</Button>
-	</form>
-);
+}: RegisterFormProps) => {
+	const isPasswordValid = checkPasswordRequirements(formData.password || '');
+	const isPasswordMatch =
+		formData.password === formData.confirmPassword && formData.confirmPassword !== '';
+	const isButtonDisabled = loading || !isPasswordValid || !isPasswordMatch;
+
+	return (
+		<form onSubmit={onSubmit} className="register-form">
+			<FormFields formData={formData} errors={errors} onInputChange={onInputChange} />
+			<PasswordRequirements password={formData.password || ''} />
+			<Button type="submit" disabled={isButtonDisabled}>
+				{loading ? 'Registering...' : 'Register'}
+			</Button>
+		</form>
+	);
+};
