@@ -1,46 +1,57 @@
-import {
-	Footer,
-	Modal,
-	ErrorBanner,
-	RegisterHeader,
-	RegisterFooter,
-	RegisterForm,
-} from '../components';
+import { Footer, Modal, ErrorDialog, FormHeader, FormFooter, RegisterForm } from '../components';
 import { Header } from '../components/Blank_Header';
-import { useForm } from '../hooks/useForm';
-import { useRegister } from '../hooks/useRegister';
-import { signUp } from '../services/authService';
+import { ResendEmailLink } from '../components/ResendEmailLink';
+import { useForm } from '../hooks/useRegistrationForm';
+import { useRegister } from '../hooks/useRegisterHandler';
+import { signUp, resendConfirmationEmail } from '../services/authService';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Register.css';
 
 export const Register = () => {
-	const { formData, errors, setFormData, validateForm, resetForm } = useForm();
-	const { apiError, loading, handleSubmit, showSuccessModal, setShowSuccessModal } = useRegister(
-		validateForm,
-		async () => {
-			await signUp(formData);
-			resetForm();
-		},
-	);
-
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-		setFormData((prev) => ({ ...prev, [name]: value }));
-	};
-
+	const { formData, errors, handleInputChange, validateForm, resetForm } = useForm();
+	const {
+		error,
+		validationErrors,
+		loading,
+		handleSubmit,
+		showSuccessModal,
+		setShowSuccessModal,
+	} = useRegister(validateForm, async () => {
+		const { username, name, email, password } = formData;
+		await signUp({ username, name, email, password });
+	});
+	const navigate = useNavigate();
 	return (
 		<>
 			<Header />
 			<Modal
 				isOpen={showSuccessModal}
-				onClose={() => setShowSuccessModal(false)}
+				onClose={() => {
+					resetForm();
+					setShowSuccessModal(false);
+					navigate('/login');
+				}}
 				message="The registration email was sent successfully, check your email address"
 				actionButtonText="OK"
-			/>
+			>
+				<ResendEmailLink email={formData.email} onResend={resendConfirmationEmail} />
+			</Modal>
 			<div className="register-container-wrapper">
 				<div className="register-container">
-					<RegisterHeader />
+					<FormHeader
+						title="Register"
+						subtitle="Create your account to join the conversation"
+					/>
 
-					{apiError && <ErrorBanner message={apiError} />}
+					{error && (
+						<ErrorDialog
+							message={error}
+							validationErrors={
+								validationErrors ||
+								(Object.keys(errors).length > 0 ? errors : undefined)
+							}
+						/>
+					)}
 
 					<RegisterForm
 						formData={formData}
@@ -50,7 +61,7 @@ export const Register = () => {
 						onSubmit={handleSubmit}
 					/>
 
-					<RegisterFooter />
+					<FormFooter text="Already have an account?" linkText="Log in" link="/login" />
 				</div>
 			</div>
 			<Footer />

@@ -64,12 +64,13 @@
 .register-form {
 	display: flex;
 	flex-direction: column;
-	gap: 1.25rem;
+	gap: 1rem;
 }
 
 .form-group {
 	display: flex;
 	flex-direction: column;
+	margin-bottom: -0.1rem;
 }
 
 .form-label {

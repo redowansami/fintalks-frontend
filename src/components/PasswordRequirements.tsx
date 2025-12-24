@@ -1,4 +1,5 @@
 import React from 'react';
+import { getPasswordChecks } from '../utils/passwordValidator';
 import '../styles/PasswordRequirements.css';
 
 interface PasswordRequirementsProps {
@@ -6,13 +7,7 @@ interface PasswordRequirementsProps {
 }
 
 export const PasswordRequirements: React.FC<PasswordRequirementsProps> = ({ password }) => {
-	const checks = {
-		lowercase: /[a-z]/.test(password),
-		digit: /\d/.test(password),
-		uppercase: /[A-Z]/.test(password),
-		special: /[!@#$%^&*]/.test(password),
-		length: password.length >= 8,
-	};
+	const checks = getPasswordChecks(password);
 
 	return (
 		<div className="password-requirements">

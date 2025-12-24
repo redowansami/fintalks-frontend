@@ -3,8 +3,12 @@ import { Header } from '../components/Blank_Header';
 import { LoginForm } from '../components/LoginForm';
 import { Spinner } from '../components/Spinner';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
+import { ResendEmailLink } from '../components/ResendEmailLink';
+import { FormHeader } from '../components/FormHeader';
+import { FormFooter } from '../components/FormFooter';
 import { useLoginForm } from '../hooks/useLoginForm';
 import { useLoginHandler } from '../hooks/useLoginHandler';
+import { resendConfirmationEmail } from '../services/authService';
 import '../styles/Login.css';
 
 export const Login = () => {
@@ -32,17 +36,21 @@ export const Login = () => {
 				}}
 			>
 				<div className="login-container">
-					<div className="login-header">
-						<h2>Log in</h2>
-					</div>
+					<FormHeader title="Log in" />
 
 					{isError && (
 						<ErrorDialog
 							message={error?.message || 'Login failed. Please try again.'}
 							validationErrors={validationErrors}
-						/>
+						>
+							{error?.message?.includes('confirm your email') && (
+								<ResendEmailLink
+									email={formData.email}
+									onResend={resendConfirmationEmail}
+								/>
+							)}
+						</ErrorDialog>
 					)}
-
 					<LoginForm
 						formData={formData}
 						errors={errors}
@@ -52,9 +60,11 @@ export const Login = () => {
 					/>
 
 					<div className="login-footer">
-						<p>
-							Don't have an account? <a href="/signup">Sign Up</a>
-						</p>
+						<FormFooter
+							text="Don't have an account?"
+							linkText="Sign Up"
+							link="/signup"
+						/>
 					</div>
 				</div>
 			</div>

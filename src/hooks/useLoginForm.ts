@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createInputChangeHandler } from '../utils/formInputHandlers';
 
 interface LoginFormData {
 	email: string;
@@ -18,11 +19,7 @@ export const useLoginForm = (): UseLoginFormReturn => {
 	const [formData, setFormData] = useState<LoginFormData>({ email: '', password: '' });
 	const [errors, setErrors] = useState<{ [key: string]: string }>({});
 	const [showPassword, setShowPassword] = useState(false);
-
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-		setFormData((prev) => ({ ...prev, [name]: value }));
-	};
+	const handleInputChange = createInputChangeHandler(setFormData);
 
 	const validateForm = (): boolean => {
 		const newErrors: { [key: string]: string } = {};
