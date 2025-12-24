@@ -70,6 +70,7 @@
 .form-group {
 	display: flex;
 	flex-direction: column;
+	margin-bottom: -0.5rem;
 }
 
 .form-label {
@@ -82,7 +83,6 @@
 
 .password-wrapper {
 	position: relative;
-	margin-bottom: -1rem;
 }
 
 .form-input {
