@@ -4,6 +4,8 @@ import { LoginForm } from '../components/LoginForm';
 import { Spinner } from '../components/Spinner';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import { ResendEmailLink } from '../components/ResendEmailLink';
+import { FormHeader } from '../components/FormHeader';
+import { FormFooter } from '../components/FormFooter';
 import { useLoginForm } from '../hooks/useLoginForm';
 import { useLoginHandler } from '../hooks/useLoginHandler';
 import { resendConfirmationEmail } from '../services/authService';
@@ -34,9 +36,7 @@ export const Login = () => {
 				}}
 			>
 				<div className="login-container">
-					<div className="login-header">
-						<h2>Log in</h2>
-					</div>
+					<FormHeader title="Log in" />
 
 					{isError && (
 						<ErrorDialog
@@ -60,9 +60,11 @@ export const Login = () => {
 					/>
 
 					<div className="login-footer">
-						<p>
-							Don't have an account? <a href="/signup">Sign Up</a>
-						</p>
+						<FormFooter
+							text="Don't have an account?"
+							linkText="Sign Up"
+							link="/signup"
+						/>
 					</div>
 				</div>
 			</div>

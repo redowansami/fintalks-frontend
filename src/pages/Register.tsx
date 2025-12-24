@@ -1,11 +1,4 @@
-import {
-	Footer,
-	Modal,
-	ErrorDialog,
-	RegisterHeader,
-	RegisterFooter,
-	RegisterForm,
-} from '../components';
+import { Footer, Modal, ErrorDialog, FormHeader, FormFooter, RegisterForm } from '../components';
 import { Header } from '../components/Blank_Header';
 import { ResendEmailLink } from '../components/ResendEmailLink';
 import { useForm } from '../hooks/useRegistrationForm';
@@ -45,7 +38,10 @@ export const Register = () => {
 			</Modal>
 			<div className="register-container-wrapper">
 				<div className="register-container">
-					<RegisterHeader />
+					<FormHeader
+						title="Register"
+						subtitle="Create your account to join the conversation"
+					/>
 
 					{error && (
 						<ErrorDialog
@@ -65,7 +61,7 @@ export const Register = () => {
 						onSubmit={handleSubmit}
 					/>
 
-					<RegisterFooter />
+					<FormFooter text="Already have an account?" linkText="Log in" link="/login" />
 				</div>
 			</div>
 			<Footer />
