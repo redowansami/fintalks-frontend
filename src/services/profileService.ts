@@ -17,6 +17,16 @@ interface UpdateProfileData {
 
 const API_URL = 'http://localhost:3000/api/v1/users/profile';
 
+export class ProfileError extends Error {
+	validationErrors?: Record<string, string | string[]>;
+
+	constructor(message: string, validationErrors?: Record<string, string | string[]>) {
+		super(message);
+		this.name = 'ProfileError';
+		this.validationErrors = validationErrors;
+	}
+}
+
 export const fetchProfile = async (token: string | null): Promise<ProfileResponse> => {
 	if (!token) {
 		throw new Error('No authentication token found');
@@ -56,7 +66,11 @@ export const updateProfile = async (
 		return response.data;
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
-			throw new Error(error.response?.data?.message || 'Failed to update profile');
+			const message = error.response?.data?.message || 'Failed to update profile';
+			const validationErrors = error.response?.data?.errors as
+				| Record<string, string | string[]>
+				| undefined;
+			throw new ProfileError(message, validationErrors);
 		}
 		throw error instanceof Error ? error : new Error('An unexpected error occurred');
 	}
