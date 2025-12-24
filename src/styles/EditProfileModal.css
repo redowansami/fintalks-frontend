@@ -1,0 +1,149 @@
+@import '../styles/variables.css';
+
+.edit-profile-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+}
+
+.edit-profile-modal {
+	background-color: white;
+	border-radius: 0.5rem;
+	padding: 2rem;
+	max-width: 28rem;
+	width: 90%;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+	animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateY(-20px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.edit-profile-title {
+	margin: 0 0 1.5rem 0;
+	font-size: 1.5rem;
+	color: var(--text-main-light);
+	font-weight: 600;
+}
+
+.edit-profile-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.edit-profile-field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.edit-profile-field label {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: #374151;
+}
+
+.edit-profile-field input,
+.edit-profile-field textarea {
+	-webkit-appearance: none;
+	appearance: none;
+	padding: 0.75rem;
+	border: 1px solid #d1d5db;
+	border-radius: 0.375rem;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	font-size: 0.875rem;
+	background-color: white;
+	color: #111827;
+	transition: border-color 0.2s, box-shadow 0.2s;
+	font-family: inherit;
+}
+
+.edit-profile-field input::placeholder,
+.edit-profile-field textarea::placeholder {
+	color: #9ca3af;
+}
+
+.edit-profile-field input:focus,
+.edit-profile-field textarea:focus {
+	outline: none;
+	border-color: var(--primary);
+	box-shadow: 0 0 0 3px rgba(10, 31, 68, 0.1);
+}
+
+.edit-profile-field textarea {
+	resize: vertical;
+	min-height: 6rem;
+}
+
+.edit-profile-actions {
+	display: flex;
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+
+.edit-profile-btn {
+	flex: 1;
+	padding: 0.75rem 1rem;
+	border: 1px solid transparent;
+	border-radius: 0.375rem;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	font-size: 0.875rem;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.2s, opacity 0.2s;
+}
+
+.edit-profile-btn.cancel {
+	background-color: #e5e7eb;
+	color: #374151;
+	border: 1px solid #d1d5db;
+}
+
+.edit-profile-btn.cancel:hover:not(:disabled) {
+	background-color: #d1d5db;
+}
+
+.edit-profile-btn.submit {
+	background-color: var(--primary);
+	color: white;
+}
+
+.edit-profile-btn.submit:hover:not(:disabled) {
+	background-color: var(--secondary);
+}
+
+.edit-profile-btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.edit-profile-btn:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(10, 31, 68, 0.1);
+}
+
+.edit-profile-error {
+	margin-top: 1rem;
+	padding: 0.75rem;
+	background-color: #fef2f2;
+	border: 1px solid #fecaca;
+	border-radius: 0.375rem;
+	font-size: 0.875rem;
+	color: #dc2626;
+}
