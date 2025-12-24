@@ -11,7 +11,6 @@ export { MarketMovers } from './SideBar/MarketMovers';
 export { Modal } from './Modal';
 export { LoginForm } from './LoginForm';
 export { PasswordInput } from './PasswordInput';
-export { ErrorBanner } from './ErrorBanner';
 export { ErrorDialog } from './ErrorComponents/ErrorDialog';
 export { ErrorList } from './ErrorComponents/ErrorList';
 export { RegisterHeader } from './RegisterHeader';
