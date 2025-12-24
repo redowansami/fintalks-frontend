@@ -20,7 +20,7 @@ export const REGISTER_FORM_FIELDS: FormFieldConfig[] = [
 		id: 'name',
 		name: 'name',
 		placeholder: 'John Doe',
-		validationCriteria: ['3-20 characters long'],
+		validationCriteria: ['3-25 characters long'],
 	},
 	{
 		label: 'Email address',
