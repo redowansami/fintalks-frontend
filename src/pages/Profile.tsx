@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Spinner } from '../components/Spinner';
 import { EditProfileModal } from '../components/ProfileComponents/EditProfileModal';
+import { ChangePasswordModal } from '../components/ProfileComponents/ChangePasswordModal';
 import { ProfileLayout } from '../components/ProfileLayout';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import { useProfile } from '../hooks/useProfile';
@@ -15,6 +16,7 @@ import '../styles/Profile.css';
 export const Profile = () => {
 	const { data, isLoading, isError, error } = useProfile();
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+	const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] = useState(false);
 	const profile = data?.profile;
 
 	const renderContent = () => {
@@ -39,7 +41,7 @@ export const Profile = () => {
 								<div className="profile-actions">
 									<ProfileActions
 										onEditProfile={() => setIsEditModalOpen(true)}
-										onChangePassword={() => {}}
+										onChangePassword={() => setIsChangePasswordModalOpen(true)}
 									/>
 								</div>
 							</div>
@@ -56,12 +58,18 @@ export const Profile = () => {
 		<ProfileLayout>
 			{renderContent()}
 			{profile && (
-				<EditProfileModal
-					isOpen={isEditModalOpen}
-					onClose={() => setIsEditModalOpen(false)}
-					initialName={profile.name}
-					initialBio={profile.bio}
-				/>
+				<>
+					<EditProfileModal
+						isOpen={isEditModalOpen}
+						onClose={() => setIsEditModalOpen(false)}
+						initialName={profile.name}
+						initialBio={profile.bio}
+					/>
+					<ChangePasswordModal
+						isOpen={isChangePasswordModalOpen}
+						onClose={() => setIsChangePasswordModalOpen(false)}
+					/>
+				</>
 			)}
 		</ProfileLayout>
 	);
