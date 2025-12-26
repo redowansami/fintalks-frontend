@@ -2,30 +2,30 @@ import React from 'react';
 import { ValidationTooltip } from './ValidationTooltip';
 import '../styles/InputField.css';
 
-interface InputFieldProps {
+interface TextAreaFieldProps {
 	label: string;
 	id: string;
 	name: string;
-	type: 'text';
 	placeholder?: string;
 	value: string;
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 	required?: boolean;
 	error?: string;
 	validationCriteria?: string[];
+	rows?: number;
 }
 
-export const InputField: React.FC<InputFieldProps> = ({
+export const TextAreaField: React.FC<TextAreaFieldProps> = ({
 	label,
 	id,
 	name,
-	type = 'text',
 	placeholder,
 	value,
 	onChange,
 	required = false,
 	error,
 	validationCriteria,
+	rows = 4,
 }) => {
 	return (
 		<div className="input-field-group">
@@ -35,14 +35,14 @@ export const InputField: React.FC<InputFieldProps> = ({
 				</label>
 				{validationCriteria && <ValidationTooltip criteria={validationCriteria} />}
 			</div>
-			<input
-				type={type}
+			<textarea
 				id={id}
 				name={name}
 				placeholder={placeholder}
 				value={value}
 				onChange={onChange}
 				required={required}
+				rows={rows}
 				className={`input-field-input ${error ? 'error' : ''}`}
 			/>
 			{error && <p className="input-field-error">{error}</p>}

@@ -1,144 +1,76 @@
-import { Icon } from '@iconify/react';
-import { Header } from '../components';
-import { Footer } from '../components';
+import { useState } from 'react';
 import { Spinner } from '../components/Spinner';
+import { EditProfileModal } from '../components/ProfileComponents/EditProfileModal';
+import { ChangePasswordModal } from '../components/ProfileComponents/ChangePasswordModal';
+import { ProfileLayout } from '../components/ProfileLayout';
+import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import { useProfile } from '../hooks/useProfile';
+import {
+	ProfileHeader,
+	ProfileActions,
+	ProfileBio,
+	ProfileStories,
+} from '../components/ProfileComponents';
 import '../styles/Profile.css';
 
 export const Profile = () => {
 	const { data, isLoading, isError, error } = useProfile();
+	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+	const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] = useState(false);
 	const profile = data?.profile;
 
-	if (isLoading) {
-		return (
-			<>
-				<Header />
-				<div className="profile-loading">
-					<Spinner />
-				</div>
-				<Footer />
-			</>
-		);
-	}
+	const renderContent = () => {
+		if (isLoading) return <Spinner />;
 
-	if (isError) {
-		return (
-			<>
-				<Header />
-				<div className="profile-error">
-					<div className="error-container">
-						<p className="error-message">
-							{error instanceof Error ? error.message : 'Failed to load profile'}
-						</p>
-					</div>
-				</div>
-				<Footer />
-			</>
-		);
-	}
+		if (isError || !profile) {
+			const errorMessage = isError ? error.message : 'Failed to load profile';
+			return <ErrorDialog message={errorMessage} />;
+		}
 
-	if (!profile) {
 		return (
 			<>
-				<Header />
-				<div className="profile-error">
-					<div className="error-container">
-						<p className="error-message">No profile data available</p>
+				<section className="profile-header-section">
+					<div className="profile-header-content">
+						<ProfileHeader profile={profile} onEditPicture={() => {}} />
+						<div className="profile-info">
+							<div className="profile-header-top">
+								<div className="profile-names">
+									<h1 className="profile-full-name">{profile.name}</h1>
+									<p className="profile-username">@{profile.username}</p>
+								</div>
+								<div className="profile-actions">
+									<ProfileActions
+										onEditProfile={() => setIsEditModalOpen(true)}
+										onChangePassword={() => setIsChangePasswordModalOpen(true)}
+									/>
+								</div>
+							</div>
+							<ProfileBio profile={profile} />
+						</div>
 					</div>
-				</div>
-				<Footer />
+				</section>
+				<ProfileStories storyCount={0} />
 			</>
 		);
-	}
+	};
 
 	return (
-		<>
-			<Header />
-			<main className="profile-main">
-				<div className="profile-container">
-					{/* Profile Header Section */}
-					<section className="profile-header-section">
-						<div className="profile-header-content">
-							{/* Profile Picture */}
-							<div className="profile-picture-wrapper">
-								<div className="profile-picture">
-									{profile.profilePictureUrl ? (
-										<img
-											src={profile.profilePictureUrl}
-											alt={profile.name}
-											className="profile-image"
-										/>
-									) : (
-										<div className="profile-image-placeholder">
-											<Icon icon="mdi:user" className="placeholder-icon" />
-										</div>
-									)}
-								</div>
-								<button className="profile-edit-btn" title="Update Profile Picture">
-									<Icon icon="material-symbols:photo-camera" />
-								</button>
-							</div>
-
-							{/* Profile Info */}
-							<div className="profile-info">
-								<div className="profile-header-top">
-									<div className="profile-names">
-										<h1 className="profile-full-name">{profile.name}</h1>
-										<p className="profile-username">@{profile.username}</p>
-									</div>
-									<div className="profile-actions">
-										<button className="btn-edit">
-											<Icon icon="material-symbols:edit" />
-											Edit Profile
-										</button>
-										<button className="btn-password">
-											<Icon icon="material-symbols:lock-reset" />
-											Password Change
-										</button>
-									</div>
-								</div>
-
-								{/* Bio Section */}
-								{profile.bio && (
-									<div className="profile-bio">
-										<p>{profile.bio}</p>
-									</div>
-								)}
-
-								{/* Contact Info */}
-								<div className="profile-contact">
-									<span className="contact-item">
-										<Icon icon="material-symbols:email" />
-										{profile.email}
-									</span>
-									<span className="contact-item">
-										<Icon icon="material-symbols:calendar-today" />
-										Joined{' '}
-										{new Date(profile.joinDate).toLocaleDateString('en-US', {
-											year: 'numeric',
-											month: 'long',
-										} as const)}
-									</span>
-								</div>
-							</div>
-						</div>
-					</section>
-
-					{/* Published Stories Section */}
-					<section className="profile-stories-section">
-						<div className="stories-header">
-							<h2 className="stories-title">Published Stories</h2>
-							<span className="stories-badge">0 Articles</span>
-						</div>
-						<div className="stories-list">
-							<div className="no-stories">
-								<p>No published stories yet</p>
-							</div>
-						</div>
-					</section>
-				</div>
-			</main>
-			<Footer />
-		</>
+		<ProfileLayout>
+			{renderContent()}
+			{profile && (
+				<>
+					<EditProfileModal
+						isOpen={isEditModalOpen}
+						onClose={() => setIsEditModalOpen(false)}
+						initialName={profile.name}
+						initialBio={profile.bio}
+					/>
+					<ChangePasswordModal
+						isOpen={isChangePasswordModalOpen}
+						onClose={() => setIsChangePasswordModalOpen(false)}
+					/>
+				</>
+			)}
+		</ProfileLayout>
 	);
 };
