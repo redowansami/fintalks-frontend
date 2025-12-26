@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Spinner } from '../components/Spinner';
 import { EditProfileModal } from '../components/ProfileComponents/EditProfileModal';
 import { ChangePasswordModal } from '../components/ProfileComponents/ChangePasswordModal';
+import { ImageUploadModal } from '../components/ProfileComponents/ImageUploadModal';
 import { ProfileLayout } from '../components/ProfileLayout';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import { useProfile } from '../hooks/useProfile';
@@ -17,6 +18,7 @@ export const Profile = () => {
 	const { data, isLoading, isError, error } = useProfile();
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 	const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] = useState(false);
+	const [isImageUploadModalOpen, setIsImageUploadModalOpen] = useState(false);
 	const profile = data?.profile;
 
 	const renderContent = () => {
@@ -31,7 +33,10 @@ export const Profile = () => {
 			<>
 				<section className="profile-header-section">
 					<div className="profile-header-content">
-						<ProfileHeader profile={profile} onEditPicture={() => {}} />
+						<ProfileHeader
+							profile={profile}
+							onEditPicture={() => setIsImageUploadModalOpen(true)}
+						/>
 						<div className="profile-info">
 							<div className="profile-header-top">
 								<div className="profile-names">
@@ -68,6 +73,10 @@ export const Profile = () => {
 					<ChangePasswordModal
 						isOpen={isChangePasswordModalOpen}
 						onClose={() => setIsChangePasswordModalOpen(false)}
+					/>
+					<ImageUploadModal
+						isOpen={isImageUploadModalOpen}
+						onClose={() => setIsImageUploadModalOpen(false)}
 					/>
 				</>
 			)}
