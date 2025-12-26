@@ -11,8 +11,9 @@ export interface ProfileResponse {
 }
 
 interface UpdateProfileData {
-	name: string;
-	bio: string;
+	name?: string;
+	bio?: string;
+	profilePictureUrl?: string;
 }
 
 const API_URL = 'http://localhost:3000/api/v1/users/profile';
