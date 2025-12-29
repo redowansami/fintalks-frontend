@@ -1,5 +1,6 @@
 import { StoryCard } from './StoryCard';
 import type { Story } from '../services/storyService';
+import '../styles/StoryList.css';
 
 interface StoryListSectionProps {
 	stories: Story[];
@@ -13,15 +14,14 @@ export const StoryListSection: React.FC<StoryListSectionProps> = ({
 	pageTitle,
 }) => {
 	return (
-		<section className="px-4 py-8">
-			<div className="mb-12">
-				<h2 className="text-3xl font-bold">{pageTitle}</h2>
+		<section className="story-list-section">
+			<div className="story-list-header">
+				<h2 className="story-list-title">{pageTitle}</h2>
 			</div>
-			<br />
 			{isPending ? (
 				<p>Loading...</p>
 			) : stories && stories.length > 0 ? (
-				<div className="flex flex-col gap-6">
+				<div className="story-list-container">
 					{stories.map((story) => (
 						<StoryCard
 							key={story.storyId}
@@ -37,7 +37,7 @@ export const StoryListSection: React.FC<StoryListSectionProps> = ({
 					))}
 				</div>
 			) : (
-				<p>No articles found</p>
+				<p className="story-list-empty">No articles found</p>
 			)}
 		</section>
 	);
