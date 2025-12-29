@@ -11,6 +11,7 @@ interface Story {
 	categories: Array<{ categoryId: string; name: string }>;
 	image?: string;
 	imageUrl?: string;
+	username: string;
 	createdAt: string;
 	updatedAt?: string;
 }

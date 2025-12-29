@@ -31,7 +31,11 @@ export const StoryDetail: React.FC = () => {
 				<main className="story-detail-main">
 					<h1 className="story-title">{story.title}</h1>
 					<StoryImage src={story.image || story.imageUrl} alt={story.title} />
-					<StoryMeta createdAt={story.createdAt} updatedAt={story.updatedAt} />
+					<StoryMeta
+						username={story.username}
+						createdAt={story.createdAt}
+						updatedAt={story.updatedAt}
+					/>
 					<AIReliabilityCard
 						reliabilityScore={story.reliabilityScore}
 						summary={story.summary}
