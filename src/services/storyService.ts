@@ -27,6 +27,29 @@ export interface StoryDetailResponse {
 	};
 }
 
+export interface CreateStoryPayload {
+	title: string;
+	body: string;
+	imageUrl?: string;
+	categoryIds: string[];
+}
+
+export interface CreateStoryResponse {
+	success: boolean;
+	message: string;
+	story: Story;
+}
+
+export class StoryError extends Error {
+	validationErrors?: Record<string, string | string[]>;
+
+	constructor(message: string, validationErrors?: Record<string, string | string[]>) {
+		super(message);
+		this.name = 'StoryError';
+		this.validationErrors = validationErrors;
+	}
+}
+
 export const storyService = {
 	async fetchStories(category?: string | null): Promise<StoriesResponse> {
 		const url = category
@@ -40,5 +63,43 @@ export const storyService = {
 	async fetchStoryDetail(storyId: string): Promise<StoryDetailResponse> {
 		const response = await axios.get<StoryDetailResponse>(`${API_BASE_URL}/stories/${storyId}`);
 		return response.data;
+	},
+
+	async createStory(
+		token: string | null,
+		data: CreateStoryPayload,
+	): Promise<CreateStoryResponse> {
+		if (!token) {
+			throw new StoryError('No authentication token found');
+		}
+
+		try {
+			const response = await axios.post<CreateStoryResponse>(
+				`${API_BASE_URL}/stories`,
+				data,
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+					timeout: 15000,
+				},
+			);
+
+			return response.data;
+		} catch (error) {
+			if (axios.isAxiosError(error)) {
+				if (error.code === 'ECONNABORTED') {
+					throw new StoryError(
+						'Request timeout: Please check your connection and try again.',
+					);
+				}
+				const message = error.response?.data?.message || 'Failed to create story';
+				const validationErrors = error.response?.data?.errors as
+					| Record<string, string | string[]>
+					| undefined;
+				throw new StoryError(message, validationErrors);
+			}
+			throw error instanceof Error ? error : new StoryError('An unexpected error occurred');
+		}
 	},
 };
