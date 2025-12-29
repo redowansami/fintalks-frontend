@@ -4,6 +4,7 @@ const API_BASE_URL = 'http://localhost:3000/api/v1';
 
 export interface Story {
 	storyId: string;
+	username: string;
 	title: string;
 	body: string;
 	summary: string;

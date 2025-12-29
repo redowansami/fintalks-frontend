@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
 
 interface StoryCardProps {
@@ -7,6 +8,8 @@ interface StoryCardProps {
 	reliabilityScore: number;
 	categories: Array<{ name: string }>;
 	image?: string;
+	username: string;
+	createdAt: string;
 }
 
 export const StoryCard: React.FC<StoryCardProps> = ({
@@ -16,11 +19,24 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 	reliabilityScore,
 	categories,
 	image,
+	username,
+	createdAt,
 }) => {
 	const navigate = useNavigate();
 	const handleClick = () => navigate(`/api/v1/stories/${storyId}`);
 	const truncateText = (text: string, limit: number) => {
 		return text.length > limit ? text.substring(0, limit) + '...' : text;
+	};
+
+	const formatDate = (dateString: string) => {
+		const isoString = dateString.replace(' ', 'T');
+		const dateObj = new Date(isoString);
+
+		return new Intl.DateTimeFormat('en-GB', {
+			day: '2-digit',
+			month: 'short',
+			year: 'numeric',
+		}).format(dateObj);
 	};
 
 	const scoreColor =
@@ -41,15 +57,27 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 			<img
 				src={image || placeholderImage}
 				alt={title}
-				className="w-full sm:w-1/3 h-48 object-cover rounded-lg shadow-sm flex-shrink-0 transition-shadow"
+				className="w-full sm:w-1/3 h-40 object-cover rounded-lg shadow-sm flex-shrink-0 transition-shadow"
 			/>
-			<div className="flex flex-col justify-start sm:w-2/3">
+			<div className="flex flex-col justify-start sm:w-2/3 gap-1">
 				<h3
 					className="text-xl font-bold mb-2 transition-colors hover:text-[var(--secondary)]"
 					style={{ color: 'var(--primary)' }}
 				>
 					{title}
 				</h3>
+				<div
+					className="text-xs mb-3 flex items-center gap-3"
+					style={{ color: 'var(--text-muted-light)' }}
+				>
+					<div className="flex items-center gap-1">
+						<Icon icon="mdi:user" /> {username}
+					</div>
+					<span>•</span>
+					<div className="flex items-center gap-1">
+						<Icon icon="mdi:calendar" /> {formatDate(createdAt)}
+					</div>
+				</div>
 				<div
 					className="text-xs mb-3 flex flex-wrap gap-2"
 					style={{ color: 'var(--text-muted-light)' }}

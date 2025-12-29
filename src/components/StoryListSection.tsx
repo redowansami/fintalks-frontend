@@ -31,6 +31,8 @@ export const StoryListSection: React.FC<StoryListSectionProps> = ({
 							reliabilityScore={story.reliabilityScore}
 							categories={story.categories}
 							image={story.imageUrl}
+							username={story.username}
+							createdAt={story.createdAt}
 						/>
 					))}
 				</div>
