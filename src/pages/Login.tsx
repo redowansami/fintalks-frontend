@@ -25,7 +25,7 @@ export const Login = () => {
 		<>
 			{isPending && <Spinner />}
 			<Header />
-			<div className="auth-page-layout">
+			<div className="login-page-layout">
 				<div className="login-card">
 					<FormHeader title="Log in" />
 					{isError && (
