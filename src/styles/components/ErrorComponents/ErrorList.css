@@ -1,0 +1,9 @@
+.error-list-item {
+	margin-bottom: 0.25rem;
+	display: flex;
+	align-items: flex-start;
+}
+
+.error-list-bullet {
+	margin-right: 0.5rem;
+}
