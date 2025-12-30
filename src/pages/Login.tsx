@@ -1,10 +1,7 @@
 import { Footer } from '../components';
 import { Header } from '../components/Blank_Header';
-import { LoginForm } from '../components/LoginForm';
+import { LoginPageContent } from '../components/LoginPageContent';
 import { Spinner } from '../components/Spinner';
-import { LoginErrorDialog } from '../components/ErrorComponents/LoginErrorDialog';
-import { FormHeader } from '../components/FormHeader';
-import { FormFooter } from '../components/FormFooter';
 import { useLoginForm } from '../hooks/useLoginForm';
 import { useLoginHandler } from '../hooks/useLoginHandler';
 import { resendConfirmationEmail } from '../services/authService';
@@ -25,27 +22,17 @@ export const Login = () => {
 		<>
 			{isPending && <Spinner />}
 			<Header />
-			<div className="login-page-layout">
-				<div className="login-card">
-					<FormHeader title="Log in" />
-					{isError && (
-						<LoginErrorDialog
-							message={error?.message || 'Login failed. Please try again.'}
-							validationErrors={validationErrors}
-							email={formData.email}
-							onResend={resendConfirmationEmail}
-						/>
-					)}
-					<LoginForm
-						formData={formData}
-						errors={errors}
-						isPending={isPending}
-						onInputChange={handleInputChange}
-						onSubmit={handleSubmit}
-					/>
-					<FormFooter text="Don't have an account?" linkText="Sign Up" link="/signup" />
-				</div>
-			</div>
+			<LoginPageContent
+				formData={formData}
+				errors={errors}
+				isPending={isPending}
+				isError={isError}
+				error={error}
+				validationErrors={validationErrors}
+				onInputChange={handleInputChange}
+				onSubmit={handleSubmit}
+				onResend={resendConfirmationEmail}
+			/>
 			<Footer />
 		</>
 	);
