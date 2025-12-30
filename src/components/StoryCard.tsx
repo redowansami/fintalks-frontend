@@ -1,4 +1,6 @@
+import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/StoryCard.css';
 
 interface StoryCardProps {
 	storyId: string;
@@ -7,6 +9,8 @@ interface StoryCardProps {
 	reliabilityScore: number;
 	categories: Array<{ name: string }>;
 	image?: string;
+	username: string;
+	createdAt: string;
 }
 
 export const StoryCard: React.FC<StoryCardProps> = ({
@@ -16,11 +20,24 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 	reliabilityScore,
 	categories,
 	image,
+	username,
+	createdAt,
 }) => {
 	const navigate = useNavigate();
 	const handleClick = () => navigate(`/api/v1/stories/${storyId}`);
 	const truncateText = (text: string, limit: number) => {
 		return text.length > limit ? text.substring(0, limit) + '...' : text;
+	};
+
+	const formatDate = (dateString: string) => {
+		const isoString = dateString.replace(' ', 'T');
+		const dateObj = new Date(isoString);
+
+		return new Intl.DateTimeFormat('en-GB', {
+			day: '2-digit',
+			month: 'short',
+			year: 'numeric',
+		}).format(dateObj);
 	};
 
 	const scoreColor =
@@ -34,52 +51,34 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 		'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="200"%3E%3Crect fill="%23d4d4d8" width="300" height="200"/%3E%3C/svg%3E';
 
 	return (
-		<article
-			className="flex flex-col sm:flex-row gap-6 mb-12 cursor-pointer transition-all"
-			onClick={handleClick}
-		>
-			<img
-				src={image || placeholderImage}
-				alt={title}
-				className="w-full sm:w-1/3 h-48 object-cover rounded-lg shadow-sm flex-shrink-0 transition-shadow"
-			/>
-			<div className="flex flex-col justify-start sm:w-2/3">
-				<h3
-					className="text-xl font-bold mb-2 transition-colors hover:text-[var(--secondary)]"
-					style={{ color: 'var(--primary)' }}
-				>
-					{title}
-				</h3>
-				<div
-					className="text-xs mb-3 flex flex-wrap gap-2"
-					style={{ color: 'var(--text-muted-light)' }}
-				>
+		<article className="story-card" onClick={handleClick}>
+			<img src={image || placeholderImage} alt={title} className="story-card-image" />
+			<div className="story-card-content">
+				<h3 className="story-card-title">{title}</h3>
+				<div className="story-card-meta">
+					<div className="story-card-meta-item">
+						<Icon icon="mdi:user" /> {username}
+					</div>
+					<span>•</span>
+					<div className="story-card-meta-item">
+						<Icon icon="mdi:calendar" /> {formatDate(createdAt)}
+					</div>
+				</div>
+				<div className="story-card-categories">
 					{categories.map((cat, idx) => (
-						<span
-							key={idx}
-							className="font-semibold"
-							style={{ color: 'var(--secondary)' }}
-						>
+						<span key={idx} className="story-card-category">
 							{cat.name}
 						</span>
 					))}
 				</div>
-				<p
-					className="text-sm mb-3 line-clamp-3"
-					style={{ color: 'var(--text-muted-light)' }}
-				>
-					{truncateText(body, 200)}
-				</p>
-				<div className="mt-4 flex items-center gap-3">
-					<span className="text-sm font-semibold" style={{ color: scoreColor }}>
+				<p className="story-card-body">{truncateText(body, 200)}</p>
+				<div className="story-card-reliability">
+					<span className="story-card-reliability-score" style={{ color: scoreColor }}>
 						Reliability: {reliabilityScore}%
 					</span>
-					<div
-						className="w-[100px] h-2 rounded overflow-hidden"
-						style={{ backgroundColor: 'var(--border-light)' }}
-					>
+					<div className="story-card-reliability-bar">
 						<div
-							className="h-full transition-colors"
+							className="story-card-reliability-fill"
 							style={{
 								width: `${reliabilityScore}%`,
 								backgroundColor: scoreColor,

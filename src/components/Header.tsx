@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, clearAuth } from '../utils/authUtils';
 import type { AuthUser } from '../utils/authUtils';
+import { CreateStoryModal } from './CreateStoryModal';
 
 export const Header: React.FC = () => {
 	const navigate = useNavigate();
@@ -12,6 +13,15 @@ export const Header: React.FC = () => {
 		return authUser;
 	});
 	const [showMenu, setShowMenu] = useState(false);
+	const [isCreateStoryModalOpen, setIsCreateStoryModalOpen] = useState(false);
+
+	const handleCreateStory = () => {
+		if (!user) {
+			navigate('/login');
+			return;
+		}
+		setIsCreateStoryModalOpen(true);
+	};
 
 	const handleLogout = () => {
 		clearAuth();
@@ -44,7 +54,9 @@ export const Header: React.FC = () => {
 					</a>
 				</div>
 				<div className="header-right">
-					<button className="btn-secondary">Create Story</button>
+					<button className="btn-secondary" onClick={handleCreateStory}>
+						Create Story
+					</button>
 					{user ? (
 						<div className="user-menu-wrapper">
 							<button
@@ -74,6 +86,10 @@ export const Header: React.FC = () => {
 					)}
 				</div>
 			</div>
+			<CreateStoryModal
+				isOpen={isCreateStoryModalOpen}
+				onClose={() => setIsCreateStoryModalOpen(false)}
+			/>
 		</header>
 	);
 };
