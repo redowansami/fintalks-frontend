@@ -1,10 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { getAuth } from '../utils/authUtils';
+import { useAuthContext } from './useAuthContext';
 import { fetchProfile } from '../services/profileService';
 
 export const useProfile = () => {
-	const { token } = getAuth();
-
+	const { token } = useAuthContext();
 	return useQuery({
 		queryKey: ['profile', token],
 		queryFn: () => fetchProfile(token),

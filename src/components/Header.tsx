@@ -2,16 +2,12 @@ import { useState } from 'react';
 import '../styles/Header.css';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, clearAuth } from '../utils/authUtils';
-import type { AuthUser } from '../utils/authUtils';
+import { useAuthContext } from '../hooks/useAuthContext';
 import { CreateStoryModal } from './CreateStoryModal';
 
 export const Header: React.FC = () => {
 	const navigate = useNavigate();
-	const [user, setUser] = useState<AuthUser | null>(() => {
-		const { user: authUser } = getAuth();
-		return authUser;
-	});
+	const { user, logout } = useAuthContext();
 	const [showMenu, setShowMenu] = useState(false);
 	const [isCreateStoryModalOpen, setIsCreateStoryModalOpen] = useState(false);
 
@@ -24,8 +20,7 @@ export const Header: React.FC = () => {
 	};
 
 	const handleLogout = () => {
-		clearAuth();
-		setUser(null);
+		logout();
 		setShowMenu(false);
 		navigate('/');
 	};

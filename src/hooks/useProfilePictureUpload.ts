@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { getAuth } from '../utils/authUtils';
+import { useAuthContext } from './useAuthContext';
 import { uploadImageToImgbb } from '../services/imageUploadService';
 import { updateProfile } from '../services/profileService';
 
@@ -11,7 +11,7 @@ interface UseProfilePictureUploadResult {
 }
 
 export const useProfilePictureUpload = (): UseProfilePictureUploadResult => {
-	const { token } = getAuth();
+	const { token } = useAuthContext();
 	const queryClient = useQueryClient();
 	const [error, setError] = useState<string | null>(null);
 

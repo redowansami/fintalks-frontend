@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { getAuth } from '../utils/authUtils';
+import { useAuthContext } from './useAuthContext';
 import type { CreateStoryPayload } from '../services/storyService';
 import { storyService, StoryError } from '../services/storyService';
 import { uploadImageToImgbb } from '../services/imageUploadService';
@@ -18,7 +18,7 @@ interface UseCreateStoryResult {
 }
 
 export const useCreateStory = (): UseCreateStoryResult => {
-	const { token } = getAuth();
+	const { token } = useAuthContext();
 	const queryClient = useQueryClient();
 	const [error, setError] = useState<string | null>(null);
 	const [validationErrors, setValidationErrors] = useState<Record<

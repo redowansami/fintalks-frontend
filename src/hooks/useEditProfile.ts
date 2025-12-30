@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { updateProfile } from '../services/profileService';
-import { getAuth } from '../utils/authUtils';
+import { useAuthContext } from './useAuthContext';
 
 interface EditProfileData {
 	name: string;
@@ -13,7 +13,7 @@ export const useEditProfile = (
 	initialBio: string | null,
 	onSuccess: () => void,
 ) => {
-	const { token } = getAuth();
+	const { token } = useAuthContext();
 	const queryClient = useQueryClient();
 	const [formData, setFormData] = useState<EditProfileData>({
 		name: initialName,
