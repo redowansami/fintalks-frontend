@@ -1,4 +1,5 @@
 import { useState, useEffect, useTransition } from 'react';
+import { useLocation } from 'react-router-dom';
 import { storyService } from '../services/storyService';
 import type { Story } from '../services/storyService';
 
@@ -11,8 +12,12 @@ interface UseStoryListReturn {
 }
 
 export const useStoryList = (): UseStoryListReturn => {
+	const location = useLocation();
 	const [stories, setStories] = useState<Story[]>([]);
-	const [activeCategory, setActiveCategory] = useState<string | null>(null);
+	const [activeCategory, setActiveCategory] = useState<string | null>(() => {
+		const state = location.state as { selectedCategory?: string | null } | null;
+		return state?.selectedCategory ?? null;
+	});
 	const [isPending, startTransition] = useTransition();
 
 	useEffect(() => {

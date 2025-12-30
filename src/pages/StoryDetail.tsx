@@ -16,6 +16,12 @@ export const StoryDetail: React.FC = () => {
 	const navigate = useNavigate();
 	const { story, loading, error } = useStoryDetail(storyId);
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
+	const handleCategoryClick = (category: string | null) => {
+		setActiveCategory(category);
+		navigate('/', { state: { selectedCategory: category } });
+	};
 
 	if (loading) return <p style={{ textAlign: 'center', padding: '2rem' }}>Loading...</p>;
 	if (error || !story) {
@@ -26,7 +32,7 @@ export const StoryDetail: React.FC = () => {
 	return (
 		<>
 			<Header />
-			<Navbar />
+			<Navbar activeCategory={activeCategory} onCategoryClick={handleCategoryClick} />
 			<div className="story-detail-wrapper">
 				<main className="story-detail-main">
 					<h1 className="story-title">{story.title}</h1>
