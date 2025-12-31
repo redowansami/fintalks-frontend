@@ -15,6 +15,5 @@ export { FormFooter } from './FormComponents/FormFooter';
 export { Spinner } from './Spinner';
 export { ValidationTooltip } from './ValidationTooltip';
 
-export { FormFields } from './FormFields';
 export { PasswordInput } from './PasswordInput';
 export { PasswordToggleButton } from './PasswordToggleButton';

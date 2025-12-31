@@ -1,5 +1,5 @@
-import { InputField, PasswordInput } from '../components';
-import { REGISTER_FORM_FIELDS } from '../constants/RegisterForm';
+import { InputField, PasswordInput } from '../../../components';
+import { REGISTER_FORM_FIELDS } from '../../../constants/RegisterForm';
 
 interface FormFieldsProps {
 	formData: Record<string, string>;
@@ -7,7 +7,7 @@ interface FormFieldsProps {
 	onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const FormFields = ({ formData, errors, onInputChange }: FormFieldsProps) => (
+export const RegisterFormFields = ({ formData, errors, onInputChange }: FormFieldsProps) => (
 	<>
 		{REGISTER_FORM_FIELDS.map((field) => (
 			<InputField

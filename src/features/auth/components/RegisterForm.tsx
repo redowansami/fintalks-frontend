@@ -1,6 +1,6 @@
 import { Button } from '../../../components';
 import { PasswordRequirements } from './PasswordRequirements';
-import { FormFields } from '../../../components/FormFields';
+import { RegisterFormFields } from './RegisterFormFields';
 import { checkPasswordRequirements } from '../utils';
 
 interface RegisterFormProps {
@@ -25,7 +25,7 @@ export const RegisterForm = ({
 
 	return (
 		<form onSubmit={onSubmit} className="register-form">
-			<FormFields formData={formData} errors={errors} onInputChange={onInputChange} />
+			<RegisterFormFields formData={formData} errors={errors} onInputChange={onInputChange} />
 			<PasswordRequirements password={formData.password || ''} />
 			<Button type="submit" disabled={isButtonDisabled}>
 				{loading ? 'Registering...' : 'Register'}
