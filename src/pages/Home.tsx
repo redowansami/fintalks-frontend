@@ -1,9 +1,9 @@
-import { Header } from '../components/Header';
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
-import { StoryListSection } from '../components/StoryListSection';
-import { HomeSidebar } from '../components/HomeSidebar';
-import { useStoryList } from '../hooks/useStoryList';
+import { Header } from '../components/common/Header';
+import { Navbar } from '../components/common/Navbar';
+import { Footer } from '../components/common/Footer';
+import { StoryListSection } from '../features/story/components';
+import { HomeSidebar } from '../features/home/components';
+import { useStoryList } from '../features/story/hooks';
 import '../styles/HomePage.css';
 
 export const HomePage: React.FC = () => {
@@ -14,7 +14,7 @@ export const HomePage: React.FC = () => {
 			<Header />
 			<Navbar activeCategory={activeCategory} onCategoryClick={handleCategoryClick} />
 			<main className="homepage">
-				<div className={`main-content ${activeCategory ? 'no-sidebar' : ''}`}>					
+				<div className={`main-content ${activeCategory ? 'no-sidebar' : ''}`}>
 					<StoryListSection
 						stories={stories}
 						isPending={isPending}

@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Header } from '../components/Header';
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
+import { Header } from '../components/common/Header';
+import { Navbar } from '../components/common/Navbar';
+import { Footer } from '../components/common/Footer';
 import { Modal } from '../components/Modal';
 import { AIReliabilityCard } from '../components/AIReliabilityCard';
-import { StoryMeta } from '../components/StoryMeta';
-import { StoryImage } from '../components/StoryImage';
-import { StoryTags } from '../components/StoryTags';
-import { useStoryDetail } from '../hooks/useStoryDetail';
+import { StoryMeta, StoryImage, StoryTags } from '../features/story/components';
+import { useStoryDetail } from '../features/story/hooks';
 import '../styles/StoryDetail.css';
 
 export const StoryDetail: React.FC = () => {
