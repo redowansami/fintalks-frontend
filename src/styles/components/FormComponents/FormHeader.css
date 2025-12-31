@@ -1,4 +1,4 @@
-@import '../styles/variables.css';
+@import '../../variables.css';
 
 .form-header {
 	text-align: center;
@@ -10,7 +10,6 @@
 	font-family: var(--font-display);
 	font-weight: bold;
 	color: var(--primary);
-	margin: 0;
 }
 
 .form-header p {

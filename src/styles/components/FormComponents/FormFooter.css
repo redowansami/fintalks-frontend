@@ -1,4 +1,4 @@
-@import '../styles/variables.css';
+@import '../../variables.css';
 
 .form-footer {
 	margin-top: 2rem;
@@ -8,7 +8,6 @@
 .form-footer p {
 	font-size: 0.875rem;
 	color: #374151;
-	margin: 0;
 }
 
 .form-footer a {
