@@ -26,8 +26,6 @@ export const RegisterFormFields = ({ formData, errors, onInputChange }: FormFiel
 		))}
 
 		<PasswordInput
-			id="password"
-			name="password"
 			placeholder="Enter your password"
 			value={formData.password || ''}
 			onChange={onInputChange}
