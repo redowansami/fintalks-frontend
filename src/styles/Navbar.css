@@ -3,69 +3,49 @@
 .navbar {
 	width: 100%;
 	background-color: var(--primary);
-	color: white;
-	padding: 0.75rem 1rem;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	padding: 0.75rem 0;
+	box-shadow: 0 1px 3px #0002;
+	overflow: hidden;
 }
 
 .navbar-content {
 	max-width: 80rem;
 	margin: 0 auto;
 	padding: 0 1rem;
-	width: 100%;
 }
 
 .nav-list {
 	display: flex;
-	gap: 1rem;
-	overflow-x: auto;
+	gap: 0.75rem;
 	list-style: none;
-	scroll-behavior: smooth;
+	overflow-x: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	padding-bottom: 2px;
 	scrollbar-width: thin;
-	scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
-	padding-bottom: 0.5rem;
-}
-
-.nav-list::-webkit-scrollbar {
-	height: 6px;
-}
-
-.nav-list::-webkit-scrollbar-track {
-	background: transparent;
-}
-
-.nav-list::-webkit-scrollbar-thumb {
-	background-color: rgba(255, 255, 255, 0.3);
-	border-radius: 3px;
-	transition: background-color 0.2s;
-}
-
-.nav-list::-webkit-scrollbar-thumb:hover {
-	background-color: rgba(255, 255, 255, 0.5);
+	scrollbar-color: #ffffff4d transparent;
 }
 
 .nav-link {
-	padding: 0.375rem 0.75rem;
+	padding: 0.4rem 1rem;
 	font-size: 0.875rem;
 	font-weight: 500;
-	border: 1px solid transparent;
-	border-radius: 9999px;
 	color: #d1d5db;
-	transition: all 0.2s;
+	background: transparent;
+	border: 1px solid transparent;
+	border-radius: 20px;
 	white-space: nowrap;
+	transition: 0.2s;
 	cursor: pointer;
-	display: inline-block;
-	background: none;
+	text-decoration: none;
 }
 
-.nav-link:hover {
-	color: white;
-	background-color: rgba(255, 255, 255, 0.1);
-	border-color: rgba(255, 255, 255, 0.1);
+.nav-link:hover,
+.nav-link.active {
+	color: #fff;
+	background-color: #ffffff1a;
 }
 
 .nav-link.active {
 	background-color: var(--secondary);
-	color: white;
-	border-color: rgba(255, 255, 255, 0.1);
 }
