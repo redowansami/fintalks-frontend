@@ -1,7 +1,6 @@
 import { useState, useEffect, useTransition } from 'react';
 import { useLocation } from 'react-router-dom';
-import { storyService } from '../services/storyService';
-import type { Story } from '../services/storyService';
+import { storyService, type Story } from '../services';
 
 interface UseStoryListReturn {
 	stories: Story[];

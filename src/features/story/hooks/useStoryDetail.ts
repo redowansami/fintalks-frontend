@@ -1,20 +1,5 @@
 import { useState, useEffect } from 'react';
-import { storyService } from '../services/storyService';
-
-interface Story {
-	storyId: string;
-	title: string;
-	body: string;
-	reliabilityScore: number;
-	summary?: string;
-	predictionComparison?: string;
-	categories: Array<{ categoryId: string; name: string }>;
-	image?: string;
-	imageUrl?: string;
-	username: string;
-	createdAt: string;
-	updatedAt?: string;
-}
+import { storyService, type Story } from '../services';
 
 interface UseStoryDetailReturn {
 	story: Story | null;
