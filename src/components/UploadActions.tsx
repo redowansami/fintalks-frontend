@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react';
+import { Button } from './Button';
 
 interface UploadActionsProps {
 	onCancel: () => void;
@@ -15,10 +16,10 @@ export const UploadActions: React.FC<UploadActionsProps> = ({
 }) => {
 	return (
 		<div className="modal-actions">
-			<button className="btn-secondary" onClick={onCancel} disabled={isLoading}>
+			<Button variant="secondary" onClick={onCancel} disabled={isLoading}>
 				Cancel
-			</button>
-			<button className="btn-primary" onClick={onUpload} disabled={isDisabled || isLoading}>
+			</Button>
+			<Button variant="primary" onClick={onUpload} disabled={isDisabled || isLoading}>
 				{isLoading ? (
 					<>
 						<Icon icon="eos-icons:loading" className="spinner-icon" />
@@ -27,7 +28,7 @@ export const UploadActions: React.FC<UploadActionsProps> = ({
 				) : (
 					'Upload'
 				)}
-			</button>
+			</Button>
 		</div>
 	);
 };
