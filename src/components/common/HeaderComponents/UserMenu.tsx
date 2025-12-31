@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
-import { Button } from '../Button';
-import { ItemButton } from '../ItemButton';
-import '../../styles/HeaderComponents/UserMenu.css';
+import { Button } from '../../Button';
+import { ItemButton } from '../../ItemButton';
+import '../../../styles/HeaderComponents/UserMenu.css';
 
 interface UserMenuProps {
 	username: string;
