@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import '../styles/ValidationTooltip.css';
 import { Icon } from '@iconify/react';
+import { TooltipButton } from './TooltipButton';
+import { ValidationCriteriaPopup } from './ValidationCriteriaPopup';
 
 interface ValidationTooltipProps {
 	criteria: string[];
@@ -11,25 +13,14 @@ export const ValidationTooltip = ({ criteria }: ValidationTooltipProps) => {
 
 	return (
 		<div className="validation-tooltip-container">
-			<button
-				type="button"
-				className="validation-icon"
+			<TooltipButton
 				onClick={() => setShowTooltip(!showTooltip)}
 				onBlur={() => setTimeout(() => setShowTooltip(false), 200)}
-				title="View validation criteria"
 			>
 				<Icon icon="mdi:information" />
-			</button>
+			</TooltipButton>
 
-			{showTooltip && (
-				<div className="validation-tooltip-popup">
-					<ul className="validation-criteria-list">
-						{criteria.map((criterion, idx) => (
-							<li key={idx}>{criterion}</li>
-						))}
-					</ul>
-				</div>
-			)}
+			{showTooltip && <ValidationCriteriaPopup criteria={criteria} />}
 		</div>
 	);
 };
