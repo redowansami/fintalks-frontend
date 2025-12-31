@@ -1,13 +1,13 @@
-import { useCreateStory } from '../hooks/useCreateStory';
-import { useCreateStoryModal } from '../hooks/useCreateStoryModal';
-import { ErrorDialog } from './ErrorComponents/ErrorDialog';
-import { StoryTitleField } from '../components/CreateStoryComponents/StoryTitleField';
-import { StoryBodyField } from '../components/CreateStoryComponents/StoryBodyField';
-import { StoryImageField } from '../components/CreateStoryComponents/StoryImageField';
-import { StoryCategories } from '../components/CreateStoryComponents/StoryCategories';
-import { CreateStoryModalHeader } from '../components/CreateStoryComponents/CreateStoryModalHeader';
-import { CreateStoryModalActions } from '../components/CreateStoryComponents/CreateStoryModalActions';
-import '../styles/CreateStoryModal.css';
+import { useCreateStory } from '../hooks';
+import { useCreateStoryModal } from '../hooks';
+import { ErrorDialog } from '../../../components/ErrorComponents/ErrorDialog';
+import { StoryTitleField } from './CreateStoryComponents/StoryTitleField';
+import { StoryBodyField } from './CreateStoryComponents/StoryBodyField';
+import { StoryImageField } from './CreateStoryComponents/StoryImageField';
+import { StoryCategories } from './CreateStoryComponents/StoryCategories';
+import { CreateStoryModalHeader } from './CreateStoryComponents/CreateStoryModalHeader';
+import { CreateStoryModalActions } from './CreateStoryComponents/CreateStoryModalActions';
+import '../../../styles/CreateStoryModal.css';
 
 interface CreateStoryModalProps {
 	isOpen: boolean;
