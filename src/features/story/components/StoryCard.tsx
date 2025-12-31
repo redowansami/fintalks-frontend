@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
-import '../../../styles/StoryCard.css';
+import '../styles/StoryCard.css';
 
 interface StoryCardProps {
 	storyId: string;
