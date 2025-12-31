@@ -1,3 +1,5 @@
+import '../styles/StoryTags.css';
+
 interface Category {
 	categoryId: string;
 	name: string;

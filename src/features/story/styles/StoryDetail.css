@@ -1,0 +1,32 @@
+@import '../../../styles/variables.css';
+
+.story-detail-wrapper {
+	width: 100%;
+	background-color: var(--background-light);
+}
+
+.story-detail-main {
+	max-width: 56rem;
+	margin: 0 auto;
+	padding: 2.5rem 1rem;
+	min-height: calc(100vh - 320px);
+}
+
+.story-title {
+	font-size: 2rem;
+	font-weight: bold;
+	color: var(--primary);
+	margin-bottom: 1.5rem;
+}
+
+.story-content {
+	margin-bottom: 2.5rem;
+	padding-bottom: 2rem;
+	border-bottom: 1px solid var(--border-light);
+}
+
+.story-body {
+	line-height: 1.8;
+	color: var(--text-main-light);
+	margin-bottom: 1rem;
+}

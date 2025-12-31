@@ -1,3 +1,5 @@
+import '../styles/StoryMeta.css';
+
 interface StoryMetaProps {
 	username: string;
 	createdAt: string;

@@ -1,3 +1,5 @@
+import '../styles/StoryImage.css';
+
 interface StoryImageProps {
 	src?: string;
 	alt: string;

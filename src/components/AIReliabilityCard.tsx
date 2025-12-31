@@ -1,3 +1,5 @@
+import '../features/story/styles/AIReliabilityCard.css';
+
 interface AIReliabilityCardProps {
 	reliabilityScore: number;
 	summary?: string;

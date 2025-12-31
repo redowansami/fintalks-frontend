@@ -7,7 +7,7 @@ import { Modal } from '../components/Modal';
 import { AIReliabilityCard } from '../components/AIReliabilityCard';
 import { StoryMeta, StoryImage, StoryTags } from '../features/story/components';
 import { useStoryDetail } from '../features/story/hooks';
-import '../styles/StoryDetail.css';
+import '../features/story/styles/StoryDetail.css';
 
 export const StoryDetail: React.FC = () => {
 	const { storyId } = useParams<{ storyId: string }>();
