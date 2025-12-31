@@ -14,18 +14,19 @@ export interface Story {
 	imageUrl?: string;
 }
 
+export interface StoryDetail extends Story {
+	image?: string;
+	predictionComparison?: string;
+	categories: Array<{ categoryId: string; name: string }>;
+	updatedAt?: string;
+}
+
 export interface StoriesResponse {
 	list: Story[];
 }
 
 export interface StoryDetailResponse {
-	story: Story & {
-		image?: string;
-		summary?: string;
-		predictionComparison?: string;
-		categories: Array<{ categoryId: string; name: string }>;
-		updatedAt?: string;
-	};
+	story: StoryDetail;
 }
 
 export interface CreateStoryPayload {
