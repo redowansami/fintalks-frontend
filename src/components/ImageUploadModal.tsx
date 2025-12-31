@@ -1,10 +1,10 @@
 import { useState, useRef } from 'react';
-import { Icon } from '@iconify/react';
-import { useProfilePictureUpload } from '../../hooks/useProfilePictureUpload';
+import { useProfilePictureUpload } from '../hooks/useProfilePictureUpload';
 import { FileInput } from './FileInput';
 import { ImagePreview } from './ImagePreview';
 import { UploadActions } from './UploadActions';
-import '../../styles/ImageUploadModal.css';
+import '../styles/ImageUploadModal.css';
+import { CloseButton } from './CloseButton';
 
 interface ImageUploadModalProps {
 	isOpen: boolean;
@@ -45,9 +45,7 @@ export const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onCl
 			<div className="image-upload-modal">
 				<div className="modal-header">
 					<h2>Upload Profile Picture</h2>
-					<button className="modal-close-btn" onClick={handleClose} disabled={isLoading}>
-						<Icon icon="material-symbols:close" />
-					</button>
+					<CloseButton onClick={handleClose} disabled={isLoading} />
 				</div>
 
 				<div className="modal-content">
