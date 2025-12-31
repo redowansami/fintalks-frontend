@@ -1,0 +1,27 @@
+@import '../variables.css';
+
+.header-left {
+	display: flex;
+	align-items: center;
+	width: 25%;
+	gap: 0.5rem;
+}
+
+.icon-button {
+	padding: 0.5rem;
+	border-radius: 50%;
+	background-color: transparent;
+	transition: background-color 0.2s;
+	border: none;
+	cursor: pointer;
+}
+
+.icon-button:hover {
+	background-color: #f3f4f6;
+}
+
+.header-tagline {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--primary);
+}
