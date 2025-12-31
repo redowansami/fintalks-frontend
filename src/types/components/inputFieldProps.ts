@@ -4,4 +4,5 @@ export interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElem
 	label: string;
 	error?: string;
 	validationCriteria?: string[];
+	rightElement?: React.ReactNode;
 }
