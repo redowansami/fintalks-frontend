@@ -1,4 +1,5 @@
 export { Button } from './Button';
+export { CloseButton } from './CloseButton';
 export { ItemButton } from './ItemButton';
 export { InputField } from './InputField';
 export { Header, Navbar, Footer } from './common';
