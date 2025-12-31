@@ -1,11 +1,12 @@
 import { Footer } from '../components';
 import { Header } from '../components/Blank_Header';
-import { LoginPageContent } from '../components/LoginPageContent';
 import { Spinner } from '../components/Spinner';
-import { useLoginForm } from '../hooks/useLoginForm';
-import { useLoginHandler } from '../hooks/useLoginHandler';
-import { resendConfirmationEmail } from '../services/authService';
-import '../styles/Login.css';
+import {
+	LoginPageContent,
+	useLoginForm,
+	useLoginHandler,
+	resendConfirmationEmail,
+} from '../features/auth';
 
 export const Login = () => {
 	const { formData, errors, handleInputChange, validateForm } = useLoginForm();
