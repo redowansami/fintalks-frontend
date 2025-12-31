@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import { storyService, type Story } from '../services';
+import { storyService, type StoryDetail } from '../services';
 
 interface UseStoryDetailReturn {
-	story: Story | null;
+	story: StoryDetail | null;
 	loading: boolean;
 	error: string | null;
 }
 
 export const useStoryDetail = (storyId?: string): UseStoryDetailReturn => {
-	const [story, setStory] = useState<Story | null>(null);
+	const [story, setStory] = useState<StoryDetail | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 
