@@ -18,6 +18,7 @@ export { useStoryList, useStoryDetail, useCreateStory, useCreateStoryModal } fro
 export {
 	storyService,
 	type Story,
+	type StoryDetail,
 	type StoriesResponse,
 	type CreateStoryPayload,
 	StoryError,
