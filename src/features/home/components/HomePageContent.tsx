@@ -1,6 +1,5 @@
 import { StoryListSection } from '../../story';
 import type { Story } from '../../story';
-import '../styles/HomePage.css';
 
 interface HomePageContentProps {
 	stories: Story[];
