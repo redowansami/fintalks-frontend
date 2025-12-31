@@ -1,0 +1,33 @@
+@import '../styles/variables.css';
+
+.item-button {
+	display: block;
+	width: 100%;
+	padding: 0.75rem 1rem;
+	text-align: left;
+	background-color: transparent;
+	border: none;
+	color: var(--text-dark);
+	font-size: 0.875rem;
+	font-weight: 500;
+	transition: background-color 0.2s;
+	cursor: pointer;
+}
+
+.item-button:hover:not(:disabled) {
+	background-color: #f3f4f6;
+}
+
+.item-button:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.item-button--default {
+	color: var(--text-dark);
+}
+
+.item-button--danger:hover:not(:disabled) {
+	background-color: #fee2e2;
+	color: #dc2626;
+}
