@@ -44,3 +44,40 @@
 	font-size: 0.875rem;
 	color: #dc2626;
 }
+
+.input-wrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.input-control.with-right-element {
+	padding-right: 3rem;
+}
+
+.input-right-element {
+	position: absolute;
+	right: 0.75rem;
+	display: flex;
+	align-items: center;
+}
+
+.password-toggle-btn {
+	background: none;
+	border: none;
+	color: #6b7280;
+	cursor: pointer;
+	padding: 0.25rem;
+	display: flex;
+	font-size: 1.25rem;
+	line-height: 1;
+	transition: color 0.2s;
+}
+
+.password-toggle-btn:hover {
+	color: var(--primary);
+}
+
+.password-toggle-btn:active {
+	color: var(--primary);
+}
