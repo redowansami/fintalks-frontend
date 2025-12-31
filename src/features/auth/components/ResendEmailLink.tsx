@@ -1,4 +1,4 @@
-import { useResendEmail } from '../hooks/useResendEmail';
+import { useResendEmail } from '../hooks';
 import '../styles/ResendEmailLink.css';
 
 interface ResendEmailLinkProps {

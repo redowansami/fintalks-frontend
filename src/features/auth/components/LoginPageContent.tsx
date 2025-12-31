@@ -1,6 +1,9 @@
-import { LoginErrorDialog } from './ErrorComponents/LoginErrorDialog';
-import { LoginForm, FormHeader, FormFooter } from './index';
-import type { LoginPageContentProps } from '../types/components/loginPageContentProps';
+import { LoginErrorDialog } from './LoginErrorDialog';
+import { FormHeader } from '../../../components/FormComponents/FormHeader';
+import { FormFooter } from '../../../components/FormComponents/FormFooter';
+import { LoginForm } from './LoginForm';
+import type { LoginPageContentProps } from '../types';
+import '../styles/Login.css';
 
 export const LoginPageContent = ({
 	formData,

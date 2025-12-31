@@ -1,5 +1,5 @@
 import React from 'react';
-import { getPasswordChecks } from '../utils/passwordValidator';
+import { getPasswordChecks } from '../utils';
 import '../styles/PasswordRequirements.css';
 
 interface PasswordRequirementsProps {

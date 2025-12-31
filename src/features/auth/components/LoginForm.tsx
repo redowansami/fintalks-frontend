@@ -1,12 +1,6 @@
-import { Button, InputField, PasswordInput } from './index';
-
-interface LoginFormProps {
-	formData: { email: string; password: string };
-	errors: { [key: string]: string };
-	isPending: boolean;
-	onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	onSubmit: (e: React.FormEvent) => void;
-}
+import { Button, InputField } from '../../../components';
+import { PasswordInput } from './PasswordInput';
+import type { LoginFormProps } from '../types';
 
 export const LoginForm = ({
 	formData,
@@ -30,8 +24,6 @@ export const LoginForm = ({
 			/>
 
 			<PasswordInput
-				id="password"
-				name="password"
 				value={formData.password}
 				onChange={onInputChange}
 				error={errors.password}

@@ -1,6 +1,7 @@
-import { Button, PasswordRequirements } from '../components';
-import { FormFields } from './FormFields';
-import { checkPasswordRequirements } from '../utils/passwordValidator';
+import { Button } from '../../../components';
+import { PasswordRequirements } from './PasswordRequirements';
+import { FormFields } from '../../../components/FormFields';
+import { checkPasswordRequirements } from '../utils';
 
 interface RegisterFormProps {
 	formData: Record<string, string>;
