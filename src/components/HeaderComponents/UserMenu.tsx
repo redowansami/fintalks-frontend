@@ -1,0 +1,47 @@
+import React, { useState } from 'react';
+import { Icon } from '@iconify/react';
+import { Button } from '../Button';
+import { ItemButton } from '../ItemButton';
+import '../../styles/HeaderComponents/UserMenu.css';
+
+interface UserMenuProps {
+	username: string;
+	onViewProfile: () => void;
+	onLogout: () => void;
+}
+
+export const UserMenu: React.FC<UserMenuProps> = ({ username, onViewProfile, onLogout }) => {
+	const [showMenu, setShowMenu] = useState(false);
+
+	const handleMenuToggle = () => {
+		setShowMenu(!showMenu);
+	};
+
+	const handleViewProfile = () => {
+		onViewProfile();
+		setShowMenu(false);
+	};
+
+	const handleLogout = () => {
+		onLogout();
+		setShowMenu(false);
+	};
+
+	return (
+		<div className="user-menu-wrapper">
+			<Button variant="primary" className="user-menu-btn" onClick={handleMenuToggle}>
+				<Icon icon="mdi:user" /> {username}
+			</Button>
+			{showMenu && (
+				<div className="user-menu">
+					<ItemButton onClick={handleViewProfile} className="user-menu-item">
+						View Profile
+					</ItemButton>
+					<ItemButton onClick={handleLogout} variant="danger" className="user-menu-item">
+						Logout
+					</ItemButton>
+				</div>
+			)}
+		</div>
+	);
+};
