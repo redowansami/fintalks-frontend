@@ -1,52 +1,37 @@
-import { Icon } from '@iconify/react';
 import { useState } from 'react';
-
-interface PasswordInputProps {
-	id: string;
-	name: string;
-	value: string;
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	error?: string;
-	placeholder?: string;
-	label?: string;
-}
+import { InputField } from './InputField';
+import { PasswordToggleButton } from './PasswordToggleButton';
+import type { PasswordInputProps } from '../types/components/passwordInputProps';
 
 export const PasswordInput = ({
-	id,
-	name,
+	id = 'password',
+	name = 'password',
 	value,
 	onChange,
 	error,
-	placeholder,
+	placeholder = '********',
 	label = 'Password',
+	...rest
 }: PasswordInputProps) => {
 	const [showPassword, setShowPassword] = useState(false);
 
 	return (
-		<div className="form-group">
-			<label className="form-label" htmlFor={id}>
-				{label}
-			</label>
-			<div className="password-wrapper">
-				<input
-					type={showPassword ? 'text' : 'password'}
-					id={id}
-					name={name}
-					value={value}
-					onChange={onChange}
-					placeholder={placeholder}
-					required
-					className={`form-input ${error ? 'error' : ''}`}
+		<InputField
+			id={id}
+			name={name}
+			value={value}
+			onChange={onChange}
+			error={error}
+			placeholder={placeholder}
+			label={label}
+			{...rest}
+			type={showPassword ? 'text' : 'password'}
+			rightElement={
+				<PasswordToggleButton
+					showPassword={showPassword}
+					onChange={() => setShowPassword(!showPassword)}
 				/>
-				<button
-					type="button"
-					onClick={() => setShowPassword(!showPassword)}
-					className="password-toggle"
-				>
-					{showPassword ? <Icon icon="mdi:eye" /> : <Icon icon="el:eye-close" />}
-				</button>
-			</div>
-			{error && <p className="error-text">{error}</p>}
-		</div>
+			}
+		/>
 	);
 };
