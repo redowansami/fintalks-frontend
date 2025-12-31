@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useAuthContext } from './useAuthContext';
-import type { CreateStoryPayload } from '../services/storyService';
-import { storyService, StoryError } from '../services/storyService';
-import { uploadImageToImgbb } from '../services/imageUploadService';
+import { useAuthContext } from '../../../hooks/useAuthContext';
+import type { CreateStoryPayload } from '../services';
+import { storyService, StoryError } from '../services';
+import { uploadImageToImgbb } from '../../../services/imageUploadService';
 
 interface UseCreateStoryResult {
 	createStory: (
