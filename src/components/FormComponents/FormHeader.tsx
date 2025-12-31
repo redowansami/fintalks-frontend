@@ -1,9 +1,5 @@
-import '../styles/FormHeader.css';
-
-interface FormHeaderProps {
-	title?: string;
-	subtitle?: string;
-}
+import '../../styles/components/FormComponents/formHeader.css';
+import type { FormHeaderProps } from '../../types/formProps';
 
 export const FormHeader = ({ title = 'Form', subtitle }: FormHeaderProps) => (
 	<div className="form-header">

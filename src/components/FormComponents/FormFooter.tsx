@@ -1,10 +1,5 @@
-import '../styles/FormFooter.css';
-
-interface FormFooterProps {
-	text?: string;
-	linkText?: string;
-	link?: string;
-}
+import '../../styles/components/FormComponents/formFooter.css';
+import type { FormFooterProps } from '../../types/formProps';
 
 export const FormFooter = ({ text = '', linkText = '', link = '' }: FormFooterProps) => (
 	<div className="form-footer">
