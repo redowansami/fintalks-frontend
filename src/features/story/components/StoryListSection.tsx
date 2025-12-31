@@ -1,6 +1,6 @@
 import { StoryCard } from './StoryCard';
-import type { Story } from '../services/storyService';
-import '../styles/StoryList.css';
+import type { Story } from '../services';
+import '../../../styles/StoryList.css';
 
 interface StoryListSectionProps {
 	stories: Story[];
