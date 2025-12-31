@@ -1,4 +1,4 @@
-import { Icon } from '@iconify/react';
+import { CloseButton } from '../../../../components/CloseButton';
 
 interface CreateStoryModalHeaderProps {
 	onClose: () => void;
@@ -12,9 +12,7 @@ export const CreateStoryModalHeader: React.FC<CreateStoryModalHeaderProps> = ({
 	return (
 		<div className="modal-header">
 			<h2>Create New Story</h2>
-			<button className="modal-close-btn" onClick={onClose} disabled={isLoading}>
-				<Icon icon="material-symbols:close" />
-			</button>
+			<CloseButton onClick={onClose} disabled={isLoading} />
 		</div>
 	);
 };

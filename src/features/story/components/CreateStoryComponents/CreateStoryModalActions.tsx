@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react';
+import { Button } from '../../../../components/Button';
 
 interface CreateStoryModalActionsProps {
 	onCancel: () => void;
@@ -13,10 +14,10 @@ export const CreateStoryModalActions: React.FC<CreateStoryModalActionsProps> = (
 }) => {
 	return (
 		<div className="modal-actions">
-			<button className="btn-secondary" onClick={onCancel} disabled={isLoading}>
+			<Button variant="secondary" onClick={onCancel} disabled={isLoading}>
 				Cancel
-			</button>
-			<button className="btn-primary" onClick={onCreate} disabled={isLoading}>
+			</Button>
+			<Button variant="primary" onClick={onCreate} disabled={isLoading}>
 				{isLoading ? (
 					<>
 						<Icon icon="eos-icons:loading" className="spinner-icon" />
@@ -25,7 +26,7 @@ export const CreateStoryModalActions: React.FC<CreateStoryModalActionsProps> = (
 				) : (
 					'Create Story'
 				)}
-			</button>
+			</Button>
 		</div>
 	);
 };

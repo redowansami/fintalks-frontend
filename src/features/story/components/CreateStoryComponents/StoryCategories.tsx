@@ -1,6 +1,5 @@
-// import { STORY_CATEGORIES } from '../../constants/storyConstants';
 import React from 'react';
-import { useCategoryContext } from '../../hooks/useCategoryContext';
+import { useCategoryContext } from '../../../../hooks/useCategoryContext';
 
 interface StoryCategoriesProps {
 	selectedIds: string[];

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
-import { FileInput } from '../ProfileComponents/FileInput';
-import { ImagePreview } from '../ProfileComponents/ImagePreview';
+import { FileInput } from '../../../../components/FileInput';
+import { ImagePreview } from '../../../../components/ImagePreview';
 
 interface StoryImageFieldProps {
 	onImageSelect: (file: File) => void;

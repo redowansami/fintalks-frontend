@@ -1,4 +1,4 @@
-import { TextAreaField } from '../TextAreaField';
+import { TextAreaField } from '../../../../components/TextAreaField';
 
 interface StoryBodyFieldProps {
 	value: string;
