@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react';
+import './PasswordToggleButton.css';
 
 interface PasswordToggleButtonProps {
 	showPassword: boolean;
