@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createInputChangeHandler } from '../utils/formInputHandlers';
+import { createInputChangeHandler } from '../utils';
 
 interface LoginFormData {
 	email: string;

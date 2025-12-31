@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { login, LoginError, type ValidationError } from '../services/loginService';
-import { useAuthContext } from './useAuthContext';
+import { login, LoginError, type ValidationError } from '../services';
+import { useAuthContext } from '../../../hooks/useAuthContext';
 
 interface UseLoginHandlerReturn {
 	isPending: boolean;
