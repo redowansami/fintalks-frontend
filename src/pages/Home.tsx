@@ -14,14 +14,12 @@ export const HomePage: React.FC = () => {
 			<Header />
 			<Navbar activeCategory={activeCategory} onCategoryClick={handleCategoryClick} />
 			<main className="homepage">
-				<div className={`main-content ${activeCategory ? 'no-sidebar' : ''}`}>
-					<div>
-						<StoryListSection
-							stories={stories}
-							isPending={isPending}
-							pageTitle={pageTitle}
-						/>
-					</div>
+				<div className={`main-content ${activeCategory ? 'no-sidebar' : ''}`}>					
+					<StoryListSection
+						stories={stories}
+						isPending={isPending}
+						pageTitle={pageTitle}
+					/>
 					<HomeSidebar show={!activeCategory} />
 				</div>
 			</main>
