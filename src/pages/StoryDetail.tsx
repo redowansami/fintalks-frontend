@@ -4,7 +4,7 @@ import { Header } from '../components/common/Header';
 import { Navbar } from '../components/common/Navbar';
 import { Footer } from '../components/common/Footer';
 import { Modal } from '../components/Modal';
-import { AIReliabilityCard } from '../components/AIReliabilityCard';
+import { AIReliabilityCard } from '../features/story/components/AIReliabilityCard';
 import { StoryMeta, StoryImage, StoryTags } from '../features/story/components';
 import { useStoryDetail } from '../features/story/hooks';
 import '../features/story/styles/StoryDetail.css';

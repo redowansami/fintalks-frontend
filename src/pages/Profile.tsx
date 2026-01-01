@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { Spinner } from '../components/Spinner';
-import { EditProfileModal } from '../components/ProfileComponents/EditProfileModal';
-import { ChangePasswordModal } from '../components/ProfileComponents/ChangePasswordModal';
 import { ImageUploadModal } from '../components/ImageUploadModal';
 import { ProfileLayout } from '../components/ProfileLayout';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
-import { useProfile } from '../hooks/useProfile';
 import {
+	useProfile,
 	ProfileHeader,
 	ProfileActions,
 	ProfileBio,
 	ProfileStories,
-} from '../components/ProfileComponents';
+	EditProfileModal,
+	ChangePasswordModal,
+} from '../features/profile';
 import '../styles/Profile.css';
 
 export const Profile = () => {

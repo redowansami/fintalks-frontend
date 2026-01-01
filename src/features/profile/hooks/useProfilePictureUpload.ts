@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useAuthContext } from '../../../hooks/useAuthContext';
-import { uploadImageToImgbb } from '../services';
+import { uploadImageToImgbb } from '../../../services/imageUploadService';
 import { updateProfile } from '../services';
 
 interface UseProfilePictureUploadResult {

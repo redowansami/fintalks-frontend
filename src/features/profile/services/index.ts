@@ -6,4 +6,8 @@ export {
 	type VerifyCodeResponse,
 	type ConfirmPasswordChangeResponse,
 } from './changePasswordService';
-export { uploadImageToImgbb, ImageUploadError, type ImgbbResponse } from './imageUploadService';
+export {
+	uploadImageToImgbb,
+	ImageUploadError,
+	type ImgbbResponse,
+} from '../../../services/imageUploadService';

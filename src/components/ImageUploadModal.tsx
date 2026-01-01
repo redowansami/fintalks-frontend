@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { useProfilePictureUpload } from '../hooks/useProfilePictureUpload';
+import { useProfilePictureUpload } from '../features/profile';
 import { FileInput } from './FileInput';
 import { ImagePreview } from './ImagePreview';
 import { UploadActions } from './UploadActions';

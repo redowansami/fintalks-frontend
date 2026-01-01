@@ -8,6 +8,10 @@ export {
 } from './components';
 
 export { useProfile, useEditProfile, useChangePassword, useProfilePictureUpload } from './hooks';
-export { fetchProfile, updateProfile, changePasswordService, uploadImageToImgbb } from './services';
 
-export type { ProfileResponse } from './services';
+export {
+	fetchProfile,
+	updateProfile,
+	ProfileError,
+	type ProfileResponse,
+} from './services/profileService';
