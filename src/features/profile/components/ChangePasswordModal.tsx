@@ -1,9 +1,10 @@
 import React from 'react';
-import { Modal } from '../../../components/Modal';
-import { OldPasswordStep } from './OldPasswordStep';
-import { CodeVerificationStep } from './CodeVerificationStep';
-import { NewPasswordStep } from './NewPasswordStep';
+import { PasswordInput } from '../../../components/PasswordInput';
+import { Button } from '../../../components/Button';
+import { ErrorDialog } from '../../../components/ErrorComponents/ErrorDialog';
+import { extractValidationErrors } from '../../../utils/errorExtractor';
 import { useChangePassword } from '../hooks';
+import '../styles/EditProfileModal.css';
 
 interface ChangePasswordModalProps {
 	isOpen: boolean;
@@ -15,70 +16,85 @@ export const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({ isOpen
 
 	if (!isOpen) return null;
 
-	const renderStep = () => {
-		switch (passwordManager.step) {
-			case 'oldPassword':
-				return (
-					<OldPasswordStep
-						oldPassword={passwordManager.formData.oldPassword}
-						onOldPasswordChange={passwordManager.handlers.handleOldPasswordChange}
-						onSubmit={passwordManager.handlers.handleOldPasswordSubmit}
-						onCancel={passwordManager.helpers.resetAndClose}
-						isPending={passwordManager.mutations.request.isPending}
-						error={passwordManager.mutations.request.error}
-					/>
-				);
-			case 'verification':
-				return (
-					<CodeVerificationStep
-						code={passwordManager.formData.code}
-						onCodeChange={(e) =>
-							passwordManager.helpers.updateField('code', e.target.value)
-						}
-						onSubmit={passwordManager.handlers.handleCodeSubmit}
-						onBack={passwordManager.helpers.goToPrevious}
-						isPending={passwordManager.mutations.verify.isPending}
-						error={passwordManager.mutations.verify.error}
-					/>
-				);
-			case 'newPassword':
-				return (
-					<NewPasswordStep
-						newPassword={passwordManager.formData.newPassword}
-						confirmPassword={passwordManager.formData.confirmPassword}
-						onNewPasswordChange={(e) =>
-							passwordManager.helpers.updateField('newPassword', e.target.value)
-						}
-						onConfirmPasswordChange={(e) =>
-							passwordManager.helpers.updateField('confirmPassword', e.target.value)
-						}
-						onSubmit={passwordManager.handlers.handleNewPasswordSubmit}
-						onBack={passwordManager.helpers.goToPrevious}
-						isPending={passwordManager.mutations.confirm.isPending}
-						error={passwordManager.mutations.confirm.error}
-					/>
-				);
-			case 'success':
-				return (
-					<Modal
-						isOpen={true}
-						onClose={passwordManager.helpers.resetAndClose}
-						title="Success"
-						message="Your password has been changed successfully."
-						actionButtonText="Close"
-						onActionClick={passwordManager.helpers.resetAndClose}
-					/>
-				);
-			default:
-				return null;
-		}
-	};
+	if (passwordManager.showSuccess) {
+		return (
+			<div className="edit-profile-overlay">
+				<div className="edit-profile-modal">
+					<h2 className="edit-profile-title">Success</h2>
+					<p style={{ textAlign: 'center', marginBottom: '1rem', color: '#333' }}>
+						Your password has been changed successfully.
+					</p>
+					<div className="edit-profile-actions">
+						<Button
+							type="button"
+							variant="primary"
+							onClick={passwordManager.resetAndClose}
+						>
+							Close
+						</Button>
+					</div>
+				</div>
+			</div>
+		);
+	}
 
 	return (
 		<div className="edit-profile-overlay">
 			<div className="edit-profile-modal">
 				<h2 className="edit-profile-title">Change Password</h2>
-				{renderStep()}
+				<form onSubmit={passwordManager.handleSubmit} className="edit-profile-form">
+					{passwordManager.error && (
+						<ErrorDialog
+							message={passwordManager.error.message || 'Failed to change password'}
+							validationErrors={extractValidationErrors(passwordManager.error)}
+						/>
+					)}
+					<PasswordInput
+						id="currentPassword"
+						name="currentPassword"
+						label="Current Password"
+						placeholder="Enter your current password"
+						value={passwordManager.formData.currentPassword}
+						onChange={(e) =>
+							passwordManager.updateField('currentPassword', e.target.value)
+						}
+					/>
+					<PasswordInput
+						id="newPassword"
+						name="newPassword"
+						label="New Password"
+						placeholder="Enter your new password"
+						value={passwordManager.formData.newPassword}
+						onChange={(e) => passwordManager.updateField('newPassword', e.target.value)}
+					/>
+					<PasswordInput
+						id="confirmPassword"
+						name="confirmPassword"
+						label="Confirm New Password"
+						placeholder="Re-enter your new password"
+						value={passwordManager.formData.confirmPassword}
+						onChange={(e) =>
+							passwordManager.updateField('confirmPassword', e.target.value)
+						}
+					/>
+					<div className="edit-profile-actions">
+						<Button
+							type="button"
+							variant="secondary"
+							onClick={passwordManager.resetAndClose}
+							disabled={passwordManager.isPending}
+						>
+							Cancel
+						</Button>
+						<Button
+							type="submit"
+							variant="primary"
+							disabled={passwordManager.isPending}
+						>
+							{passwordManager.isPending ? 'Changing...' : 'Change Password'}
+						</Button>
+					</div>
+				</form>
 			</div>
 		</div>
 	);
