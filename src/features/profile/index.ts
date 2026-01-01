@@ -1,17 +1,13 @@
-/**
- * Profile Feature - Public API
- *
- * All user profile-related functionality is encapsulated here.
- */
+export {
+	ProfileHeader,
+	ProfileActions,
+	ProfileBio,
+	ProfileStories,
+	EditProfileModal,
+	ChangePasswordModal,
+} from './components';
 
-// Components
-export { ProfileLayout } from './components';
+export { useProfile, useEditProfile, useChangePassword, useProfilePictureUpload } from './hooks';
+export { fetchProfile, updateProfile, changePasswordService, uploadImageToImgbb } from './services';
 
-// Hooks
-export { useProfile, useEditProfile, useProfilePictureUpload } from './hooks';
-
-// Services
-export { profileService, imageUploadService } from './services';
-
-// Types
-export type { ProfileData, ProfileUpdatePayload } from './types';
+export type { ProfileResponse } from './services';
