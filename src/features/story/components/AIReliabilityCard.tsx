@@ -1,4 +1,5 @@
-import '../features/story/styles/AIReliabilityCard.css';
+import { Button } from '../../../components/Button';
+import '../styles/AIReliabilityCard.css';
 
 interface AIReliabilityCardProps {
 	reliabilityScore: number;
@@ -52,9 +53,9 @@ export const AIReliabilityCard: React.FC<AIReliabilityCardProps> = ({
 				</div>
 			)}
 			{predictionComparison && (
-				<button className="ai-comparison-button" onClick={onComparisonClick}>
+				<Button variant="secondary" onClick={onComparisonClick}>
 					AI Prediction Comparison
-				</button>
+				</Button>
 			)}
 		</div>
 	);
