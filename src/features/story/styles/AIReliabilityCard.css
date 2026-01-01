@@ -29,11 +29,6 @@
 	color: var(--primary);
 }
 
-.ai-score-value {
-	font-size: 1.5rem;
-	font-weight: bold;
-}
-
 .ai-score-bar {
 	width: 100%;
 	max-width: 28rem;
@@ -78,25 +73,4 @@
 	font-size: 0.875rem;
 	line-height: 1.5;
 	color: #374151;
-}
-
-.ai-comparison-button {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.5rem;
-	padding: 0.75rem 1.5rem;
-	border: 1px solid var(--primary);
-	border-radius: 0.5rem;
-	font-size: 0.875rem;
-	font-weight: 600;
-	color: var(--primary);
-	background-color: transparent;
-	cursor: pointer;
-	transition: all 0.2s;
-}
-
-.ai-comparison-button:hover {
-	background-color: #f3f4f6;
-	transform: translateY(-0.125rem);
 }
