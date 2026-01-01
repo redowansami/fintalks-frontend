@@ -37,15 +37,10 @@ export const OldPasswordStep: React.FC<OldPasswordStepProps> = ({
 			onChange={onOldPasswordChange}
 		/>
 		<div className="edit-profile-actions">
-			<Button
-				type="button"
-				onClick={onCancel}
-				disabled={isPending}
-				className="edit-profile-btn cancel"
-			>
+			<Button type="button" variant="secondary" onClick={onCancel} disabled={isPending}>
 				Cancel
 			</Button>
-			<Button type="submit" disabled={isPending} className="edit-profile-btn submit">
+			<Button type="submit" variant="primary" disabled={isPending}>
 				{isPending ? 'Verifying...' : 'Continue'}
 			</Button>
 		</div>

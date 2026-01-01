@@ -1,4 +1,6 @@
+import React from 'react';
 import { Icon } from '@iconify/react';
+import { Button } from '../Button';
 
 interface ProfileActionsProps {
 	onEditProfile: () => void;
@@ -11,14 +13,14 @@ export const ProfileActions: React.FC<ProfileActionsProps> = ({
 }) => {
 	return (
 		<>
-			<button className="btn-edit" onClick={onEditProfile}>
+			<Button variant="secondary" onClick={onEditProfile}>
 				<Icon icon="material-symbols:edit" />
 				Edit Profile
-			</button>
-			<button className="btn-password" onClick={onChangePassword}>
+			</Button>
+			<Button variant="primary" onClick={onChangePassword}>
 				<Icon icon="material-symbols:lock-reset" />
 				Password Change
-			</button>
+			</Button>
 		</>
 	);
 };

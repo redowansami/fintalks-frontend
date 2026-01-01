@@ -52,17 +52,13 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
 			<div className="edit-profile-actions">
 				<Button
 					type="button"
+					variant="secondary"
 					onClick={onCancel}
 					disabled={mutation.isPending}
-					className="edit-profile-btn cancel"
 				>
 					Cancel
 				</Button>
-				<Button
-					type="submit"
-					disabled={mutation.isPending}
-					className="edit-profile-btn submit"
-				>
+				<Button type="submit" variant="primary" disabled={mutation.isPending}>
 					{mutation.isPending ? 'Updating...' : 'Update Profile'}
 				</Button>
 			</div>
