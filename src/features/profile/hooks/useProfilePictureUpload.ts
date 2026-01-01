@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useAuthContext } from './useAuthContext';
-import { uploadImageToImgbb } from '../services/imageUploadService';
-import { updateProfile } from '../services/profileService';
+import { useAuthContext } from '../../../hooks/useAuthContext';
+import { uploadImageToImgbb } from '../services';
+import { updateProfile } from '../services';
 
 interface UseProfilePictureUploadResult {
 	uploadProfilePicture: (file: File) => Promise<void>;

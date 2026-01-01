@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { changePasswordService } from '../services/changePasswordService';
+import { changePasswordService } from '../services';
 
 type ChangePasswordStep = 'oldPassword' | 'verification' | 'newPassword' | 'success';
 
@@ -42,6 +42,10 @@ export const useChangePassword = (onClose: () => void) => {
 		onClose();
 	};
 
+	const updateField = (field: keyof PasswordChangeState, value: string) => {
+		setState((prev) => ({ ...prev, [field]: value }));
+	};
+
 	const changePasswordMutation = useMutation({
 		mutationFn: (password: string) => changePasswordService.requestPasswordChange(password),
 		onSuccess: () => goToStep('verification'),
@@ -61,6 +65,22 @@ export const useChangePassword = (onClose: () => void) => {
 			changePasswordService.confirmPasswordChange(state.verificationToken, state.newPassword),
 		onSuccess: () => goToStep('success'),
 	});
+
+	const handleOldPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		updateField('oldPassword', e.target.value);
+	};
+
+	const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		updateField('code', e.target.value);
+	};
+
+	const handleNewPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		updateField('newPassword', e.target.value);
+	};
+
+	const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		updateField('confirmPassword', e.target.value);
+	};
 
 	const handleOldPasswordSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -92,25 +112,24 @@ export const useChangePassword = (onClose: () => void) => {
 	return {
 		step: state.currentStep,
 		formData: state,
-
 		mutations: {
 			request: changePasswordMutation,
 			verify: verifyCodeMutation,
 			confirm: confirmChangeMutation,
 		},
-
 		handlers: {
-			handleOldPasswordChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-				setState((prev) => ({ ...prev, oldPassword: e.target.value })),
+			handleOldPasswordChange,
+			handleCodeChange,
+			handleNewPasswordChange,
+			handleConfirmPasswordChange,
 			handleOldPasswordSubmit,
 			handleCodeSubmit,
 			handleNewPasswordSubmit,
 		},
-
 		helpers: {
-			updateField: (field: keyof PasswordChangeState, value: string) =>
-				setState((prev) => ({ ...prev, [field]: value })),
+			goToStep,
 			goToPrevious: goToPreviousStep,
+			updateField,
 			resetAndClose,
 		},
 	};

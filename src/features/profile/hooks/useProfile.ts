@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { useAuthContext } from './useAuthContext';
-import { fetchProfile } from '../services/profileService';
+import { useAuthContext } from '../../../hooks/useAuthContext';
+import { fetchProfile } from '../services';
 
 export const useProfile = () => {
 	const { token } = useAuthContext();

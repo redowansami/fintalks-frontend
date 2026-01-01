@@ -1,4 +1,6 @@
+import React from 'react';
 import { Icon } from '@iconify/react';
+import '../styles/ProfileBio.css';
 
 interface Profile {
 	email: string;

@@ -1,11 +1,12 @@
 import React from 'react';
 import type { UseMutationResult } from '@tanstack/react-query';
-import { Button } from '../Button';
-import { ErrorDialog } from '../ErrorComponents/ErrorDialog';
-import { InputField } from '../InputField';
-import { TextAreaField } from '../TextAreaField';
-import { PROFILE_FORM_VALIDATIONS } from '../../constants/profileFormConstants';
-import { extractValidationErrors } from '../../utils/errorExtractor';
+import { Button } from '../../../components/Button';
+import '../styles/EditProfileModal.css';
+import { ErrorDialog } from '../../../components/ErrorComponents/ErrorDialog';
+import { InputField } from '../../../components/InputField';
+import { TextAreaField } from '../../../components/TextAreaField';
+import { PROFILE_FORM_VALIDATIONS } from '../../../constants/profileFormConstants';
+import { extractValidationErrors } from '../../../utils/errorExtractor';
 
 interface EditProfileFormProps {
 	formData: { name: string; bio: string };

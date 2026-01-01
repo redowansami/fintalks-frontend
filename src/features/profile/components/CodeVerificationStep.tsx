@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button } from '../Button';
-import { InputField } from '../InputField';
-import { ErrorDialog } from '../ErrorComponents/ErrorDialog';
-import { extractValidationErrors } from '../../utils/errorExtractor';
+import { Button } from '../../../components/Button';
+import { InputField } from '../../../components/InputField';
+import '../styles/EditProfileModal.css';
+import { ErrorDialog } from '../../../components/ErrorComponents/ErrorDialog';
+import { extractValidationErrors } from '../../../utils/errorExtractor';
 
 interface CodeVerificationStepProps {
 	code: string;

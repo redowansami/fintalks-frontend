@@ -1,9 +1,9 @@
 import React from 'react';
-import { Modal } from '../Modal';
+import { Modal } from '../../../components/Modal';
 import { OldPasswordStep } from './OldPasswordStep';
 import { CodeVerificationStep } from './CodeVerificationStep';
 import { NewPasswordStep } from './NewPasswordStep';
-import { useChangePassword } from '../../hooks/useChangePasswordModal';
+import { useChangePassword } from '../hooks';
 
 interface ChangePasswordModalProps {
 	isOpen: boolean;

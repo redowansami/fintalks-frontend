@@ -1,3 +1,6 @@
+import React from 'react';
+import '../styles/ProfileStories.css';
+
 interface ProfileStoriesProps {
 	storyCount?: number;
 }

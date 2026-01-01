@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button } from '../Button';
-import { PasswordInput } from '../PasswordInput';
-import { ErrorDialog } from '../ErrorComponents/ErrorDialog';
-import { extractValidationErrors } from '../../utils/errorExtractor';
+import { Button } from '../../../components/Button';
+import { PasswordInput } from '../../../components/PasswordInput';
+import '../styles/EditProfileModal.css';
+import { ErrorDialog } from '../../../components/ErrorComponents/ErrorDialog';
+import { extractValidationErrors } from '../../../utils/errorExtractor';
 
 interface OldPasswordStepProps {
 	oldPassword: string;

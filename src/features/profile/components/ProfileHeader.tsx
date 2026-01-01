@@ -1,4 +1,7 @@
+import React from 'react';
 import { Icon } from '@iconify/react';
+import { Button } from '../../../components/Button';
+import '../styles/ProfileHeader.css';
 
 interface Profile {
 	profilePictureUrl: string | null;
@@ -27,13 +30,9 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({ profile, onEditPic
 					</div>
 				)}
 			</div>
-			<button
-				className="profile-edit-btn"
-				title="Update Profile Picture"
-				onClick={onEditPicture}
-			>
+			<Button className="profile-edit-btn" onClick={onEditPicture}>
 				<Icon icon="material-symbols:photo-camera" />
-			</button>
+			</Button>
 		</div>
 	);
 };
