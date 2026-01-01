@@ -2,135 +2,78 @@ import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { changePasswordService } from '../services';
 
-type ChangePasswordStep = 'oldPassword' | 'verification' | 'newPassword' | 'success';
-
-interface PasswordChangeState {
-	currentStep: ChangePasswordStep;
-	verificationToken: string;
-	oldPassword: string;
-	code: string;
+interface PasswordChangeFormData {
+	currentPassword: string;
 	newPassword: string;
 	confirmPassword: string;
 }
 
-const INITIAL_STATE: PasswordChangeState = {
-	currentStep: 'oldPassword',
-	verificationToken: '',
-	oldPassword: '',
-	code: '',
+const INITIAL_STATE: PasswordChangeFormData = {
+	currentPassword: '',
 	newPassword: '',
 	confirmPassword: '',
 };
 
 export const useChangePassword = (onClose: () => void) => {
-	const [state, setState] = useState<PasswordChangeState>(INITIAL_STATE);
+	const [formData, setFormData] = useState<PasswordChangeFormData>(INITIAL_STATE);
+	const [showSuccess, setShowSuccess] = useState(false);
 
-	const goToStep = (step: ChangePasswordStep) => {
-		setState((prev) => ({ ...prev, currentStep: step }));
-	};
-
-	const goToPreviousStep = () => {
-		const stepSequence: ChangePasswordStep[] = ['oldPassword', 'verification', 'newPassword'];
-		const currentIndex = stepSequence.indexOf(state.currentStep);
-		if (currentIndex > 0) {
-			goToStep(stepSequence[currentIndex - 1]);
-		}
-	};
-
-	const resetAndClose = () => {
-		setState(INITIAL_STATE);
-		onClose();
-	};
-
-	const updateField = (field: keyof PasswordChangeState, value: string) => {
-		setState((prev) => ({ ...prev, [field]: value }));
+	const updateField = (field: keyof PasswordChangeFormData, value: string) => {
+		setFormData((prev) => ({ ...prev, [field]: value }));
 	};
 
 	const changePasswordMutation = useMutation({
-		mutationFn: (password: string) => changePasswordService.requestPasswordChange(password),
-		onSuccess: () => goToStep('verification'),
-	});
-
-	const verifyCodeMutation = useMutation({
-		mutationFn: (verificationCode: string) =>
-			changePasswordService.verifyPasswordCode(verificationCode),
-		onSuccess: (data) => {
-			setState((prev) => ({ ...prev, verificationToken: data.token }));
-			goToStep('newPassword');
+		mutationFn: () =>
+			changePasswordService.changePassword(formData.currentPassword, formData.newPassword),
+		onSuccess: () => {
+			setShowSuccess(true);
+			setTimeout(() => {
+				resetAndClose();
+			}, 2000);
 		},
 	});
 
-	const confirmChangeMutation = useMutation({
-		mutationFn: () =>
-			changePasswordService.confirmPasswordChange(state.verificationToken, state.newPassword),
-		onSuccess: () => goToStep('success'),
-	});
-
-	const handleOldPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		updateField('oldPassword', e.target.value);
-	};
-
-	const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		updateField('code', e.target.value);
-	};
-
-	const handleNewPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		updateField('newPassword', e.target.value);
-	};
-
-	const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		updateField('confirmPassword', e.target.value);
-	};
-
-	const handleOldPasswordSubmit = (e: React.FormEvent) => {
+	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		if (!state.oldPassword.trim()) {
+
+		// Validation
+		if (!formData.currentPassword.trim()) {
 			alert('Please enter your current password');
 			return;
 		}
-		changePasswordMutation.mutate(state.oldPassword);
-	};
-
-	const handleCodeSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-		if (!state.code.trim()) {
-			alert('Please enter the verification code');
+		if (!formData.newPassword.trim()) {
+			alert('Please enter your new password');
 			return;
 		}
-		verifyCodeMutation.mutate(state.code);
-	};
-
-	const handleNewPasswordSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-		if (state.newPassword !== state.confirmPassword) {
-			alert('Passwords do not match');
+		if (!formData.confirmPassword.trim()) {
+			alert('Please confirm your new password');
 			return;
 		}
-		confirmChangeMutation.mutate();
+		if (formData.newPassword !== formData.confirmPassword) {
+			alert('New passwords do not match');
+			return;
+		}
+		if (formData.currentPassword === formData.newPassword) {
+			alert('New password must be different from current password');
+			return;
+		}
+
+		changePasswordMutation.mutate();
+	};
+
+	const resetAndClose = () => {
+		setFormData(INITIAL_STATE);
+		setShowSuccess(false);
+		onClose();
 	};
 
 	return {
-		step: state.currentStep,
-		formData: state,
-		mutations: {
-			request: changePasswordMutation,
-			verify: verifyCodeMutation,
-			confirm: confirmChangeMutation,
-		},
-		handlers: {
-			handleOldPasswordChange,
-			handleCodeChange,
-			handleNewPasswordChange,
-			handleConfirmPasswordChange,
-			handleOldPasswordSubmit,
-			handleCodeSubmit,
-			handleNewPasswordSubmit,
-		},
-		helpers: {
-			goToStep,
-			goToPrevious: goToPreviousStep,
-			updateField,
-			resetAndClose,
-		},
+		formData,
+		showSuccess,
+		isPending: changePasswordMutation.isPending,
+		error: changePasswordMutation.error,
+		updateField,
+		handleSubmit,
+		resetAndClose,
 	};
 };
