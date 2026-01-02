@@ -1,40 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { storyService, type StoryDetail } from '../services';
 
 interface UseStoryDetailReturn {
 	story: StoryDetail | null;
 	loading: boolean;
-	error: string | null;
+	error: Error | null;
 }
 
 export const useStoryDetail = (storyId?: string): UseStoryDetailReturn => {
-	const [story, setStory] = useState<StoryDetail | null>(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState<string | null>(null);
+	const { data, isPending, error } = useQuery({
+		queryKey: ['story', storyId],
+		queryFn: () => storyService.fetchStoryDetail(storyId!),
+		enabled: !!storyId,
+	});
 
-	useEffect(() => {
-		if (!storyId) {
-			setLoading(false);
-			return;
-		}
-
-		const fetchStory = async () => {
-			try {
-				setLoading(true);
-				const data = await storyService.fetchStoryDetail(storyId);
-				setStory(data.story);
-				setError(null);
-			} catch (err) {
-				const errorMessage = err instanceof Error ? err.message : 'Failed to fetch story';
-				setError(errorMessage);
-				setStory(null);
-			} finally {
-				setLoading(false);
-			}
-		};
-
-		fetchStory();
-	}, [storyId]);
-
-	return { story, loading, error };
+	return {
+		story: data?.story || null,
+		loading: isPending,
+		error: error || null,
+	};
 };
