@@ -23,6 +23,7 @@ export interface StoryDetail extends Story {
 
 export interface StoriesResponse {
 	list: Story[];
+	nextCursor?: string | null;
 }
 
 export interface StoryDetailResponse {
@@ -53,11 +54,22 @@ export class StoryError extends Error {
 }
 
 export const storyService = {
-	async fetchStories(category?: string | null): Promise<StoriesResponse> {
-		const url = category
-			? `${API_BASE_URL}/stories?category=${category}`
-			: `${API_BASE_URL}/stories/`;
+	async fetchStories(
+		category?: string | null,
+		startAfter?: string | null,
+	): Promise<StoriesResponse> {
+		const params = new URLSearchParams();
+		params.append('limit', '5');
 
+		if (category) {
+			params.append('category', category);
+		}
+
+		if (startAfter) {
+			params.append('startAfter', startAfter);
+		}
+
+		const url = `${API_BASE_URL}/stories?${params.toString()}`;
 		const response = await axios.get<StoriesResponse>(url);
 		return response.data;
 	},

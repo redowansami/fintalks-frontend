@@ -7,7 +7,16 @@ import { useStoryList } from '../features/story/hooks';
 import '../styles/HomePage.css';
 
 export const HomePage: React.FC = () => {
-	const { stories, activeCategory, isPending, pageTitle, handleCategoryClick } = useStoryList();
+	const {
+		stories,
+		activeCategory,
+		isPending,
+		isFetchingNextPage,
+		pageTitle,
+		hasNextPage,
+		handleCategoryClick,
+		handleLoadMore,
+	} = useStoryList();
 
 	return (
 		<>
@@ -18,7 +27,10 @@ export const HomePage: React.FC = () => {
 					<StoryListSection
 						stories={stories}
 						isPending={isPending}
+						isLoadingMore={isFetchingNextPage}
 						pageTitle={pageTitle}
+						hasNextPage={hasNextPage}
+						onLoadMore={handleLoadMore}
 					/>
 					<HomeSidebar show={!activeCategory} />
 				</div>
