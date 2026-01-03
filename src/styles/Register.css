@@ -1,6 +1,6 @@
 @import '../styles/variables.css';
 
-.register-container-wrapper {
+/* .register-container-wrapper {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -9,7 +9,7 @@
 	min-height: auto;
 	background-color: white;
 	width: 100%;
-}
+} */
 
 .register-container {
 	max-width: 28rem;

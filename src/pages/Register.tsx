@@ -1,13 +1,13 @@
-import { Footer, Modal, ErrorDialog, FormHeader, FormFooter } from '../components';
+import { Modal, ErrorDialog } from '../components';
 import {
-	RegisterForm,
 	ResendEmailLink,
 	useRegistrationForm,
 	useRegisterHandler,
 	signUp,
 	resendConfirmationEmail,
+	AuthFormLayout,
+	AuthForm,
 } from '../features/auth';
-import { Header } from '../components/Blank_Header';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Register.css';
 
@@ -27,7 +27,6 @@ export const Register = () => {
 	const navigate = useNavigate();
 	return (
 		<>
-			<Header />
 			<Modal
 				isOpen={showSuccessModal}
 				onClose={() => {
@@ -40,35 +39,32 @@ export const Register = () => {
 			>
 				<ResendEmailLink email={formData.email} onResend={resendConfirmationEmail} />
 			</Modal>
-			<div className="register-container-wrapper">
-				<div className="register-container">
-					<FormHeader
-						title="Register"
-						subtitle="Create your account to join the conversation"
+			<AuthFormLayout
+				title="Register"
+				subtitle="Join Us!!"
+				footerText="Already have an account?"
+				footerLinkText="Log in"
+				footerLink="/login"
+			>
+				{error && (
+					<ErrorDialog
+						message={error}
+						validationErrors={
+							validationErrors ||
+							(Object.keys(errors).length > 0 ? errors : undefined)
+						}
 					/>
+				)}
 
-					{error && (
-						<ErrorDialog
-							message={error}
-							validationErrors={
-								validationErrors ||
-								(Object.keys(errors).length > 0 ? errors : undefined)
-							}
-						/>
-					)}
-
-					<RegisterForm
-						formData={formData}
-						errors={errors}
-						loading={loading}
-						onInputChange={handleInputChange}
-						onSubmit={handleSubmit}
-					/>
-
-					<FormFooter text="Already have an account?" linkText="Log in" link="/login" />
-				</div>
-			</div>
-			<Footer />
+				<AuthForm
+					mode="register"
+					formData={formData}
+					errors={errors}
+					isPending={loading}
+					onInputChange={handleInputChange}
+					onSubmit={handleSubmit}
+				/>
+			</AuthFormLayout>
 		</>
 	);
 };
