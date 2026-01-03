@@ -1,6 +1,6 @@
-import { Header } from '../components/common/Header';
-import { Navbar } from '../components/common/Navbar';
-import { Footer } from '../components/common/Footer';
+import { Header } from '../components/Header';
+import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
 import { StoryListSection } from '../features/story/components';
 import { HomeSidebar } from '../features/home/components';
 import { useStoryList } from '../features/story/hooks';

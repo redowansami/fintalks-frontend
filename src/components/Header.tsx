@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import '../../styles/Header.css';
+import '../styles/Header.css';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../hooks/useAuthContext';
-import { CreateStoryModal } from '../../features/story/components';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { CreateStoryModal } from '../features/story/components';
 import { HeaderSearch, HeaderLogo, HeaderActions } from './HeaderComponents';
 
 export const Header: React.FC = () => {

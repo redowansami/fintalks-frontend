@@ -1,6 +1,6 @@
-import { NavLink } from '../NavLink';
-import { CategoryList } from '../CategoryList';
-import '../../styles/Navbar.css';
+import { NavLink } from './NavLink';
+import { CategoryList } from './CategoryList';
+import '../styles/Navbar.css';
 
 interface NavbarProps {
 	activeCategory?: string | null;
