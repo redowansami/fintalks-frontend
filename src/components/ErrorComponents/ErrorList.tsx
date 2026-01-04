@@ -1,17 +1,19 @@
-import type { ErrorListProps } from '../../types/components/errorComponents/errorListProps';
-import '../../styles/ErrorComponents/errorList.css';
+import type { ErrorListProps } from '../../types/errorComponents/errorListProps';
+import { List, ListItem } from '../List';
+import { Typography } from '../Typography';
 
 export const ErrorList = ({ errors }: ErrorListProps) => {
 	const allErrors = Object.values(errors).flat();
 
 	return (
-		<>
+		<List variant="unordered">
 			{allErrors.map((error, idx) => (
-				<div key={idx} className="error-list-item">
-					<span className="error-list-bullet">•</span>
-					<span>{error.trim()}</span>
-				</div>
+				<ListItem key={idx}>
+					<Typography variant="muted" color="error">
+						{'-  ' + error.trim()}{' '}
+					</Typography>
+				</ListItem>
 			))}
-		</>
+		</List>
 	);
 };
