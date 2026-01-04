@@ -1,4 +1,5 @@
 import { useResendEmail } from '../hooks';
+import { Typography } from '../../../components/Typography';
 import '../styles/ResendEmailLink.css';
 
 interface ResendEmailLinkProps {
@@ -15,19 +16,23 @@ export const ResendEmailLink = ({ email, onResend }: ResendEmailLinkProps) => {
 
 	return (
 		<div className="resend-email-container">
-			<p>
+			<Typography variant="muted" color="error">
 				Didn't receive the email?{' '}
-				<a
+				<Typography
+					variant="link"
 					onClick={(e) => {
 						e.preventDefault();
 						handleResendEmail();
 					}}
-					className={`resend-email-link ${isPending ? 'pending' : ''}`}
 				>
 					{isPending ? 'Resending...' : 'Resend Email'}
-				</a>
-			</p>
-			{message && <p className="resend-message">{message}</p>}
+				</Typography>
+			</Typography>
+			{message && (
+				<Typography variant="muted" color="success">
+					{message}
+				</Typography>
+			)}
 		</div>
 	);
 };

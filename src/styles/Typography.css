@@ -1,3 +1,5 @@
+@import '../styles/variables.css';
+
 .typography {
 	margin: 0;
 	font-family: var(--font-body);
@@ -37,8 +39,8 @@
 }
 
 .typography--link {
-	color: var(--secondary);
-	text-decoration: none;
+	color: var(--link);
+	/* text-decoration: none; */
 	cursor: pointer;
 	font-weight: 500;
 }
@@ -55,7 +57,7 @@
 }
 .typography-color--success {
 	color: var(--stock-green);
-} 
+}
 .typography-color--error {
 	color: var(--stock-red);
 }
