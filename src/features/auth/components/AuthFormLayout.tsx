@@ -18,11 +18,9 @@ export const AuthFormLayout = ({
 	footerLinkText,
 	children,
 }: AuthLayoutProps) => (
-	<div className="auth-page-layout">
-		<div className="auth-card">
-			<FormHeader title={title} subtitle={subtitle} />
-			{children}
-			<FormFooter text={footerText} linkText={footerLinkText} link={footerLink} />
-		</div>
+	<div className="auth-card">
+		<FormHeader title={title} subtitle={subtitle} />
+		{children}
+		<FormFooter text={footerText} linkText={footerLinkText} link={footerLink} />
 	</div>
 );
