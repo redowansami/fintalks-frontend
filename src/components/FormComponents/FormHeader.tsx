@@ -1,9 +1,10 @@
-import '../../styles/FormComponents/formHeader.css';
+import '../../styles/form.css';
 import type { FormHeaderProps } from '../../types/formProps';
+import { Typography } from '../Typography';
 
 export const FormHeader = ({ title = 'Form', subtitle }: FormHeaderProps) => (
 	<div className="form-header">
-		<h2>{title}</h2>
-		{subtitle && <p>{subtitle}</p>}
+		<Typography variant="h2">{title}</Typography>
+		{subtitle && <Typography variant="muted">{subtitle}</Typography>}
 	</div>
 );

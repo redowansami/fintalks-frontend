@@ -16,7 +16,6 @@ body {
 	font-family: var(--font-body);
 	color: var(--text-main-light);
 	background-color: var(--card-light);
-	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 	transition: background-color var(--transition-fast), color var(--transition-fast);
 }
