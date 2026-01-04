@@ -1,5 +1,5 @@
 import type { ErrorListProps } from '../../types/components/errorComponents/errorListProps';
-import '../../styles/components/ErrorComponents/errorList.css';
+import '../../styles/ErrorComponents/errorList.css';
 
 export const ErrorList = ({ errors }: ErrorListProps) => {
 	const allErrors = Object.values(errors).flat();
