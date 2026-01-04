@@ -1,0 +1,64 @@
+.typography {
+	margin: 0;
+	font-family: var(--font-body);
+	transition: var(--transition-fast);
+}
+
+.typography--h1,
+.typography--h2,
+.typography--h3 {
+	font-family: var(--font-display);
+	color: var(--primary);
+	line-height: 1.2;
+}
+
+.typography--h1 {
+	font-size: 2.5rem;
+	font-weight: 700;
+}
+.typography--h2 {
+	font-size: 2rem;
+	font-weight: 600;
+}
+.typography--h3 {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.typography--body {
+	font-size: 1rem;
+	color: var(--text-main-light);
+	line-height: 1.5;
+}
+
+.typography--muted {
+	font-size: 0.875rem;
+	color: var(--text-muted-light);
+}
+
+.typography--link {
+	color: var(--secondary);
+	text-decoration: none;
+	cursor: pointer;
+	font-weight: 500;
+}
+
+.typography--link:hover {
+	text-decoration: underline;
+}
+
+.typography-color--primary {
+	color: var(--primary);
+}
+.typography-color--secondary {
+	color: var(--secondary);
+}
+.typography-color--success {
+	color: var(--stock-green);
+} 
+.typography-color--error {
+	color: var(--stock-red);
+}
+.typography-color--muted {
+	color: var(--text-muted-light);
+}
