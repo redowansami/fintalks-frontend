@@ -1,4 +1,6 @@
 import React from 'react';
+import { Typography } from '../../../components/Typography';
+import { List, ListItem } from '../../../components/List';
 import { getPasswordChecks } from '../utils';
 import '../styles/PasswordRequirements.css';
 
@@ -11,8 +13,8 @@ export const PasswordRequirements: React.FC<PasswordRequirementsProps> = ({ pass
 
 	return (
 		<div className="password-requirements">
-			<p className="password-requirements-title">Password Requirements</p>
-			<ul className="requirements-list">
+			<Typography variant="body">Password Requirements</Typography>
+			<List>
 				{[
 					{ key: 'lowercase', label: 'Lowercase character' },
 					{ key: 'digit', label: 'One digit' },
@@ -20,19 +22,21 @@ export const PasswordRequirements: React.FC<PasswordRequirementsProps> = ({ pass
 					{ key: 'special', label: 'Special character (!@#$)' },
 					{ key: 'length', label: 'At least 8 characters' },
 				].map(({ key, label }) => (
-					<li
+					<ListItem
 						key={key}
 						className={`requirement-item ${
 							checks[key as keyof typeof checks] ? 'valid' : 'invalid'
 						}`}
 					>
-						<span className="requirement-icon">
-							{checks[key as keyof typeof checks] ? '✓' : '✗'}
-						</span>
-						{label}
-					</li>
+						<Typography
+							color={checks[key as keyof typeof checks] ? 'success' : 'error'}
+						>
+							{checks[key as keyof typeof checks] ? '✓ ' : '✗ '}
+							{' ' + label}
+						</Typography>
+					</ListItem>
 				))}
-			</ul>
+			</List>
 		</div>
 	);
 };
