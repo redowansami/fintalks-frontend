@@ -1,5 +1,3 @@
-@import '../styles/variables.css';
-
 .navbar {
 	width: 100%;
 	background-color: var(--primary);

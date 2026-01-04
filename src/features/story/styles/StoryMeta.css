@@ -1,5 +1,3 @@
-@import '../../../styles/variables.css';
-
 .story-meta {
 	color: var(--text-muted-light);
 	font-size: 0.875rem;

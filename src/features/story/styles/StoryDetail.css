@@ -1,5 +1,3 @@
-@import '../../../styles/variables.css';
-
 .story-detail-wrapper {
 	width: 100%;
 	background-color: var(--background-light);

@@ -1,5 +1,3 @@
-@import '../../../styles/variables.css';
-
 .sidebar-card {
 	background-color: var(--card-light);
 	padding: 1.5rem;

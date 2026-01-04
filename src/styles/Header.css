@@ -1,5 +1,3 @@
-@import '../styles/variables.css';
-
 .header {
 	width: 100%;
 	border-bottom: 1px solid var(--border-light);

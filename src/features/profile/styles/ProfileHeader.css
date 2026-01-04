@@ -1,5 +1,3 @@
-@import '../../../styles/variables.css';
-
 .profile-picture-wrapper {
 	position: relative;
 	flex-shrink: 0;
