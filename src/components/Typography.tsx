@@ -9,6 +9,7 @@ interface TypographyProps {
 	component?: React.ElementType;
 	children: React.ReactNode;
 	className?: string;
+	textAlign?: 'left' | 'center' | 'right' | 'justify';
 	href?: string;
 	onClick?: (e: React.MouseEvent) => void;
 }
@@ -19,6 +20,7 @@ export const Typography = ({
 	component,
 	children,
 	className = '',
+	textAlign = 'left',
 	...props
 }: TypographyProps) => {
 	const variantElementMap: Record<TypographyVariant, React.ElementType> = {
@@ -36,6 +38,7 @@ export const Typography = ({
 		'typography',
 		`typography--${variant}`,
 		color ? `typography-color--${color}` : '',
+		textAlign ? `typography-align--${textAlign}` : '',
 		className,
 	]
 		.filter(Boolean)

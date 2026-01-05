@@ -63,3 +63,19 @@
 .typography-color--muted {
 	color: var(--text-muted-light);
 }
+
+.typography-align--left {
+	text-align: left;
+}
+
+.typography-align--center {
+	text-align: center;
+}
+
+.typography-align--right {
+	text-align: right;
+}
+
+.typography-align--justify {
+	text-align: justify;
+}
