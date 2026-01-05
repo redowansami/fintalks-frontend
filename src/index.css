@@ -11,6 +11,9 @@
 	--color-card-dark: #1f2937;
 	--color-text-main-light: #000000;
 	--color-text-main-dark: #f3f4f6;
+	--color-text-muted-light: #6b7280;
+	--color-stock-green: rgb(17, 143, 0);
+	--color-stock-red: rgb(189, 13, 13);
 
 	--font-display: 'Playfair Display', serif;
 	--font-body: 'Inter', sans-serif;

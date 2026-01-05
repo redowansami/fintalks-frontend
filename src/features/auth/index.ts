@@ -1,7 +1,6 @@
 export {
 	PasswordRequirements,
 	ResendEmailLink,
-	AuthForm,
 	AuthFormLayout,
 	LoginForm,
 	RegisterForm,

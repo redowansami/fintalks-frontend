@@ -1,81 +1,73 @@
-.typography {
-	margin: 0;
-	font-family: var(--font-body);
-	transition: var(--transition-fast);
-}
+@reference '../index.css';
 
-.typography--h1,
-.typography--h2,
-.typography--h3 {
-	font-family: var(--font-display);
-	color: var(--primary);
-	line-height: 1.2;
-}
+@layer components {
+	.typography {
+		@apply m-0 font-body transition-all;
+	}
 
-.typography--h1 {
-	font-size: 2.5rem;
-	font-weight: 700;
-}
-.typography--h2 {
-	font-size: 2rem;
-	font-weight: 600;
-	margin-bottom: 0.5rem;
-}
-.typography--h3 {
-	font-size: 1.5rem;
-	font-weight: 600;
-}
+	.typography--h1,
+	.typography--h2,
+	.typography--h3 {
+		@apply font-display text-primary leading-tight;
+	}
 
-.typography--body {
-	font-size: 1rem;
-	color: var(--text-main-light);
-	line-height: 1.5;
-}
+	.typography--h1 {
+		@apply text-4xl font-bold;
+	}
 
-.typography--muted {
-	font-size: 0.875rem;
-	color: var(--text-muted-light);
-}
+	.typography--h2 {
+		@apply text-3xl font-semibold mb-2;
+	}
 
-.typography--link {
-	color: var(--link);
-	/* text-decoration: none; */
-	cursor: pointer;
-	font-weight: 500;
-}
+	.typography--h3 {
+		@apply text-2xl font-semibold;
+	}
 
-.typography--link:hover {
-	text-decoration: underline;
-}
+	.typography--body {
+		@apply text-base text-text-main-light leading-normal;
+	}
 
-.typography-color--primary {
-	color: var(--primary);
-}
-.typography-color--secondary {
-	color: var(--secondary);
-}
-.typography-color--success {
-	color: var(--stock-green);
-}
-.typography-color--error {
-	color: var(--stock-red);
-}
-.typography-color--muted {
-	color: var(--text-muted-light);
-}
+	.typography--muted {
+		@apply text-sm text-text-muted-light;
+	}
 
-.typography-align--left {
-	text-align: left;
-}
+	.typography--link {
+		@apply text-link cursor-pointer font-medium hover:underline;
+	}
 
-.typography-align--center {
-	text-align: center;
-}
+	.typography-color--primary {
+		@apply text-primary;
+	}
 
-.typography-align--right {
-	text-align: right;
-}
+	.typography-color--secondary {
+		@apply text-secondary;
+	}
 
-.typography-align--justify {
-	text-align: justify;
+	.typography-color--success {
+		@apply text-stock-green;
+	}
+
+	.typography-color--error {
+		@apply text-stock-red;
+	}
+
+	.typography-color--muted {
+		@apply text-text-muted-light;
+	}
+
+	.typography-align--left {
+		@apply text-left;
+	}
+
+	.typography-align--center {
+		@apply text-center;
+	}
+
+	.typography-align--right {
+		@apply text-right;
+	}
+
+	.typography-align--justify {
+		@apply text-justify;
+	}
 }

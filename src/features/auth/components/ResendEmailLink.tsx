@@ -1,6 +1,5 @@
 import { useResendEmail } from '../hooks';
 import { Typography } from '../../../components/Typography';
-import '../styles/ResendEmailLink.css';
 
 interface ResendEmailLinkProps {
 	email: string;
@@ -15,8 +14,8 @@ export const ResendEmailLink = ({ email, onResend }: ResendEmailLinkProps) => {
 	};
 
 	return (
-		<div className="resend-email-container">
-			<Typography variant="muted" color="error">
+		<div className="mt-2">
+			<Typography variant="muted" color="error" className="text-center">
 				Didn't receive the email?{' '}
 				<Typography
 					variant="link"
@@ -29,7 +28,7 @@ export const ResendEmailLink = ({ email, onResend }: ResendEmailLinkProps) => {
 				</Typography>
 			</Typography>
 			{message && (
-				<Typography variant="muted" color="success">
+				<Typography variant="muted" color="success" className="text-center">
 					{message}
 				</Typography>
 			)}
