@@ -48,7 +48,7 @@ export const Auth = () => {
 	};
 
 	return (
-		<>
+		<div className="layout-center">
 			{!isLoginPage && (
 				<Modal
 					isOpen={registerHandler.showSuccessModal}
@@ -116,6 +116,6 @@ export const Auth = () => {
 					</>
 				)}
 			</AuthFormLayout>
-		</>
+		</div>
 	);
 };

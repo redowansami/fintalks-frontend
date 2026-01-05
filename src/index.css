@@ -1,42 +1,56 @@
-@import './styles/variables.css';
+@import 'tailwindcss';
 
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+@theme {
+	--color-primary: #0a1f44;
+	--color-secondary: #132f5e;
+	--color-link: #3333ff;
+
+	--color-background-light: #ffffff;
+	--color-background-dark: #111827;
+	--color-card-light: #f9fafb;
+	--color-card-dark: #1f2937;
+	--color-text-main-light: #000000;
+	--color-text-main-dark: #f3f4f6;
+
+	--font-display: 'Playfair Display', serif;
+	--font-body: 'Inter', sans-serif;
+
+	--transition-fast: 0.2s ease;
 }
 
-html,
-body {
-	width: 100%;
-	height: 100%;
+@layer base {
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html,
+	body {
+		width: 100%;
+		height: 100%;
+	}
+
+	body {
+		font-family: var(--font-body);
+		color: var(--color-text-main-light);
+		background-color: var(--color-card-light);
+		-webkit-font-smoothing: antialiased;
+		transition: background-color var(--transition-fast), color var(--transition-fast);
+	}
 }
 
-body {
-	font-family: var(--font-body);
-	color: var(--text-main-light);
-	background-color: var(--card-light);
-	-webkit-font-smoothing: antialiased;
-	transition: background-color var(--transition-fast), color var(--transition-fast);
+@layer components {
+	.btn-base {
+		@apply flex items-center justify-center gap-2 px-4 py-3 rounded text-sm font-bold;
+		@apply cursor-pointer transition-colors duration-200 border border-transparent shadow-sm;
+		@apply disabled:opacity-60 disabled:cursor-not-allowed;
+		@apply focus:outline-none focus:ring-4 focus:ring-primary/10;
+	}
 }
 
-#root {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	width: 100%;
-}
-
-a {
-	text-decoration: none;
-	color: inherit;
-}
-
-button {
-	border: none;
-	cursor: pointer;
-	background: none;
-	font-family: inherit;
+@layer utilities {
+	.layout-center {
+		@apply flex min-h-screen w-full items-center justify-center bg-card-light;
+	}
 }

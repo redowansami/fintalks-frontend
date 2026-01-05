@@ -29,7 +29,7 @@ export const Button: React.FC<ButtonProps> = ({
 			type={type}
 			onClick={onClick}
 			disabled={disabled || isLoading}
-			className={`button button--${variant} ${className}`}
+			className={`btn-base btn--${variant} ${className}`}
 		>
 			{isLoading ? loadingText || children : children}
 		</button>
