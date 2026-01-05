@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 interface SignUpRequest {
 	username: string;
 	name: string;
@@ -26,26 +28,18 @@ const RESEND_EMAIL_URL = 'http://localhost:3000/api/v1/auth/resend-confirmation-
 
 export const signUp = async (userData: SignUpRequest): Promise<SignUpResponse> => {
 	try {
-		const response = await fetch(API_URL, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(userData),
-		});
-
-		const data = await response.json();
-
-		if (!response.ok) {
-			const error = new Error(data.message || 'Registration failed') as Error & {
-				errors?: Record<string, string | string[]>;
-			};
-			error.errors = data.errors;
-			throw error;
-		}
-
+		const { data } = await axios.post(API_URL, userData);
 		return data;
 	} catch (error) {
+		if (axios.isAxiosError(error)) {
+			const err = new Error(
+				error.response?.data?.message || 'Registration failed',
+			) as Error & {
+				errors?: Record<string, string | string[]>;
+			};
+			err.errors = error.response?.data?.errors;
+			throw err;
+		}
 		throw error instanceof Error ? error : new Error('An unexpected error occurred');
 	}
 };
@@ -54,22 +48,12 @@ export const resendConfirmationEmail = async (
 	email: string,
 ): Promise<ResendConfirmationResponse> => {
 	try {
-		const response = await fetch(RESEND_EMAIL_URL, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ email }),
-		});
-
-		const data = await response.json();
-
-		if (!response.ok) {
-			throw new Error(data.message || 'Failed to resend confirmation email');
-		}
-
+		const { data } = await axios.post(RESEND_EMAIL_URL, { email });
 		return data;
 	} catch (error) {
+		if (axios.isAxiosError(error)) {
+			throw new Error(error.response?.data?.message || 'Failed to resend confirmation email');
+		}
 		throw error instanceof Error ? error : new Error('An unexpected error occurred');
 	}
 };
