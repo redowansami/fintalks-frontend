@@ -1,4 +1,11 @@
-export { PasswordRequirements, ResendEmailLink, AuthForm, AuthFormLayout } from './components';
+export {
+	PasswordRequirements,
+	ResendEmailLink,
+	AuthForm,
+	AuthFormLayout,
+	LoginForm,
+	RegisterForm,
+} from './components';
 
 export {
 	useLoginForm,

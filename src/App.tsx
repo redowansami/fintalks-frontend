@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Register, Login, HomePage, StoryDetail, Profile } from './pages';
+import { HomePage, StoryDetail, Profile } from './pages';
 import { AuthProvider } from './contexts/AuthContext';
 import { CategoryProvider } from './contexts/CategoryContext';
 import { GuestGuard } from './components/GuestGuard';
+import { Auth } from './pages/Auth';
 
 const CategoryLayout = () => (
 	<CategoryProvider>
@@ -22,7 +23,7 @@ function App() {
 							path="/login"
 							element={
 								<GuestGuard>
-									<Login />
+									<Auth />
 								</GuestGuard>
 							}
 						/>
@@ -30,7 +31,7 @@ function App() {
 							path="/signup"
 							element={
 								<GuestGuard>
-									<Register />
+									<Auth />
 								</GuestGuard>
 							}
 						/>
