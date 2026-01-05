@@ -7,6 +7,8 @@ interface ButtonProps {
 	children: React.ReactNode;
 	onClick?: () => void;
 	type?: 'button' | 'submit' | 'reset';
+	isLoading?: boolean;
+	loadingText?: string;
 	disabled?: boolean;
 	className?: string;
 	variant?: ButtonVariant;
@@ -16,6 +18,8 @@ export const Button: React.FC<ButtonProps> = ({
 	children,
 	onClick,
 	type = 'button',
+	isLoading = false,
+	loadingText = '',
 	disabled = false,
 	className = '',
 	variant = 'primary',
@@ -24,10 +28,10 @@ export const Button: React.FC<ButtonProps> = ({
 		<button
 			type={type}
 			onClick={onClick}
-			disabled={disabled}
+			disabled={disabled || isLoading}
 			className={`button button--${variant} ${className}`}
 		>
-			{children}
+			{isLoading ? loadingText || children : children}
 		</button>
 	);
 };

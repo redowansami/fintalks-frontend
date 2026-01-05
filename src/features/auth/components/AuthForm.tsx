@@ -1,7 +1,6 @@
-import { InputField } from '../../../components';
+import { Button, InputField } from '../../../components';
 import { PasswordInput } from '../../../components';
 import { PasswordRequirements } from './PasswordRequirements';
-import { AuthSubmitButton } from './AuthSubmitButton';
 import { REGISTER_FORM_FIELDS } from '../../../constants/RegisterForm';
 
 interface AuthFormProps {
@@ -86,11 +85,13 @@ export const AuthForm = ({
 				</>
 			)}
 
-			<AuthSubmitButton
-				isPending={isPending}
-				label={isReg ? 'Register' : 'Log in'}
-				pendingLabel={isReg ? 'Registering...' : 'Logging in...'}
-			/>
+			<Button
+				type="submit"
+				isLoading={isPending}
+				loadingText={isReg ? 'Registering...' : 'Logging in...'}
+			>
+				{isReg ? 'Register' : 'Log in'}
+			</Button>
 		</form>
 	);
 };
