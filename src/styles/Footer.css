@@ -1,37 +1,19 @@
-.footer {
-	width: 100%;
-	background-color: var(--primary);
-	color: white;
-	padding: 2rem 5rem;
-	margin-top: auto;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-	text-align: right;
-}
+@reference '../index.css';
 
-.footer-logo {
-	font-family: var(--font-display);
-	font-size: 1.5rem;
-	font-weight: bold;
-	margin-bottom: 0.5rem;
-}
-
-.footer-text {
-	font-size: 0.875rem;
-	color: #d1d5db;
-	margin: 0.125rem 0;
-}
-
-.footer-address {
-	font-size: 0.75rem;
-	color: #9ca3af;
-	margin: 0;
-}
-
-@media (max-width: 768px) {
+@layer components {
 	.footer {
-		align-items: center;
-		text-align: center;
+		@apply w-full bg-primary text-white py-8 mt-auto flex flex-col items-center text-center md:items-end md:text-right;
+	}
+
+	.footer-logo {
+		@apply font-display text-white text-2xl font-bold mb-2;
+	}
+
+	.footer-text {
+		@apply text-xs text-gray-400 my-0.5;
+	}
+
+	.footer-address {
+		@apply text-xs text-gray-500;
 	}
 }
