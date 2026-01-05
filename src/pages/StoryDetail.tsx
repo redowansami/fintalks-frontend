@@ -8,6 +8,7 @@ import { AIReliabilityCard } from '../features/story/components/AIReliabilityCar
 import { StoryMeta, StoryImage, StoryTags } from '../features/story/components';
 import { useStoryDetail } from '../features/story/hooks';
 import '../features/story/styles/StoryDetail.css';
+import { Spinner } from '../components';
 
 export const StoryDetail: React.FC = () => {
 	const { storyId } = useParams<{ storyId: string }>();
@@ -21,7 +22,7 @@ export const StoryDetail: React.FC = () => {
 		navigate('/', { state: { selectedCategory: category } });
 	};
 
-	if (loading) return <p style={{ textAlign: 'center', padding: '2rem' }}>Loading...</p>;
+	if (loading) return <Spinner />;
 	if (error || !story) {
 		navigate('/');
 		return null;
