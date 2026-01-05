@@ -7,7 +7,6 @@
 
 .input-header {
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
 }
 
@@ -38,11 +37,6 @@
 .input-control.is-invalid {
 	border-color: #ef4444;
 	background-color: #fef2f2;
-}
-
-.input-error {
-	font-size: 0.875rem;
-	color: #dc2626;
 }
 
 .input-wrapper {

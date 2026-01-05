@@ -2,6 +2,7 @@ import React from 'react';
 import { ValidationTooltip } from './ValidationTooltip';
 import { type InputFieldProps } from '../types/components/inputFieldProps';
 import '../styles/InputField.css';
+import { Typography } from './Typography';
 
 export const InputField: React.FC<InputFieldProps> = ({
 	label,
@@ -33,9 +34,9 @@ export const InputField: React.FC<InputFieldProps> = ({
 			</div>
 
 			{error && (
-				<p className="input-error" role="alert">
+				<Typography variant="muted" color="error" className="input-error">
 					{error}
-				</p>
+				</Typography>
 			)}
 		</div>
 	);

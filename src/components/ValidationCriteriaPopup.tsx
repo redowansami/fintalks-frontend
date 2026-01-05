@@ -1,3 +1,5 @@
+import { List, ListItem } from './List';
+import { Typography } from './Typography';
 import '../styles/ValidationCriteriaPopup.css';
 
 interface ValidationCriteriaPopupProps {
@@ -7,11 +9,13 @@ interface ValidationCriteriaPopupProps {
 export const ValidationCriteriaPopup = ({ criteria }: ValidationCriteriaPopupProps) => {
 	return (
 		<div className="validation-tooltip-popup">
-			<ul className="validation-criteria-list">
+			<List variant="unordered" className="validation-criteria-list">
 				{criteria.map((criterion, idx) => (
-					<li key={idx}>{criterion}</li>
+					<ListItem key={idx}>
+						<Typography variant="body">{'-  ' + criterion}</Typography>
+					</ListItem>
 				))}
-			</ul>
+			</List>
 		</div>
 	);
 };
