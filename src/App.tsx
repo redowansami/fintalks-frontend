@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Register, Login, HomePage, StoryDetail, Profile } from './pages';
 import { AuthProvider } from './contexts/AuthContext';
 import { CategoryProvider } from './contexts/CategoryContext';
+import { GuestGuard } from './components/GuestGuard';
 
 const CategoryLayout = () => (
 	<CategoryProvider>
@@ -17,8 +18,22 @@ function App() {
 			<AuthProvider>
 				<Router>
 					<Routes>
-						<Route path="/login" element={<Login />} />
-						<Route path="/signup" element={<Register />} />
+						<Route
+							path="/login"
+							element={
+								<GuestGuard>
+									<Login />
+								</GuestGuard>
+							}
+						/>
+						<Route
+							path="/signup"
+							element={
+								<GuestGuard>
+									<Register />
+								</GuestGuard>
+							}
+						/>
 						<Route element={<CategoryLayout />}>
 							<Route path="/" element={<HomePage />} />
 							<Route path="/profile" element={<Profile />} />
