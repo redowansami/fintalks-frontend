@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { createInputChangeHandler } from '../utils';
+import { validateLoginForm } from '../utils/loginValidator';
 
 interface LoginFormData {
 	email: string;
@@ -22,15 +23,7 @@ export const useLoginForm = (): UseLoginFormReturn => {
 	const handleInputChange = createInputChangeHandler(setFormData);
 
 	const validateForm = (): boolean => {
-		const newErrors: { [key: string]: string } = {};
-		if (!formData.email.trim()) {
-			newErrors.email = 'Email is required';
-		} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-			newErrors.email = 'Invalid email format';
-		}
-		if (!formData.password) {
-			newErrors.password = 'Password is required';
-		}
+		const newErrors = validateLoginForm(formData);
 		setErrors(newErrors);
 		return Object.keys(newErrors).length === 0;
 	};
