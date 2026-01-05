@@ -60,7 +60,3 @@
 .button--danger:hover:not(:disabled) {
 	background-color: #b91c1c;
 }
-
-.button.full-width {
-	width: 100%;
-}
