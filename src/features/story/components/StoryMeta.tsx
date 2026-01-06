@@ -1,4 +1,4 @@
-import '../styles/StoryMeta.css';
+import { Typography } from '../../../components/Typography';
 
 interface StoryMetaProps {
 	username: string;
@@ -7,12 +7,15 @@ interface StoryMetaProps {
 }
 
 export const StoryMeta: React.FC<StoryMetaProps> = ({ username, createdAt, updatedAt }) => {
-	const formattedDate = new Date(createdAt).toLocaleDateString();
+	const createDate = new Date(createdAt).toLocaleDateString();
+	const UpdateDate = updatedAt ? new Date(updatedAt).toLocaleDateString() : null;
 
 	return (
-		<div className="story-meta">
-			By {username} | Created: {formattedDate}
-			{updatedAt && ` | Updated: ${new Date(updatedAt).toLocaleDateString()}`}
+		<div>
+			<Typography variant="muted">
+				By {username} | Created: {createDate}
+				{updatedAt && ` | Updated: ${UpdateDate}`}
+			</Typography>
 		</div>
 	);
 };
