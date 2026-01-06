@@ -16,7 +16,7 @@
 	}
 
 	.typography--h2 {
-		@apply text-3xl font-semibold mb-2;
+		@apply text-3xl font-semibold mb-4;
 	}
 
 	.typography--h3 {
@@ -24,11 +24,15 @@
 	}
 
 	.typography--body {
-		@apply text-base text-text-main-light leading-normal;
+		@apply text-sm text-text-main-light leading-normal;
 	}
 
 	.typography--muted {
 		@apply text-sm text-text-muted-light;
+	}
+
+	.typography--xs {
+		@apply text-xs text-text-muted-light;
 	}
 
 	.typography--link {

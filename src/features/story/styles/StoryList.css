@@ -8,13 +8,6 @@
 	margin-bottom: 1rem;
 }
 
-.story-list-title {
-	font-size: 1.875rem;
-	font-weight: 700;
-	text-align: left;
-	color: var(--primary);
-}
-
 .story-list-title-home {
 	text-align: left;
 }

@@ -3,6 +3,7 @@ import { Spinner } from '../../../components/Spinner';
 import { Button } from '../../../components/Button';
 import type { Story } from '../services';
 import '../styles/StoryList.css';
+import { Typography } from '../../../components/Typography';
 
 interface StoryListSectionProps {
 	stories: Story[];
@@ -23,12 +24,10 @@ export const StoryListSection: React.FC<StoryListSectionProps> = ({
 }) => {
 	return (
 		<section className="story-list-section">
-			<div className="story-list-header">
-				<h2 className="story-list-title">{pageTitle}</h2>
-			</div>
-			{isPending && stories.length === 0 ? (
+			<Typography variant="h2">{pageTitle}</Typography>
+			{isPending ? (
 				<Spinner />
-			) : stories && stories.length > 0 ? (
+			) : stories.length > 0 ? (
 				<>
 					<div className="story-list-container">
 						{stories.map((story) => (
@@ -55,7 +54,7 @@ export const StoryListSection: React.FC<StoryListSectionProps> = ({
 					)}
 				</>
 			) : (
-				<p className="story-list-empty">No articles found</p>
+				<Typography textAlign='center' color='error'>No stories found.</Typography>
 			)}
 		</section>
 	);

@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/StoryCard.css';
+import { Typography } from '../../../components/Typography';
 
 interface StoryCardProps {
 	storyId: string;
@@ -42,10 +43,10 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 
 	const scoreColor =
 		reliabilityScore >= 80
-			? 'var(--stock-green)'
+			? 'var(--color-stock-green)'
 			: reliabilityScore >= 60
 			? '#f59e0b'
-			: 'var(--stock-red)';
+			: 'var(--color-stock-red)';
 
 	const placeholderImage =
 		'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="200"%3E%3Crect fill="%23d4d4d8" width="300" height="200"/%3E%3C/svg%3E';
@@ -54,28 +55,22 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 		<article className="story-card" onClick={handleClick}>
 			<img src={image || placeholderImage} alt={title} className="story-card-image" />
 			<div className="story-card-content">
-				<h3 className="story-card-title">{title}</h3>
-				<div className="story-card-meta">
-					<div className="story-card-meta-item">
-						<Icon icon="mdi:user" /> {username}
-					</div>
-					<span>•</span>
-					<div className="story-card-meta-item">
-						<Icon icon="mdi:calendar" /> {formatDate(createdAt)}
-					</div>
-				</div>
-				<div className="story-card-categories">
-					{categories.map((cat, idx) => (
-						<span key={idx} className="story-card-category">
-							{cat.name}
-						</span>
-					))}
-				</div>
-				<p className="story-card-body">{truncateText(body, 200)}</p>
+				<Typography variant="h3">{title}</Typography>
+
+				<Typography variant="xs" className="flex items-center gap-4">
+					<Icon icon="mdi:user" /> {username}
+					<Icon icon="mdi:calendar" /> {formatDate(createdAt)}
+				</Typography>
+
+				<Typography variant="xs">{categories.map((cat) => cat.name).join(' ')}</Typography>
+
+				<Typography variant="body">{truncateText(body, 200)}</Typography>
+
 				<div className="story-card-reliability">
 					<span className="story-card-reliability-score" style={{ color: scoreColor }}>
 						Reliability: {reliabilityScore}%
 					</span>
+					
 					<div className="story-card-reliability-bar">
 						<div
 							className="story-card-reliability-fill"
