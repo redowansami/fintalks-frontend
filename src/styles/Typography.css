@@ -27,6 +27,10 @@
 		@apply text-sm text-text-main-light leading-normal;
 	}
 
+	.typography--body1 {
+		@apply text-base text-text-main-light leading-normal;
+	}
+
 	.typography--muted {
 		@apply text-sm text-text-muted-light;
 	}

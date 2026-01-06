@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Typography.css';
 
-type TypographyVariant = 'h1' | 'h2' | 'h3' | 'body' | 'muted' | 'xs' | 'link';
+type TypographyVariant = 'h1' | 'h2' | 'h3' | 'body1' | 'body' | 'muted' | 'xs' | 'link';
 
 interface TypographyProps {
 	variant?: TypographyVariant;
@@ -28,6 +28,7 @@ export const Typography = ({
 		h2: 'h2',
 		h3: 'h3',
 		body: 'p',
+		body1: 'p',
 		muted: 'p',
 		xs: 'p',
 		link: 'a',
