@@ -6,7 +6,7 @@ export { Header } from './Header';
 export { Navbar } from './Navbar';
 export { Footer } from './Footer';
 export { StoryCard } from '../features/story/components';
-export { TaxCalculator, AdvertisementSpace, MarketMovers } from '../features/home/components';
+export { AdvertisementSpace, MarketMovers } from '../features/home/components';
 export { Modal } from './Modal';
 export { ErrorDialog } from './ErrorComponents/ErrorDialog';
 export { ErrorList } from './ErrorComponents/ErrorList';

@@ -1,4 +1,3 @@
-import { TaxCalculator } from './SideBar/TaxCalculator';
 import { AdvertisementSpace } from './SideBar/AdvertisementSpace';
 import { MarketMovers } from './SideBar/MarketMovers';
 
@@ -11,9 +10,8 @@ export const HomeSidebar: React.FC<HomeSidebarProps> = ({ show }) => {
 
 	return (
 		<div className="sidebar">
-			<TaxCalculator />
-			<AdvertisementSpace />
 			<MarketMovers />
+			<AdvertisementSpace />
 		</div>
 	);
 };
