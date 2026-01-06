@@ -1,5 +1,5 @@
 export {
-	ProfileHeader,
+	ProfilePicture,
 	ProfileActions,
 	ProfileBio,
 	ProfileStories,

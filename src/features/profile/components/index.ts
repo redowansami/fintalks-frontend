@@ -1,4 +1,4 @@
-export { ProfileHeader } from './ProfileHeader';
+export { ProfilePicture } from './ProfilePicture';
 export { ProfileActions } from './ProfileActions';
 export { ProfileBio } from './ProfileBio';
 export { ProfileStories } from './ProfileStories';
