@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Spinner } from '../components/Spinner';
 import { ImageUploadModal } from '../components/ImageUploadModal';
-import { ProfileLayout } from '../components/ProfileLayout';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import {
 	useProfile,
@@ -61,7 +60,7 @@ export const Profile = () => {
 	};
 
 	return (
-		<ProfileLayout>
+		<>
 			{renderContent()}
 			{profile && (
 				<>
@@ -81,6 +80,6 @@ export const Profile = () => {
 					/>
 				</>
 			)}
-		</ProfileLayout>
+		</>
 	);
 };
