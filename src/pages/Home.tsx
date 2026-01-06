@@ -19,10 +19,10 @@ export const HomePage: React.FC = () => {
 	} = useStoryList();
 
 	return (
-		<>
+		<div className="flex flex-col min-h-screen">
 			<Header />
 			<Navbar activeCategory={activeCategory} onCategoryClick={handleCategoryClick} />
-			<main className="homepage">
+			<main className="homepage grow">
 				<div className={`main-content ${activeCategory ? 'no-sidebar' : ''}`}>
 					<StoryListSection
 						stories={stories}
@@ -36,6 +36,6 @@ export const HomePage: React.FC = () => {
 				</div>
 			</main>
 			<Footer />
-		</>
+		</div>
 	);
 };
