@@ -5,7 +5,7 @@ import { ProfileLayout } from '../components/ProfileLayout';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import {
 	useProfile,
-	ProfileHeader,
+	ProfilePicture,
 	ProfileActions,
 	ProfileBio,
 	ProfileStories,
@@ -13,6 +13,7 @@ import {
 	ChangePasswordModal,
 } from '../features/profile';
 import '../styles/Profile.css';
+import { Typography } from '../components/Typography';
 
 export const Profile = () => {
 	const { data, isLoading, isError, error } = useProfile();
@@ -32,26 +33,26 @@ export const Profile = () => {
 		return (
 			<>
 				<section className="profile-header-section">
-					<div className="profile-header-content">
-						<ProfileHeader
-							profile={profile}
-							onEditPicture={() => setIsImageUploadModalOpen(true)}
-						/>
-						<div className="profile-info">
-							<div className="profile-header-top">
-								<div className="profile-names">
-									<h1 className="profile-full-name">{profile.name}</h1>
-									<p className="profile-username">@{profile.username}</p>
-								</div>
-								<div className="profile-actions">
-									<ProfileActions
-										onEditProfile={() => setIsEditModalOpen(true)}
-										onChangePassword={() => setIsChangePasswordModalOpen(true)}
-									/>
-								</div>
+					<ProfilePicture
+						profile={profile}
+						onEditPicture={() => setIsImageUploadModalOpen(true)}
+					/>
+					<div className="profile-info">
+						<div className="profile-header-top">
+							<div className="profile-names">
+								<Typography variant="h1">{profile.name}</Typography>
+								<Typography variant="h3" color="muted">
+									@{profile.username}
+								</Typography>
 							</div>
-							<ProfileBio profile={profile} />
+							<div className="profile-actions">
+								<ProfileActions
+									onEditProfile={() => setIsEditModalOpen(true)}
+									onChangePassword={() => setIsChangePasswordModalOpen(true)}
+								/>
+							</div>
 						</div>
+						<ProfileBio profile={profile} />
 					</div>
 				</section>
 				<ProfileStories storyCount={0} />
