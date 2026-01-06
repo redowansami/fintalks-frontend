@@ -12,7 +12,7 @@ export const StoryMeta: React.FC<StoryMetaProps> = ({ username, createdAt, updat
 
 	return (
 		<div>
-			<Typography variant="muted">
+			<Typography variant="muted" className="mb-4">
 				By {username} | Created: {createDate}
 				{updatedAt && ` | Updated: ${UpdateDate}`}
 			</Typography>
