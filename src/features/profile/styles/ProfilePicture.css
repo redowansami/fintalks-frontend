@@ -1,0 +1,19 @@
+@reference '../../../index.css';
+
+@layer components {
+	.profile-picture-wrapper {
+		@apply relative inline-block;
+	}
+
+	.profile-image {
+		@apply w-36 h-36 rounded-full border-4 border-white shadow-md object-cover;
+	}
+
+	.profile-image-placeholder {
+		@apply w-36 h-36 rounded-full border-4 border-white shadow-md bg-gray-200 flex items-center justify-center text-gray-500 text-4xl;
+	}
+
+	.image-edit-btn {
+		@apply absolute bottom-0 right-0 w-10 h-10 p-2 border-2 border-white rounded-full;
+	}
+}
