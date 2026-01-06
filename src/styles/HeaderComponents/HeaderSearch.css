@@ -1,25 +1,15 @@
-.header-left {
-	display: flex;
-	align-items: center;
-	width: 25%;
-	gap: 0.5rem;
-}
+@reference '../../index.css';
 
-.icon-button {
-	padding: 0.5rem;
-	border-radius: 50%;
-	background-color: transparent;
-	transition: background-color 0.2s;
-	border: none;
-	cursor: pointer;
-}
+@layer components {
+	.header-left {
+		@apply flex items-center flex-1 gap-2;
+	}
 
-.icon-button:hover {
-	background-color: #f3f4f6;
-}
+	.icon-button {
+		@apply p-2 rounded-full bg-transparent hover:bg-gray-100 border-none cursor-pointer transition-colors;
+	}
 
-.header-tagline {
-	font-size: 0.875rem;
-	font-weight: 500;
-	color: var(--primary);
+	.header-tagline {
+		@apply text-sm font-medium text-primary;
+	}
 }

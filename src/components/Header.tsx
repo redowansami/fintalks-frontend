@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import '../styles/Header.css';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { CreateStoryModal } from '../features/story/components';
 import { HeaderSearch, HeaderLogo, HeaderActions } from './HeaderComponents';
+import '../styles/Header.css';
 
 export const Header: React.FC = () => {
 	const navigate = useNavigate();
@@ -32,8 +32,8 @@ export const Header: React.FC = () => {
 	};
 
 	return (
-		<header className="header">
-			<div className="header-content">
+		<>
+			<header className="app-header">
 				<HeaderSearch />
 				<HeaderLogo />
 				<HeaderActions
@@ -43,11 +43,11 @@ export const Header: React.FC = () => {
 					onLogout={handleLogout}
 					onLogin={handleLogin}
 				/>
-			</div>
+			</header>
 			<CreateStoryModal
 				isOpen={isCreateStoryModalOpen}
 				onClose={() => setIsCreateStoryModalOpen(false)}
 			/>
-		</header>
+		</>
 	);
 };

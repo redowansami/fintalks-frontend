@@ -1,12 +1,10 @@
 import React from 'react';
-import '../../styles/HeaderComponents/HeaderLogo.css';
+import logo from '../../assets/FinTalks_logo.png';
 
 export const HeaderLogo: React.FC = () => {
 	return (
-		<div className="header-center">
-			<a className="logo" href="/">
-				FinTalks
-			</a>
-		</div>
+		<a href="/" className="flex-none flex justify-center px-4">
+			<img src={logo} alt="FinTalks" className="h-14 w-auto" />
+		</a>
 	);
 };

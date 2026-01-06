@@ -2,7 +2,6 @@ import React from 'react';
 import { Icon } from '@iconify/react';
 import { Button } from '../Button';
 import { UserMenu } from './UserMenu';
-import '../../styles/HeaderComponents/HeaderActions.css';
 
 interface HeaderActionsProps {
 	user: { username: string } | null;
@@ -20,7 +19,7 @@ export const HeaderActions: React.FC<HeaderActionsProps> = ({
 	onLogin,
 }) => {
 	return (
-		<div className="header-right">
+		<div className="flex-1 flex items-center justify-end md:w-1/4 gap-4">
 			<Button variant="secondary" onClick={onCreateStory}>
 				Create Story
 			</Button>
