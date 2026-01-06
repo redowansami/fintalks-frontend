@@ -1,5 +1,3 @@
-import '../styles/Navbar.css';
-
 interface NavLinkProps {
 	label: string;
 	isActive: boolean;
@@ -8,10 +6,8 @@ interface NavLinkProps {
 
 export const NavLink: React.FC<NavLinkProps> = ({ label, isActive, onClick }) => {
 	return (
-		<li>
-			<button onClick={onClick} className={`nav-link ${isActive ? 'active' : ''}`}>
-				{label}
-			</button>
-		</li>
+		<button onClick={onClick} className={`nav-link ${isActive ? 'active' : ''}`}>
+			{label}
+		</button>
 	);
 };

@@ -1,49 +1,15 @@
-.navbar {
-	width: 100%;
-	background-color: var(--primary);
-	padding: 0.75rem 0;
-	box-shadow: 0 1px 3px #0002;
-	overflow: hidden;
-}
+@reference '../index.css';
 
-.navbar-content {
-	max-width: 80rem;
-	margin: 0 auto;
-	padding: 0 1rem;
-}
+@layer components {
+	.navbar {
+		@apply w-full bg-primary py-3 shadow-md px-4 flex justify-center;
+	}
 
-.nav-list {
-	display: flex;
-	gap: 0.75rem;
-	list-style: none;
-	overflow-x: auto;
-	scrollbar-width: none;
-	-ms-overflow-style: none;
-	padding-bottom: 2px;
-	scrollbar-width: thin;
-	scrollbar-color: #ffffff4d transparent;
-}
+	.nav-link {
+		@apply px-4 py-1.5 text-sm font-medium text-gray-300 bg-transparent border border-transparent rounded-full whitespace-nowrap transition-colors cursor-pointer hover:text-white hover:bg-white/10;
+	}
 
-.nav-link {
-	padding: 0.4rem 1rem;
-	font-size: 0.875rem;
-	font-weight: 500;
-	color: #d1d5db;
-	background: transparent;
-	border: 1px solid transparent;
-	border-radius: 20px;
-	white-space: nowrap;
-	transition: 0.2s;
-	cursor: pointer;
-	text-decoration: none;
-}
-
-.nav-link:hover,
-.nav-link.active {
-	color: #fff;
-	background-color: #ffffff1a;
-}
-
-.nav-link.active {
-	background-color: var(--secondary);
+	.nav-link.active {
+		@apply text-white bg-secondary;
+	}
 }

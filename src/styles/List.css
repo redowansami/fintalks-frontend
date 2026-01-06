@@ -1,16 +1,28 @@
-.custom-list {
-	padding: 0;
-	margin: 1rem 0;
-	list-style: none;
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-}
+@reference '../index.css';
 
-.custom-list-item {
-	display: flex;
-	align-items: center;
-	gap: 0.75rem;
-	font-family: var(--font-body);
-	color: var(--text-main-light);
+@layer components {
+	.custom-list {
+		@apply p-0 my-4 list-none flex flex-col gap-2;
+	}
+
+	.custom-list-item {
+		@apply flex items-center gap-3 text-gray-700;
+	}
+
+	.custom-list.nav-list {
+		@apply flex-row my-0 gap-3 overflow-x-auto pb-0.5 max-w-full;
+		justify-content: safe center;
+	}
+
+	.custom-list.nav-list::-webkit-scrollbar {
+		height: 4px;
+	}
+
+	.custom-list.nav-list::-webkit-scrollbar-track {
+		@apply bg-primary;
+	}
+
+	.custom-list.nav-list::-webkit-scrollbar-thumb {
+		@apply bg-gray-500 rounded-full;
+	}
 }

@@ -1,5 +1,6 @@
 import { NavLink } from './NavLink';
 import { CategoryList } from './CategoryList';
+import { List } from './List';
 import '../styles/Navbar.css';
 
 interface NavbarProps {
@@ -14,19 +15,17 @@ export const Navbar: React.FC<NavbarProps> = ({ activeCategory = null, onCategor
 
 	return (
 		<nav className="navbar">
-			<div className="navbar-content">
-				<ul className="nav-list">
-					<NavLink
-						label="Home"
-						isActive={!activeCategory}
-						onClick={() => handleCategoryClick(null)}
-					/>
-					<CategoryList
-						activeCategory={activeCategory}
-						onCategoryClick={handleCategoryClick}
-					/>
-				</ul>
-			</div>
+			<List className="nav-list">
+				<NavLink
+					label="Home"
+					isActive={!activeCategory}
+					onClick={() => handleCategoryClick(null)}
+				/>
+				<CategoryList
+					activeCategory={activeCategory}
+					onCategoryClick={handleCategoryClick}
+				/>
+			</List>
 		</nav>
 	);
 };
