@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { useLocation } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { storyService, type Story } from '../services';
 
 interface UseStoryListReturn {
@@ -16,11 +15,10 @@ interface UseStoryListReturn {
 }
 
 export const useStoryList = (): UseStoryListReturn => {
-	const location = useLocation();
-	const [activeCategory, setActiveCategory] = useState<string | null>(() => {
-		const state = location.state as { selectedCategory?: string | null } | null;
-		return state?.selectedCategory ?? null;
-	});
+	const { category } = useParams<{ category: string }>();
+	const navigate = useNavigate();
+
+	const activeCategory = category || null;
 
 	const { data, isPending, isFetchingNextPage, error, hasNextPage, fetchNextPage } =
 		useInfiniteQuery({
@@ -34,7 +32,11 @@ export const useStoryList = (): UseStoryListReturn => {
 	const stories = data?.pages.flatMap((page) => (page as { list: Story[] }).list) ?? [];
 
 	const handleCategoryClick = (categoryName: string | null) => {
-		setActiveCategory(categoryName);
+		if (categoryName) {
+			navigate(`/categories/${categoryName}`);
+		} else {
+			navigate('/');
+		}
 	};
 
 	const handleLoadMore = () => {
