@@ -5,6 +5,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import { CategoryProvider } from './contexts/CategoryContext';
 import { GuestGuard } from './components/GuestGuard';
 import { Auth } from './pages/Auth';
+import { MainLayout } from './layouts/MainLayout';
 
 const CategoryLayout = () => (
 	<CategoryProvider>
@@ -36,9 +37,12 @@ function App() {
 							}
 						/>
 						<Route element={<CategoryLayout />}>
-							<Route path="/" element={<HomePage />} />
-							<Route path="/profile" element={<Profile />} />
-							<Route path="/api/v1/stories/:storyId" element={<StoryDetail />} />
+							<Route element={<MainLayout />}>
+								<Route path="/" element={<HomePage />} />
+								<Route path="/categories/:category" element={<HomePage />} />
+								<Route path="/profile" element={<Profile />} />
+								<Route path="/stories/:storyId" element={<StoryDetail />} />
+							</Route>
 						</Route>
 					</Routes>
 				</Router>
