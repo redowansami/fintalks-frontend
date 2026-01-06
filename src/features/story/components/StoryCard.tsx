@@ -25,7 +25,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 	createdAt,
 }) => {
 	const navigate = useNavigate();
-	const handleClick = () => navigate(`/api/v1/stories/${storyId}`);
+	const handleClick = () => navigate(`/stories/${storyId}`);
 	const truncateText = (text: string, limit: number) => {
 		return text.length > limit ? text.substring(0, limit) + '...' : text;
 	};
