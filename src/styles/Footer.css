@@ -2,7 +2,7 @@
 
 @layer components {
 	.footer {
-		@apply w-full bg-primary text-white py-8 mt-auto flex flex-col items-center text-center md:items-end md:text-right;
+		@apply w-full bg-primary text-white py-8 pr-10 mt-auto flex flex-col items-center text-center md:items-end md:text-right;
 	}
 
 	.footer-logo {
