@@ -7,8 +7,8 @@ import { Modal } from '../components/Modal';
 import { AIReliabilityCard } from '../features/story/components/AIReliabilityCard';
 import { StoryMeta, StoryImage, StoryTags } from '../features/story/components';
 import { useStoryDetail } from '../features/story/hooks';
-import '../features/story/styles/StoryDetail.css';
 import { Spinner } from '../components';
+import { Typography } from '../components/Typography';
 
 export const StoryDetail: React.FC = () => {
 	const { storyId } = useParams<{ storyId: string }>();
@@ -32,27 +32,28 @@ export const StoryDetail: React.FC = () => {
 		<>
 			<Header />
 			<Navbar activeCategory={activeCategory} onCategoryClick={handleCategoryClick} />
-			<div className="story-detail-wrapper">
-				<main className="story-detail-main">
-					<h1 className="story-title">{story.title}</h1>
-					<StoryImage src={story.image || story.imageUrl} alt={story.title} />
-					<StoryMeta
-						username={story.username}
-						createdAt={story.createdAt}
-						updatedAt={story.updatedAt}
-					/>
-					<AIReliabilityCard
-						reliabilityScore={story.reliabilityScore}
-						summary={story.summary}
-						predictionComparison={story.predictionComparison}
-						onComparisonClick={() => setIsModalOpen(true)}
-					/>
-					<div className="story-content">
-						<p className="story-body">{story.body}</p>
-						<StoryTags categories={story.categories} />
-					</div>
-				</main>
-			</div>
+
+			<main className="w-full max-w-3xl mx-auto px-4 py-10">
+				<Typography variant="h1" className="mb-5">
+					{story.title}
+				</Typography>
+				<StoryImage src={story.image || story.imageUrl} alt={story.title} />
+				<StoryMeta
+					username={story.username}
+					createdAt={story.createdAt}
+					updatedAt={story.updatedAt}
+				/>
+				<AIReliabilityCard
+					reliabilityScore={story.reliabilityScore}
+					summary={story.summary}
+					predictionComparison={story.predictionComparison}
+					onComparisonClick={() => setIsModalOpen(true)}
+				/>
+				<Typography variant="body1" className="mb-3">
+					{story.body}
+				</Typography>
+				<StoryTags categories={story.categories} />
+			</main>
 			<Footer />
 			<Modal
 				isOpen={isModalOpen}
