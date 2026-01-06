@@ -1,64 +1,32 @@
-.profile-main,
-.profile-loading,
-.profile-error {
-	min-height: calc(100vh - 300px);
-}
+@reference '../index.css';
 
-.profile-main {
-	max-width: 80rem;
-	margin: 0 auto;
-	padding: 2.5rem 1rem;
-}
-
-.profile-header-section {
-	background-color: white;
-	border-radius: 0.75rem;
-	border: 1px solid var(--border-light);
-	padding: 2.5rem;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.profile-header-content {
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
-
-	@media (min-width: 768px) {
-		flex-direction: row;
-		align-items: flex-start;
+@layer components {
+	.profile-main {
+		@apply max-w-6xl mx-auto px-4 py-10 min-h-[calc(100vh-300px)];
 	}
-}
 
-.profile-info {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	gap: 1.5rem;
-}
-
-.profile-header-top {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-
-	@media (min-width: 768px) {
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
+	.profile-loading,
+	.profile-error {
+		@apply min-h-[calc(100vh-300px)];
 	}
-}
 
-.profile-names {
-	text-align: center;
-	@media (min-width: 768px) {
-		text-align: left;
+	.profile-header-section {
+		@apply bg-white rounded-xl border border-gray-200 p-10 shadow-sm flex flex-col md:flex-row gap-8 mb-6 md:items-start;
 	}
-}
 
-.profile-full-name {
-	font-size: 1.875rem;
-	font-weight: bold;
-	color: var(--primary);
-	margin: 0;
-	font-family: var(--font-display);
+	.profile-info {
+		@apply flex-1 flex flex-col gap-6;
+	}
+
+	.profile-header-top {
+		@apply flex flex-col gap-4 md:flex-row md:justify-between md:items-center;
+	}
+
+	.profile-names {
+		@apply flex flex-col gap-1;
+	}
+
+	.profile-actions {
+		@apply shrink-0;
+	}
 }
