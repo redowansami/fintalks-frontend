@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import '../styles/ProfileBio.css';
+import { Typography } from '../../../components/Typography';
 
 interface Profile {
 	email: string;
@@ -17,23 +18,21 @@ export const ProfileBio: React.FC<ProfileBioProps> = ({ profile }) => {
 		<>
 			{profile.bio && (
 				<div className="profile-bio">
-					<p>{profile.bio}</p>
+					<Typography variant="muted">{profile.bio}</Typography>
 				</div>
 			)}
 
 			<div className="profile-contact">
-				<span className="contact-item">
-					<Icon icon="material-symbols:email" />
-					{profile.email}
-				</span>
-				<span className="contact-item">
-					<Icon icon="material-symbols:calendar-today" />
+				<Icon icon="ic:outline-email" />
+				<Typography variant="muted">{profile.email}</Typography>
+				<Icon icon="material-symbols:calendar-today" />
+				<Typography variant="muted">
 					Joined{' '}
 					{new Date(profile.joinDate).toLocaleDateString('en-US', {
 						year: 'numeric',
 						month: 'long',
 					} as const)}
-				</span>
+				</Typography>
 			</div>
 		</>
 	);

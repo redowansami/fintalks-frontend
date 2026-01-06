@@ -1,41 +1,11 @@
-.profile-bio {
-	background-color: #f3f4f6;
-	padding: 1rem;
-	border-radius: 0.5rem;
-	border: 1px solid var(--border-light);
-}
+@reference '../../../index.css';
 
-.profile-bio p {
-	margin: 0;
-	color: var(--text-dark);
-	font-size: 0.875rem;
-	line-height: 1.5;
-}
-
-.profile-contact {
-	display: flex;
-	flex-direction: column;
-	gap: 1.5rem;
-	padding-top: 0.5rem;
-	font-size: 0.875rem;
-	color: #6b7280;
-}
-
-@media (min-width: 768px) {
-	.profile-contact {
-		flex-direction: row;
-		gap: 1.5rem;
+@layer components {
+	.profile-bio {
+		@apply bg-gray-100 p-4 rounded-lg border border-gray-200;
 	}
-}
 
-.contact-item {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-}
-
-.contact-item svg {
-	width: 1.125rem;
-	height: 1.125rem;
-	flex-shrink: 0;
+	.profile-contact {
+		@apply flex flex-col md:flex-row items-center gap-4 pt-2 text-sm text-gray-500;
+	}
 }
