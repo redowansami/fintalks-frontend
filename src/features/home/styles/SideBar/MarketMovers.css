@@ -1,0 +1,27 @@
+@reference '../../../../index.css';
+
+@layer components {
+	.market-movers-card {
+		@apply bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden;
+	}
+
+	.market-movers-header {
+		@apply px-6 py-4 border-b border-gray-200 bg-gray-50;
+	}
+
+	.mover-row {
+		@apply px-6 py-3 border-b border-gray-200 flex justify-between items-center last:border-b-0;
+	}
+
+	.mover-change-positive {
+		@apply text-sm font-semibold text-green-600;
+	}
+
+	.mover-change-negative {
+		@apply text-sm font-semibold text-red-600;
+	}
+
+	.market-movers-footer {
+		@apply py-3 bg-gray-50 text-center;
+	}
+}

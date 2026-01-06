@@ -1,0 +1,11 @@
+@reference '../../../../index.css';
+
+@layer components {
+	.ad-space {
+		@apply bg-gray-100 h-64 rounded-lg flex flex-col items-center justify-center text-center p-4 border-2 border-dashed border-gray-300;
+	}
+
+	.ad-content {
+		@apply w-full h-full bg-linear-to-br mt-3 from-blue-100 to-indigo-100 rounded flex items-center justify-center;
+	}
+}
