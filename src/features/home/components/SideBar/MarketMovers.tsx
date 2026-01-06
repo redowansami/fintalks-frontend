@@ -1,4 +1,5 @@
-import '../../styles/SidebarComponents.css';
+import { Typography } from '../../../../components/Typography';
+import '../../styles/SideBar/MarketMovers.css';
 
 interface Mover {
 	symbol: string;
@@ -16,24 +17,34 @@ const movers: Mover[] = [
 
 export const MarketMovers: React.FC = () => {
 	return (
-		<div className="top-movers">
-			<div className="movers-header">
-				<h3>Top Movers</h3>
+		<div className="market-movers-card">
+			<div className="market-movers-header">
+				<Typography variant="h3" textAlign="center">
+					Market Movers
+				</Typography>
 			</div>
 			{movers.map((mover) => (
-				<div key={mover.symbol} className="mover-item">
+				<div key={mover.symbol} className="mover-row">
 					<div>
-						<p className="mover-symbol">{mover.symbol}</p>
-						<p className="mover-name">{mover.name}</p>
+						<Typography className="mover-symbol">
+							{mover.symbol}
+						</Typography>
+						<Typography variant="xs" className="mover-name">
+							{mover.name}
+						</Typography>
 					</div>
-					<span className={`mover-change ${mover.isPositive ? 'positive' : 'negative'}`}>
+					<Typography
+						variant="body"
+						color={mover.isPositive ? 'success' : 'error'}
+						className={
+							mover.isPositive ? 'mover-change-positive' : 'mover-change-negative'
+						}
+					>
 						{mover.change}
-					</span>
+					</Typography>
 				</div>
 			))}
-			<div className="movers-footer">
-				<a href="#">View Market Data</a>
-			</div>
+			<div className="market-movers-footer"> </div>
 		</div>
 	);
 };

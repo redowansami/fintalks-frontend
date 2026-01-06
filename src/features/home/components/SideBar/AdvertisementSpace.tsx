@@ -1,11 +1,12 @@
-import '../../styles/SidebarComponents.css';
+import { Typography } from '../../../../components/Typography';
+import '../../styles/SideBar/AdvertisementSpace.css';
 
 export const AdvertisementSpace: React.FC = () => {
 	return (
 		<div className="ad-space">
-			<span className="ad-label">Advertisement</span>
+			<Typography variant="muted">ADVERTISEMENT</Typography>
 			<div className="ad-content">
-				<span className="ad-text">Ad Space 300x250</span>
+				<Typography>Ad Space 300x250</Typography>
 			</div>
 		</div>
 	);
