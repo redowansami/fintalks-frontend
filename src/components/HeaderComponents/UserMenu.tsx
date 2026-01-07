@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
-import { Button } from '../Button';
-import { ItemButton } from '../ItemButton';
+import { Button } from '../Buttons/Button';
+import { ItemButton } from '../Buttons/ItemButton';
 import '../../styles/HeaderComponents/UserMenu.css';
 
 interface UserMenuProps {

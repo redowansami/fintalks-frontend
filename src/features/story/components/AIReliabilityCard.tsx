@@ -1,4 +1,4 @@
-import { Button } from '../../../components/Button';
+import { Button } from '../../../components/Buttons/Button';
 import { Typography } from '../../../components/Typography';
 import '../styles/AIReliabilityCard.css';
 import '../../../styles/variables.css';

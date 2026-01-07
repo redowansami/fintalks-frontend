@@ -1,6 +1,6 @@
 import React from 'react';
 import type { UseMutationResult } from '@tanstack/react-query';
-import { Button } from '../../../components/Button';
+import { Button } from '../../../components/Buttons/Button';
 import '../styles/EditProfileModal.css';
 import { ErrorDialog } from '../../../components/ErrorComponents/ErrorDialog';
 import { InputField } from '../../../components/InputField';

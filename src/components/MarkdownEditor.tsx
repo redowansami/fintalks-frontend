@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MarkdownPreview } from './MarkdownPreview';
-import { MarkdownToolbarButton } from './MarkdownToolbarButton';
-import { MarkdownTabButton } from './MarkdownTabButton';
+import { MarkdownToolbarButton } from './Buttons/MarkdownToolbarButton';
+import { MarkdownTabButton } from './Buttons/MarkdownTabButton';
 import { useMarkdownInsert } from '../hooks/useMarkdownInsert';
 import '../styles/MarkdownEditor.css';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-import { Button } from '../../../components/Button';
+import { Button } from '../../../components/Buttons/Button';
 import '../styles/ProfilePicture.css';
 
 interface Profile {

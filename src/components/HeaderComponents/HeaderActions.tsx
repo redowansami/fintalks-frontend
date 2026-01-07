@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-import { Button } from '../Button';
+import { Button } from '../Buttons/Button';
 import { UserMenu } from './UserMenu';
 
 interface HeaderActionsProps {

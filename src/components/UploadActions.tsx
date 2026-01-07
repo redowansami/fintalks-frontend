@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react';
-import { Button } from './Button';
+import { Button } from './Buttons/Button';
 
 interface UploadActionsProps {
 	onCancel: () => void;

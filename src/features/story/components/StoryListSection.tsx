@@ -1,6 +1,6 @@
 import { StoryCard } from './StoryCard';
 import { Spinner } from '../../../components/Spinner';
-import { Button } from '../../../components/Button';
+import { Button } from '../../../components/Buttons/Button';
 import type { Story } from '../services';
 import '../styles/StoryList.css';
 import { Typography } from '../../../components/Typography';
@@ -54,7 +54,9 @@ export const StoryListSection: React.FC<StoryListSectionProps> = ({
 					)}
 				</>
 			) : (
-				<Typography textAlign='center' color='error'>No stories found.</Typography>
+				<Typography textAlign="center" color="error">
+					No stories found.
+				</Typography>
 			)}
 		</section>
 	);

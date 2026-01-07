@@ -4,7 +4,7 @@ import { FileInput } from './FileInput';
 import { ImagePreview } from './ImagePreview';
 import { UploadActions } from './UploadActions';
 import '../styles/ImageUploadModal.css';
-import { CloseButton } from './CloseButton';
+import { CloseButton } from './Buttons/CloseButton';
 
 interface ImageUploadModalProps {
 	isOpen: boolean;

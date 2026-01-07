@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCreateStory, useCreateStoryModal } from '../features/story/hooks';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
-import { Button } from '../components/Button';
+import { Button } from '../components/Buttons/Button';
 import '../styles/CreateStory.css';
 import {
 	StoryTitleField,

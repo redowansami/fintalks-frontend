@@ -1,6 +1,6 @@
 import React from 'react';
 import { PasswordInput } from '../../../components/PasswordInput';
-import { Button } from '../../../components/Button';
+import { Button } from '../../../components/Buttons/Button';
 import { ErrorDialog } from '../../../components/ErrorComponents/ErrorDialog';
 import { extractValidationErrors } from '../../../utils/errorExtractor';
 import { useChangePassword } from '../hooks';

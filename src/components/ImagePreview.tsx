@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react';
-import { Button } from './Button';
+import { Button } from './Buttons/Button';
 import { Typography } from './Typography';
 import { ErrorDialog } from './ErrorComponents/ErrorDialog';
 import '../styles/ImagePreview.css';
