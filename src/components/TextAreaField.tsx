@@ -1,6 +1,7 @@
 import React from 'react';
 import { ValidationTooltip } from './ValidationTooltip';
 import '../styles/InputField.css';
+import { Typography } from './Typography';
 
 interface TextAreaFieldProps {
 	label: string;
@@ -28,11 +29,9 @@ export const TextAreaField: React.FC<TextAreaFieldProps> = ({
 	rows = 4,
 }) => {
 	return (
-		<div className="input-field-group">
-			<div className="input-field-header">
-				<label className="input-field-label" htmlFor={id}>
-					{label}
-				</label>
+		<div className="input-group">
+			<div className="input-header">
+				<label htmlFor={id}>{label}</label>
 				{validationCriteria && <ValidationTooltip criteria={validationCriteria} />}
 			</div>
 			<textarea
@@ -43,9 +42,13 @@ export const TextAreaField: React.FC<TextAreaFieldProps> = ({
 				onChange={onChange}
 				required={required}
 				rows={rows}
-				className={`input-field-input ${error ? 'error' : ''}`}
+				className={`input-control ${error ? 'is-invalid' : ''}`}
 			/>
-			{error && <p className="input-field-error">{error}</p>}
+			{error && (
+				<Typography variant="muted" color="error">
+					{error}
+				</Typography>
+			)}
 		</div>
 	);
 };

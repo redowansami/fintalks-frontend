@@ -16,7 +16,7 @@ export const InputField: React.FC<InputFieldProps> = ({
 	return (
 		<div className="input-group">
 			<div className="input-header">
-				<label className="input-label" htmlFor={id}>
+				<label htmlFor={id}>
 					{label}
 				</label>
 				{validationCriteria && <ValidationTooltip criteria={validationCriteria} />}
