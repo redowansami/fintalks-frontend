@@ -1,5 +1,3 @@
-export { CreateStoryModalHeader } from './CreateStoryModalHeader';
-export { CreateStoryModalActions } from './CreateStoryModalActions';
 export { StoryTitleField } from './StoryTitleField';
 export { StoryBodyField } from './StoryBodyField';
 export { StoryImageField } from './StoryImageField';

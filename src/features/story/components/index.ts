@@ -3,10 +3,7 @@ export { StoryImage } from './StoryImage';
 export { StoryMeta } from './StoryMeta';
 export { StoryTags } from './StoryTags';
 export { StoryListSection } from './StoryListSection';
-export { CreateStoryModal } from './CreateStoryModal';
 export {
-	CreateStoryModalHeader,
-	CreateStoryModalActions,
 	StoryTitleField,
 	StoryBodyField,
 	StoryImageField,
