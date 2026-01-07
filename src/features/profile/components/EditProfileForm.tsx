@@ -4,7 +4,6 @@ import { Button } from '../../../components/Button';
 import '../styles/EditProfileModal.css';
 import { ErrorDialog } from '../../../components/ErrorComponents/ErrorDialog';
 import { InputField } from '../../../components/InputField';
-import { TextAreaField } from '../../../components/TextAreaField';
 import { PROFILE_FORM_VALIDATIONS } from '../../../constants/profileFormConstants';
 import { extractValidationErrors } from '../../../utils/errorExtractor';
 
@@ -37,16 +36,17 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
 				name="name"
 				type="text"
 				value={formData.name}
-				onChange={handleChange as React.ChangeEventHandler<HTMLInputElement>}
+				onChange={handleChange}
 				required
 				validationCriteria={PROFILE_FORM_VALIDATIONS.NAME.criteria}
 			/>
-			<TextAreaField
+			<InputField
 				label={PROFILE_FORM_VALIDATIONS.BIO.label}
 				id="bio"
 				name="bio"
+				type="textarea"
 				value={formData.bio}
-				onChange={handleChange as React.ChangeEventHandler<HTMLTextAreaElement>}
+				onChange={handleChange}
 				rows={4}
 				validationCriteria={PROFILE_FORM_VALIDATIONS.BIO.criteria}
 			/>
