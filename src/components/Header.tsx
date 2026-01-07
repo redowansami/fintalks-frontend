@@ -1,21 +1,18 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { CreateStoryModal } from '../features/story/components';
 import { HeaderSearch, HeaderLogo, HeaderActions } from './HeaderComponents';
 import '../styles/Header.css';
 
 export const Header: React.FC = () => {
 	const navigate = useNavigate();
 	const { user, logout } = useAuthContext();
-	const [isCreateStoryModalOpen, setIsCreateStoryModalOpen] = useState(false);
 
 	const handleCreateStory = () => {
 		if (!user) {
 			navigate('/login');
 			return;
 		}
-		setIsCreateStoryModalOpen(true);
+		navigate('/create-story');
 	};
 
 	const handleLogout = () => {
@@ -44,10 +41,6 @@ export const Header: React.FC = () => {
 					onLogin={handleLogin}
 				/>
 			</header>
-			<CreateStoryModal
-				isOpen={isCreateStoryModalOpen}
-				onClose={() => setIsCreateStoryModalOpen(false)}
-			/>
 		</>
 	);
 };
