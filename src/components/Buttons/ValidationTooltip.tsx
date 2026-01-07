@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import '../styles/ValidationTooltip.css';
+import '../../styles/ValidationTooltip.css';
 import { Icon } from '@iconify/react';
 import { TooltipButton } from './TooltipButton';
-import { ValidationCriteriaPopup } from './ValidationCriteriaPopup';
+import { ValidationCriteriaPopup } from '../ValidationCriteriaPopup';
 
 interface ValidationTooltipProps {
 	criteria: string[];

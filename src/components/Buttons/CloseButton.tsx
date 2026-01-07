@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-import '../styles/CloseButton.css';
+import '../../styles/CloseButton.css';
 
 interface CloseButtonProps {
 	onClick: () => void;

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/ItemButton.css';
+import '../../styles/ItemButton.css';
 
 type ItemButtonVariant = 'default' | 'danger';
 

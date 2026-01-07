@@ -1,6 +1,6 @@
 import React from 'react';
-import type { TooltipButtonProps } from '../types/components/tooltipButtonProps';
-import '../styles/TooltipButton.css';
+import type { TooltipButtonProps } from '../../types/components/tooltipButtonProps';
+import '../../styles/TooltipButton.css';
 
 export const TooltipButton: React.FC<TooltipButtonProps> = ({
 	children,
