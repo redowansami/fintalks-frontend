@@ -1,0 +1,31 @@
+@reference '../index.css';
+
+@layer components {
+	.markdown-editor-container {
+		@apply w-full max-w-2xl mx-auto border border-gray-300 rounded-lg shadow-sm overflow-hidden mt-2 font-sans;
+	}
+
+	.markdown-editor-tabs {
+		@apply flex border-b border-gray-200 bg-gray-50;
+	}
+
+	.markdown-editor-write {
+		@apply bg-white;
+	}
+
+	.markdown-editor-toolbar {
+		@apply flex gap-2 p-2 border-b border-gray-100 bg-white;
+	}
+
+	.markdown-editor-textarea {
+		@apply w-full p-4 text-gray-700 focus:outline-none resize-y border-none;
+	}
+
+	.markdown-editor-tip {
+		@apply px-4 py-2 bg-gray-50 text-xs text-gray-400 border-t border-gray-100;
+	}
+
+	.markdown-editor-preview {
+		@apply h-64 overflow-y-auto p-4 bg-white;
+	}
+}
