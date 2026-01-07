@@ -1,5 +1,4 @@
 import { useMutation } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
 import { login, LoginError, type ValidationError } from '../services';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 
@@ -12,14 +11,12 @@ interface UseLoginHandlerReturn {
 }
 
 export const useLoginHandler = (): UseLoginHandlerReturn => {
-	const navigate = useNavigate();
 	const { login: loginToContext } = useAuthContext();
 
 	const mutation = useMutation({
 		mutationFn: (credentials: { email: string; password: string }) => login(credentials),
 		onSuccess: (data) => {
 			loginToContext(data.token, data.user);
-			navigate('/');
 		},
 	});
 
