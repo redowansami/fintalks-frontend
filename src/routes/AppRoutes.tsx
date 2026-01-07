@@ -1,16 +1,11 @@
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { HomePage, StoryDetail, Profile } from '../pages';
 import { Auth } from '../pages/Auth';
 import { MainLayout } from '../layouts/MainLayout';
-import { CategoryProvider } from '../contexts/CategoryContext';
-import { PublicRoute } from './PublicRoute';
-import { ProtectedRoute } from './ProtectedRoute';
+import { PublicRoute } from './guards/PublicRoute';
+import { ProtectedRoute } from './guards/ProtectedRoute';
+import { CategoryContextWrapper } from './wrappers/CategoryContextWrapper';
 
-const CategoryLayout = () => (
-	<CategoryProvider>
-		<Outlet />
-	</CategoryProvider>
-);
 
 export const AppRoutes = () => (
 	<Routes>
@@ -18,7 +13,7 @@ export const AppRoutes = () => (
 			<Route path="/login" element={<Auth />} />
 			<Route path="/signup" element={<Auth />} />
 		</Route>
-		<Route element={<CategoryLayout />}>
+		<Route element={<CategoryContextWrapper />}>
 			<Route element={<MainLayout />}>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/stories/:storyId" element={<StoryDetail />} />
