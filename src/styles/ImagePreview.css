@@ -1,0 +1,23 @@
+@reference '../index.css';
+
+@layer components {
+	.image-preview-container {
+		@apply flex flex-col gap-4;
+	}
+
+	.image-preview-display {
+		@apply rounded-lg overflow-hidden border border-gray-300;
+	}
+
+	.image-preview-img {
+		@apply w-full h-auto object-cover;
+	}
+
+	.image-preview-upload-zone {
+		@apply border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer transition-all duration-200 ease-in-out bg-gray-50 hover:border-blue-500 hover:bg-blue-50;
+	}
+
+	.image-preview-upload-icon {
+		@apply text-4xl text-blue-500 mb-3 block;
+	}
+}
