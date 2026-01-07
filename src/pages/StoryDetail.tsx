@@ -6,6 +6,7 @@ import { StoryMeta, StoryImage, StoryTags } from '../features/story/components';
 import { useStoryDetail } from '../features/story/hooks';
 import { Spinner } from '../components';
 import { Typography } from '../components/Typography';
+import { MarkdownPreview } from '../components/MarkdownPreview';
 
 export const StoryDetail: React.FC = () => {
 	const { storyId } = useParams<{ storyId: string }>();
@@ -37,9 +38,7 @@ export const StoryDetail: React.FC = () => {
 					predictionComparison={story.predictionComparison}
 					onComparisonClick={() => setIsModalOpen(true)}
 				/>
-				<Typography variant="body1" className="mb-3">
-					{story.body}
-				</Typography>
+				<MarkdownPreview content={story.body} />
 				<StoryTags categories={story.categories} />
 			</div>
 			<Modal

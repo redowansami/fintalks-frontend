@@ -2,6 +2,7 @@ import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/StoryCard.css';
 import { Typography } from '../../../components/Typography';
+import { MarkdownPreview } from '../../../components/MarkdownPreview';
 
 interface StoryCardProps {
 	storyId: string;
@@ -64,13 +65,15 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 
 				<Typography variant="xs">{categories.map((cat) => cat.name).join(' ')}</Typography>
 
-				<Typography variant="body">{truncateText(body, 200)}</Typography>
+				<Typography variant="body">
+					<MarkdownPreview content={truncateText(body, 150)} />
+				</Typography>
 
 				<div className="story-card-reliability">
 					<span className="story-card-reliability-score" style={{ color: scoreColor }}>
 						Reliability: {reliabilityScore}%
 					</span>
-					
+
 					<div className="story-card-reliability-bar">
 						<div
 							className="story-card-reliability-fill"
