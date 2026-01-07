@@ -1,4 +1,8 @@
 import { Icon } from '@iconify/react';
+import { Button } from './Button';
+import { Typography } from './Typography';
+import { ErrorDialog } from './ErrorComponents/ErrorDialog';
+import '../styles/ImagePreview.css';
 
 interface ImagePreviewProps {
 	preview: string | null;
@@ -17,24 +21,29 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
 }) => {
 	return (
 		<>
-			{error && <div className="error-message">{error}</div>}
+			{error && <ErrorDialog message={error} />}
 			{preview ? (
-				<div className="preview-container">
-					<img src={preview} alt="Preview" className="preview-image" />
-					<button
-						className="change-image-btn"
-						onClick={onChangeImage}
-						disabled={isLoading}
-					>
+				<div className="image-preview-container">
+					<div className="image-preview-display">
+						<img src={preview} alt="Preview" className="image-preview-img" />
+					</div>
+					<Button onClick={onChangeImage} disabled={isLoading} variant="secondary">
 						<Icon icon="material-symbols:edit" />
 						Change Image
-					</button>
+					</Button>
 				</div>
 			) : (
-				<div className="upload-area" onClick={onSelectImage}>
-					<Icon icon="material-symbols:cloud-upload" className="upload-icon" />
-					<p>Click to select an image</p>
-					<p className="upload-hint">PNG, JPG up to 5MB</p>
+				<div onClick={onSelectImage} className="image-preview-upload-zone">
+					<Icon
+						icon="material-symbols:cloud-upload"
+						className="image-preview-upload-icon"
+					/>
+					<Typography variant="body" textAlign="center">
+						Click to select an image
+					</Typography>
+					<Typography variant="muted" textAlign="center">
+						PNG, JPG up to 5MB
+					</Typography>
 				</div>
 			)}
 		</>
