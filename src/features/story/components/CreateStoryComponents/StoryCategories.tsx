@@ -1,5 +1,8 @@
 import React from 'react';
 import { useCategoryContext } from '../../../../hooks/useCategoryContext';
+import '../../styles/StoryCategories.css';
+import { Typography } from '../../../../components/Typography';
+import { Spinner } from '../../../../components';
 
 interface StoryCategoriesProps {
 	selectedIds: string[];
@@ -17,21 +20,22 @@ export const StoryCategories: React.FC<StoryCategoriesProps> = ({ selectedIds, o
 		);
 	};
 
-	if (loading) return <div>Loading categories...</div>;
-	if (error) return <div>Error loading categories</div>;
+	if (loading) return <Spinner />;
+	if (error) return <Typography color="error">Error loading categories</Typography>;
 
 	return (
 		<div>
-			<label className="form-label">Categories</label>
-			<div className="categories-grid">
+			<Typography variant="body1">Categories</Typography>
+			<div className="story-categories-grid">
 				{categories.map((cat) => (
-					<label key={cat.categoryId} className="category-checkbox">
+					<label key={cat.categoryId} className="story-categories-label">
 						<input
 							type="checkbox"
 							checked={selectedIds.includes(cat.categoryId)}
 							onChange={() => handleToggle(cat.categoryId)}
+							className="story-categories-checkbox"
 						/>
-						<span>{cat.name}</span>
+						<Typography>{cat.name}</Typography>
 					</label>
 				))}
 			</div>
