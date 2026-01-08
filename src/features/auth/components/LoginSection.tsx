@@ -2,7 +2,7 @@ import { ErrorDialog } from '../../../components';
 import { LoginForm } from './LoginForm';
 import { ResendEmailLink } from './ResendEmailLink';
 import { useLoginForm, useLoginHandler } from '../hooks';
-import { resendConfirmationEmail } from '../services';
+import { resendConfirmationEmail } from '../../../services/authService';
 
 export const LoginSection = () => {
 	const loginForm = useLoginForm();

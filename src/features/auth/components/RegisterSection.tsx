@@ -3,7 +3,7 @@ import { Modal, ErrorDialog } from '../../../components';
 import { RegisterForm } from './RegisterForm';
 import { ResendEmailLink } from './ResendEmailLink';
 import { useRegistrationForm, useRegisterHandler } from '../hooks';
-import { signUp, resendConfirmationEmail } from '../services';
+import { signUp, resendConfirmationEmail } from '../../../services/authService';
 
 export const RegisterSection = () => {
 	const navigate = useNavigate();

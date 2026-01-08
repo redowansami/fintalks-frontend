@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { updateProfile } from '../services';
+import { updateProfile } from '../../../services/profileService';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 
 interface EditProfileData {

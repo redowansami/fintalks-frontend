@@ -14,4 +14,4 @@ export {
 	updateProfile,
 	ProfileError,
 	type ProfileResponse,
-} from './services/profileService';
+} from '../../services/profileService';

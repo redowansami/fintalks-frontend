@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { changePasswordService } from '../services';
+import { changePasswordService } from '../../../services/changePasswordService';
 
 interface PasswordChangeFormData {
 	currentPassword: string;

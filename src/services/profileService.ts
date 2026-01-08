@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { AuthUser } from '../../../types/AuthContextType';
+import type { AuthUser } from '../types/AuthContextType';
 
 export interface ProfileResponse {
 	success: boolean;

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { storyService, type StoryDetail } from '../services';
+import { storyService, type StoryDetail } from '../../../services/storyService';
 
 interface UseStoryDetailReturn {
 	story: StoryDetail | null;

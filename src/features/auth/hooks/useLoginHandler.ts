@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { login, LoginError, type ValidationError } from '../services';
+import { login, LoginError, type ValidationError } from '../../../services/loginService';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 
 interface UseLoginHandlerReturn {
