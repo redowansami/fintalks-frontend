@@ -2,7 +2,6 @@ import { ErrorDialog } from '../../../components';
 import { LoginForm } from './LoginForm';
 import { ResendEmailLink } from './ResendEmailLink';
 import { useLoginForm, useLoginHandler } from '../hooks';
-import { resendConfirmationEmail } from '../../../services/authService';
 
 export const LoginSection = () => {
 	const loginForm = useLoginForm();
@@ -22,10 +21,7 @@ export const LoginSection = () => {
 					validationErrors={loginHandler.validationErrors}
 				>
 					{loginHandler.error?.message.includes('confirm your email') && (
-						<ResendEmailLink
-							email={loginForm.formData.email}
-							onResend={resendConfirmationEmail}
-						/>
+						<ResendEmailLink email={loginForm.formData.email} />
 					)}
 				</ErrorDialog>
 			)}
