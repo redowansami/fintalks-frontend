@@ -1,27 +1,30 @@
 import { useMutation } from '@tanstack/react-query';
-import { login, LoginError, type ValidationError } from '../../../services/loginService';
+import { authService } from '../../../services/authService';
+import { ApiError } from '../../../lib/apiClient';
 import { useAuthContext } from '../../../hooks/useAuthContext';
+import type { LoginRequest } from '../../../types/auth';
 
 interface UseLoginHandlerReturn {
 	isPending: boolean;
 	isError: boolean;
 	error: Error | null;
-	validationErrors: ValidationError | undefined;
-	mutate: (credentials: { email: string; password: string }) => void;
+	validationErrors: Record<string, string | string[]> | undefined;
+	mutate: (credentials: LoginRequest) => void;
 }
 
 export const useLoginHandler = (): UseLoginHandlerReturn => {
-	const { login: loginToContext } = useAuthContext();
+	const { login: syncContext } = useAuthContext();
 
 	const mutation = useMutation({
-		mutationFn: (credentials: { email: string; password: string }) => login(credentials),
+		mutationFn: (credentials: LoginRequest) => authService.login(credentials),
+
 		onSuccess: (data) => {
-			loginToContext(data.token, data.user);
+			syncContext(data.token, data.user);
 		},
 	});
 
 	const validationErrors =
-		mutation.error instanceof LoginError ? mutation.error.validationErrors : undefined;
+		mutation.error instanceof ApiError ? mutation.error.validationErrors : undefined;
 
 	return {
 		isPending: mutation.isPending,
