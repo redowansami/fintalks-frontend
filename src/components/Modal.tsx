@@ -1,44 +1,31 @@
 import React from 'react';
 import type { ReactNode } from 'react';
+import { CloseButton } from './Buttons/CloseButton';
 import '../styles/Modal.css';
+import { Typography } from './Typography';
 
 interface ModalProps {
 	isOpen: boolean;
 	onClose: () => void;
 	title?: string;
-	message: string;
+	message?: string;
 	actionButtonText?: string;
 	onActionClick?: () => void;
 	children?: ReactNode;
 }
 
-export const Modal: React.FC<ModalProps> = ({
-	isOpen,
-	onClose,
-	title,
-	message,
-	actionButtonText = 'Close',
-	onActionClick,
-	children,
-}) => {
+export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message, children }) => {
 	if (!isOpen) return null;
-
-	const handleActionClick = () => {
-		if (onActionClick) {
-			onActionClick();
-		}
-		onClose();
-	};
 
 	return (
 		<div className="modal-overlay">
 			<div className="modal-content">
-				{title && <h2 className="modal-title">{title}</h2>}
-				<p className="modal-message">{message}</p>
+				<div className="modal-header">
+					{title && <Typography variant="h3">{title}</Typography>}
+					<CloseButton onClick={onClose} />
+				</div>
+				{message && <Typography variant="body">{message}</Typography>}
 				{children}
-				<button className="modal-button" onClick={handleActionClick}>
-					{actionButtonText}
-				</button>
 			</div>
 		</div>
 	);
