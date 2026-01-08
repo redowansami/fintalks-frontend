@@ -11,7 +11,6 @@ interface EditProfileFormProps {
 	formData: { name: string; bio: string };
 	handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	onSubmit: (e: React.FormEvent) => void;
-	onCancel: () => void;
 	mutation: UseMutationResult<unknown, Error, { name: string; bio: string }>;
 }
 
@@ -19,7 +18,6 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
 	formData,
 	handleChange,
 	onSubmit,
-	onCancel,
 	mutation,
 }) => {
 	return (
@@ -51,14 +49,6 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
 				validationCriteria={PROFILE_FORM_VALIDATIONS.BIO.criteria}
 			/>
 			<div className="edit-profile-actions">
-				<Button
-					type="button"
-					variant="secondary"
-					onClick={onCancel}
-					disabled={mutation.isPending}
-				>
-					Cancel
-				</Button>
 				<Button type="submit" variant="primary" disabled={mutation.isPending}>
 					{mutation.isPending ? 'Updating...' : 'Update Profile'}
 				</Button>
