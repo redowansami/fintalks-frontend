@@ -1,10 +1,9 @@
 import { useState, useRef } from 'react';
 import { useProfilePictureUpload } from '../features/profile';
+import { Modal } from './Modal';
 import { FileInput } from './FileInput';
 import { ImagePreview } from './ImagePreview';
-import { UploadActions } from './UploadActions';
-import '../styles/ImageUploadModal.css';
-import { CloseButton } from './Buttons/CloseButton';
+import { Button } from './Buttons/Button';
 
 interface ImageUploadModalProps {
 	isOpen: boolean;
@@ -38,37 +37,31 @@ export const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onCl
 		}
 	};
 
-	if (!isOpen) return null;
-
 	return (
-		<div className="modal-overlay">
-			<div className="image-upload-modal">
-				<div className="modal-header">
-					<h2>Upload Profile Picture</h2>
-					<CloseButton onClick={handleClose} disabled={isLoading} />
-				</div>
-
-				<div className="modal-content">
-					<ImagePreview
-						preview={preview}
-						onChangeImage={() => fileInputRef.current?.click()}
-						onSelectImage={() => fileInputRef.current?.click()}
-						isLoading={isLoading}
-						error={error}
-					/>
-					<FileInput
-						ref={fileInputRef}
-						onFileSelect={handleFileSelect}
-						isLoading={isLoading}
-					/>
-					<UploadActions
-						onCancel={handleClose}
-						onUpload={handleUpload}
-						isLoading={isLoading}
-						isDisabled={!selectedFile}
-					/>
+		<Modal isOpen={isOpen} onClose={handleClose} title="Upload Profile Picture">
+			<div>
+				<ImagePreview
+					preview={preview}
+					onChangeImage={() => fileInputRef.current?.click()}
+					onSelectImage={() => fileInputRef.current?.click()}
+					isLoading={isLoading}
+					error={error}
+				/>
+				<FileInput
+					ref={fileInputRef}
+					onFileSelect={handleFileSelect}
+					isLoading={isLoading}
+				/>
+				<div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1.5rem' }}>
+					<Button
+						variant="primary"
+						onClick={handleUpload}
+						disabled={!selectedFile || isLoading}
+					>
+						{isLoading ? 'Uploading...' : 'Upload'}
+					</Button>
 				</div>
 			</div>
-		</div>
+		</Modal>
 	);
 };
