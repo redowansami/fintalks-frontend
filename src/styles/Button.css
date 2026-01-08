@@ -1,25 +1,45 @@
 @reference "../index.css";
 
 @layer components {
-	.btn-base {
-		@apply flex items-center justify-center px-4 py-3 rounded-[1vw] text-sm font-bold;
-		@apply cursor-pointer transition-colors duration-200 border border-transparent shadow-xl;
+	.btn {
+		@apply inline-flex items-center transition-colors duration-200 cursor-pointer;
 		@apply disabled:opacity-60 disabled:cursor-not-allowed;
+		@apply focus:outline-none;
+	}
+
+	.btn-shape-standard {
+		@apply justify-center px-4 py-3 rounded-[1vw] text-sm font-bold shadow-xl border;
+	}
+
+	.btn-shape-item {
+		@apply w-full justify-start px-4 py-3 text-sm font-medium border-none bg-transparent;
+	}
+
+	.btn-shape-toolbar {
+		@apply justify-center px-3 py-1.5 text-sm border rounded;
 	}
 
 	.btn--primary {
-		@apply bg-primary text-white hover:bg-secondary;
+		@apply border-transparent bg-primary text-white hover:bg-secondary;
 	}
-
 	.btn--secondary {
-		@apply border border-primary bg-transparent text-primary hover:bg-gray-100;
+		@apply border-primary bg-transparent text-primary hover:bg-gray-100;
 	}
-
 	.btn--tertiary {
-		@apply border-none bg-transparent text-primary hover:bg-gray-100;
+		@apply border-transparent bg-transparent text-primary hover:bg-gray-100;
+	}
+	.btn--danger {
+		@apply border-transparent bg-red-600 text-white hover:bg-red-700;
 	}
 
-	.btn--danger {
-		@apply bg-red-600 text-white hover:bg-red-700;
+	.btn--item-default {
+		@apply text-gray-900 hover:bg-gray-100;
+	}
+	.btn--item-danger {
+		@apply text-gray-900 hover:bg-red-100 hover:text-red-600;
+	}
+
+	.btn--toolbar {
+		@apply border-gray-200 bg-white text-gray-700 hover:bg-gray-100 hover:text-blue-600;
 	}
 }

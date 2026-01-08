@@ -14,11 +14,3 @@
 	z-index: 100;
 	margin-top: 0.5rem;
 }
-
-.user-menu-item:first-child {
-	border-radius: 0.375rem 0.375rem 0 0;
-}
-
-.user-menu-item:last-child {
-	border-radius: 0 0 0.375rem 0.375rem;
-}
