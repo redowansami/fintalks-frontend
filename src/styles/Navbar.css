@@ -4,12 +4,4 @@
 	.navbar {
 		@apply w-full bg-primary py-3 shadow-md px-4 flex justify-center;
 	}
-
-	.nav-link {
-		@apply px-4 py-1.5 text-sm font-medium text-gray-300 bg-transparent border border-transparent rounded-full whitespace-nowrap transition-colors cursor-pointer hover:text-white hover:bg-white/10;
-	}
-
-	.nav-link.active {
-		@apply text-white bg-secondary;
-	}
 }
