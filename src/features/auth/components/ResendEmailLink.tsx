@@ -3,11 +3,10 @@ import { Typography } from '../../../components/Typography';
 
 interface ResendEmailLinkProps {
 	email: string;
-	onResend: (email: string) => Promise<unknown>;
 }
 
-export const ResendEmailLink = ({ email, onResend }: ResendEmailLinkProps) => {
-	const { isPending, message, mutate } = useResendEmail(onResend);
+export const ResendEmailLink = ({ email }: ResendEmailLinkProps) => {
+	const { isPending, message, mutate } = useResendEmail();
 
 	const handleResendEmail = () => {
 		mutate(email);
