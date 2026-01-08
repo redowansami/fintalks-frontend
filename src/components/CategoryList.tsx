@@ -1,4 +1,4 @@
-import { useCategoryContext } from '../hooks/useCategoryContext';
+import { useCategory } from '../hooks/useCategory';
 import { TabButton } from './Buttons/TabButton';
 
 interface CategoryListProps {
@@ -7,7 +7,7 @@ interface CategoryListProps {
 }
 
 export const CategoryList: React.FC<CategoryListProps> = ({ activeCategory, onCategoryClick }) => {
-	const { categories, loading } = useCategoryContext();
+	const { categories, loading } = useCategory();
 
 	if (loading) {
 		return null;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCategoryContext } from '../../../../hooks/useCategoryContext';
+import { useCategory } from '../../../../hooks/useCategory';
 import '../../styles/StoryCategories.css';
 import { Typography } from '../../../../components/Typography';
 import { Spinner } from '../../../../components';
@@ -10,7 +10,7 @@ interface StoryCategoriesProps {
 }
 
 export const StoryCategories: React.FC<StoryCategoriesProps> = ({ selectedIds, onChange }) => {
-	const { categories, loading, error } = useCategoryContext();
+	const { categories, loading, error } = useCategory();
 
 	const handleToggle = (id: string) => {
 		onChange(
