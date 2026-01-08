@@ -49,6 +49,7 @@ export const InputField: React.FC<ExtendedInputFieldProps> = ({
 						{...(rest as React.InputHTMLAttributes<HTMLInputElement>)}
 					/>
 				)}
+				{rightElement && <div className="input-right-element">{rightElement}</div>}
 			</div>
 
 			{error && (
