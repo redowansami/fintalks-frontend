@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { Button } from '../Buttons/Button';
-import { ItemButton } from '../Buttons/ItemButton';
 import '../../styles/HeaderComponents/UserMenu.css';
 
 interface UserMenuProps {
@@ -34,12 +33,12 @@ export const UserMenu: React.FC<UserMenuProps> = ({ username, onViewProfile, onL
 			</Button>
 			{showMenu && (
 				<div className="user-menu">
-					<ItemButton onClick={handleViewProfile} className="user-menu-item">
+					<Button variant="item-default" onClick={handleViewProfile}>
 						View Profile
-					</ItemButton>
-					<ItemButton onClick={handleLogout} variant="danger" className="user-menu-item">
+					</Button>
+					<Button variant="item-danger" onClick={handleLogout}>
 						Logout
-					</ItemButton>
+					</Button>
 				</div>
 			)}
 		</div>

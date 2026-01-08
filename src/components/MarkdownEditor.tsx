@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { MarkdownPreview } from './MarkdownPreview';
-import { MarkdownToolbarButton } from './Buttons/MarkdownToolbarButton';
 import { MarkdownTabButton } from './Buttons/MarkdownTabButton';
 import { useMarkdownInsert } from '../hooks/useMarkdownInsert';
 import '../styles/MarkdownEditor.css';
+import { Button } from './Buttons/Button';
 
 type TabType = 'write' | 'preview';
 
@@ -39,20 +39,17 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
 			{activeTab === 'write' && (
 				<div className="markdown-editor-write">
 					<div className="markdown-editor-toolbar">
-						<MarkdownToolbarButton
-							onClick={() => insertFormat('**', '**')}
-							label="B"
-							bold
-						/>
-						<MarkdownToolbarButton
-							onClick={() => insertFormat('*', '*')}
-							label="I"
-							italic
-						/>
-						<MarkdownToolbarButton
-							onClick={() => insertFormat('- ', '')}
-							label="• List"
-						/>
+						<Button onClick={() => insertFormat('**', '**')} variant="toolbar" isBold>
+							B
+						</Button>
+
+						<Button onClick={() => insertFormat('*', '*')} variant="toolbar" isItalic>
+							I
+						</Button>
+
+						<Button onClick={() => insertFormat('- ', '')} variant="toolbar">
+							• List
+						</Button>
 					</div>
 
 					<textarea

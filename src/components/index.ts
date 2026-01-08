@@ -1,5 +1,4 @@
 export { Button } from './Buttons/Button';
-export { ItemButton } from './Buttons/ItemButton';
 export { IconButton } from './Buttons/IconButton';
 export { InputField } from './InputField';
 export { Header } from './Header';
