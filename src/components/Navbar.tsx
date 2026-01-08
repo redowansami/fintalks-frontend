@@ -1,4 +1,4 @@
-import { NavLink } from './NavLink';
+import { NavLink } from './Buttons/NavLink';
 import { CategoryList } from './CategoryList';
 import { List } from './List';
 import '../styles/Navbar.css';

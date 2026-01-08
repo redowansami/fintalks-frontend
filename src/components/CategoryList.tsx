@@ -1,4 +1,4 @@
-import { NavLink } from './NavLink';
+import { NavLink } from './Buttons/NavLink';
 import { useCategoryContext } from '../hooks/useCategoryContext';
 
 interface CategoryListProps {
