@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/TabButton.css';
+import '../../styles/Buttons/TabButton.css';
 
 type TabVariant = 'pill' | 'folder';
 

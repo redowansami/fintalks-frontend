@@ -1,0 +1,31 @@
+@reference "../../index.css";
+
+@layer components {
+	.icon-button {
+		@apply inline-flex items-center justify-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2;
+	}
+
+	.icon-button--ghost {
+		@apply text-gray-500 hover:bg-gray-100 hover:text-gray-700;
+	}
+
+	.icon-button--primary {
+		@apply bg-blue-600 text-white hover:bg-blue-700;
+	}
+
+	.icon-button--danger {
+		@apply text-red-500 hover:bg-red-50;
+	}
+
+	.icon-button--sm {
+		@apply p-1 text-lg;
+	}
+
+	.icon-button--md {
+		@apply p-2 text-xl;
+	}
+
+	.icon-button--lg {
+		@apply p-3 text-2xl;
+	}
+}
