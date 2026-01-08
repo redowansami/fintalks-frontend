@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { InputField } from './InputField';
-import { PasswordToggleButton } from './Buttons/PasswordToggleButton';
+import { IconButton } from './Buttons/IconButton';
 import type { PasswordInputProps } from '../types/components/passwordInputProps';
 
 export const PasswordInput = ({
@@ -27,9 +27,12 @@ export const PasswordInput = ({
 			{...rest}
 			type={showPassword ? 'text' : 'password'}
 			rightElement={
-				<PasswordToggleButton
-					showPassword={showPassword}
-					onChange={() => setShowPassword(!showPassword)}
+				<IconButton
+					icon={showPassword ? 'mdi:eye' : 'el:eye-close'}
+					label="Toggle password visibility"
+					onClick={() => setShowPassword(!showPassword)}
+					variant="ghost"
+					size="sm"
 				/>
 			}
 		/>

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ReactNode } from 'react';
-import { CloseButton } from './Buttons/CloseButton';
+import { IconButton } from './Buttons/IconButton';
 import '../styles/Modal.css';
 import { Typography } from './Typography';
 
@@ -22,7 +22,12 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message, c
 			<div className="modal-content">
 				<div className="modal-header">
 					{title && <Typography variant="h3">{title}</Typography>}
-					<CloseButton onClick={onClose} />
+					<IconButton
+						icon="material-symbols:close"
+						label="Close modal"
+						onClick={onClose}
+						className="absolute top-0 right-0"
+					/>
 				</div>
 				{message && <Typography variant="body">{message}</Typography>}
 				{children}
