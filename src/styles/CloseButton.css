@@ -1,15 +1,11 @@
-.close-button {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 4rem;
-	height: 4rem;
-	padding: 0;
-	background: transparent;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	color: var(--text-secondary, #666);
-	font-size: 1.5rem;
-	transition: all 0.2s ease;
+@reference "../index.css";
+
+@layer components {
+	.close-button {
+		@apply flex items-center justify-center w-16 h-16 p-0 bg-transparent border-0 rounded cursor-pointer text-2xl transition-all duration-200;
+	}
+
+	.close-button:hover {
+		@apply bg-gray-100;
+	}
 }
