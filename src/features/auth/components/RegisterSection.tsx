@@ -3,21 +3,22 @@ import { Modal, ErrorDialog } from '../../../components';
 import { RegisterForm } from './RegisterForm';
 import { ResendEmailLink } from './ResendEmailLink';
 import { useRegistrationForm, useRegisterHandler } from '../hooks';
-import { signUp, resendConfirmationEmail } from '../../../services/authService';
 
 export const RegisterSection = () => {
 	const navigate = useNavigate();
-
 	const registerForm = useRegistrationForm();
-	const registerHandler = useRegisterHandler(registerForm.validateForm, async () => {
-		const { username, name, email, password } = registerForm.formData;
-		await signUp({ username, name, email, password });
-	});
+	const registerHandler = useRegisterHandler(registerForm.validateForm);
 
 	const handleRegisterClose = () => {
 		registerForm.resetForm();
 		registerHandler.setShowSuccessModal(false);
 		navigate('/login');
+	};
+
+	const handleFormSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+		const { confirmPassword, ...submitData } = registerForm.formData;
+		registerHandler.register(submitData);
 	};
 
 	return (
@@ -28,15 +29,12 @@ export const RegisterSection = () => {
 				message="The registration email was sent successfully, check your email address"
 				actionButtonText="OK"
 			>
-				<ResendEmailLink
-					email={registerForm.formData.email}
-					onResend={resendConfirmationEmail}
-				/>
+				<ResendEmailLink email={registerForm.formData.email} />
 			</Modal>
 
-			{registerHandler.error && (
+			{registerHandler.isError && (
 				<ErrorDialog
-					message={registerHandler.error}
+					message={registerHandler.error?.message || 'Registration failed'}
 					validationErrors={
 						registerHandler.validationErrors ||
 						(Object.keys(registerForm.errors).length > 0
@@ -45,12 +43,13 @@ export const RegisterSection = () => {
 					}
 				/>
 			)}
+
 			<RegisterForm
 				formData={registerForm.formData}
 				errors={registerForm.errors}
-				isPending={registerHandler.loading}
+				isPending={registerHandler.isLoading}
 				onInputChange={registerForm.handleInputChange}
-				onSubmit={registerHandler.handleSubmit}
+				onSubmit={handleFormSubmit}
 			/>
 		</>
 	);
