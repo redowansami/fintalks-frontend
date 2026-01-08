@@ -1,6 +1,6 @@
 import { useEditProfile } from '../hooks';
 import { EditProfileForm } from './EditProfileForm';
-import '../styles/EditProfileModal.css';
+import { Modal } from '../../../components';
 
 interface EditProfileModalProps {
 	isOpen: boolean;
@@ -17,25 +17,25 @@ export const EditProfileModal = ({
 }: EditProfileModalProps) => {
 	const { formData, handleChange, mutation } = useEditProfile(initialName, initialBio, onClose);
 
-	if (!isOpen) return null;
-
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		mutation.mutate(formData);
 	};
 
 	return (
-		<div className="edit-profile-overlay">
-			<div className="edit-profile-modal">
-				<h2 className="edit-profile-title">Update Profile</h2>
-				<EditProfileForm
-					formData={formData}
-					handleChange={handleChange}
-					onSubmit={handleSubmit}
-					onCancel={onClose}
-					mutation={mutation}
-				/>
-			</div>
-		</div>
+		<Modal
+			isOpen={isOpen}
+			onClose={onClose}
+			title="Update Profile"
+			actionButtonText="Close"
+			onActionClick={onClose}
+		>
+			<EditProfileForm
+				formData={formData}
+				handleChange={handleChange}
+				onSubmit={handleSubmit}
+				mutation={mutation}
+			/>
+		</Modal>
 	);
 };
