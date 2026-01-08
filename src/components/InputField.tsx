@@ -1,5 +1,5 @@
 import React from 'react';
-import { ValidationTooltip } from './Buttons/ValidationTooltip';
+import { ValidationTooltip } from './ValidationTooltip';
 import { type InputFieldProps } from '../types/components/inputFieldProps';
 import '../styles/InputField.css';
 import { Typography } from './Typography';
