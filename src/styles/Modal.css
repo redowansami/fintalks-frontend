@@ -1,56 +1,39 @@
-.modal-overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.5);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 1000;
-}
+@reference "../index.css";
 
-.modal-content {
-	background-color: white;
-	border-radius: 8px;
-	padding: 2rem;
-	max-width: 45%;
-	width: 90%;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	text-align: center;
-}
+@layer components {
+	.modal-overlay {
+		@apply fixed top-0 left-0 right-0 bottom-0 bg-black/50 flex justify-center items-center z-1000;
+	}
 
-.modal-title {
-	margin: 0 0 1rem 0;
-	font-size: 1.5rem;
-	color: #333;
-	font-weight: 600;
-}
+	.modal-content {
+		@apply bg-white rounded-lg p-8 max-w-[45%] w-11/12 shadow-[0_4px_6px_rgba(0,0,0,0.1)];
+	}
 
-.modal-message {
-	margin: 0 0 1.5rem 0;
-	font-size: 1rem;
-	color: #666;
-	line-height: 1.5;
-}
+	.modal-header {
+		@apply relative flex justify-center items-center mb-4 pb-2;
+	}
 
-.modal-button {
-	background-color: #001a37;
-	color: white;
-	border: none;
-	margin-top: 1rem;
-	padding: 0.75rem 1.5rem;
-	border-radius: 4px;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-}
+	.modal-header .close-button {
+		@apply absolute right-1 top-1;
+	}
 
-.modal-button:hover {
-	background-color: #0056b3;
-}
+	.modal-title {
+		@apply m-0 text-2xl text-gray-900 font-semibold;
+	}
 
-.modal-button:active {
-	background-color: #003d82;
+	.modal-message {
+		@apply m-0 mb-6 text-base text-gray-600 leading-relaxed;
+	}
+
+	.modal-button {
+		@apply bg-[#001a37] text-white border-0 mt-4 px-6 py-3 rounded cursor-pointer transition-colors duration-300;
+	}
+
+	.modal-button:hover {
+		@apply bg-blue-700;
+	}
+
+	.modal-button:active {
+		@apply bg-[#003d82];
+	}
 }
