@@ -13,9 +13,17 @@ export const CategoryProvider: React.FC<{ children: ReactNode }> = ({ children }
 	} = useQuery({
 		queryKey: CATEGORY_QUERY_KEY,
 		queryFn: categoryService.getCategories,
+		staleTime: 1000 * 60 * 10,
 	});
 
-	const value = useMemo(() => ({ categories, loading, error }), [categories, loading, error]);
+	const value = useMemo(
+		() => ({
+			categories,
+			loading,
+			error: error as Error | null,
+		}),
+		[categories, loading, error],
+	);
 
 	return <CategoryContext.Provider value={value}>{children}</CategoryContext.Provider>;
 };
