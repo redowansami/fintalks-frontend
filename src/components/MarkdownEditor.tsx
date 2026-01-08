@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { MarkdownPreview } from './MarkdownPreview';
-import { MarkdownTabButton } from './Buttons/MarkdownTabButton';
 import { useMarkdownInsert } from '../hooks/useMarkdownInsert';
 import '../styles/MarkdownEditor.css';
 import { Button } from './Buttons/Button';
+import { TabButton } from './Buttons/TabButton';
 
 type TabType = 'write' | 'preview';
 
@@ -24,16 +24,20 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
 	return (
 		<div className="markdown-editor-container">
 			<div className="markdown-editor-tabs">
-				<MarkdownTabButton
-					label="Write"
+				<TabButton
+					variant="folder"
 					isActive={activeTab === 'write'}
 					onClick={() => setActiveTab('write')}
-				/>
-				<MarkdownTabButton
-					label="Preview"
+				>
+					Write
+				</TabButton>
+				<TabButton
+					variant="folder"
 					isActive={activeTab === 'preview'}
 					onClick={() => setActiveTab('preview')}
-				/>
+				>
+					Preview
+				</TabButton>
 			</div>
 
 			{activeTab === 'write' && (

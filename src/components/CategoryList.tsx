@@ -1,5 +1,5 @@
-import { NavLink } from './Buttons/NavLink';
 import { useCategoryContext } from '../hooks/useCategoryContext';
+import { TabButton } from './Buttons/TabButton';
 
 interface CategoryListProps {
 	activeCategory: string | null;
@@ -18,12 +18,14 @@ export const CategoryList: React.FC<CategoryListProps> = ({ activeCategory, onCa
 			{categories?.map((cat) => {
 				const categoryKey = cat.name.toLowerCase();
 				return (
-					<NavLink
+					<TabButton
+						variant="pill"
 						key={cat.categoryId}
-						label={cat.name}
 						isActive={activeCategory === categoryKey}
 						onClick={() => onCategoryClick(categoryKey)}
-					/>
+					>
+						{cat.name}
+					</TabButton>
 				);
 			})}
 		</>
