@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useMutation } from '@tanstack/react-query';
+import { authService } from '../../../services/authService';
 
-export const useResendEmail = (onResend: (email: string) => Promise<unknown>) => {
+export const useResendEmail = () => {
 	const [message, setMessage] = useState('');
 	const mutation = useMutation({
-		mutationFn: onResend,
+		mutationFn: (email: string) => authService.resendConfirmationEmail(email),
 	});
 
 	useEffect(() => {
