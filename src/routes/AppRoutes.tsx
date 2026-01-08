@@ -4,7 +4,6 @@ import { Auth } from '../pages/Auth';
 import { MainLayout } from '../layouts/MainLayout';
 import { PublicRoute } from './guards/PublicRoute';
 import { ProtectedRoute } from './guards/ProtectedRoute';
-import { CategoryContextWrapper } from './wrappers/CategoryContextWrapper';
 import { CreateStory } from '../pages/CreateStory';
 
 export const AppRoutes = () => (
@@ -13,15 +12,13 @@ export const AppRoutes = () => (
 			<Route path="/login" element={<Auth />} />
 			<Route path="/signup" element={<Auth />} />
 		</Route>
-		<Route element={<CategoryContextWrapper />}>
-			<Route element={<MainLayout />}>
-				<Route path="/" element={<HomePage />} />
-				<Route path="/stories/:storyId" element={<StoryDetail />} />
-				<Route element={<ProtectedRoute />}>
-					<Route path="/categories/:category" element={<HomePage />} />
-					<Route path="/create-story" element={<CreateStory />} />
-					<Route path="/profile" element={<Profile />} />
-				</Route>
+		<Route element={<MainLayout />}>
+			<Route path="/" element={<HomePage />} />
+			<Route path="/stories/:storyId" element={<StoryDetail />} />
+			<Route element={<ProtectedRoute />}>
+				<Route path="/categories/:category" element={<HomePage />} />
+				<Route path="/create-story" element={<CreateStory />} />
+				<Route path="/profile" element={<Profile />} />
 			</Route>
 		</Route>
 	</Routes>
