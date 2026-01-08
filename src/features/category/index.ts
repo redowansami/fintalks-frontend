@@ -8,7 +8,7 @@
 export { CategoryList } from './components';
 
 // Hooks
-export { useCategoryContext } from './hooks';
+export { useCategory } from '../../hooks/useCategory';
 
 // Services
 export { categoryService } from './services';
