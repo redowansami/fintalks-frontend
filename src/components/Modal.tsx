@@ -29,7 +29,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message, c
 						className="absolute top-0 right-0"
 					/>
 				</div>
-				{message && <Typography variant="body">{message}</Typography>}
+				{message && <Typography variant="body1" textAlign='center'>{message}</Typography>}
 				{children}
 			</div>
 		</div>
