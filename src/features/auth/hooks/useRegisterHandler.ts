@@ -1,26 +1,26 @@
 import { useMutation } from '@tanstack/react-query';
+import { authService } from '../../../services/authService';
+import { ApiError } from '../../../lib/apiClient';
+import type { SignUpRequest } from '../../../types/auth';
 
-interface UseRegisterReturn {
-	loading: boolean;
-	error: string;
+interface UseRegisterHandlerReturn {
+	isLoading: boolean;
+	isError: boolean;
+	error: Error | null;
 	validationErrors?: Record<string, string | string[]>;
-	handleSubmit: (e: React.FormEvent) => void;
 	showSuccessModal: boolean;
 	setShowSuccessModal: (show: boolean) => void;
+	register: (data: SignUpRequest) => void;
 }
 
-export const useRegister = (
-	validateForm: () => boolean,
-	onSuccess: () => Promise<void>,
-): UseRegisterReturn => {
+export const useRegisterHandler = (validateForm: () => boolean): UseRegisterHandlerReturn => {
 	const mutation = useMutation({
-		mutationFn: onSuccess,
+		mutationFn: (data: SignUpRequest) => authService.signUp(data),
 	});
 
-	const handleSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
+	const register = (data: SignUpRequest) => {
 		if (!validateForm()) return;
-		mutation.mutate();
+		mutation.mutate(data);
 	};
 
 	const setShowSuccessModal = (show: boolean) => {
@@ -29,14 +29,16 @@ export const useRegister = (
 		}
 	};
 
-	const error = mutation.error as Error & { errors?: Record<string, string | string[]> };
+	const validationErrors =
+		mutation.error instanceof ApiError ? mutation.error.validationErrors : undefined;
 
 	return {
-		loading: mutation.isPending,
-		error: mutation.error instanceof Error ? mutation.error.message : '',
-		validationErrors: error?.errors,
-		handleSubmit,
+		isLoading: mutation.isPending,
+		isError: mutation.isError,
+		error: mutation.error,
+		validationErrors,
 		showSuccessModal: mutation.isSuccess,
 		setShowSuccessModal,
+		register,
 	};
 };
