@@ -1,0 +1,26 @@
+@reference "../index.css";
+
+@layer components {
+	.tab-btn {
+		@apply inline-flex items-center justify-center cursor-pointer transition-colors duration-200 focus:outline-none;
+		@apply text-sm font-medium;
+	}
+
+	.tab-btn--pill {
+		@apply px-4 py-1.5 rounded-full border border-transparent;
+		@apply text-gray-300 hover:text-white hover:bg-white/10;
+	}
+
+	.tab-btn--pill[data-active='true'] {
+		@apply bg-secondary text-white shadow-md;
+	}
+
+	.tab-btn--folder {
+		@apply py-3 flex-1 border-t-2;
+		@apply text-gray-500 border-transparent hover:text-gray-700 hover:bg-gray-100;
+	}
+
+	.tab-btn--folder[data-active='true'] {
+		@apply bg-white text-blue-600 border-blue-600;
+	}
+}
