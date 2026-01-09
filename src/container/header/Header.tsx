@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../hooks/useAuthContext';
-import { HeaderSearch, HeaderLogo, HeaderActions } from './HeaderComponents';
-import '../styles/Header.css';
+import { useAuthContext } from '../../hooks/useAuthContext';
+import { HeaderSearch, HeaderLogo } from '../../components/HeaderComponents';
+import { HeaderActions } from './HeaderActions';
+import '../../styles/Header.css';
 
 export const Header: React.FC = () => {
 	const navigate = useNavigate();

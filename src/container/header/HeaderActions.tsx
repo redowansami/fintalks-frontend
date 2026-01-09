@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-import { Button } from '../Buttons/Button';
-import { UserMenu } from './UserMenu';
+import { Button } from '../../components/Buttons/Button';
+import { UserMenu } from '../../components/HeaderComponents/UserMenu';
 
 interface HeaderActionsProps {
 	user: { username: string } | null;
