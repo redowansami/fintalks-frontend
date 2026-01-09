@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/FinTalks_logo.png';
+import logo from '../../../public/FinTalks_logo.png';
 
 export const HeaderLogo: React.FC = () => {
 	return (
