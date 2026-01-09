@@ -5,7 +5,7 @@ import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import { Button } from '../components/Buttons/Button';
 import { Modal } from '../components/Modal';
 import { InputField } from '../components/InputField';
-import '../styles/CreateStory.css';
+import '../styles/pages/CreateStory.css';
 import { StoryBodyField, StoryImageField, StoryCategories } from '../containers/story';
 import { Typography } from '../components/Typography';
 

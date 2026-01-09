@@ -1,7 +1,7 @@
 import { StoryListSection } from '../containers/story';
 import { HomeSidebar } from '../containers/home';
 import { useStoryList } from '../hooks/story';
-import '../styles/HomePage.css';
+import '../styles/pages/HomePage.css';
 
 export const HomePage: React.FC = () => {
 	const {

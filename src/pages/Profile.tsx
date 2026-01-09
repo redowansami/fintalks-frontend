@@ -11,7 +11,7 @@ import {
 	ChangePasswordModal,
 } from '../containers/profile';
 import { useProfile } from '../hooks/profile';
-import '../styles/Profile.css';
+import '../styles/pages/Profile.css';
 import { Typography } from '../components/Typography';
 
 export const Profile = () => {
