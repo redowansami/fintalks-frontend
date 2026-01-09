@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-import '../../styles/HeaderComponents/HeaderSearch.css';
+import '../../styles/components/HeaderComponents/HeaderSearch.css';
 
 export const HeaderSearch: React.FC = () => {
 	return (

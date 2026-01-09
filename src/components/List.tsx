@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/List.css';
+import '../styles/components/List.css';
 
 interface ListProps {
 	children: React.ReactNode;

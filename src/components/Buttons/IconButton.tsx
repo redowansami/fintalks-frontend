@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-import '../../styles/Buttons/IconButton.css';
+import '../../styles/components/Buttons/IconButton.css';
 
 type IconButtonVariant = 'ghost' | 'primary' | 'danger';
 type IconButtonSize = 'sm' | 'md' | 'lg';

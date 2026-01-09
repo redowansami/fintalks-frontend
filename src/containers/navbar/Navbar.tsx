@@ -1,6 +1,6 @@
 import { CategoryList } from './CategoryList';
 import { List } from '../../components/List';
-import '../../styles/Navbar.css';
+import '../../styles/containers/Navbar.css';
 import { TabButton } from '../../components/Buttons/TabButton';
 
 interface NavbarProps {

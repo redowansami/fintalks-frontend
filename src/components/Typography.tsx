@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Typography.css';
+import '../styles/components/Typography.css';
 
 type TypographyVariant = 'h1' | 'h2' | 'h3' | 'body1' | 'body' | 'muted' | 'xs' | 'link';
 

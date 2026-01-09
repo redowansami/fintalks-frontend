@@ -1,6 +1,6 @@
 import { List, ListItem } from './List';
 import { Typography } from './Typography';
-import '../styles/ValidationCriteriaPopup.css';
+import '../styles/components/ValidationCriteriaPopup.css';
 
 interface ValidationCriteriaPopupProps {
 	criteria: string[];

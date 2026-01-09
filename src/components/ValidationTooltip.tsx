@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/ValidationTooltip.css';
+import '../styles/components/ValidationTooltip.css';
 import { IconButton } from './Buttons/IconButton';
 import { ValidationCriteriaPopup } from './ValidationCriteriaPopup';
 

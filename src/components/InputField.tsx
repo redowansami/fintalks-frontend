@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { ValidationTooltip } from './ValidationTooltip';
-import '../styles/InputField.css';
+import '../styles/components/InputField.css';
 import { Typography } from './Typography';
 
 interface BaseProps {

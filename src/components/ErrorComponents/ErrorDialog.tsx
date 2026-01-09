@@ -1,6 +1,6 @@
 import { ErrorList } from './ErrorList';
 import type { ReactNode } from 'react';
-import '../../styles/errorComponents/errorDialog.css';
+import '../../styles/components/errorComponents/errorDialog.css';
 import { Typography } from '../Typography';
 
 export interface ErrorDialogProps {

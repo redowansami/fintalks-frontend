@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react';
 import { Button } from './Buttons/Button';
 import { Typography } from './Typography';
 import { ErrorDialog } from './ErrorComponents/ErrorDialog';
-import '../styles/ImagePreview.css';
+import '../styles/components/ImagePreview.css';
 
 interface ImagePreviewProps {
 	preview: string | null;
