@@ -1,5 +1,5 @@
-import { useCategory } from '../hooks/useCategory';
-import { TabButton } from './Buttons/TabButton';
+import { useCategory } from '../../hooks/useCategory';
+import { TabButton } from '../../components/Buttons/TabButton';
 
 interface CategoryListProps {
 	activeCategory: string | null;

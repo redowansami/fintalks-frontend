@@ -1,7 +1,7 @@
 import { CategoryList } from './CategoryList';
-import { List } from './List';
-import '../styles/Navbar.css';
-import { TabButton } from './Buttons/TabButton';
+import { List } from '../../components/List';
+import '../../styles/Navbar.css';
+import { TabButton } from '../../components/Buttons/TabButton';
 
 interface NavbarProps {
 	activeCategory?: string | null;
