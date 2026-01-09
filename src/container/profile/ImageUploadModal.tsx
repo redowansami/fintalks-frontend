@@ -1,9 +1,9 @@
 import { useState, useRef } from 'react';
-import { useProfilePictureUpload } from '../hooks/profile/useProfilePictureUpload';
-import { Modal } from './Modal';
-import { FileInput } from './FileInput';
-import { ImagePreview } from './ImagePreview';
-import { Button } from './Buttons/Button';
+import { useProfilePictureUpload } from '../../hooks/profile/useProfilePictureUpload';
+import { Modal } from '../../components/Modal';
+import { FileInput } from '../../components/FileInput';
+import { ImagePreview } from '../../components/ImagePreview';
+import { Button } from '../../components/Buttons/Button';
 
 interface ImageUploadModalProps {
 	isOpen: boolean;
