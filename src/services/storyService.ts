@@ -35,4 +35,8 @@ export const storyService = {
 
 		return await storyApi.create(apiPayload);
 	},
+
+	async deleteStory(storyId: string) {
+		return await storyApi.delete(storyId);
+	},
 };

@@ -1,10 +1,13 @@
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import '../../styles/containers/story/StoryCard.css';
 import { Typography } from '../../components/Typography';
 import { MarkdownPreview } from '../../components/MarkdownPreview';
+import { Modal } from '../../components/Modal';
 import { StoryActionsMenu } from './StoryActionsMenu';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useDeleteStory } from '../../hooks/story';
 import type { StoryCardProps } from '../../interfaces/containers/story';
 
 export const StoryCard: React.FC<StoryCardProps> = ({
@@ -19,12 +22,15 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 }) => {
 	const navigate = useNavigate();
 	const { user } = useAuthContext();
+	const { deleteStory, isSuccess } = useDeleteStory();
+	const [showSuccessModal, setShowSuccessModal] = useState(false);
 	const isOwner = user?.username === username;
 
 	const handleClick = () => navigate(`/stories/${storyId}`);
 	const handleEdit = () => navigate(`/stories/${storyId}/edit`);
 	const handleDelete = () => {
-		console.log('Delete story:', storyId);
+		deleteStory(storyId);
+		setShowSuccessModal(true);
 	};
 
 	const truncateText = (text: string, limit: number) => {
@@ -92,6 +98,12 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 					</div>
 				</div>
 			</div>
+			<Modal
+				isOpen={isSuccess && showSuccessModal}
+				onClose={() => setShowSuccessModal(false)}
+				title="Success"
+				message="Story deleted successfully"
+			/>
 		</article>
 	);
 };

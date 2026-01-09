@@ -21,4 +21,7 @@ export const storyApi = {
 
 	create: (data: CreateStoryApiPayload) =>
 		apiClient.post<never, CreateStoryResponse>('/stories', data),
+
+	delete: (storyId: string) =>
+		apiClient.delete<never, { message: string }>(`/stories/${storyId}`),
 };

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Modal } from '../components/Modal';
 import { AIReliabilityCard } from '../containers/story/AIReliabilityCard';
 import { StoryMeta, StoryImage, StoryTags, StoryActionsMenu } from '../containers/story';
-import { useStoryDetail } from '../hooks/story';
+import { useStoryDetail, useDeleteStory } from '../hooks/story';
 import { Spinner } from '../components';
 import { Typography } from '../components/Typography';
 import { MarkdownPreview } from '../components/MarkdownPreview';
@@ -15,6 +15,7 @@ export const StoryDetail: React.FC = () => {
 
 	const { user } = useAuthContext();
 	const { story, isPending, error } = useStoryDetail(storyId);
+	const { deleteStory, isSuccess } = useDeleteStory();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	if (isPending) return <Spinner />;
@@ -30,8 +31,14 @@ export const StoryDetail: React.FC = () => {
 	};
 
 	const handleDelete = () => {
-		console.log('Delete story:', storyId);
+		deleteStory(storyId!);
 	};
+
+	if (isSuccess) {
+		setTimeout(() => {
+			navigate('/');
+		}, 1500);
+	}
 
 	return (
 		<>
@@ -61,6 +68,12 @@ export const StoryDetail: React.FC = () => {
 				title="AI Prediction Comparison"
 				message={story.predictionComparison || ''}
 				actionButtonText="Close"
+			/>
+			<Modal
+				isOpen={isSuccess}
+				onClose={() => navigate('/')}
+				title="Success"
+				message="Story deleted successfully"
 			/>
 		</>
 	);
