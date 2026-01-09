@@ -7,6 +7,7 @@ interface UseCreateStoryResult {
 	createStory: (input: CreateStoryInput) => void;
 	isLoading: boolean;
 	error: string | null;
+	isSuccess: boolean;
 	validationErrors?: Record<string, string | string[]>;
 }
 
@@ -27,6 +28,7 @@ export const useCreateStory = (): UseCreateStoryResult => {
 		createStory: mutation.mutate,
 		isLoading: mutation.isPending,
 		error: mutation.error instanceof Error ? mutation.error.message : null,
+		isSuccess: mutation.isSuccess,
 		validationErrors,
 	};
 };
