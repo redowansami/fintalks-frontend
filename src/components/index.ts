@@ -1,7 +1,6 @@
 export { Button } from './Buttons/Button';
 export { IconButton } from './Buttons/IconButton';
 export { InputField } from './InputField';
-export { Header } from './Header';
 export { Navbar } from './Navbar';
 export { Footer } from './Footer';
 export { StoryCard } from '../container/story';
@@ -14,4 +13,4 @@ export { Spinner } from './Spinner';
 export { ValidationTooltip } from './ValidationTooltip';
 export { PasswordInput } from './PasswordInput';
 
-export { HeaderLogo, HeaderSearch, UserMenu, HeaderActions } from './HeaderComponents';
+export { HeaderLogo, HeaderSearch, UserMenu } from './HeaderComponents';

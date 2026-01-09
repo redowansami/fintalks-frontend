@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { Header } from '../components/Header';
+import { Header } from '../container/header/Header';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useStoryList } from '../hooks/story';
