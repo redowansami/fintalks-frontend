@@ -1,5 +1,5 @@
-import { AdvertisementSpace } from './SideBar/AdvertisementSpace';
-import { MarketMovers } from './SideBar/MarketMovers';
+import { AdvertisementSpace } from './AdvertisementSpace';
+import { MarketMovers } from './MarketMovers';
 
 interface HomeSidebarProps {
 	show: boolean;

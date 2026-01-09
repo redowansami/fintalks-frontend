@@ -1,5 +1,5 @@
-import { Typography } from '../../../../components/Typography';
-import '../../styles/SideBar/AdvertisementSpace.css';
+import { Typography } from '../../components/Typography';
+import '../../styles/home/AdvertisementSpace.css';
 
 export const AdvertisementSpace: React.FC = () => {
 	return (

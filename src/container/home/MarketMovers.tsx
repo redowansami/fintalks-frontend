@@ -1,5 +1,5 @@
-import { Typography } from '../../../../components/Typography';
-import '../../styles/SideBar/MarketMovers.css';
+import { Typography } from '../../components/Typography';
+import '../../styles/home/MarketMovers.css';
 
 interface Mover {
 	symbol: string;
@@ -26,9 +26,7 @@ export const MarketMovers: React.FC = () => {
 			{movers.map((mover) => (
 				<div key={mover.symbol} className="mover-row">
 					<div>
-						<Typography className="mover-symbol">
-							{mover.symbol}
-						</Typography>
+						<Typography className="mover-symbol">{mover.symbol}</Typography>
 						<Typography variant="xs" className="mover-name">
 							{mover.name}
 						</Typography>
