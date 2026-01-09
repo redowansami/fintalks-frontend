@@ -1,5 +1,5 @@
-import { Button, InputField } from '../../../components';
-import { PasswordInput } from '../../../components';
+import { Button, InputField } from '../../components/index';
+import { PasswordInput } from '../../components/index';
 
 interface LoginFormProps {
 	formData: {

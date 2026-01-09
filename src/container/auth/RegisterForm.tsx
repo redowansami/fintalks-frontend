@@ -1,7 +1,7 @@
-import { Button, InputField } from '../../../components';
-import { PasswordInput } from '../../../components';
+import { Button, InputField } from '../../components/index';
+import { PasswordInput } from '../../components/index';
 import { PasswordRequirements } from './PasswordRequirements';
-import { REGISTER_FORM_FIELDS } from '../../../constants/RegisterForm';
+import { REGISTER_FORM_FIELDS } from '../../constants/RegisterForm';
 
 interface RegisterFormProps {
 	formData: {

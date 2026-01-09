@@ -1,5 +1,5 @@
-import { useResendEmail } from '../hooks';
-import { Typography } from '../../../components/Typography';
+import { useResendEmail } from '../../hooks/auth';
+import { Typography } from '../../components/Typography';
 
 interface ResendEmailLinkProps {
 	email: string;

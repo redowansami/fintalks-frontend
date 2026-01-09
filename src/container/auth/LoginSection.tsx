@@ -1,7 +1,7 @@
-import { ErrorDialog } from '../../../components';
+import { ErrorDialog } from '../../components/index';
 import { LoginForm } from './LoginForm';
 import { ResendEmailLink } from './ResendEmailLink';
-import { useLoginForm, useLoginHandler } from '../hooks';
+import { useLoginForm, useLoginHandler } from '../../hooks/auth';
 
 export const LoginSection = () => {
 	const loginForm = useLoginForm();

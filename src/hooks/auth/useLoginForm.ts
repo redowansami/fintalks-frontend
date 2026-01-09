@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { createInputChangeHandler } from '../utils';
-import { validateLoginForm } from '../utils/loginValidator';
+import { createInputChangeHandler } from '../../utils/auth';
+import { validateLoginForm } from '../../utils/auth';
 
 interface LoginFormData {
 	email: string;

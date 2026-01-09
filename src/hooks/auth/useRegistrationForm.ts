@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { createInputChangeHandler } from '../utils';
-import { validateRegistrationForm } from '../utils';
+import { createInputChangeHandler } from '../../utils/auth';
+import { validateRegistrationForm } from '../../utils/auth';
 
 interface FormErrors {
 	[key: string]: string;

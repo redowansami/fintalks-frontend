@@ -1,8 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
-import { authService } from '../../../services/authService';
-import { ApiError } from '../../../lib/apiClient';
-import { useAuthContext } from '../../../hooks/useAuthContext';
-import type { LoginRequest } from '../../../types/auth';
+import { authService } from '../../services/authService';
+import { ApiError } from '../../lib/apiClient';
+import { useAuthContext } from '../../hooks/useAuthContext';
+import type { LoginRequest } from '../../types/auth';
 
 interface UseLoginHandlerReturn {
 	isPending: boolean;

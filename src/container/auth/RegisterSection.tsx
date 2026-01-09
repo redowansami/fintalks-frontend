@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { Modal, ErrorDialog } from '../../../components';
+import { Modal, ErrorDialog } from '../../components/index';
 import { RegisterForm } from './RegisterForm';
 import { ResendEmailLink } from './ResendEmailLink';
-import { useRegistrationForm, useRegisterHandler } from '../hooks';
+import { useRegistrationForm, useRegisterHandler } from '../../hooks/auth';
 
 export const RegisterSection = () => {
 	const navigate = useNavigate();
