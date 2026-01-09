@@ -1,4 +1,4 @@
-import { Typography } from './Typography';
+import { Typography } from '../components/Typography';
 import '../styles/Footer.css';
 
 export const Footer: React.FC = () => {
