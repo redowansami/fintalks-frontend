@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import '../../styles/containers/story/StoryCard.css';
 import { Typography } from '../../components/Typography';
 import { MarkdownPreview } from '../../components/MarkdownPreview';
+import { StoryActionsMenu } from './StoryActionsMenu';
+import { useAuthContext } from '../../hooks/useAuthContext';
 import type { StoryCardProps } from '../../interfaces/containers/story';
 
 export const StoryCard: React.FC<StoryCardProps> = ({
@@ -11,12 +13,20 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 	body,
 	reliabilityScore,
 	categories,
-	image,
+	imageUrl,
 	username,
 	createdAt,
 }) => {
 	const navigate = useNavigate();
+	const { user } = useAuthContext();
+	const isOwner = user?.username === username;
+
 	const handleClick = () => navigate(`/stories/${storyId}`);
+	const handleEdit = () => navigate(`/stories/${storyId}/edit`);
+	const handleDelete = () => {
+		console.log('Delete story:', storyId);
+	};
+
 	const truncateText = (text: string, limit: number) => {
 		return text.length > limit ? text.substring(0, limit) + '...' : text;
 	};
@@ -44,7 +54,14 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 
 	return (
 		<article className="story-card" onClick={handleClick}>
-			<img src={image || placeholderImage} alt={title} className="story-card-image" />
+			<div className="story-card-header">
+				<img src={imageUrl || placeholderImage} alt={title} className="story-card-image" />
+			</div>
+			{isOwner && (
+				<div className="story-card-actions" onClick={(e) => e.stopPropagation()}>
+					<StoryActionsMenu onEdit={handleEdit} onDelete={handleDelete} />
+				</div>
+			)}
 			<div className="story-card-content">
 				<Typography variant="h3">{title}</Typography>
 
