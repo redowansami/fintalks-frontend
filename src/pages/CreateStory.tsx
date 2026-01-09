@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCreateStory, useCreateStoryModal } from '../hooks/story';
+import { useCreateStory, useCreateStoryForm } from '../hooks/story';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import { Button } from '../components/Buttons/Button';
+import { Modal } from '../components/Modal';
 import '../styles/CreateStory.css';
 import {
 	StoryTitleField,
@@ -14,22 +15,29 @@ import { Typography } from '../components/Typography';
 
 export const CreateStory: React.FC = () => {
 	const navigate = useNavigate();
-	const { createStory, isLoading, error, validationErrors } = useCreateStory();
-	const { formData, formHandlers } = useCreateStoryModal();
+	const { createStory, isLoading, error, isSuccess, validationErrors } = useCreateStory();
+	const { formData, formHandlers, resetForm } = useCreateStoryForm();
+	const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-	const handleCreate = async (e: React.FormEvent) => {
+	const handleCreate = (e: React.FormEvent) => {
 		e.preventDefault();
-		await createStory({
+		createStory({
 			title: formData.title,
 			body: formData.body,
 			imageFile: formData.imageFile,
 			categoryIds: formData.categoryIds,
 		});
-
-		if (!error) {
-			navigate('/');
-		}
 	};
+
+	const handleSuccessModalClose = () => {
+		setShowSuccessModal(false);
+		resetForm();
+		navigate('/');
+	};
+
+	if (isSuccess && !showSuccessModal) {
+		setShowSuccessModal(true);
+	}
 
 	return (
 		<div className="create-story-container">
@@ -67,6 +75,19 @@ export const CreateStory: React.FC = () => {
 					</Button>
 				</div>
 			</form>
+
+			<Modal
+				isOpen={showSuccessModal}
+				onClose={handleSuccessModalClose}
+				title="Story Published"
+				message="Your story has been successfully published!"
+			>
+				<div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center' }}>
+					<Button variant="primary" onClick={handleSuccessModalClose}>
+						Go to Home
+					</Button>
+				</div>
+			</Modal>
 		</div>
 	);
 };
