@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { AuthFormLayout, LoginSection, RegisterSection } from '../container/auth';
+import { AuthFormLayout, LoginSection, RegisterSection } from '../containers/auth';
 import { useAuthContext } from '../hooks/useAuthContext';
 
 export const Auth = () => {

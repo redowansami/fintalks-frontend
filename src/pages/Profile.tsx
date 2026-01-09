@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Spinner } from '../components/Spinner';
-import { ImageUploadModal } from '../container/profile/ImageUploadModal';
+import { ImageUploadModal } from '../containers/profile/ImageUploadModal';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import {
 	ProfilePicture,
@@ -9,7 +9,7 @@ import {
 	ProfileStories,
 	EditProfileModal,
 	ChangePasswordModal,
-} from '../container/profile';
+} from '../containers/profile';
 import { useProfile } from '../hooks/profile';
 import '../styles/Profile.css';
 import { Typography } from '../components/Typography';

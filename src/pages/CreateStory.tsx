@@ -6,7 +6,7 @@ import { Button } from '../components/Buttons/Button';
 import { Modal } from '../components/Modal';
 import { InputField } from '../components/InputField';
 import '../styles/CreateStory.css';
-import { StoryBodyField, StoryImageField, StoryCategories } from '../container/story';
+import { StoryBodyField, StoryImageField, StoryCategories } from '../containers/story';
 import { Typography } from '../components/Typography';
 
 export const CreateStory: React.FC = () => {

@@ -1,5 +1,5 @@
-import { StoryListSection } from '../container/story';
-import { HomeSidebar } from '../container/home';
+import { StoryListSection } from '../containers/story';
+import { HomeSidebar } from '../containers/home';
 import { useStoryList } from '../hooks/story';
 import '../styles/HomePage.css';
 
