@@ -2,11 +2,19 @@
 
 @layer components {
 	.story-card {
-		@apply flex flex-col sm:flex-row gap-6 cursor-pointer transition-all duration-300;
+		@apply relative flex flex-col sm:flex-row gap-6 cursor-pointer transition-all duration-300;
+	}
+
+	.story-card-header {
+		@apply w-full sm:w-1/3 shrink-0;
 	}
 
 	.story-card-image {
-		@apply w-full sm:w-1/3 h-40 object-cover rounded shrink-0 shadow-sm transition-shadow duration-300;
+		@apply w-full h-40 object-cover rounded shadow-sm transition-shadow duration-300;
+	}
+
+	.story-card-actions {
+		@apply absolute top-0 right-4;
 	}
 
 	.story-card-content {
