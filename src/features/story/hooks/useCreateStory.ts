@@ -1,80 +1,32 @@
-import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useAuthContext } from '../../../hooks/useAuthContext';
-import type { CreateStoryPayload } from '../../../services/storyService';
-import { storyService, StoryError } from '../../../services/storyService';
-import { uploadImageToImgbb } from '../../../services/imageUploadService';
+import { storyService } from '../../../services/storyService';
+import { ApiError } from '../../../lib/apiClient';
+import type { CreateStoryInput } from '../../../types/story';
 
 interface UseCreateStoryResult {
-	createStory: (
-		title: string,
-		body: string,
-		imageFile: File | null,
-		categoryIds: string[],
-	) => Promise<void>;
+	createStory: (input: CreateStoryInput) => void;
 	isLoading: boolean;
 	error: string | null;
-	validationErrors: Record<string, string | string[]> | null;
+	validationErrors?: Record<string, string | string[]>;
 }
 
 export const useCreateStory = (): UseCreateStoryResult => {
-	const { token } = useAuthContext();
 	const queryClient = useQueryClient();
-	const [error, setError] = useState<string | null>(null);
-	const [validationErrors, setValidationErrors] = useState<Record<
-		string,
-		string | string[]
-	> | null>(null);
 
 	const mutation = useMutation({
-		mutationFn: async (payload: CreateStoryPayload) => {
-			setError(null);
-			setValidationErrors(null);
-			if (!token) {
-				throw new StoryError('No authentication token found');
-			}
-			return storyService.createStory(token, payload);
-		},
+		mutationFn: (input: CreateStoryInput) => storyService.createStory(input),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['stories'] });
 		},
-		onError: (err) => {
-			if (err instanceof StoryError) {
-				setError(err.message);
-				if (err.validationErrors) {
-					setValidationErrors(err.validationErrors);
-				}
-			} else {
-				const errorMessage = err instanceof Error ? err.message : 'Failed to create story';
-				setError(errorMessage);
-			}
-		},
 	});
 
+	const validationErrors =
+		mutation.error instanceof ApiError ? mutation.error.validationErrors : undefined;
+
 	return {
-		createStory: async (
-			title: string,
-			body: string,
-			imageFile: File | null,
-			categoryIds: string[],
-		) => {
-			let imageUrl = '';
-			if (imageFile) {
-				imageUrl = await uploadImageToImgbb(imageFile);
-			}
-			return new Promise((resolve, reject) => {
-				const payload: CreateStoryPayload = { title, body, categoryIds };
-				if (imageUrl) {
-					payload.imageUrl = imageUrl;
-				}
-				mutation.mutate(payload, {
-					onSuccess: () => resolve(),
-					onError: (err) => reject(err),
-				});
-			});
-		},
+		createStory: mutation.mutate,
 		isLoading: mutation.isPending,
-		error: error || (mutation.error instanceof Error ? mutation.error.message : null),
+		error: mutation.error instanceof Error ? mutation.error.message : null,
 		validationErrors,
 	};
 };

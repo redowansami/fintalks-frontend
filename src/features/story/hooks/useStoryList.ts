@@ -1,6 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useParams, useNavigate } from 'react-router-dom';
-import { storyService, type Story } from '../../../services/storyService';
+import { storyService } from '../../../services/storyService';
+import type { Story } from '../../../types/story';
 
 interface UseStoryListReturn {
 	stories: Story[];
@@ -9,7 +10,7 @@ interface UseStoryListReturn {
 	isFetchingNextPage: boolean;
 	error: Error | null;
 	pageTitle: string;
-	hasNextPage: boolean | undefined;
+	hasNextPage: boolean;
 	handleCategoryClick: (categoryName: string | null) => void;
 	handleLoadMore: () => void;
 }
@@ -24,19 +25,15 @@ export const useStoryList = (): UseStoryListReturn => {
 		useInfiniteQuery({
 			queryKey: ['stories', activeCategory],
 			queryFn: ({ pageParam }) =>
-				storyService.fetchStories(activeCategory, pageParam as string | null),
-			getNextPageParam: (lastPage) => lastPage.nextCursor || undefined,
+				storyService.getStories(activeCategory, pageParam as string | null),
 			initialPageParam: null as string | null,
+			getNextPageParam: (lastPage) => lastPage.nextCursor || undefined,
 		});
 
-	const stories = data?.pages.flatMap((page) => (page as { list: Story[] }).list) ?? [];
+	const stories = data?.pages.flatMap((page) => page.list) ?? [];
 
 	const handleCategoryClick = (categoryName: string | null) => {
-		if (categoryName) {
-			navigate(`/categories/${categoryName}`);
-		} else {
-			navigate('/');
-		}
+		navigate(categoryName ? `/categories/${categoryName}` : '/');
 	};
 
 	const handleLoadMore = () => {
@@ -54,9 +51,9 @@ export const useStoryList = (): UseStoryListReturn => {
 		activeCategory,
 		isPending,
 		isFetchingNextPage,
-		error: error || null,
+		error: error as Error | null,
 		pageTitle,
-		hasNextPage,
+		hasNextPage: !!hasNextPage,
 		handleCategoryClick,
 		handleLoadMore,
 	};
