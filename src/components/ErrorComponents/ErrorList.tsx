@@ -1,6 +1,9 @@
-import type { ErrorListProps } from '../../types/errorComponents/errorListProps';
 import { List, ListItem } from '../List';
 import { Typography } from '../Typography';
+
+export interface ErrorListProps {
+	errors: Record<string, string | string[]>;
+}
 
 export const ErrorList = ({ errors }: ErrorListProps) => {
 	const allErrors = Object.values(errors).flat();

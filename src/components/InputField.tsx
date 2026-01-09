@@ -1,62 +1,148 @@
-import React from 'react';
+// import React from 'react';
+// import { ValidationTooltip } from './ValidationTooltip';
+// import '../styles/InputField.css';
+// import { Typography } from './Typography';
+
+// export interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+// 	label: string;
+// 	error?: string;
+// 	validationCriteria?: string[];
+// 	rightElement?: React.ReactNode;
+// }
+
+// interface ExtendedInputFieldProps extends Omit<InputFieldProps, 'onChange'> {
+// 	type?: 'text' | 'email' | 'password' | 'textarea';
+// 	rows?: number;
+// 	onChange?:
+// 		| ((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void)
+// 		| ((e: React.ChangeEvent<HTMLInputElement>) => void)
+// 		| ((e: React.ChangeEvent<HTMLTextAreaElement>) => void);
+// }
+
+// export const InputField: React.FC<ExtendedInputFieldProps> = ({
+// 	label,
+// 	id,
+// 	error,
+// 	validationCriteria,
+// 	className = '',
+// 	rightElement,
+// 	type = 'text',
+// 	rows = 4,
+// 	...rest
+// }) => {
+// 	return (
+// 		<div className="input-group">
+// 			<div className="input-header">
+// 				<label htmlFor={id}>{label}</label>
+// 				{validationCriteria && <ValidationTooltip criteria={validationCriteria} />}
+// 			</div>
+
+// 			<div className="input-wrapper">
+// 				{type === 'textarea' ? (
+// 					<textarea
+// 						id={id}
+// 						rows={rows}
+// 						className={`input-control ${error ? 'is-invalid' : ''} ${className}`}
+// 						{...(rest as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
+// 					/>
+// 				) : (
+// 					<input
+// 						id={id}
+// 						type={type}
+// 						className={`input-control ${error ? 'is-invalid' : ''} ${
+// 							rightElement ? 'with-right-element' : ''
+// 						} ${className}`}
+// 						{...(rest as React.InputHTMLAttributes<HTMLInputElement>)}
+// 					/>
+// 				)}
+// 				{rightElement && <div className="input-right-element">{rightElement}</div>}
+// 			</div>
+
+// 			{error && (
+// 				<Typography variant="muted" color="error" className="input-error">
+// 					{error}
+// 				</Typography>
+// 			)}
+// 		</div>
+// 	);
+// };
+
+import React, { forwardRef } from 'react';
 import { ValidationTooltip } from './ValidationTooltip';
-import { type InputFieldProps } from '../types/components/inputFieldProps';
 import '../styles/InputField.css';
 import { Typography } from './Typography';
 
-interface ExtendedInputFieldProps extends Omit<InputFieldProps, 'onChange'> {
-	type?: 'text' | 'email' | 'password' | 'textarea';
-	rows?: number;
-	onChange?:
-		| ((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void)
-		| ((e: React.ChangeEvent<HTMLInputElement>) => void)
-		| ((e: React.ChangeEvent<HTMLTextAreaElement>) => void);
+interface BaseProps {
+	label: string;
+	error?: string;
+	validationCriteria?: string[];
+	rightElement?: React.ReactNode;
+	className?: string;
 }
 
-export const InputField: React.FC<ExtendedInputFieldProps> = ({
-	label,
-	id,
-	error,
-	validationCriteria,
-	className = '',
-	rightElement,
-	type = 'text',
-	rows = 4,
-	...rest
-}) => {
-	return (
-		<div className="input-group">
-			<div className="input-header">
-				<label htmlFor={id}>{label}</label>
-				{validationCriteria && <ValidationTooltip criteria={validationCriteria} />}
-			</div>
+interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement>, BaseProps {
+	type: 'textarea';
+}
 
-			<div className="input-wrapper">
-				{type === 'textarea' ? (
-					<textarea
-						id={id}
-						rows={rows}
-						className={`input-control ${error ? 'is-invalid' : ''} ${className}`}
-						{...(rest as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
-					/>
-				) : (
-					<input
-						id={id}
-						type={type}
-						className={`input-control ${error ? 'is-invalid' : ''} ${
-							rightElement ? 'with-right-element' : ''
-						} ${className}`}
-						{...(rest as React.InputHTMLAttributes<HTMLInputElement>)}
-					/>
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, BaseProps {
+	type?: 'text' | 'email' | 'password';
+}
+
+export type InputFieldProps = TextAreaProps | InputProps;
+
+export const InputField = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputFieldProps>(
+	(props, ref) => {
+		const {
+			label,
+			id,
+			error,
+			validationCriteria,
+			className = '',
+			rightElement,
+			type = 'text',
+			...rest
+		} = props;
+
+		const wrapperClass = `input-control ${error ? 'is-invalid' : ''} ${
+			rightElement ? 'with-right-element' : ''
+		} ${className}`;
+
+		return (
+			<div className="input-group">
+				<div className="input-header">
+					<label htmlFor={id}>{label}</label>
+					{validationCriteria && <ValidationTooltip criteria={validationCriteria} />}
+				</div>
+
+				<div className="input-wrapper">
+					{type === 'textarea' ? (
+						<textarea
+							id={id}
+							className={wrapperClass}
+							{...(rest as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
+							ref={ref as React.Ref<HTMLTextAreaElement>}
+							aria-invalid={!!error}
+						/>
+					) : (
+						<input
+							id={id}
+							type={type}
+							className={wrapperClass}
+							{...(rest as React.InputHTMLAttributes<HTMLInputElement>)}
+							ref={ref as React.Ref<HTMLInputElement>}
+							aria-invalid={!!error}
+						/>
+					)}
+
+					{rightElement && <div className="input-right-element">{rightElement}</div>}
+				</div>
+
+				{error && (
+					<Typography variant="muted" color="error">
+						{error}
+					</Typography>
 				)}
-				{rightElement && <div className="input-right-element">{rightElement}</div>}
 			</div>
-
-			{error && (
-				<Typography variant="muted" color="error" className="input-error">
-					{error}
-				</Typography>
-			)}
-		</div>
-	);
-};
+		);
+	},
+);

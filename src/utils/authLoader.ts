@@ -1,14 +1,14 @@
 import { AUTH_TOKENS } from '../constants/authConstants';
-import type { AuthUser } from '../types/AuthContextType';
+import type { User } from '../types/auth';
 
-export const loadAuth = async (): Promise<{ token: string | null; user: AuthUser | null }> => {
+export const loadAuth = async (): Promise<{ token: string | null; user: User | null }> => {
 	const token = localStorage.getItem(AUTH_TOKENS.TOKEN);
 	const userString = localStorage.getItem(AUTH_TOKENS.USER);
 
-	let user: AuthUser | null = null;
+	let user: User | null = null;
 	if (userString) {
 		try {
-			user = JSON.parse(userString) as AuthUser;
+			user = JSON.parse(userString) as User;
 		} catch {
 			console.warn('Failed to parse stored user data');
 		}

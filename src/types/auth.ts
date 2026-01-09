@@ -34,3 +34,16 @@ export interface ResendConfirmationResponse {
 	success: boolean;
 	message: string;
 }
+
+import { createContext } from 'react';
+
+export interface AuthContextType {
+	user: User | null;
+	token: string | null;
+	loading: boolean;
+	isAuthenticated: boolean;
+	login: (token: string, user: User) => void;
+	logout: () => void;
+}
+
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);

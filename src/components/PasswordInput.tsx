@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { InputField } from './InputField';
 import { IconButton } from './Buttons/IconButton';
-import type { PasswordInputProps } from '../types/components/passwordInputProps';
+
+export interface PasswordInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+	label?: string;
+	error?: string;
+}
 
 export const PasswordInput = ({
 	id = 'password',

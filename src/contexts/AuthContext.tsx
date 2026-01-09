@@ -1,6 +1,7 @@
 import { type ReactNode, useMemo } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { AuthContext, type AuthContextType, type AuthUser } from '../types/AuthContextType';
+import { AuthContext, type AuthContextType } from '../types/auth';
+import type { User } from '../types/auth';
 import { AUTH_TOKENS, AUTH_QUERY_KEY } from '../constants/authConstants';
 import { loadAuth } from '../utils/authLoader';
 
@@ -20,7 +21,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 			token: authData.token,
 			loading: isLoading,
 			isAuthenticated: !!authData.token && !!authData.user,
-			login: (newToken: string, newUser: AuthUser) => {
+			login: (newToken: string, newUser: User) => {
 				localStorage.setItem(AUTH_TOKENS.TOKEN, newToken);
 				localStorage.setItem(AUTH_TOKENS.USER, JSON.stringify(newUser));
 				queryClient.setQueryData(AUTH_QUERY_KEY, { token: newToken, user: newUser });
