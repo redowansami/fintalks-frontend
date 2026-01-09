@@ -1,8 +1,8 @@
 import React from 'react';
-import { useCategory } from '../../../../hooks/useCategory';
+import { useCategory } from '../../hooks/useCategory';
 import '../../styles/StoryCategories.css';
-import { Typography } from '../../../../components/Typography';
-import { Spinner } from '../../../../components';
+import { Typography } from '../Typography';
+import { Spinner } from '..';
 
 interface StoryCategoriesProps {
 	selectedIds: string[];

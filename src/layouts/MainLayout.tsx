@@ -2,7 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
-import { useStoryList } from '../features/story/hooks';
+import { useStoryList } from '../hooks/story';
 
 export const MainLayout = () => {
 	const { activeCategory, handleCategoryClick } = useStoryList();

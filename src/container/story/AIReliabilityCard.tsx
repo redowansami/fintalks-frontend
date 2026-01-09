@@ -1,7 +1,7 @@
-import { Button } from '../../../components/Buttons/Button';
-import { Typography } from '../../../components/Typography';
-import '../styles/AIReliabilityCard.css';
-import '../../../styles/variables.css';
+import { Button } from '../../components/Buttons/Button';
+import { Typography } from '../../components/Typography';
+import '../../styles/story/AIReliabilityCard.css';
+import '../../styles/variables.css';
 
 interface AIReliabilityCardProps {
 	reliabilityScore: number;

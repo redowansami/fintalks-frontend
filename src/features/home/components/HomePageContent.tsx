@@ -1,5 +1,5 @@
-import { StoryListSection } from '../../story';
-import type { Story } from '../../story';
+import { StoryListSection } from '../../../container/story';
+import type { Story } from '../../../types/story';
 
 interface HomePageContentProps {
 	stories: Story[];

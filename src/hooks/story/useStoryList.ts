@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useParams, useNavigate } from 'react-router-dom';
-import { storyService } from '../../../services/storyService';
-import type { Story } from '../../../types/story';
+import { storyService } from '../../services/storyService';
+import type { Story } from '../../types/story';
 
 interface UseStoryListReturn {
 	stories: Story[];

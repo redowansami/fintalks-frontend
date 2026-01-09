@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Modal } from '../components/Modal';
-import { AIReliabilityCard } from '../features/story/components/AIReliabilityCard';
-import { StoryMeta, StoryImage, StoryTags } from '../features/story/components';
-import { useStoryDetail } from '../features/story/hooks';
+import { AIReliabilityCard } from '../container/story/AIReliabilityCard';
+import { StoryMeta, StoryImage, StoryTags } from '../container/story';
+import { useStoryDetail } from '../hooks/story';
 import { Spinner } from '../components';
 import { Typography } from '../components/Typography';
 import { MarkdownPreview } from '../components/MarkdownPreview';

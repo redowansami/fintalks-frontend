@@ -1,4 +1,4 @@
-import '../styles/StoryTags.css';
+import '../../styles/story/StoryTags.css';
 
 interface Category {
 	categoryId: string;

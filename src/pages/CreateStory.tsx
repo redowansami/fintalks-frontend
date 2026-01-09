@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCreateStory, useCreateStoryModal } from '../features/story/hooks';
+import { useCreateStory, useCreateStoryModal } from '../hooks/story';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import { Button } from '../components/Buttons/Button';
 import '../styles/CreateStory.css';
@@ -9,7 +9,7 @@ import {
 	StoryBodyField,
 	StoryImageField,
 	StoryCategories,
-} from '../features/story/components';
+} from '../container/story';
 import { Typography } from '../components/Typography';
 
 export const CreateStory: React.FC = () => {
@@ -19,7 +19,12 @@ export const CreateStory: React.FC = () => {
 
 	const handleCreate = async (e: React.FormEvent) => {
 		e.preventDefault();
-		await createStory(formData.title, formData.body, formData.imageFile, formData.categoryIds);
+		await createStory({
+			title: formData.title,
+			body: formData.body,
+			imageFile: formData.imageFile,
+			categoryIds: formData.categoryIds,
+		});
 
 		if (!error) {
 			navigate('/');

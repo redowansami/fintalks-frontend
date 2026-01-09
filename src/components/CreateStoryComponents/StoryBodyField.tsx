@@ -1,6 +1,6 @@
-import MarkdownEditor from '../../../../components/MarkdownEditor';
-import { Typography } from '../../../../components/Typography';
-import { ValidationTooltip } from '../../../../components/ValidationTooltip';
+import MarkdownEditor from '../MarkdownEditor';
+import { Typography } from '../Typography';
+import { ValidationTooltip } from '../ValidationTooltip';
 
 interface StoryBodyFieldProps {
 	value: string;

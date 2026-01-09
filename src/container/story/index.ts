@@ -8,4 +8,4 @@ export {
 	StoryBodyField,
 	StoryImageField,
 	StoryCategories,
-} from './CreateStoryComponents';
+} from '../../components/CreateStoryComponents';

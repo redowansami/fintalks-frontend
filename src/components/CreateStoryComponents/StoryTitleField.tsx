@@ -1,4 +1,4 @@
-import { InputField } from '../../../../components/InputField';
+import { InputField } from '../InputField';
 
 interface StoryTitleFieldProps {
 	value: string;

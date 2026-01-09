@@ -4,7 +4,7 @@ export { InputField } from './InputField';
 export { Header } from './Header';
 export { Navbar } from './Navbar';
 export { Footer } from './Footer';
-export { StoryCard } from '../features/story/components';
+export { StoryCard } from '../container/story';
 export { AdvertisementSpace, MarketMovers } from '../features/home/components';
 export { Modal } from './Modal';
 export { ErrorDialog } from './ErrorComponents/ErrorDialog';
