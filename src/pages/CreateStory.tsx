@@ -4,13 +4,9 @@ import { useCreateStory, useCreateStoryForm } from '../hooks/story';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import { Button } from '../components/Buttons/Button';
 import { Modal } from '../components/Modal';
+import { InputField } from '../components/InputField';
 import '../styles/CreateStory.css';
-import {
-	StoryTitleField,
-	StoryBodyField,
-	StoryImageField,
-	StoryCategories,
-} from '../container/story';
+import { StoryBodyField, StoryImageField, StoryCategories } from '../container/story';
 import { Typography } from '../components/Typography';
 
 export const CreateStory: React.FC = () => {
@@ -54,7 +50,16 @@ export const CreateStory: React.FC = () => {
 				)}
 
 				<section className="create-story-form-section">
-					<StoryTitleField value={formData.title} onChange={formHandlers.setTitle} />
+					<InputField
+						label="Title"
+						id="story-title"
+						name="title"
+						type="text"
+						placeholder="Enter an engaging title"
+						value={formData.title}
+						onChange={(e) => formHandlers.setTitle(e.target.value)}
+						validationCriteria={['Title should be between 3 to 100 characters']}
+					/>
 
 					<StoryBodyField value={formData.body} onChange={formHandlers.setBody} />
 
