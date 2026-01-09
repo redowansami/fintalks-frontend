@@ -1,11 +1,11 @@
 import React from 'react';
-import { Modal } from '../../../components';
-import { PasswordInput } from '../../../components/PasswordInput';
-import { Button } from '../../../components/Buttons/Button';
-import { ErrorDialog } from '../../../components/ErrorComponents/ErrorDialog';
-import { extractValidationErrors } from '../../../utils/errorExtractor';
-import { useChangePassword } from '../hooks';
-import { Typography } from '../../../components/Typography';
+import { Modal } from '../../components';
+import { PasswordInput } from '../../components/PasswordInput';
+import { Button } from '../../components/Buttons/Button';
+import { ErrorDialog } from '../../components/ErrorComponents/ErrorDialog';
+import { extractValidationErrors } from '../../utils/errorExtractor';
+import { useChangePassword } from '../../hooks/profile';
+import { Typography } from '../../components/Typography';
 
 interface ChangePasswordModalProps {
 	isOpen: boolean;

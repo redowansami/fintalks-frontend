@@ -1,6 +1,6 @@
-import { useEditProfile } from '../hooks';
+import { useEditProfile } from '../../hooks/profile';
 import { EditProfileForm } from './EditProfileForm';
-import { Modal } from '../../../components';
+import { Modal } from '../../components';
 
 interface EditProfileModalProps {
 	isOpen: boolean;

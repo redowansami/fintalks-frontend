@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { profileService } from '../../../services/profileService';
-import { ApiError } from '../../../lib/apiClient';
+import { profileService } from '../../services/profileService';
+import { ApiError } from '../../lib/apiClient';
 
 interface PasswordForm {
 	currentPassword: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-import '../styles/ProfileBio.css';
-import { Typography } from '../../../components/Typography';
+import '../../styles/profile/ProfileBio.css';
+import { Typography } from '../../components/Typography';
 
 interface Profile {
 	email: string;

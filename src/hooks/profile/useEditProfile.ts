@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { profileService } from '../../../services/profileService';
-import type { UpdateProfileRequest } from '../../../types/profile';
+import { profileService } from '../../services/profileService';
+import type { UpdateProfileRequest } from '../../types/profile';
 
 interface EditProfileState {
 	name: string;

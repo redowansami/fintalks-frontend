@@ -3,14 +3,15 @@ import { Spinner } from '../components/Spinner';
 import { ImageUploadModal } from '../components/ImageUploadModal';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import {
-	useProfile,
+	
 	ProfilePicture,
 	ProfileActions,
 	ProfileBio,
 	ProfileStories,
 	EditProfileModal,
 	ChangePasswordModal,
-} from '../features/profile';
+} from '../container/profile';
+import { useProfile } from '../hooks/profile';
 import '../styles/Profile.css';
 import { Typography } from '../components/Typography';
 
