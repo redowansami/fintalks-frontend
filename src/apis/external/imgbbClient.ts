@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { ApiError } from '../../lib/apiClient';
+import { ApiError } from '../../services/apiClient';
 
 const IMGBB_API_KEY = import.meta.env.VITE_IMGBB_API_KEY;
 

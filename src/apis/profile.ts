@@ -1,4 +1,4 @@
-import { apiClient } from '../lib/apiClient';
+import { apiClient } from '../services/apiClient';
 import type {
 	ProfileResponse,
 	UpdateProfileRequest,

@@ -1,6 +1,6 @@
 import { profileApi } from '../apis/profile';
 import { uploadImageToImgbb } from './imageUploadService';
-import { ApiError } from '../lib/apiClient';
+import { ApiError } from './apiClient';
 import type { UpdateProfileRequest, ChangePasswordRequest } from '../types/profile';
 
 export const profileService = {

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { storyService } from '../../services/storyService';
-import { ApiError } from '../../lib/apiClient';
+import { ApiError } from '../../services/apiClient';
 import type { CreateStoryInput } from '../../types/story';
 
 interface UseCreateStoryResult {
