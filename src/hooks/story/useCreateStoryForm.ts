@@ -14,14 +14,14 @@ interface FormHandlers {
 	setCategoryIds: (ids: string[]) => void;
 }
 
-interface UseCreateStoryModalResult {
+interface useCreateStoryFormResult {
 	formData: FormData;
 	formHandlers: FormHandlers;
 	handleClose: (onClose: () => void) => void;
 	resetForm: () => void;
 }
 
-export const useCreateStoryModal = (): UseCreateStoryModalResult => {
+export const useCreateStoryForm = (): useCreateStoryFormResult => {
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
 	const [imageFile, setImageFile] = useState<File | null>(null);
