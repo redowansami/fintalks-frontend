@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import { Button } from '../../components/Buttons/Button';
-import '../../styles/profile/ProfileActions.css';
+import '../../styles/containers/profile/ProfileActions.css';
 
 interface ProfileActionsProps {
 	onEditProfile: () => void;

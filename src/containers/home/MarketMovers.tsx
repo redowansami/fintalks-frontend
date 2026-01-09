@@ -1,5 +1,5 @@
 import { Typography } from '../../components/Typography';
-import '../../styles/home/MarketMovers.css';
+import '../../styles/containers/home/MarketMovers.css';
 
 interface Mover {
 	symbol: string;

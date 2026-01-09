@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../../components/Buttons/Button';
-import '../../styles/profile/EditProfileModal.css';
+import '../../styles/containers/profile/EditProfileModal.css';
 import { ErrorDialog } from '../../components/ErrorComponents/ErrorDialog';
 import { InputField } from '../../components/InputField';
 import { PROFILE_FORM_VALIDATIONS } from '../../constants/profileFormConstants';

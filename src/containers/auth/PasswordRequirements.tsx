@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography } from '../../components/Typography';
 import { List, ListItem } from '../../components/List';
 import { getPasswordChecks } from '../../utils/auth';
-import '../../styles/container/auth/PasswordRequirements.css';
+import '../../styles/containers/auth/PasswordRequirements.css';
 
 interface PasswordRequirementsProps {
 	password: string;

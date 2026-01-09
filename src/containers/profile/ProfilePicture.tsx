@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import { Button } from '../../components/Buttons/Button';
-import '../../styles/profile/ProfilePicture.css';
+import '../../styles/containers/profile/ProfilePicture.css';
 
 interface Profile {
 	profilePictureUrl: string | null;

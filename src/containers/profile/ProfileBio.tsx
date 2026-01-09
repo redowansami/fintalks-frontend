@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-import '../../styles/profile/ProfileBio.css';
+import '../../styles/containers/profile/ProfileBio.css';
 import { Typography } from '../../components/Typography';
 
 interface Profile {

@@ -2,7 +2,7 @@ import { StoryCard } from './StoryCard';
 import { Spinner } from '../../components/Spinner';
 import { Button } from '../../components/Buttons/Button';
 import type { Story } from '../../types/story';
-import '../../styles/story/StoryList.css';
+import '../../styles/containers/story/StoryList.css';
 import { Typography } from '../../components/Typography';
 
 interface StoryListSectionProps {

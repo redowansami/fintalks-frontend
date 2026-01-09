@@ -1,5 +1,5 @@
 import { FormHeader, FormFooter } from '../../components/FormComponents';
-import '../../styles/container/auth/Auth.css';
+import '../../styles/containers/auth/Auth.css';
 
 interface AuthLayoutProps {
 	title: string;

@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
-import '../../styles/story/StoryCard.css';
+import '../../styles/containers/story/StoryCard.css';
 import { Typography } from '../../components/Typography';
 import { MarkdownPreview } from '../../components/MarkdownPreview';
 

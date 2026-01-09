@@ -1,6 +1,6 @@
 import { Button } from '../../components/Buttons/Button';
 import { Typography } from '../../components/Typography';
-import '../../styles/story/AIReliabilityCard.css';
+import '../../styles/containers/story/AIReliabilityCard.css';
 import '../../styles/variables.css';
 
 interface AIReliabilityCardProps {

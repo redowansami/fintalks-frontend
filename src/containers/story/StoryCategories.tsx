@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCategory } from '../../hooks/useCategory';
-import '../../styles/StoryCategories.css';
+import '../../styles/containers/story/StoryCategories.css';
 import { Typography } from '../../components/Typography';
 import { Spinner } from '../../components/Spinner';
 import { StoryCategoryCheckbox } from '../../components/CreateStoryComponents/StoryCategoryCheckbox';
