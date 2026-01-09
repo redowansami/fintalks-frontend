@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Spinner } from '../components/Spinner';
-import { ImageUploadModal } from '../components/ImageUploadModal';
+import { ImageUploadModal } from '../container/profile/ImageUploadModal';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import {
-	
 	ProfilePicture,
 	ProfileActions,
 	ProfileBio,
