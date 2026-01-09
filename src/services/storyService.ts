@@ -19,11 +19,7 @@ export const storyService = {
 		let imageUrl = '';
 
 		if (input.imageFile) {
-			try {
-				imageUrl = await uploadImageToImgbb(input.imageFile);
-			} catch (error) {
-				throw new Error('Failed to upload image. Story was not created.');
-			}
+			imageUrl = await uploadImageToImgbb(input.imageFile);
 		}
 
 		const apiPayload = {
@@ -38,5 +34,22 @@ export const storyService = {
 
 	async deleteStory(storyId: string) {
 		return await storyApi.delete(storyId);
+	},
+
+	async updateStory(storyId: string, input: CreateStoryInput) {
+		let imageUrl = '';
+
+		if (input.imageFile) {
+			imageUrl = await uploadImageToImgbb(input.imageFile);
+		}
+
+		const apiPayload = {
+			title: input.title,
+			body: input.body,
+			categoryIds: input.categoryIds,
+			imageUrl: imageUrl || undefined,
+		};
+
+		return await storyApi.update(storyId, apiPayload);
 	},
 };
