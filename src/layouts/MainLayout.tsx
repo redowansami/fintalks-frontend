@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from '../container/header/Header';
-import { Navbar } from '../components/Navbar';
+import { Navbar } from '../container/navbar/Navbar';
 import { Footer } from '../components/Footer';
 import { useStoryList } from '../hooks/story';
 

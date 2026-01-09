@@ -1,7 +1,6 @@
 export { Button } from './Buttons/Button';
 export { IconButton } from './Buttons/IconButton';
 export { InputField } from './InputField';
-export { Navbar } from './Navbar';
 export { Footer } from './Footer';
 export { StoryCard } from '../container/story';
 export { Modal } from './Modal';
