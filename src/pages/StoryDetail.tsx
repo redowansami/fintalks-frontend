@@ -11,10 +11,10 @@ import { MarkdownPreview } from '../components/MarkdownPreview';
 export const StoryDetail: React.FC = () => {
 	const { storyId } = useParams<{ storyId: string }>();
 	const navigate = useNavigate();
-	const { story, loading, error } = useStoryDetail(storyId);
+	const { story, isLoading, error } = useStoryDetail(storyId);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
-	if (loading) return <Spinner />;
+	if (isLoading) return <Spinner />;
 	if (error || !story) {
 		navigate('/');
 		return null;
