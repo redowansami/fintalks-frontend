@@ -3,9 +3,13 @@ import { FileInput } from '../FileInput';
 import { ImagePreview } from '../ImagePreview';
 import type { StoryImageFieldProps } from '../../interfaces/components/createStoryComponents';
 
-export const StoryImageField: React.FC<StoryImageFieldProps> = ({ onImageSelect, isPending }) => {
+export const StoryImageField: React.FC<StoryImageFieldProps> = ({
+	onImageSelect,
+	isPending,
+	existingImageUrl,
+}) => {
 	const fileInputRef = useRef<HTMLInputElement>(null);
-	const [preview, setPreview] = useState<string | null>(null);
+	const [preview, setPreview] = useState<string | null>(existingImageUrl || null);
 
 	const handleFileSelect = (file: File) => {
 		const reader = new FileReader();

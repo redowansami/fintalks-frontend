@@ -14,4 +14,5 @@ export interface StoryCategoryCheckboxProps {
 export interface StoryImageFieldProps {
 	onImageSelect: (file: File) => void;
 	isPending: boolean;
+	existingImageUrl?: string;
 }
