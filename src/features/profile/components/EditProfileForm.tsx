@@ -1,5 +1,4 @@
 import React from 'react';
-import type { UseMutationResult } from '@tanstack/react-query';
 import { Button } from '../../../components/Buttons/Button';
 import '../styles/EditProfileModal.css';
 import { ErrorDialog } from '../../../components/ErrorComponents/ErrorDialog';
@@ -11,21 +10,23 @@ interface EditProfileFormProps {
 	formData: { name: string; bio: string };
 	handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	onSubmit: (e: React.FormEvent) => void;
-	mutation: UseMutationResult<unknown, Error, { name: string; bio: string }>;
+	isLoading?: boolean;
+	error?: Error | null;
 }
 
 export const EditProfileForm: React.FC<EditProfileFormProps> = ({
 	formData,
 	handleChange,
 	onSubmit,
-	mutation,
+	isLoading = false,
+	error,
 }) => {
 	return (
 		<form onSubmit={onSubmit} className="edit-profile-form">
-			{mutation.isError && (
+			{error && (
 				<ErrorDialog
-					message={mutation.error?.message || 'Failed to update profile'}
-					validationErrors={extractValidationErrors(mutation.error)}
+					message={error?.message || 'Failed to update profile'}
+					validationErrors={extractValidationErrors(error)}
 				/>
 			)}
 			<InputField
@@ -49,8 +50,8 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
 				validationCriteria={PROFILE_FORM_VALIDATIONS.BIO.criteria}
 			/>
 			<div className="edit-profile-actions">
-				<Button type="submit" variant="primary" disabled={mutation.isPending}>
-					{mutation.isPending ? 'Updating...' : 'Update Profile'}
+				<Button type="submit" variant="primary" disabled={isLoading}>
+					{isLoading ? 'Updating...' : 'Update Profile'}
 				</Button>
 			</div>
 		</form>

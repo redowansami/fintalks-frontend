@@ -15,11 +15,14 @@ export const EditProfileModal = ({
 	initialName,
 	initialBio,
 }: EditProfileModalProps) => {
-	const { formData, handleChange, mutation } = useEditProfile(initialName, initialBio, onClose);
+	const { formData, handleChange, saveProfile, isLoading, error } = useEditProfile(
+		{ name: initialName, bio: initialBio || '' },
+		onClose,
+	);
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		mutation.mutate(formData);
+		saveProfile();
 	};
 
 	return (
@@ -34,7 +37,8 @@ export const EditProfileModal = ({
 				formData={formData}
 				handleChange={handleChange}
 				onSubmit={handleSubmit}
-				mutation={mutation}
+				isLoading={isLoading}
+				error={error}
 			/>
 		</Modal>
 	);

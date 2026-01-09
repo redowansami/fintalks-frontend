@@ -1,27 +1,19 @@
 import { useState, useCallback } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { updateProfile } from '../../../services/profileService';
-import { useAuthContext } from '../../../hooks/useAuthContext';
+import { profileService } from '../../../services/profileService';
+import type { UpdateProfileRequest } from '../../../types/profile';
 
-interface EditProfileData {
+interface EditProfileState {
 	name: string;
 	bio: string;
 }
 
-export const useEditProfile = (
-	initialName: string,
-	initialBio: string | null,
-	onSuccess: () => void,
-) => {
-	const { token } = useAuthContext();
+export const useEditProfile = (initialData: EditProfileState, onSuccess: () => void) => {
 	const queryClient = useQueryClient();
-	const [formData, setFormData] = useState<EditProfileData>({
-		name: initialName,
-		bio: initialBio || '',
-	});
+	const [formData, setFormData] = useState<EditProfileState>(initialData);
 
 	const mutation = useMutation({
-		mutationFn: (data: EditProfileData) => updateProfile(token, data),
+		mutationFn: (data: UpdateProfileRequest) => profileService.updateProfile(data),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['profile'] });
 			onSuccess();
@@ -36,5 +28,15 @@ export const useEditProfile = (
 		[],
 	);
 
-	return { formData, handleChange, mutation };
+	const saveProfile = () => {
+		mutation.mutate({ name: formData.name, bio: formData.bio });
+	};
+
+	return {
+		formData,
+		handleChange,
+		saveProfile,
+		isLoading: mutation.isPending,
+		error: mutation.error,
+	};
 };

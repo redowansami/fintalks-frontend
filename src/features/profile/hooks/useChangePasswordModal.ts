@@ -1,64 +1,52 @@
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { changePasswordService } from '../../../services/changePasswordService';
+import { profileService } from '../../../services/profileService';
+import { ApiError } from '../../../lib/apiClient';
 
-interface PasswordChangeFormData {
+interface PasswordForm {
 	currentPassword: string;
 	newPassword: string;
 	confirmPassword: string;
 }
 
-const INITIAL_STATE: PasswordChangeFormData = {
+const INITIAL_STATE: PasswordForm = {
 	currentPassword: '',
 	newPassword: '',
 	confirmPassword: '',
 };
 
 export const useChangePassword = (onClose: () => void) => {
-	const [formData, setFormData] = useState<PasswordChangeFormData>(INITIAL_STATE);
+	const [formData, setFormData] = useState<PasswordForm>(INITIAL_STATE);
 	const [showSuccess, setShowSuccess] = useState(false);
 
-	const updateField = (field: keyof PasswordChangeFormData, value: string) => {
-		setFormData((prev) => ({ ...prev, [field]: value }));
-	};
-
-	const changePasswordMutation = useMutation({
+	const mutation = useMutation({
 		mutationFn: () =>
-			changePasswordService.changePassword(formData.currentPassword, formData.newPassword),
+			profileService.changePassword({
+				currentPassword: formData.currentPassword,
+				newPassword: formData.newPassword,
+			}),
 		onSuccess: () => {
 			setShowSuccess(true);
+
 			setTimeout(() => {
 				resetAndClose();
 			}, 2000);
 		},
 	});
 
+	const updateField = (field: keyof PasswordForm, value: string) => {
+		setFormData((prev) => ({ ...prev, [field]: value }));
+	};
+
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 
-		// Validation
-		if (!formData.currentPassword.trim()) {
-			alert('Please enter your current password');
-			return;
-		}
-		if (!formData.newPassword.trim()) {
-			alert('Please enter your new password');
-			return;
-		}
-		if (!formData.confirmPassword.trim()) {
-			alert('Please confirm your new password');
-			return;
-		}
 		if (formData.newPassword !== formData.confirmPassword) {
 			alert('New passwords do not match');
 			return;
 		}
-		if (formData.currentPassword === formData.newPassword) {
-			alert('New password must be different from current password');
-			return;
-		}
 
-		changePasswordMutation.mutate();
+		mutation.mutate();
 	};
 
 	const resetAndClose = () => {
@@ -70,8 +58,8 @@ export const useChangePassword = (onClose: () => void) => {
 	return {
 		formData,
 		showSuccess,
-		isPending: changePasswordMutation.isPending,
-		error: changePasswordMutation.error,
+		isPending: mutation.isPending,
+		error: mutation.error as ApiError | null,
 		updateField,
 		handleSubmit,
 		resetAndClose,

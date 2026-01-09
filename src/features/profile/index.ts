@@ -9,9 +9,3 @@ export {
 
 export { useProfile, useEditProfile, useChangePassword, useProfilePictureUpload } from './hooks';
 
-export {
-	fetchProfile,
-	updateProfile,
-	ProfileError,
-	type ProfileResponse,
-} from '../../services/profileService';

@@ -1,78 +1,25 @@
-import axios from 'axios';
-import type { AuthUser } from '../types/AuthContextType';
+import { profileApi } from '../apis/profile';
+import { uploadImageToImgbb } from './imageUploadService';
+import { ApiError } from '../lib/apiClient';
+import type { UpdateProfileRequest, ChangePasswordRequest } from '../types/profile';
 
-export interface ProfileResponse {
-	success: boolean;
-	message: string;
-	profile: AuthUser & {
-		bio: string | null;
-		profilePictureUrl: string | null;
-	};
-}
+export const profileService = {
+	getProfile: () => profileApi.getProfile(),
 
-interface UpdateProfileData {
-	name?: string;
-	bio?: string;
-	profilePictureUrl?: string;
-}
+	updateProfile: (data: UpdateProfileRequest) => profileApi.updateProfile(data),
 
-const API_URL = 'http://localhost:3000/api/v1/users/profile';
+	changePassword: (data: ChangePasswordRequest) => profileApi.changePassword(data),
 
-export class ProfileError extends Error {
-	validationErrors?: Record<string, string | string[]>;
-
-	constructor(message: string, validationErrors?: Record<string, string | string[]>) {
-		super(message);
-		this.name = 'ProfileError';
-		this.validationErrors = validationErrors;
-	}
-}
-
-export const fetchProfile = async (token: string | null): Promise<ProfileResponse> => {
-	if (!token) {
-		throw new Error('No authentication token found');
-	}
-
-	try {
-		const response = await axios.get<ProfileResponse>(API_URL, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
-
-		return response.data;
-	} catch (error) {
-		if (axios.isAxiosError(error)) {
-			throw new Error(error.response?.data?.message || 'Failed to fetch profile');
+	async updateProfilePicture(file: File) {
+		if (!file.type.startsWith('image/')) {
+			throw new ApiError('Please select a valid image file', 400);
 		}
-		throw error instanceof Error ? error : new Error('An unexpected error occurred');
-	}
-};
-
-export const updateProfile = async (
-	token: string | null,
-	data: UpdateProfileData,
-): Promise<ProfileResponse> => {
-	if (!token) {
-		throw new Error('No authentication token found');
-	}
-
-	try {
-		const response = await axios.patch<ProfileResponse>(API_URL, data, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
-
-		return response.data;
-	} catch (error) {
-		if (axios.isAxiosError(error)) {
-			const message = error.response?.data?.message || 'Failed to update profile';
-			const validationErrors = error.response?.data?.errors as
-				| Record<string, string | string[]>
-				| undefined;
-			throw new ProfileError(message, validationErrors);
+		if (file.size > 5 * 1024 * 1024) {
+			throw new ApiError('Image size must be less than 5MB', 400);
 		}
-		throw error instanceof Error ? error : new Error('An unexpected error occurred');
-	}
+
+		const imageUrl = await uploadImageToImgbb(file);
+
+		return await profileApi.updateProfile({ profilePictureUrl: imageUrl });
+	},
 };
