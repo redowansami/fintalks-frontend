@@ -1,5 +1,7 @@
 export { useStoryList } from './useStoryList';
 export { useStoryDetail } from './useStoryDetail';
 export { useCreateStory } from './useCreateStory';
-export { useCreateStoryForm } from './useCreateStoryForm';
+export { useEditStory } from './useEditStory';
 export { useDeleteStory } from './useDeleteStory';
+export { useStoryForm } from './useStoryForm';
+export type { StoryFormData } from './useStoryForm';
