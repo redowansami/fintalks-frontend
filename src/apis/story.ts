@@ -4,7 +4,7 @@ import type {
 	StoryDetailResponse,
 	CreateStoryApiPayload,
 	CreateStoryResponse,
-} from '../types/story';
+} from '../interfaces/services/story';
 
 export const storyApi = {
 	getAll: (params?: { category?: string | null; startAfter?: string | null }) => {

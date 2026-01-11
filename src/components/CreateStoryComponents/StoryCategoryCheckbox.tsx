@@ -1,12 +1,6 @@
 import React from 'react';
 import { Typography } from '../Typography';
-
-interface StoryCategoryCheckboxProps {
-	id: string;
-	name: string;
-	checked: boolean;
-	onChange: (id: string) => void;
-}
+import type { StoryCategoryCheckboxProps } from '../../interfaces/components/createStoryComponents';
 
 export const StoryCategoryCheckbox: React.FC<StoryCategoryCheckboxProps> = ({
 	id,

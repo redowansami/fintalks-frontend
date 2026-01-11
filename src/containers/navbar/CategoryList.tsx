@@ -1,10 +1,6 @@
 import { useCategory } from '../../hooks/useCategory';
 import { TabButton } from '../../components/Buttons/TabButton';
-
-interface CategoryListProps {
-	activeCategory: string | null;
-	onCategoryClick: (category: string) => void;
-}
+import type { CategoryListProps } from '../../interfaces/containers/navbar';
 
 export const CategoryList: React.FC<CategoryListProps> = ({ activeCategory, onCategoryClick }) => {
 	const { categories, loading } = useCategory();

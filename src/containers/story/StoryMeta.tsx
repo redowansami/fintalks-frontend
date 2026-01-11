@@ -1,10 +1,5 @@
 import { Typography } from '../../components/Typography';
-
-interface StoryMetaProps {
-	username: string;
-	createdAt: string;
-	updatedAt?: string;
-}
+import type { StoryMetaProps } from '../../interfaces/containers/story';
 
 export const StoryMeta: React.FC<StoryMetaProps> = ({ username, createdAt, updatedAt }) => {
 	const createDate = new Date(createdAt).toLocaleDateString();

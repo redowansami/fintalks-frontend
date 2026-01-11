@@ -5,14 +5,7 @@ import { ErrorDialog } from '../../components/ErrorComponents/ErrorDialog';
 import { InputField } from '../../components/InputField';
 import { PROFILE_FORM_VALIDATIONS } from '../../constants/profileFormConstants';
 import { extractValidationErrors } from '../../utils/errorExtractor';
-
-interface EditProfileFormProps {
-	formData: { name: string; bio: string };
-	handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-	onSubmit: (e: React.FormEvent) => void;
-	isLoading?: boolean;
-	error?: Error | null;
-}
+import type { EditProfileFormProps } from '../../interfaces/containers/profile';
 
 export const EditProfileForm: React.FC<EditProfileFormProps> = ({
 	formData,

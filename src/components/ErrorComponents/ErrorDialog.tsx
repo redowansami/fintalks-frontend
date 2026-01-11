@@ -1,13 +1,7 @@
 import { ErrorList } from './ErrorList';
-import type { ReactNode } from 'react';
+import type { ErrorDialogProps } from '../../interfaces/components/errorComponents';
 import '../../styles/components/errorComponents/errorDialog.css';
 import { Typography } from '../Typography';
-
-export interface ErrorDialogProps {
-	message: string;
-	validationErrors?: Record<string, string | string[]>;
-	children?: ReactNode;
-}
 
 export const ErrorDialog = ({ message, validationErrors, children }: ErrorDialogProps) => {
 	return (

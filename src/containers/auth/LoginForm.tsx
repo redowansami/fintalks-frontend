@@ -1,20 +1,6 @@
 import { Button, InputField } from '../../components/index';
 import { PasswordInput } from '../../components/index';
-
-interface LoginFormProps {
-	formData: {
-		email: string;
-		password: string;
-	};
-	errors: {
-		email?: string;
-		password?: string;
-		[key: string]: string | undefined;
-	};
-	isPending: boolean;
-	onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-}
+import type { LoginFormProps } from '../../interfaces/containers/auth';
 
 export const LoginForm = ({
 	formData,
@@ -31,14 +17,14 @@ export const LoginForm = ({
 				type="email"
 				value={formData.email}
 				onChange={onInputChange}
-				error={errors.email}
+				error={errors?.email}
 				required
 			/>
 
 			<PasswordInput
 				value={formData.password}
 				onChange={onInputChange}
-				error={errors.password}
+				error={errors?.password}
 			/>
 
 			<Button type="submit" isLoading={isPending} loadingText="Logging in...">

@@ -1,6 +1,6 @@
 import { storyApi } from '../apis/story';
 import { uploadImageToImgbb } from './imageUploadService';
-import type { CreateStoryInput, StoriesResponse, StoryDetail } from '../types/story';
+import type { CreateStoryInput, StoriesResponse, StoryDetail } from '../interfaces/services/story';
 
 export const storyService = {
 	async getStories(

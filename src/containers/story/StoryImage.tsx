@@ -1,7 +1,4 @@
-interface StoryImageProps {
-	src?: string;
-	alt: string;
-}
+import type { StoryImageProps } from '../../interfaces/containers/story';
 
 export const StoryImage: React.FC<StoryImageProps> = ({ src, alt }) => {
 	const imageSrc =

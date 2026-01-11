@@ -1,13 +1,7 @@
 import { useEditProfile } from '../../hooks/profile';
 import { EditProfileForm } from './EditProfileForm';
 import { Modal } from '../../components';
-
-interface EditProfileModalProps {
-	isOpen: boolean;
-	onClose: () => void;
-	initialName: string;
-	initialBio: string | null;
-}
+import type { EditProfileModalProps } from '../../interfaces/containers/profile';
 
 export const EditProfileModal = ({
 	isOpen,

@@ -1,11 +1,7 @@
 import { useRef, useState } from 'react';
 import { FileInput } from '../FileInput';
 import { ImagePreview } from '../ImagePreview';
-
-interface StoryImageFieldProps {
-	onImageSelect: (file: File) => void;
-	isLoading: boolean;
-}
+import type { StoryImageFieldProps } from '../../interfaces/components/createStoryComponents';
 
 export const StoryImageField: React.FC<StoryImageFieldProps> = ({ onImageSelect, isLoading }) => {
 	const fileInputRef = useRef<HTMLInputElement>(null);

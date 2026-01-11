@@ -2,13 +2,7 @@ import { Button } from '../../components/Buttons/Button';
 import { Typography } from '../../components/Typography';
 import '../../styles/containers/story/AIReliabilityCard.css';
 import '../../styles/variables.css';
-
-interface AIReliabilityCardProps {
-	reliabilityScore: number;
-	summary?: string;
-	predictionComparison?: string;
-	onComparisonClick?: () => void;
-}
+import type { AIReliabilityCardProps } from '../../interfaces/containers/story';
 
 export const AIReliabilityCard: React.FC<AIReliabilityCardProps> = ({
 	reliabilityScore,

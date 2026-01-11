@@ -1,4 +1,4 @@
-import type { FormHeaderProps } from '../../types/formProps';
+import type { FormHeaderProps } from '../../interfaces/components/formComponents';
 import { Typography } from '../Typography';
 
 export const FormHeader = ({ title = 'Form', subtitle }: FormHeaderProps) => (

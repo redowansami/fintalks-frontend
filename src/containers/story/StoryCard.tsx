@@ -3,17 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../../styles/containers/story/StoryCard.css';
 import { Typography } from '../../components/Typography';
 import { MarkdownPreview } from '../../components/MarkdownPreview';
-
-interface StoryCardProps {
-	storyId: string;
-	title: string;
-	body: string;
-	reliabilityScore: number;
-	categories: Array<{ name: string }>;
-	image?: string;
-	username: string;
-	createdAt: string;
-}
+import type { StoryCardProps } from '../../interfaces/containers/story';
 
 export const StoryCard: React.FC<StoryCardProps> = ({
 	storyId,

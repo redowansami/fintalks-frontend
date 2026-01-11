@@ -1,9 +1,6 @@
 import { AdvertisementSpace } from './AdvertisementSpace';
 import { MarketMovers } from './MarketMovers';
-
-interface HomeSidebarProps {
-	show: boolean;
-}
+import type { HomeSidebarProps } from '../../interfaces/containers/home';
 
 export const HomeSidebar: React.FC<HomeSidebarProps> = ({ show }) => {
 	if (!show) return null;

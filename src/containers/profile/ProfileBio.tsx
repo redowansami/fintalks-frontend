@@ -2,16 +2,7 @@ import React from 'react';
 import { Icon } from '@iconify/react';
 import '../../styles/containers/profile/ProfileBio.css';
 import { Typography } from '../../components/Typography';
-
-interface Profile {
-	email: string;
-	bio: string | null;
-	joinDate: string;
-}
-
-interface ProfileBioProps {
-	profile: Profile;
-}
+import type { ProfileBioProps } from '../../interfaces/containers/profile';
 
 export const ProfileBio: React.FC<ProfileBioProps> = ({ profile }) => {
 	return (

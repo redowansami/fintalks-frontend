@@ -3,14 +3,7 @@ import { Button } from './Buttons/Button';
 import { Typography } from './Typography';
 import { ErrorDialog } from './ErrorComponents/ErrorDialog';
 import '../styles/components/ImagePreview.css';
-
-interface ImagePreviewProps {
-	preview: string | null;
-	onChangeImage: () => void;
-	onSelectImage: () => void;
-	isLoading: boolean;
-	error: string | null;
-}
+import type { ImagePreviewProps } from '../interfaces/components/imageUpload';
 
 export const ImagePreview: React.FC<ImagePreviewProps> = ({
 	preview,

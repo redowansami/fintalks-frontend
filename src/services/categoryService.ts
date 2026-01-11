@@ -1,5 +1,5 @@
 import { categoryApi } from '../apis/category';
-import type { Category } from '../types/category';
+import type { Category } from '../interfaces/services/category';
 
 export const categoryService = {
 	getCategories: async (): Promise<Category[]> => {

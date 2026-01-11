@@ -1,5 +1,5 @@
 import { authApi } from '../apis/auth';
-import type { LoginRequest, SignUpRequest } from '../types/auth';
+import type { LoginRequest, SignUpRequest } from '../interfaces/services/auth';
 
 const TOKEN_KEY = 'auth_token';
 const USER_KEY = 'auth_user';

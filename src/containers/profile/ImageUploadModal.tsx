@@ -5,11 +5,7 @@ import { FileInput } from '../../components/FileInput';
 import { ImagePreview } from '../../components/ImagePreview';
 import { Button } from '../../components/Buttons/Button';
 import '../../styles/containers/profile/ImageUploadModal.css';
-
-interface ImageUploadModalProps {
-	isOpen: boolean;
-	onClose: () => void;
-}
+import type { ImageUploadModalProps } from '../../interfaces/containers/profile';
 
 export const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose }) => {
 	const { uploadProfilePicture, isLoading, error } = useProfilePictureUpload();

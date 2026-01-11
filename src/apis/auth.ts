@@ -3,24 +3,23 @@ import type {
 	LoginRequest,
 	LoginResponse,
 	SignUpRequest,
-	AuthResponse,
-	ResendConfirmationResponse,
-} from '../types/auth';
+} from '../interfaces/services/auth';
+import type { BaseResponse } from '../interfaces/services/base';
 
 export const authApi = {
 	login: (credentials: LoginRequest) =>
 		apiClient.post<LoginRequest, LoginResponse>('/auth/login', credentials),
 
 	signUp: (data: SignUpRequest) =>
-		apiClient.post<SignUpRequest, AuthResponse>('/auth/signup', data),
+		apiClient.post<SignUpRequest, BaseResponse>('/auth/signup', data),
 
 	resendConfirmation: (email: string) =>
-		apiClient.post<{ email: string }, ResendConfirmationResponse>(
+		apiClient.post<{ email: string }, BaseResponse>(
 			'/auth/resend-confirmation-email',
 			{
 				email,
 			},
 		),
 
-	logout: () => apiClient.post<never, AuthResponse>('/auth/logout'),
+	logout: () => apiClient.post<never, BaseResponse>('/auth/logout'),
 };

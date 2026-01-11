@@ -2,11 +2,7 @@ import { CategoryList } from './CategoryList';
 import { List } from '../../components/List';
 import '../../styles/containers/Navbar.css';
 import { TabButton } from '../../components/Buttons/TabButton';
-
-interface NavbarProps {
-	activeCategory?: string | null;
-	onCategoryClick?: (category: string | null) => void;
-}
+import type { NavbarProps } from '../../interfaces/containers/navbar';
 
 export const Navbar: React.FC<NavbarProps> = ({ activeCategory = null, onCategoryClick }) => {
 	const handleCategoryClick = (category: string | null) => {

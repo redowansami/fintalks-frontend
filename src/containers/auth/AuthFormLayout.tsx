@@ -1,14 +1,6 @@
 import { FormHeader, FormFooter } from '../../components/FormComponents';
+import type { AuthLayoutProps } from '../../interfaces/containers/auth';
 import '../../styles/containers/auth/Auth.css';
-
-interface AuthLayoutProps {
-	title: string;
-	subtitle?: string;
-	footerText: string;
-	footerLink: string;
-	footerLinkText: string;
-	children: React.ReactNode;
-}
 
 export const AuthFormLayout = ({
 	title,

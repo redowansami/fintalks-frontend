@@ -1,12 +1,7 @@
 import MarkdownEditor from '../MarkdownEditor';
 import { Typography } from '../Typography';
 import { ValidationTooltip } from '../ValidationTooltip';
-
-interface StoryBodyFieldProps {
-	value: string;
-	onChange: (value: string) => void;
-	validationCriteria?: string[];
-}
+import type { StoryBodyFieldProps } from '../../interfaces/components/createStoryComponents';
 
 export const StoryBodyField: React.FC<StoryBodyFieldProps> = ({
 	value,

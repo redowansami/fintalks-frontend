@@ -1,5 +1,5 @@
 import { imgbbClient } from '../apis/external/imgbbClient';
-import type { ImgbbResponse } from '../types/image';
+import type { ImgbbResponse } from '../interfaces/services/image';
 
 export const uploadImageToImgbb = async (file: File): Promise<string> => {
 	const apiKey = import.meta.env.VITE_IMGBB_API_KEY;

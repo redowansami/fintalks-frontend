@@ -1,23 +1,6 @@
 import React from 'react';
 import '../../styles/components/Buttons/Button.css';
-
-export type ButtonVariant =
-	| 'primary'
-	| 'secondary'
-	| 'tertiary'
-	| 'danger'
-	| 'item-default'
-	| 'item-danger'
-	| 'toolbar';
-
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	variant?: ButtonVariant;
-	isLoading?: boolean;
-	loadingText?: string;
-
-	isBold?: boolean;
-	isItalic?: boolean;
-}
+import type { ButtonVariant, ButtonProps } from '../../interfaces/components/buttons';
 
 export const Button: React.FC<ButtonProps> = ({
 	children,

@@ -4,11 +4,7 @@ import '../../styles/containers/story/StoryCategories.css';
 import { Typography } from '../../components/Typography';
 import { Spinner } from '../../components/Spinner';
 import { StoryCategoryCheckbox } from '../../components/CreateStoryComponents/StoryCategoryCheckbox';
-
-interface StoryCategoriesProps {
-	selectedIds: string[];
-	onChange: (ids: string[]) => void;
-}
+import type { StoryCategoriesProps } from '../../interfaces/containers/story';
 
 export const StoryCategories: React.FC<StoryCategoriesProps> = ({ selectedIds, onChange }) => {
 	const { categories, loading, error } = useCategory();

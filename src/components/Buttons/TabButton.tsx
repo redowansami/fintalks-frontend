@@ -1,15 +1,6 @@
 import React from 'react';
 import '../../styles/components/Buttons/TabButton.css';
-
-type TabVariant = 'pill' | 'folder';
-
-interface TabButtonProps {
-	children: React.ReactNode;
-	isActive: boolean;
-	onClick: () => void;
-	variant?: TabVariant;
-	className?: string;
-}
+import type { TabButtonProps } from '../../interfaces/components/buttons';
 
 export const TabButton: React.FC<TabButtonProps> = ({
 	children,

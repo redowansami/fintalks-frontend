@@ -1,3 +1,5 @@
+import type { BaseResponse } from './base';
+
 export interface Story {
 	storyId: string;
 	username: string;
@@ -33,9 +35,7 @@ export interface CreateStoryApiPayload {
 	categoryIds: string[];
 }
 
-export interface CreateStoryResponse {
-	success: boolean;
-	message: string;
+export interface CreateStoryResponse extends BaseResponse {
 	story: Story;
 }
 

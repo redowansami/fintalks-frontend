@@ -1,11 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkBreaks from 'remark-breaks';
-
-interface MarkdownPreviewProps {
-	content: string;
-	className?: string;
-}
+import type { MarkdownPreviewProps } from '../interfaces/components/markdown';
 
 export const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({ content }) => {
 	return (

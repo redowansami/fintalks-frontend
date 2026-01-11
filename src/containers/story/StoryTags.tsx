@@ -1,13 +1,5 @@
 import '../../styles/containers/story/StoryTags.css';
-
-interface Category {
-	categoryId: string;
-	name: string;
-}
-
-interface StoryTagsProps {
-	categories: Category[];
-}
+import type { StoryTagsProps } from '../../interfaces/containers/story';
 
 export const StoryTags: React.FC<StoryTagsProps> = ({ categories }) => {
 	if (!categories || categories.length === 0) return null;

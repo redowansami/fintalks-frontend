@@ -1,18 +1,10 @@
 import { StoryCard } from './StoryCard';
 import { Spinner } from '../../components/Spinner';
 import { Button } from '../../components/Buttons/Button';
-import type { Story } from '../../types/story';
+import type { Story } from '../../interfaces/services/story';
+import type { StoryListSectionProps } from '../../interfaces/containers/story';
 import '../../styles/containers/story/StoryList.css';
 import { Typography } from '../../components/Typography';
-
-interface StoryListSectionProps {
-	stories: Story[];
-	isPending: boolean;
-	isLoadingMore: boolean;
-	pageTitle: string;
-	hasNextPage: boolean | undefined;
-	onLoadMore: () => void;
-}
 
 export const StoryListSection: React.FC<StoryListSectionProps> = ({
 	stories,

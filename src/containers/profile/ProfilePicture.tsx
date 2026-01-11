@@ -2,17 +2,7 @@ import React from 'react';
 import { Icon } from '@iconify/react';
 import { Button } from '../../components/Buttons/Button';
 import '../../styles/containers/profile/ProfilePicture.css';
-
-interface Profile {
-	profilePictureUrl: string | null;
-	name: string;
-	username: string;
-}
-
-interface ProfilePictureProps {
-	profile: Profile;
-	onEditPicture: () => void;
-}
+import type { ProfilePictureProps } from '../../interfaces/containers/profile';
 
 export const ProfilePicture: React.FC<ProfilePictureProps> = ({ profile, onEditPicture }) => {
 	return (

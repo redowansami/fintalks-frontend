@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { authService } from '../../services/authService';
 import { ApiError } from '../../services/apiClient';
-import type { SignUpRequest } from '../../types/auth';
+import type { SignUpRequest } from '../../interfaces/services/auth';
 
 interface UseRegisterHandlerReturn {
 	isLoading: boolean;

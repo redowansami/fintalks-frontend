@@ -2,27 +2,7 @@ import { Button, InputField } from '../../components/index';
 import { PasswordInput } from '../../components/index';
 import { PasswordRequirements } from './PasswordRequirements';
 import { REGISTER_FORM_FIELDS } from '../../constants/RegisterForm';
-
-interface RegisterFormProps {
-	formData: {
-		username: string;
-		name: string;
-		email: string;
-		password: string;
-		confirmPassword: string;
-	};
-	errors: {
-		email?: string;
-		password?: string;
-		confirmPassword?: string;
-		username?: string;
-		name?: string;
-		[key: string]: string | undefined;
-	};
-	isPending: boolean;
-	onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-}
+import type { RegisterFormProps } from '../../interfaces/containers/auth';
 
 export const RegisterForm = ({
 	formData,
@@ -43,7 +23,7 @@ export const RegisterForm = ({
 					placeholder={field.placeholder}
 					onChange={onInputChange}
 					required
-					error={errors[field.name]}
+					error={errors?.[field.name]}
 					validationCriteria={field.validationCriteria}
 				/>
 			))}
@@ -54,14 +34,14 @@ export const RegisterForm = ({
 				type="email"
 				value={formData.email}
 				onChange={onInputChange}
-				error={errors.email}
+				error={errors?.email}
 				required
 			/>
 
 			<PasswordInput
 				value={formData.password}
 				onChange={onInputChange}
-				error={errors.password}
+				error={errors?.password}
 			/>
 
 			<PasswordInput
@@ -70,7 +50,7 @@ export const RegisterForm = ({
 				label="Confirm Password"
 				value={formData.confirmPassword}
 				onChange={onInputChange}
-				error={errors.confirmPassword}
+				error={errors?.confirmPassword}
 			/>
 
 			<PasswordRequirements password={formData.password} />

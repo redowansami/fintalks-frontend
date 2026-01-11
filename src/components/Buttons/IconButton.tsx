@@ -1,17 +1,7 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import '../../styles/components/Buttons/IconButton.css';
-
-type IconButtonVariant = 'ghost' | 'primary' | 'danger';
-type IconButtonSize = 'sm' | 'md' | 'lg';
-
-interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	icon: string;
-	label: string;
-	variant?: IconButtonVariant;
-	size?: IconButtonSize;
-	tooltip?: string;
-}
+import type { IconButtonProps } from '../../interfaces/components/buttons';
 
 export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
 	(

@@ -1,7 +1,7 @@
 import { profileApi } from '../apis/profile';
 import { uploadImageToImgbb } from './imageUploadService';
 import { ApiError } from './apiClient';
-import type { UpdateProfileRequest, ChangePasswordRequest } from '../types/profile';
+import type { UpdateProfileRequest, ChangePasswordRequest } from '../interfaces/services/profile';
 
 export const profileService = {
 	getProfile: () => profileApi.getProfile(),

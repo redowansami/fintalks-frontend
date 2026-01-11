@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { ImgbbResponse } from '../../types/image';
+import type { ImgbbResponse } from '../../interfaces/services/image';
 
 const IMGBB_API_URL = 'https://api.imgbb.com/1/upload';
 

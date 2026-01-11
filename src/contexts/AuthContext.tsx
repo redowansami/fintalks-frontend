@@ -1,7 +1,7 @@
 import { type ReactNode, useMemo } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { AuthContext, type AuthContextType } from '../types/auth';
-import type { User } from '../types/auth';
+import { AuthContext, type AuthContextType } from '../interfaces/services/auth';
+import type { User } from '../interfaces/services/auth';
 import { AUTH_TOKENS, AUTH_QUERY_KEY } from '../constants/authConstants';
 import { loadAuth } from '../utils/authLoader';
 

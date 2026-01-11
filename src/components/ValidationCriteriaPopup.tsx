@@ -1,10 +1,7 @@
 import { List, ListItem } from './List';
 import { Typography } from './Typography';
 import '../styles/components/ValidationCriteriaPopup.css';
-
-interface ValidationCriteriaPopupProps {
-	criteria: string[];
-}
+import type { ValidationCriteriaPopupProps } from '../interfaces/components/validation';
 
 export const ValidationCriteriaPopup = ({ criteria }: ValidationCriteriaPopupProps) => {
 	return (

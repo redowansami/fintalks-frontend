@@ -3,8 +3,8 @@ import type {
 	ProfileResponse,
 	UpdateProfileRequest,
 	ChangePasswordRequest,
-	ChangePasswordResponse,
-} from '../types/profile';
+} from '../interfaces/services/profile';
+import type { BaseResponse } from '../interfaces/services/base';
 
 export const profileApi = {
 	getProfile: () => apiClient.get<never, ProfileResponse>('/users/profile'),
@@ -13,8 +13,5 @@ export const profileApi = {
 		apiClient.patch<UpdateProfileRequest, ProfileResponse>('/users/profile', data),
 
 	changePassword: (data: ChangePasswordRequest) =>
-		apiClient.post<ChangePasswordRequest, ChangePasswordResponse>(
-			'/users/change-password',
-			data,
-		),
+		apiClient.post<ChangePasswordRequest, BaseResponse>('/users/change-password', data),
 };

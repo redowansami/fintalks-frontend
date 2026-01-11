@@ -1,3 +1,5 @@
+import { createContext } from 'react';
+
 export interface User {
 	userId: string;
 	username: string;
@@ -24,18 +26,6 @@ export interface SignUpRequest {
 	email: string;
 	password: string;
 }
-
-export interface AuthResponse {
-	success: boolean;
-	message: string;
-}
-
-export interface ResendConfirmationResponse {
-	success: boolean;
-	message: string;
-}
-
-import { createContext } from 'react';
 
 export interface AuthContextType {
 	user: User | null;

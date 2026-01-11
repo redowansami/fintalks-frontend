@@ -1,4 +1,4 @@
-import type { FormFooterProps } from '../../types/formProps';
+import type { FormFooterProps } from '../../interfaces/components/formComponents';
 import { Typography } from '../Typography';
 
 export const FormFooter = ({ text = '', linkText = '', link = '' }: FormFooterProps) => (

@@ -1,13 +1,12 @@
 import type { User } from './auth';
+import type { BaseResponse } from './base';
 
 export interface UserProfile extends User {
 	bio: string | null;
 	profilePictureUrl: string | null;
 }
 
-export interface ProfileResponse {
-	success: boolean;
-	message: string;
+export interface ProfileResponse extends BaseResponse {
 	profile: UserProfile;
 }
 
@@ -20,9 +19,4 @@ export interface UpdateProfileRequest {
 export interface ChangePasswordRequest {
 	currentPassword: string;
 	newPassword: string;
-}
-
-export interface ChangePasswordResponse {
-	success: boolean;
-	message: string;
 }

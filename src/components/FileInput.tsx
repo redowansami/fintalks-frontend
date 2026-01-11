@@ -1,9 +1,5 @@
 import { forwardRef } from 'react';
-
-interface FileInputProps {
-	onFileSelect: (file: File) => void;
-	isLoading: boolean;
-}
+import type { FileInputProps } from '../interfaces/components/imageUpload';
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 	({ onFileSelect, isLoading }, ref) => {

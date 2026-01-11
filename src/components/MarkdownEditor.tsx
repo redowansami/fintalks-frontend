@@ -4,6 +4,7 @@ import { useMarkdownInsert } from '../hooks/useMarkdownInsert';
 import '../styles/components/MarkdownEditor.css';
 import { Button } from './Buttons/Button';
 import { TabButton } from './Buttons/TabButton';
+import type { MarkdownEditorProps } from '../interfaces/components/markdown';
 
 const EDITOR_TABS = {
 	WRITE: 'write',
@@ -11,12 +12,6 @@ const EDITOR_TABS = {
 } as const;
 
 type TabType = (typeof EDITOR_TABS)[keyof typeof EDITOR_TABS];
-
-interface MarkdownEditorProps {
-	value: string;
-	onChange: (value: string) => void;
-	placeholder?: string;
-}
 
 const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
 	value,

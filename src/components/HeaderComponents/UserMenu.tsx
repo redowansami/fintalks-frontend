@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { Button } from '../Buttons/Button';
 import '../../styles/components/HeaderComponents/UserMenu.css';
-
-interface UserMenuProps {
-	username: string;
-	onViewProfile: () => void;
-	onLogout: () => void;
-}
+import type { UserMenuProps } from '../../interfaces/components/headerComponents';
 
 export const UserMenu: React.FC<UserMenuProps> = ({ username, onViewProfile, onLogout }) => {
 	const [showMenu, setShowMenu] = useState(false);

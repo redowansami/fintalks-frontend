@@ -1,9 +1,6 @@
 import React from 'react';
 import '../../styles/containers/profile/ProfileStories.css';
-
-interface ProfileStoriesProps {
-	storyCount?: number;
-}
+import type { ProfileStoriesProps } from '../../interfaces/containers/profile';
 
 export const ProfileStories: React.FC<ProfileStoriesProps> = ({ storyCount = 0 }) => {
 	return (

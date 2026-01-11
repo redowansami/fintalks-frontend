@@ -2,11 +2,7 @@ import React from 'react';
 import { Icon } from '@iconify/react';
 import { Button } from '../../components/Buttons/Button';
 import '../../styles/containers/profile/ProfileActions.css';
-
-interface ProfileActionsProps {
-	onEditProfile: () => void;
-	onChangePassword: () => void;
-}
+import type { ProfileActionsProps } from '../../interfaces/containers/profile';
 
 export const ProfileActions: React.FC<ProfileActionsProps> = ({
 	onEditProfile,

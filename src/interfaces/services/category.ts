@@ -1,11 +1,11 @@
+import type { BaseResponse } from './base';
+
 export interface Category {
 	categoryId: string;
 	name: string;
 	description: string;
 }
 
-export interface CategoryResponse {
-	success: boolean;
-	message?: string;
+export interface CategoryResponse extends BaseResponse {
 	data: Category[];
 }

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { storyService } from '../../services/storyService';
 import { ApiError } from '../../services/apiClient';
-import type { CreateStoryInput } from '../../types/story';
+import type { CreateStoryInput } from '../../interfaces/services/story';
 
 interface UseCreateStoryResult {
 	createStory: (input: CreateStoryInput) => void;

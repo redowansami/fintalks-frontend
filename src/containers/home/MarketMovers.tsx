@@ -1,12 +1,6 @@
 import { Typography } from '../../components/Typography';
 import '../../styles/containers/home/MarketMovers.css';
-
-interface Mover {
-	symbol: string;
-	name: string;
-	change: string;
-	isPositive: boolean;
-}
+import type { Mover } from '../../interfaces/containers/home';
 
 const movers: Mover[] = [
 	{ symbol: 'NVDA', name: 'NVIDIA Corp', change: '+3.4%', isPositive: true },
