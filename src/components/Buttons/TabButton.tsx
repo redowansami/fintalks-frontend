@@ -18,12 +18,15 @@ export const TabButton: React.FC<TabButtonProps> = ({
 	variant = 'pill',
 	className = '',
 }) => {
+	const variantClass = `tab-btn--${variant}`;
+	const classes = ['tab-btn', variantClass, className].join(' ').trim();
+
 	return (
 		<button
 			type="button"
 			onClick={onClick}
 			data-active={isActive}
-			className={`tab-btn tab-btn--${variant} ${className}`}
+			className={classes}
 			aria-pressed={isActive}
 		>
 			{children}

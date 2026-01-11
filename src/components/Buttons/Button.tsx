@@ -40,18 +40,15 @@ export const Button: React.FC<ButtonProps> = ({
 
 	const shapeClass = getShapeClass(variant);
 	const variantClass = `btn--${variant}`;
-
-	const fontStyles = `
-    ${isBold ? 'font-bold' : ''} 
-    ${isItalic ? 'italic' : ''}
-  `;
+	const fontStyles = [isBold && 'font-bold', isItalic && 'italic'].filter(Boolean).join(' ');
+	const classes = ['btn', shapeClass, variantClass, fontStyles, className].join(' ').trim();
 
 	return (
 		<button
 			type={type}
 			onClick={onClick}
 			disabled={disabled || isLoading}
-			className={`btn ${shapeClass} ${variantClass} ${fontStyles} ${className}`}
+			className={classes}
 			{...rest}
 		>
 			{isLoading ? loadingText || children : children}

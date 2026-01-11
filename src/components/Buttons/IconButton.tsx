@@ -13,26 +13,27 @@ interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
 	tooltip?: string;
 }
 
-export const IconButton: React.FC<IconButtonProps> = ({
-	icon,
-	label,
-	variant = 'ghost',
-	size = 'md',
-	className = '',
-	onClick,
-	tooltip,
-	...props
-}) => {
-	return (
-		<button
-			type="button"
-			className={`icon-button icon-button--${variant} icon-button--${size} ${className}`}
-			onClick={onClick}
-			aria-label={label}
-			title={tooltip || label}
-			{...props}
-		>
-			<Icon icon={icon} />
-		</button>
-	);
-};
+export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
+	(
+		{ icon, label, variant = 'ghost', size = 'md', className = '', onClick, tooltip, ...props },
+		ref,
+	) => {
+		const variantClass = `icon-button--${variant}`;
+		const sizeClass = `icon-button--${size}`;
+		const classes = ['icon-button', variantClass, sizeClass, className].join(' ').trim();
+
+		return (
+			<button
+				ref={ref}
+				type="button"
+				className={classes}
+				onClick={onClick}
+				aria-label={label}
+				title={tooltip || label}
+				{...props}
+			>
+				<Icon icon={icon} />
+			</button>
+		);
+	},
+);
