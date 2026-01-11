@@ -5,7 +5,12 @@ import '../styles/components/MarkdownEditor.css';
 import { Button } from './Buttons/Button';
 import { TabButton } from './Buttons/TabButton';
 
-type TabType = 'write' | 'preview';
+const EDITOR_TABS = {
+	WRITE: 'write',
+	PREVIEW: 'preview',
+} as const;
+
+type TabType = (typeof EDITOR_TABS)[keyof typeof EDITOR_TABS];
 
 interface MarkdownEditorProps {
 	value: string;
@@ -18,7 +23,7 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
 	onChange,
 	placeholder = 'Write your content here...',
 }) => {
-	const [activeTab, setActiveTab] = useState<TabType>('write');
+	const [activeTab, setActiveTab] = useState<TabType>(EDITOR_TABS.WRITE);
 	const { textareaRef, insertFormat } = useMarkdownInsert(onChange);
 
 	return (
@@ -26,21 +31,21 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
 			<div className="markdown-editor-tabs">
 				<TabButton
 					variant="folder"
-					isActive={activeTab === 'write'}
-					onClick={() => setActiveTab('write')}
+					isActive={activeTab === EDITOR_TABS.WRITE}
+					onClick={() => setActiveTab(EDITOR_TABS.WRITE)}
 				>
 					Write
 				</TabButton>
 				<TabButton
 					variant="folder"
-					isActive={activeTab === 'preview'}
-					onClick={() => setActiveTab('preview')}
+					isActive={activeTab === EDITOR_TABS.PREVIEW}
+					onClick={() => setActiveTab(EDITOR_TABS.PREVIEW)}
 				>
 					Preview
 				</TabButton>
 			</div>
 
-			{activeTab === 'write' && (
+			{activeTab === EDITOR_TABS.WRITE && (
 				<div className="markdown-editor-write">
 					<div className="markdown-editor-toolbar">
 						<Button onClick={() => insertFormat('**', '**')} variant="toolbar" isBold>
@@ -74,7 +79,7 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
 				</div>
 			)}
 
-			{activeTab === 'preview' && (
+			{activeTab === EDITOR_TABS.PREVIEW && (
 				<div className="markdown-editor-preview">
 					<MarkdownPreview content={value} />
 				</div>
