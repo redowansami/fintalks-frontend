@@ -1,0 +1,7 @@
+@reference "../../index.css";
+
+@layer components {
+	.icon-item {
+		@apply flex items-center gap-2;
+	}
+}

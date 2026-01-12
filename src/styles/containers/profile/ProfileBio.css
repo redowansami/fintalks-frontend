@@ -4,12 +4,8 @@
 	.profile-bio {
 		@apply bg-gray-100 p-4 rounded-lg border border-gray-200;
 	}
-	
+
 	.profile-contact {
 		@apply flex flex-col sm:flex-row items-center sm:items-center justify-center gap-2 md:gap-6 mt-4 text-gray-500 text-sm;
-	}
-
-	.profile-meta-item {
-		@apply flex items-center gap-2;
 	}
 }
