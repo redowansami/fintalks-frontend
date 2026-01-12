@@ -13,8 +13,8 @@
 		@apply relative flex justify-center items-center mb-4 pb-2;
 	}
 
-	.modal-header .close-button {
-		@apply absolute right-1 top-1;
+	.modal-close-button {
+		@apply absolute top-[-15px] right-[-15px];
 	}
 
 	.modal-title {
