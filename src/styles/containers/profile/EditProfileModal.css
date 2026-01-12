@@ -1,9 +1,3 @@
-.profile-stories-section {
-	display: flex;
-	flex-direction: column;
-	gap: 1.5rem;
-}
-
 .stories-header {
 	display: flex;
 	justify-content: space-between;

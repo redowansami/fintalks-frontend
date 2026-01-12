@@ -2,7 +2,7 @@
 
 @layer components {
 	.profile-main {
-		@apply max-w-6xl mx-auto px-4 py-10 min-h-[calc(100vh-300px)];
+		@apply min-h-[calc(100vh-300px)];
 	}
 
 	.profile-loading,
@@ -11,15 +11,15 @@
 	}
 
 	.profile-header-section {
-		@apply bg-white rounded-xl border border-gray-200 p-10 shadow-sm flex flex-col md:flex-row gap-8 mb-6 md:items-start;
+		@apply mx-10 my-2 bg-white rounded-xl border border-gray-200 p-10 shadow-sm flex flex-col items-center md:flex-row gap-8 mb-6 md:items-start;
 	}
 
 	.profile-info {
-		@apply flex-1 flex flex-col gap-6;
+		@apply flex-1 flex flex-col gap-6 text-center md:text-left w-full;
 	}
 
 	.profile-header-top {
-		@apply flex flex-col gap-4 md:flex-row md:justify-between md:items-center;
+		@apply flex flex-col gap-4 items-center md:flex-row md:justify-between md:items-start;
 	}
 
 	.profile-names {
@@ -28,5 +28,9 @@
 
 	.profile-actions {
 		@apply shrink-0;
+	}
+
+	.profile-stories-section {
+		@apply max-w-5xl mx-auto p-4 flex flex-col gap-6;
 	}
 }
