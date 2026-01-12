@@ -1,7 +1,7 @@
 import React from 'react';
-import { Icon } from '@iconify/react';
 import '../../styles/containers/profile/ProfileBio.css';
 import { Typography } from '../../components/Typography';
+import { IconItem } from '../../components/IconItem';
 import type { ProfileBioProps } from '../../interfaces/containers/profile';
 
 export const ProfileBio: React.FC<ProfileBioProps> = ({ profile }) => {
@@ -14,21 +14,15 @@ export const ProfileBio: React.FC<ProfileBioProps> = ({ profile }) => {
 			)}
 
 			<div className="profile-contact">
-				<div className="profile-meta-item">
-					<Icon icon="ic:outline-email" />
-					<Typography variant="muted">{profile.email}</Typography>
-				</div>
+				<IconItem icon="ic:outline-email">{profile.email}</IconItem>
 
-				<div className="profile-meta-item">
-					<Icon icon="material-symbols:calendar-today" />
-					<Typography variant="muted">
-						Joined{' '}
-						{new Date(profile.joinDate).toLocaleDateString('en-US', {
-							year: 'numeric',
-							month: 'long',
-						} as const)}
-					</Typography>
-				</div>
+				<IconItem icon="material-symbols:calendar-today">
+					Joined{' '}
+					{new Date(profile.joinDate).toLocaleDateString('en-US', {
+						year: 'numeric',
+						month: 'long',
+					} as const)}
+				</IconItem>
 			</div>
 		</>
 	);
