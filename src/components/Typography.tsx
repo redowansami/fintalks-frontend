@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/components/Typography.css';
-import type { TypographyVariant, TypographyProps } from '../interfaces/components/typography';
+import type { TypographyVariant } from '../constants/typography';
+import type { TypographyProps } from '../interfaces/components/typography';
 
 export const Typography = ({
 	variant = 'body',

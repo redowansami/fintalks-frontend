@@ -1,5 +1,6 @@
 import type { AsyncState } from './common';
-import type { LoginData, RegisterData } from '../common/auth';
+import type { LoginData } from '../common/auth';
+import type { RegisterFormData } from '../containers/auth';
 
 export interface UseLoginFormReturn {
 	formData: LoginData;
@@ -20,7 +21,7 @@ export interface FormErrors {
 }
 
 export interface UseFormReturn {
-	formData: RegisterData;
+	formData: RegisterFormData;
 	errors: FormErrors;
 	handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	validateForm: () => boolean;
@@ -31,5 +32,5 @@ export interface UseRegisterHandlerReturn extends AsyncState {
 	validationErrors?: Record<string, string | string[]>;
 	showSuccessModal: boolean;
 	setShowSuccessModal: (show: boolean) => void;
-	register: (data: RegisterData) => void;
+	register: (data: RegisterFormData) => void;
 }

@@ -3,15 +3,19 @@ import { authService } from '../../services/authService';
 import { ApiError } from '../../services/apiClient';
 import type { UseRegisterHandlerReturn } from '../../interfaces/hooks/auth';
 import type { RegisterData } from '../../interfaces/common/auth';
+import type { RegisterFormData } from '../../interfaces/containers/auth';
 
 export const useRegisterHandler = (validateForm: () => boolean): UseRegisterHandlerReturn => {
 	const mutation = useMutation({
 		mutationFn: (data: RegisterData) => authService.signUp(data),
 	});
 
-	const register = (data: RegisterData) => {
+	const register = (data: RegisterFormData) => {
 		if (!validateForm()) return;
-		mutation.mutate(data);
+		
+		const { confirmPassword, ...apiPayload } = data;
+        
+        mutation.mutate(apiPayload);
 	};
 
 	const setShowSuccessModal = (show: boolean) => {

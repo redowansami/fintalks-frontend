@@ -17,8 +17,7 @@ export const RegisterSection = () => {
 
 	const handleFormSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		const { confirmPassword, ...submitData } = registerForm.formData;
-		registerHandler.register(submitData);
+		registerHandler.register(registerForm.formData);
 	};
 
 	return (

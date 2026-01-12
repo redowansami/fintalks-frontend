@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../styles/components/Buttons/Button.css';
-import type { ButtonVariant, ButtonProps } from '../../interfaces/components/buttons';
+import type { ButtonVariant } from '../../constants/button';
+import type { ButtonProps } from '../../interfaces/components/buttons';
 
 export const Button: React.FC<ButtonProps> = ({
 	children,
