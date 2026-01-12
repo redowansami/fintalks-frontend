@@ -9,5 +9,6 @@ export { FormFooter } from './FormComponents/FormFooter';
 export { Spinner } from './Spinner';
 export { ValidationTooltip } from './ValidationTooltip';
 export { PasswordInput } from './PasswordInput';
+export { IconItem } from './IconItem';
 
 export { HeaderLogo, HeaderSearch, UserMenu } from './HeaderComponents';

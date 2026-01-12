@@ -2,7 +2,7 @@
 
 @layer components {
 	.profile-picture-wrapper {
-		@apply relative inline-block;
+		@apply relative flex shrink-0;
 	}
 
 	.profile-image {

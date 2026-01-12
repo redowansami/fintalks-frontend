@@ -44,15 +44,13 @@ export const Profile = () => {
 									@{profile.username}
 								</Typography>
 							</div>
-							<div className="profile-actions">
-								<ProfileActions
-									onEditProfile={() => setIsEditModalOpen(true)}
-									onChangePassword={() => setIsChangePasswordModalOpen(true)}
-								/>
-							</div>
 						</div>
 						<ProfileBio profile={profile} />
 					</div>
+					<ProfileActions
+						onEditProfile={() => setIsEditModalOpen(true)}
+						onChangePassword={() => setIsChangePasswordModalOpen(true)}
+					/>
 				</section>
 				<ProfileStories storyCount={0} />
 			</>

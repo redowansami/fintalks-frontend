@@ -1,10 +1,11 @@
 import React from 'react';
 import logo from '../../../public/FinTalks_logo.png';
+import '../../styles/components/HeaderComponents/HeaderLogo.css';
 
 export const HeaderLogo: React.FC = () => {
 	return (
-		<a href="/" className="flex-none flex justify-center px-4">
-			<img src={logo} alt="FinTalks" className="h-14 w-auto" />
+		<a href="/" className="header-logo-link">
+			<img src={logo} alt="FinTalks" className="header-logo-image" />
 		</a>
 	);
 };
