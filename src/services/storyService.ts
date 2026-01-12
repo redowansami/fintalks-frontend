@@ -1,106 +1,38 @@
-import axios from 'axios';
-
-const API_BASE_URL = 'http://localhost:3000/api/v1';
-
-export interface Story {
-	storyId: string;
-	username: string;
-	title: string;
-	body: string;
-	summary: string;
-	reliabilityScore: number;
-	createdAt: string;
-	categories: Array<{ name: string }>;
-	imageUrl?: string;
-}
-
-export interface StoriesResponse {
-	list: Story[];
-}
-
-export interface StoryDetailResponse {
-	story: Story & {
-		image?: string;
-		summary?: string;
-		predictionComparison?: string;
-		categories: Array<{ categoryId: string; name: string }>;
-		updatedAt?: string;
-	};
-}
-
-export interface CreateStoryPayload {
-	title: string;
-	body: string;
-	imageUrl?: string;
-	categoryIds: string[];
-}
-
-export interface CreateStoryResponse {
-	success: boolean;
-	message: string;
-	story: Story;
-}
-
-export class StoryError extends Error {
-	validationErrors?: Record<string, string | string[]>;
-
-	constructor(message: string, validationErrors?: Record<string, string | string[]>) {
-		super(message);
-		this.name = 'StoryError';
-		this.validationErrors = validationErrors;
-	}
-}
+import { storyApi } from '../apis/story';
+import { uploadImageToImgbb } from './imageUploadService';
+import type { CreateStoryInput, StoriesResponse, StoryDetail } from '../interfaces/services/story';
 
 export const storyService = {
-	async fetchStories(category?: string | null): Promise<StoriesResponse> {
-		const url = category
-			? `${API_BASE_URL}/stories?category=${category}`
-			: `${API_BASE_URL}/stories/`;
-
-		const response = await axios.get<StoriesResponse>(url);
-		return response.data;
+	async getStories(
+		category?: string | null,
+		startAfter?: string | null,
+	): Promise<StoriesResponse> {
+		return await storyApi.getAll({ category, startAfter });
 	},
 
-	async fetchStoryDetail(storyId: string): Promise<StoryDetailResponse> {
-		const response = await axios.get<StoryDetailResponse>(`${API_BASE_URL}/stories/${storyId}`);
-		return response.data;
+	async getStoryDetail(storyId: string): Promise<StoryDetail> {
+		const data = await storyApi.getById(storyId);
+		return data.story;
 	},
 
-	async createStory(
-		token: string | null,
-		data: CreateStoryPayload,
-	): Promise<CreateStoryResponse> {
-		if (!token) {
-			throw new StoryError('No authentication token found');
-		}
+	async createStory(input: CreateStoryInput) {
+		let imageUrl = '';
 
-		try {
-			const response = await axios.post<CreateStoryResponse>(
-				`${API_BASE_URL}/stories`,
-				data,
-				{
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-					timeout: 15000,
-				},
-			);
-
-			return response.data;
-		} catch (error) {
-			if (axios.isAxiosError(error)) {
-				if (error.code === 'ECONNABORTED') {
-					throw new StoryError(
-						'Request timeout: Please check your connection and try again.',
-					);
-				}
-				const message = error.response?.data?.message || 'Failed to create story';
-				const validationErrors = error.response?.data?.errors as
-					| Record<string, string | string[]>
-					| undefined;
-				throw new StoryError(message, validationErrors);
+		if (input.imageFile) {
+			try {
+				imageUrl = await uploadImageToImgbb(input.imageFile);
+			} catch (error) {
+				throw new Error('Failed to upload image. Story was not created.');
 			}
-			throw error instanceof Error ? error : new StoryError('An unexpected error occurred');
 		}
+
+		const apiPayload = {
+			title: input.title,
+			body: input.body,
+			categoryIds: input.categoryIds,
+			imageUrl: imageUrl || undefined,
+		};
+
+		return await storyApi.create(apiPayload);
 	},
 };

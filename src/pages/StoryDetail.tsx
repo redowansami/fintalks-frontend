@@ -1,23 +1,20 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Header } from '../components/Header';
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
 import { Modal } from '../components/Modal';
-import { AIReliabilityCard } from '../components/AIReliabilityCard';
-import { StoryMeta } from '../components/StoryMeta';
-import { StoryImage } from '../components/StoryImage';
-import { StoryTags } from '../components/StoryTags';
-import { useStoryDetail } from '../hooks/useStoryDetail';
-import '../styles/StoryDetail.css';
+import { AIReliabilityCard } from '../containers/story/AIReliabilityCard';
+import { StoryMeta, StoryImage, StoryTags } from '../containers/story';
+import { useStoryDetail } from '../hooks/story';
+import { Spinner } from '../components';
+import { Typography } from '../components/Typography';
+import { MarkdownPreview } from '../components/MarkdownPreview';
 
 export const StoryDetail: React.FC = () => {
 	const { storyId } = useParams<{ storyId: string }>();
 	const navigate = useNavigate();
-	const { story, loading, error } = useStoryDetail(storyId);
+	const { story, isPending, error } = useStoryDetail(storyId);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
-	if (loading) return <p style={{ textAlign: 'center', padding: '2rem' }}>Loading...</p>;
+	if (isPending) return <Spinner />;
 	if (error || !story) {
 		navigate('/');
 		return null;
@@ -25,30 +22,25 @@ export const StoryDetail: React.FC = () => {
 
 	return (
 		<>
-			<Header />
-			<Navbar />
-			<div className="story-detail-wrapper">
-				<main className="story-detail-main">
-					<h1 className="story-title">{story.title}</h1>
-					<StoryImage src={story.image || story.imageUrl} alt={story.title} />
-					<StoryMeta
-						username={story.username}
-						createdAt={story.createdAt}
-						updatedAt={story.updatedAt}
-					/>
-					<AIReliabilityCard
-						reliabilityScore={story.reliabilityScore}
-						summary={story.summary}
-						predictionComparison={story.predictionComparison}
-						onComparisonClick={() => setIsModalOpen(true)}
-					/>
-					<div className="story-content">
-						<p className="story-body">{story.body}</p>
-						<StoryTags categories={story.categories} />
-					</div>
-				</main>
+			<div className="w-full max-w-3xl mx-auto px-4 py-10">
+				<Typography variant="h1" className="mb-5">
+					{story.title}
+				</Typography>
+				<StoryImage src={story.imageUrl} alt={story.title} />
+				<StoryMeta
+					username={story.username}
+					createdAt={story.createdAt}
+					updatedAt={story.updatedAt}
+				/>
+				<AIReliabilityCard
+					reliabilityScore={story.reliabilityScore}
+					summary={story.summary}
+					predictionComparison={story.predictionComparison}
+					onComparisonClick={() => setIsModalOpen(true)}
+				/>
+				<MarkdownPreview content={story.body} />
+				<StoryTags categories={story.categories} />
 			</div>
-			<Footer />
 			<Modal
 				isOpen={isModalOpen}
 				onClose={() => setIsModalOpen(false)}

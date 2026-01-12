@@ -1,0 +1,39 @@
+@reference '../../index.css';
+
+@layer components {
+	.input-group {
+		@apply flex flex-col mb-3 gap-1;
+	}
+
+	.input-header {
+		@apply flex justify-between;
+	}
+
+	.input-control {
+		@apply w-full px-3 py-3 border border-gray-300 rounded text-sm bg-white transition-all placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-[rgba(10,31,68,0.1)];
+	}
+
+	.input-control::placeholder {
+		@apply text-gray-400;
+	}
+
+	.input-control:focus {
+		@apply outline-none ring-3 ring-[rgba(10,31,68,0.1)];
+	}
+
+	.input-control.is-invalid {
+		@apply border-red-500 bg-red-50;
+	}
+
+	.input-wrapper {
+		@apply relative flex items-center;
+	}
+
+	.input-control.with-right-element {
+		@apply pr-12;
+	}
+
+	.input-right-element {
+		@apply absolute right-3 flex items-center;
+	}
+}

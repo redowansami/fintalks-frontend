@@ -1,28 +1,28 @@
 import { useState } from 'react';
 import { Spinner } from '../components/Spinner';
-import { EditProfileModal } from '../components/ProfileComponents/EditProfileModal';
-import { ChangePasswordModal } from '../components/ProfileComponents/ChangePasswordModal';
-import { ImageUploadModal } from '../components/ProfileComponents/ImageUploadModal';
-import { ProfileLayout } from '../components/ProfileLayout';
+import { ImageUploadModal } from '../containers/profile/ImageUploadModal';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
-import { useProfile } from '../hooks/useProfile';
 import {
-	ProfileHeader,
+	ProfilePicture,
 	ProfileActions,
 	ProfileBio,
 	ProfileStories,
-} from '../components/ProfileComponents';
-import '../styles/Profile.css';
+	EditProfileModal,
+	ChangePasswordModal,
+} from '../containers/profile';
+import { useProfile } from '../hooks/profile';
+import '../styles/pages/Profile.css';
+import { Typography } from '../components/Typography';
 
 export const Profile = () => {
-	const { data, isLoading, isError, error } = useProfile();
+	const { data, isPending, isError, error } = useProfile();
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 	const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] = useState(false);
 	const [isImageUploadModalOpen, setIsImageUploadModalOpen] = useState(false);
 	const profile = data?.profile;
 
 	const renderContent = () => {
-		if (isLoading) return <Spinner />;
+		if (isPending) return <Spinner />;
 
 		if (isError || !profile) {
 			const errorMessage = isError ? error.message : 'Failed to load profile';
@@ -32,26 +32,26 @@ export const Profile = () => {
 		return (
 			<>
 				<section className="profile-header-section">
-					<div className="profile-header-content">
-						<ProfileHeader
-							profile={profile}
-							onEditPicture={() => setIsImageUploadModalOpen(true)}
-						/>
-						<div className="profile-info">
-							<div className="profile-header-top">
-								<div className="profile-names">
-									<h1 className="profile-full-name">{profile.name}</h1>
-									<p className="profile-username">@{profile.username}</p>
-								</div>
-								<div className="profile-actions">
-									<ProfileActions
-										onEditProfile={() => setIsEditModalOpen(true)}
-										onChangePassword={() => setIsChangePasswordModalOpen(true)}
-									/>
-								</div>
+					<ProfilePicture
+						profile={profile}
+						onEditPicture={() => setIsImageUploadModalOpen(true)}
+					/>
+					<div className="profile-info">
+						<div className="profile-header-top">
+							<div className="profile-names">
+								<Typography variant="h1">{profile.name}</Typography>
+								<Typography variant="h3" color="muted">
+									@{profile.username}
+								</Typography>
 							</div>
-							<ProfileBio profile={profile} />
+							<div className="profile-actions">
+								<ProfileActions
+									onEditProfile={() => setIsEditModalOpen(true)}
+									onChangePassword={() => setIsChangePasswordModalOpen(true)}
+								/>
+							</div>
 						</div>
+						<ProfileBio profile={profile} />
 					</div>
 				</section>
 				<ProfileStories storyCount={0} />
@@ -60,15 +60,14 @@ export const Profile = () => {
 	};
 
 	return (
-		<ProfileLayout>
+		<>
 			{renderContent()}
 			{profile && (
 				<>
 					<EditProfileModal
 						isOpen={isEditModalOpen}
 						onClose={() => setIsEditModalOpen(false)}
-						initialName={profile.name}
-						initialBio={profile.bio}
+						initialData={{ name: profile.name, bio: profile.bio || '' }}
 					/>
 					<ChangePasswordModal
 						isOpen={isChangePasswordModalOpen}
@@ -80,6 +79,6 @@ export const Profile = () => {
 					/>
 				</>
 			)}
-		</ProfileLayout>
+		</>
 	);
 };

@@ -22,12 +22,4 @@ export const REGISTER_FORM_FIELDS: FormFieldConfig[] = [
 		placeholder: 'John Doe',
 		validationCriteria: ['3-25 characters long'],
 	},
-	{
-		label: 'Email address',
-		id: 'email',
-		name: 'email',
-		type: 'email',
-		placeholder: 'john@example.com',
-		validationCriteria: ['Valid email format (e.g., user@domain.com)'],
-	},
 ];

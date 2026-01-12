@@ -1,20 +1,13 @@
-export { Button } from './Button';
+export { Button } from './Buttons/Button';
+export { IconButton } from './Buttons/IconButton';
 export { InputField } from './InputField';
-export { PasswordRequirements } from './PasswordRequirements';
-export { Header } from './Header';
-export { Footer } from './Footer';
-export { Navbar } from './Navbar';
-export { StoryCard } from './StoryCard';
-export { TaxCalculator } from './SideBar/TaxCalculator';
-export { AdvertisementSpace } from './SideBar/AdvertisementSpace';
-export { MarketMovers } from './SideBar/MarketMovers';
 export { Modal } from './Modal';
-export { LoginForm } from './LoginForm';
-export { PasswordInput } from './PasswordInput';
 export { ErrorDialog } from './ErrorComponents/ErrorDialog';
 export { ErrorList } from './ErrorComponents/ErrorList';
-export { FormHeader } from './FormHeader';
-export { FormFooter } from './FormFooter';
-export { RegisterForm } from './RegisterForm';
+export { FormHeader } from './FormComponents/FormHeader';
+export { FormFooter } from './FormComponents/FormFooter';
 export { Spinner } from './Spinner';
 export { ValidationTooltip } from './ValidationTooltip';
+export { PasswordInput } from './PasswordInput';
+
+export { HeaderLogo, HeaderSearch, UserMenu } from './HeaderComponents';

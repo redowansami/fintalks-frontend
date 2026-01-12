@@ -1,0 +1,14 @@
+@reference '../../index.css';
+
+@layer components {
+	.app-header {
+		@apply w-full border-b border-gray-200 bg-white sticky top-0 z-50 flex items-center justify-between h-20 px-4;
+	}
+}
+
+@media (max-width: 768px) {
+	.header-left,
+	.header-center {
+		display: none;
+	}
+}

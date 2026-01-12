@@ -1,0 +1,53 @@
+.profile-stories-section {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.stories-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid var(--border-light);
+}
+
+.stories-title {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--primary);
+	margin: 0;
+	font-family: var(--font-display);
+}
+
+.stories-badge {
+	padding: 0.25rem 0.75rem;
+	background-color: #f3f4f6;
+	color: #6b7280;
+	border-radius: 9999px;
+	font-size: 0.75rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	border: 1px solid var(--border-light);
+}
+
+.stories-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.no-stories {
+	padding: 2rem;
+	text-align: center;
+	background-color: #f9fafb;
+	border-radius: 0.5rem;
+	border: 1px dashed var(--border-light);
+	color: #6b7280;
+	font-size: 0.875rem;
+}
+
+.no-stories p {
+	margin: 0;
+}

@@ -1,35 +1,24 @@
 import { useState } from 'react';
-import '../styles/ValidationTooltip.css';
-import { Icon } from '@iconify/react';
+import '../styles/components/ValidationTooltip.css';
+import { IconButton } from './Buttons/IconButton';
+import { ValidationCriteriaPopup } from './ValidationCriteriaPopup';
+import type { ValidationCriteriaProps } from '../interfaces/components/validation';
 
-interface ValidationTooltipProps {
-	criteria: string[];
-}
-
-export const ValidationTooltip = ({ criteria }: ValidationTooltipProps) => {
+export const ValidationTooltip = ({ criteria }: ValidationCriteriaProps) => {
 	const [showTooltip, setShowTooltip] = useState(false);
 
 	return (
 		<div className="validation-tooltip-container">
-			<button
-				type="button"
-				className="validation-icon"
+			<IconButton
+				icon="mdi:information"
+				label="Show validation criteria"
 				onClick={() => setShowTooltip(!showTooltip)}
 				onBlur={() => setTimeout(() => setShowTooltip(false), 200)}
-				title="View validation criteria"
-			>
-				<Icon icon="mdi:information" />
-			</button>
+				variant="ghost"
+				size="sm"
+			/>
 
-			{showTooltip && (
-				<div className="validation-tooltip-popup">
-					<ul className="validation-criteria-list">
-						{criteria.map((criterion, idx) => (
-							<li key={idx}>{criterion}</li>
-						))}
-					</ul>
-				</div>
-			)}
+			{showTooltip && <ValidationCriteriaPopup criteria={criteria} />}
 		</div>
 	);
 };

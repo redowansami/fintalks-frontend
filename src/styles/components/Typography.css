@@ -1,0 +1,81 @@
+@reference '../../index.css';
+
+@layer components {
+	.typography {
+		@apply m-0 font-body transition-all;
+	}
+
+	.typography--h1,
+	.typography--h2,
+	.typography--h3 {
+		@apply font-display text-primary leading-tight;
+	}
+
+	.typography--h1 {
+		@apply text-4xl font-bold;
+	}
+
+	.typography--h2 {
+		@apply text-3xl font-semibold mb-4;
+	}
+
+	.typography--h3 {
+		@apply text-2xl font-semibold;
+	}
+
+	.typography--body {
+		@apply text-sm text-text-main-light leading-normal;
+	}
+
+	.typography--body1 {
+		@apply text-base text-text-main-light leading-normal;
+	}
+
+	.typography--muted {
+		@apply text-sm text-text-muted-light;
+	}
+
+	.typography--xs {
+		@apply text-xs text-text-muted-light;
+	}
+
+	.typography--link {
+		@apply text-link cursor-pointer font-medium hover:underline;
+	}
+
+	.typography-color--primary {
+		@apply text-primary;
+	}
+
+	.typography-color--secondary {
+		@apply text-secondary;
+	}
+
+	.typography-color--success {
+		@apply text-stock-green;
+	}
+
+	.typography-color--error {
+		@apply text-stock-red;
+	}
+
+	.typography-color--muted {
+		@apply text-text-muted-light;
+	}
+
+	.typography-align--left {
+		@apply text-left;
+	}
+
+	.typography-align--center {
+		@apply text-center;
+	}
+
+	.typography-align--right {
+		@apply text-right;
+	}
+
+	.typography-align--justify {
+		@apply text-justify;
+	}
+}

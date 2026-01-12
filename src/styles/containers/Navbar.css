@@ -1,0 +1,7 @@
+@reference '../../index.css';
+
+@layer components {
+	.navbar {
+		@apply w-full bg-primary py-3 shadow-md px-4 flex justify-center;
+	}
+}

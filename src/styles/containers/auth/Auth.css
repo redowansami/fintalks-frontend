@@ -1,0 +1,11 @@
+@reference '../../../index.css';
+
+@layer components {
+	.auth-card {
+		@apply w-full max-w-sm rounded-lg bg-white p-8 shadow-md;
+	}
+
+	.auth-form {
+		@apply flex flex-col gap-5 my-6;
+	}
+}
