@@ -2,7 +2,7 @@
 
 @layer components {
 	.profile-actions-wrapper {
-		@apply absolute top-10 right-10;
+		@apply absolute top-8 right-8;
 	}
 
 	.profile-actions-menu {
