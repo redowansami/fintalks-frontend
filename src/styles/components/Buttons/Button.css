@@ -8,7 +8,7 @@
 	}
 
 	.btn-shape-standard {
-		@apply justify-center px-4 py-3 rounded-[1vw] text-xs md:text-sm font-bold shadow-xl border;
+		@apply justify-center px-3 py-2 md:px-4 md:py-3 rounded-[1vw] text-xs md:text-sm font-bold shadow-xl border;
 	}
 
 	.btn-shape-item {
@@ -16,7 +16,7 @@
 	}
 
 	.btn-shape-toolbar {
-		@apply justify-center px-3 py-1.5 text-sm border rounded;
+		@apply justify-center px-2 py-1 md:px-3 md:py-1.5 text-xs md:text-sm border rounded;
 	}
 
 	.btn--primary {

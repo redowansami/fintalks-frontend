@@ -18,14 +18,14 @@
 	}
 
 	.icon-button--sm {
-		@apply p-1 text-lg;
+		@apply p-0.5 md:p-1 text-base md:text-lg;
 	}
 
 	.icon-button--md {
-		@apply p-2 text-xl;
+		@apply p-1.5 md:p-2 text-lg md:text-xl;
 	}
 
 	.icon-button--lg {
-		@apply p-3 text-2xl;
+		@apply p-2 md:p-3 text-xl md:text-2xl;
 	}
 }
