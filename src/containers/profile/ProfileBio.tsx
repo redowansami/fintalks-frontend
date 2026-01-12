@@ -14,16 +14,21 @@ export const ProfileBio: React.FC<ProfileBioProps> = ({ profile }) => {
 			)}
 
 			<div className="profile-contact">
-				<Icon icon="ic:outline-email" />
-				<Typography variant="muted">{profile.email}</Typography>
-				<Icon icon="material-symbols:calendar-today" />
-				<Typography variant="muted">
-					Joined{' '}
-					{new Date(profile.joinDate).toLocaleDateString('en-US', {
-						year: 'numeric',
-						month: 'long',
-					} as const)}
-				</Typography>
+				<div className="profile-meta-item">
+					<Icon icon="ic:outline-email" />
+					<Typography variant="muted">{profile.email}</Typography>
+				</div>
+
+				<div className="profile-meta-item">
+					<Icon icon="material-symbols:calendar-today" />
+					<Typography variant="muted">
+						Joined{' '}
+						{new Date(profile.joinDate).toLocaleDateString('en-US', {
+							year: 'numeric',
+							month: 'long',
+						} as const)}
+					</Typography>
+				</div>
 			</div>
 		</>
 	);

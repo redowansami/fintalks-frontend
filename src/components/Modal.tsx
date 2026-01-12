@@ -16,7 +16,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message, c
 						icon="material-symbols:close"
 						label="Close modal"
 						onClick={onClose}
-						className="absolute top-0 right-0"
+						className="absolute top-[-15px] right-[-15px]"
 					/>
 				</div>
 				{message && (
