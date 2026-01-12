@@ -1,11 +1,11 @@
-.profile-actions {
-	display: flex;
-	flex-direction: column;
-	gap: 0.75rem;
-}
+@reference '../../../index.css';
 
-@media (min-width: 640px) {
-	.profile-actions {
-		flex-direction: row;
+@layer components {
+	.profile-actions-wrapper {
+		@apply absolute top-10 right-10;
+	}
+
+	.profile-actions-menu {
+		@apply absolute top-12 right-0 min-w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-10 overflow-hidden;
 	}
 }

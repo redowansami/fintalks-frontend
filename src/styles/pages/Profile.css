@@ -11,7 +11,7 @@
 	}
 
 	.profile-header-section {
-		@apply mx-10 my-2 bg-white rounded-xl border border-gray-200 p-10 shadow-sm flex flex-col items-center md:flex-row gap-2 mb-6 md:gap-4 md:items-start;
+		@apply relative mx-10 my-2 bg-white rounded-xl border border-gray-200 p-10 shadow-sm flex flex-col items-center md:flex-row gap-2 mb-6 md:gap-4 md:items-start;
 	}
 
 	.profile-info {
