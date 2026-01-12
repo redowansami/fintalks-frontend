@@ -8,7 +8,7 @@
 	}
 
 	.btn-shape-standard {
-		@apply justify-center px-4 py-3 rounded-[1vw] text-sm font-bold shadow-xl border;
+		@apply justify-center px-4 py-3 rounded-[1vw] text-xs md:text-sm font-bold shadow-xl border;
 	}
 
 	.btn-shape-item {
