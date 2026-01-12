@@ -3,7 +3,7 @@ import { FileInput } from '../FileInput';
 import { ImagePreview } from '../ImagePreview';
 import type { StoryImageFieldProps } from '../../interfaces/components/createStoryComponents';
 
-export const StoryImageField: React.FC<StoryImageFieldProps> = ({ onImageSelect, isLoading }) => {
+export const StoryImageField: React.FC<StoryImageFieldProps> = ({ onImageSelect, isPending }) => {
 	const fileInputRef = useRef<HTMLInputElement>(null);
 	const [preview, setPreview] = useState<string | null>(null);
 
@@ -24,10 +24,10 @@ export const StoryImageField: React.FC<StoryImageFieldProps> = ({ onImageSelect,
 				preview={preview}
 				onChangeImage={handleChangeImage}
 				onSelectImage={handleChangeImage}
-				isLoading={isLoading}
+				isPending={isPending}
 				error={null}
 			/>
-			<FileInput ref={fileInputRef} onFileSelect={handleFileSelect} isLoading={isLoading} />
+			<FileInput ref={fileInputRef} onFileSelect={handleFileSelect} isPending={isPending} />
 		</div>
 	);
 };

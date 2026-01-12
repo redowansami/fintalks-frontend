@@ -1,7 +1,3 @@
-export interface HomeSidebarProps {
-	show: boolean;
-}
-
 export interface Mover {
 	symbol: string;
 	name: string;

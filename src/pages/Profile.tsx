@@ -15,14 +15,14 @@ import '../styles/pages/Profile.css';
 import { Typography } from '../components/Typography';
 
 export const Profile = () => {
-	const { data, isLoading, isError, error } = useProfile();
+	const { data, isPending, isError, error } = useProfile();
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 	const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] = useState(false);
 	const [isImageUploadModalOpen, setIsImageUploadModalOpen] = useState(false);
 	const profile = data?.profile;
 
 	const renderContent = () => {
-		if (isLoading) return <Spinner />;
+		if (isPending) return <Spinner />;
 
 		if (isError || !profile) {
 			const errorMessage = isError ? error.message : 'Failed to load profile';
@@ -67,8 +67,7 @@ export const Profile = () => {
 					<EditProfileModal
 						isOpen={isEditModalOpen}
 						onClose={() => setIsEditModalOpen(false)}
-						initialName={profile.name}
-						initialBio={profile.bio}
+						initialData={{ name: profile.name, bio: profile.bio || '' }}
 					/>
 					<ChangePasswordModal
 						isOpen={isChangePasswordModalOpen}

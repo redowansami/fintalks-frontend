@@ -1,22 +1,12 @@
-import type { User } from './auth';
 import type { BaseResponse } from './base';
-
-export interface UserProfile extends User {
-	bio: string | null;
-	profilePictureUrl: string | null;
-}
+import type { UserProfile, UpdateProfileInput, ChangePasswordInput } from '../common/profile';
 
 export interface ProfileResponse extends BaseResponse {
 	profile: UserProfile;
 }
 
-export interface UpdateProfileRequest {
-	name?: string;
-	bio?: string;
+export interface UpdateProfileRequest extends UpdateProfileInput {
 	profilePictureUrl?: string;
 }
 
-export interface ChangePasswordRequest {
-	currentPassword: string;
-	newPassword: string;
-}
+export type ChangePasswordRequest = ChangePasswordInput;

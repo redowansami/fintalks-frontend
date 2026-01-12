@@ -1,12 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { storyService } from '../../services/storyService';
-import type { StoryDetail } from '../../interfaces/services/story';
-
-interface UseStoryDetailReturn {
-	story: StoryDetail | null;
-	isLoading: boolean;
-	error: Error | null;
-}
+import type { UseStoryDetailReturn } from '../../interfaces/hooks/story';
 
 export const useStoryDetail = (storyId?: string): UseStoryDetailReturn => {
 	const { data, isPending, error } = useQuery({
@@ -17,7 +11,7 @@ export const useStoryDetail = (storyId?: string): UseStoryDetailReturn => {
 
 	return {
 		story: data || null,
-		isLoading: isPending,
+		isPending: isPending,
 		error: error as Error | null,
 	};
 };

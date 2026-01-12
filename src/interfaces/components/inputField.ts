@@ -1,7 +1,3 @@
-/**
- * Interfaces for InputField component
- */
-
 interface BaseProps {
 	label: string;
 	error?: string;

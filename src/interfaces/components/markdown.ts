@@ -1,10 +1,6 @@
-/**
- * Interfaces for Markdown components
- */
+import type { BaseInputProps } from './BaseInputProps';
 
-export interface MarkdownEditorProps {
-	value: string;
-	onChange: (value: string) => void;
+export interface MarkdownEditorProps extends BaseInputProps {
 	placeholder?: string;
 }
 

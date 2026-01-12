@@ -6,7 +6,7 @@ export const Button: React.FC<ButtonProps> = ({
 	children,
 	onClick,
 	type = 'button',
-	isLoading = false,
+	isPending = false,
 	loadingText = '',
 	disabled = false,
 	className = '',
@@ -30,11 +30,11 @@ export const Button: React.FC<ButtonProps> = ({
 		<button
 			type={type}
 			onClick={onClick}
-			disabled={disabled || isLoading}
+			disabled={disabled || isPending}
 			className={classes}
 			{...rest}
 		>
-			{isLoading ? loadingText || children : children}
+			{isPending ? loadingText || children : children}
 		</button>
 	);
 };

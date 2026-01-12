@@ -2,7 +2,8 @@ import { Button, InputField } from '../../components/index';
 import { PasswordInput } from '../../components/index';
 import { PasswordRequirements } from './PasswordRequirements';
 import { REGISTER_FORM_FIELDS } from '../../constants/RegisterForm';
-import type { RegisterFormProps } from '../../interfaces/containers/auth';
+import type { RegisterData } from '../../interfaces/common/auth';
+import type { BaseFormProps } from '../../interfaces/components/BaseFormProps';
 
 export const RegisterForm = ({
 	formData,
@@ -10,7 +11,7 @@ export const RegisterForm = ({
 	isPending,
 	onInputChange,
 	onSubmit,
-}: RegisterFormProps) => {
+}: BaseFormProps<RegisterData>) => {
 	return (
 		<form onSubmit={onSubmit} className="auth-form">
 			{REGISTER_FORM_FIELDS.map((field) => (
@@ -55,7 +56,7 @@ export const RegisterForm = ({
 
 			<PasswordRequirements password={formData.password} />
 
-			<Button type="submit" isLoading={isPending} loadingText="Registering...">
+			<Button type="submit" isPending={isPending} loadingText="Registering...">
 				Register
 			</Button>
 		</form>

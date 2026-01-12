@@ -1,23 +1,11 @@
 import { useState } from 'react';
 import { createInputChangeHandler } from '../../utils/auth';
 import { validateLoginForm } from '../../utils/auth';
-
-interface LoginFormData {
-	email: string;
-	password: string;
-}
-
-interface UseLoginFormReturn {
-	formData: LoginFormData;
-	errors: { [key: string]: string };
-	showPassword: boolean;
-	handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	validateForm: () => boolean;
-	togglePasswordVisibility: () => void;
-}
+import type { LoginData } from '../../interfaces/common/auth';
+import type { UseLoginFormReturn } from '../../interfaces/hooks/auth';
 
 export const useLoginForm = (): UseLoginFormReturn => {
-	const [formData, setFormData] = useState<LoginFormData>({ email: '', password: '' });
+	const [formData, setFormData] = useState<LoginData>({ email: '', password: '' });
 	const [errors, setErrors] = useState<{ [key: string]: string }>({});
 	const [showPassword, setShowPassword] = useState(false);
 	const handleInputChange = createInputChangeHandler(setFormData);

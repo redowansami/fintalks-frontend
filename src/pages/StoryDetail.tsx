@@ -11,10 +11,10 @@ import { MarkdownPreview } from '../components/MarkdownPreview';
 export const StoryDetail: React.FC = () => {
 	const { storyId } = useParams<{ storyId: string }>();
 	const navigate = useNavigate();
-	const { story, isLoading, error } = useStoryDetail(storyId);
+	const { story, isPending, error } = useStoryDetail(storyId);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
-	if (isLoading) return <Spinner />;
+	if (isPending) return <Spinner />;
 	if (error || !story) {
 		navigate('/');
 		return null;
@@ -26,7 +26,7 @@ export const StoryDetail: React.FC = () => {
 				<Typography variant="h1" className="mb-5">
 					{story.title}
 				</Typography>
-				<StoryImage src={story.image || story.imageUrl} alt={story.title} />
+				<StoryImage src={story.imageUrl} alt={story.title} />
 				<StoryMeta
 					username={story.username}
 					createdAt={story.createdAt}

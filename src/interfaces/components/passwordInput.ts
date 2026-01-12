@@ -1,7 +1,3 @@
-/**
- * Interfaces for PasswordInput component
- */
-
 export interface PasswordInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
 	error?: string;

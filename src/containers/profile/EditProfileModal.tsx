@@ -3,14 +3,9 @@ import { EditProfileForm } from './EditProfileForm';
 import { Modal } from '../../components';
 import type { EditProfileModalProps } from '../../interfaces/containers/profile';
 
-export const EditProfileModal = ({
-	isOpen,
-	onClose,
-	initialName,
-	initialBio,
-}: EditProfileModalProps) => {
-	const { formData, handleChange, saveProfile, isLoading, error } = useEditProfile(
-		{ name: initialName, bio: initialBio || '' },
+export const EditProfileModal = ({ isOpen, onClose, initialData }: EditProfileModalProps) => {
+	const { formData, handleChange, saveProfile, isPending, error } = useEditProfile(
+		initialData,
 		onClose,
 	);
 
@@ -29,9 +24,9 @@ export const EditProfileModal = ({
 		>
 			<EditProfileForm
 				formData={formData}
-				handleChange={handleChange}
+				onInputChange={handleChange}
 				onSubmit={handleSubmit}
-				isLoading={isLoading}
+				isPending={isPending}
 				error={error}
 			/>
 		</Modal>

@@ -1,48 +1,21 @@
-export interface EditProfileFormProps {
-	formData: { name: string; bio: string };
-	handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-	onSubmit: (e: React.FormEvent) => void;
-	isLoading?: boolean;
-	error?: Error | null;
-}
-
-export interface ChangePasswordModalProps {
-	isOpen: boolean;
-	onClose: () => void;
-}
-
-export interface ImageUploadModalProps {
-	isOpen: boolean;
-	onClose: () => void;
-}
+import type { UserProfile, UpdateProfileInput } from '../common/profile';
+import type { ViewableProps } from '../components/ViewableProps';
 
 export interface ProfileActionsProps {
 	onEditProfile: () => void;
 	onChangePassword: () => void;
 }
 
-export interface EditProfileModalProps {
-	isOpen: boolean;
-	onClose: () => void;
-	initialName: string;
-	initialBio: string | null;
-}
-
-export interface Profile {
-	email: string;
-	bio: string | null;
-	joinDate: string;
-	profilePictureUrl: string | null;
-	name: string;
-	username: string;
+export interface EditProfileModalProps extends ViewableProps {
+	initialData: UpdateProfileInput;
 }
 
 export interface ProfileBioProps {
-	profile: Profile;
+	profile: UserProfile;
 }
 
 export interface ProfilePictureProps {
-	profile: Profile;
+	profile: Pick<UserProfile, 'profilePictureUrl' | 'name'>;
 	onEditPicture: () => void;
 }
 

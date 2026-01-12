@@ -1,16 +1,12 @@
-/**
- * Interfaces for Typography component
- */
-
-export type TypographyVariant = 'h1' | 'h2' | 'h3' | 'body1' | 'body' | 'muted' | 'xs' | 'link';
+import type { TypographyVariant, TypographyColor, TextAlign } from '../../constants/typography';
 
 export interface TypographyProps {
 	variant?: TypographyVariant;
-	color?: 'primary' | 'secondary' | 'success' | 'error' | 'muted';
+	color?: TypographyColor;
 	component?: React.ElementType;
 	children: React.ReactNode;
 	className?: string;
-	textAlign?: 'left' | 'center' | 'right' | 'justify';
+	textAlign?: TextAlign;
 	href?: string;
 	onClick?: (e: React.MouseEvent) => void;
 }

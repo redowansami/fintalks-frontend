@@ -1,11 +1,11 @@
 import { authApi } from '../apis/auth';
-import type { LoginRequest, SignUpRequest } from '../interfaces/services/auth';
+import type { LoginData, RegisterData } from '../interfaces/common/auth';
 
 const TOKEN_KEY = 'auth_token';
 const USER_KEY = 'auth_user';
 
 export const authService = {
-	async login(credentials: LoginRequest) {
+	async login(credentials: LoginData) {
 		const data = await authApi.login(credentials);
 
 		if (data.success && data.token) {
@@ -16,7 +16,7 @@ export const authService = {
 		return data;
 	},
 
-	async signUp(data: SignUpRequest) {
+	async signUp(data: RegisterData) {
 		return await authApi.signUp(data);
 	},
 

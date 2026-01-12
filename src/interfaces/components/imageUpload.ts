@@ -1,16 +1,12 @@
-/**
- * Interfaces for file upload and image components
- */
-
 export interface FileInputProps {
 	onFileSelect: (file: File) => void;
-	isLoading: boolean;
+	isPending: boolean;
 }
 
 export interface ImagePreviewProps {
 	preview: string | null;
 	onChangeImage: () => void;
 	onSelectImage: () => void;
-	isLoading: boolean;
+	isPending: boolean;
 	error: string | null;
 }

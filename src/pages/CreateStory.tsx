@@ -11,7 +11,7 @@ import { Typography } from '../components/Typography';
 
 export const CreateStory: React.FC = () => {
 	const navigate = useNavigate();
-	const { createStory, isLoading, error, isSuccess, validationErrors } = useCreateStory();
+	const { createStory, isPending, error, isSuccess, validationErrors } = useCreateStory();
 	const { formData, formHandlers, resetForm } = useCreateStoryForm();
 	const [showSuccessModal, setShowSuccessModal] = useState(false);
 
@@ -46,7 +46,7 @@ export const CreateStory: React.FC = () => {
 
 			<form onSubmit={handleCreate}>
 				{error && (
-					<ErrorDialog message={error} validationErrors={validationErrors || undefined} />
+					<ErrorDialog message={error.message} validationErrors={validationErrors || undefined} />
 				)}
 
 				<section className="create-story-form-section">
@@ -65,7 +65,7 @@ export const CreateStory: React.FC = () => {
 
 					<StoryImageField
 						onImageSelect={formHandlers.setImageFile}
-						isLoading={isLoading}
+						isPending={isPending}
 					/>
 
 					<StoryCategories
@@ -75,8 +75,8 @@ export const CreateStory: React.FC = () => {
 				</section>
 
 				<div className="create-story-footer">
-					<Button type="submit" variant="primary" disabled={isLoading}>
-						{isLoading ? 'Publishing...' : 'Publish Story'}
+					<Button type="submit" variant="primary" disabled={isPending}>
+						{isPending ? 'Publishing...' : 'Publish Story'}
 					</Button>
 				</div>
 			</form>

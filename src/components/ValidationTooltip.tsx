@@ -2,9 +2,9 @@ import { useState } from 'react';
 import '../styles/components/ValidationTooltip.css';
 import { IconButton } from './Buttons/IconButton';
 import { ValidationCriteriaPopup } from './ValidationCriteriaPopup';
-import type { ValidationTooltipProps } from '../interfaces/components/validation';
+import type { ValidationCriteriaProps } from '../interfaces/components/validation';
 
-export const ValidationTooltip = ({ criteria }: ValidationTooltipProps) => {
+export const ValidationTooltip = ({ criteria }: ValidationCriteriaProps) => {
 	const [showTooltip, setShowTooltip] = useState(false);
 
 	return (

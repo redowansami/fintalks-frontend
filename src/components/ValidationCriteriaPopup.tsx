@@ -1,9 +1,9 @@
 import { List, ListItem } from './List';
 import { Typography } from './Typography';
 import '../styles/components/ValidationCriteriaPopup.css';
-import type { ValidationCriteriaPopupProps } from '../interfaces/components/validation';
+import type { ValidationCriteriaProps } from '../interfaces/components/validation';
 
-export const ValidationCriteriaPopup = ({ criteria }: ValidationCriteriaPopupProps) => {
+export const ValidationCriteriaPopup = ({ criteria }: ValidationCriteriaProps) => {
 	return (
 		<div className="validation-tooltip-popup">
 			<List variant="unordered" className="validation-criteria-list">

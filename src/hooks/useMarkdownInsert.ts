@@ -1,9 +1,5 @@
-import { useRef, type RefObject } from 'react';
-
-interface UseMarkdownInsertReturn {
-	textareaRef: RefObject<HTMLTextAreaElement | null>;
-	insertFormat: (prefix: string, suffix: string) => void;
-}
+import { useRef } from 'react';
+import type { UseMarkdownInsertReturn } from '../interfaces/hooks/common';
 
 export const useMarkdownInsert = (onChange: (value: string) => void): UseMarkdownInsertReturn => {
 	const textareaRef = useRef<HTMLTextAreaElement | null>(null);

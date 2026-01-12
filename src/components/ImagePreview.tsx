@@ -9,7 +9,7 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
 	preview,
 	onChangeImage,
 	onSelectImage,
-	isLoading,
+	isPending,
 	error,
 }) => {
 	return (
@@ -20,7 +20,7 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
 					<div className="image-preview-display">
 						<img src={preview} alt="Preview" className="image-preview-img" />
 					</div>
-					<Button onClick={onChangeImage} disabled={isLoading} variant="secondary">
+					<Button onClick={onChangeImage} disabled={isPending} variant="secondary">
 						<Icon icon="material-symbols:edit" />
 						Change Image
 					</Button>

@@ -1,12 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { profileService } from '../../services/profileService';
 import { ApiError } from '../../services/apiClient';
-
-interface UseProfilePictureUploadResult {
-	uploadProfilePicture: (file: File) => void;
-	isLoading: boolean;
-	error: string | null;
-}
+import type { UseProfilePictureUploadResult } from '../../interfaces/hooks/profile';
 
 export const useProfilePictureUpload = (): UseProfilePictureUploadResult => {
 	const queryClient = useQueryClient();
@@ -20,7 +15,7 @@ export const useProfilePictureUpload = (): UseProfilePictureUploadResult => {
 
 	return {
 		uploadProfilePicture: mutation.mutate,
-		isLoading: mutation.isPending,
-		error: mutation.error instanceof ApiError ? mutation.error.message : null,
+		isPending: mutation.isPending,
+		error: mutation.error instanceof ApiError ? mutation.error : null,
 	};
 };

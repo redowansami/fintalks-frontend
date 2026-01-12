@@ -1,9 +1,9 @@
 import { AdvertisementSpace } from './AdvertisementSpace';
 import { MarketMovers } from './MarketMovers';
-import type { HomeSidebarProps } from '../../interfaces/containers/home';
+import type { ViewableProps } from '../../interfaces/components/ViewableProps';
 
-export const HomeSidebar: React.FC<HomeSidebarProps> = ({ show }) => {
-	if (!show) return null;
+export const HomeSidebar: React.FC<ViewableProps> = ({ isOpen }) => {
+	if (!isOpen) return null;
 
 	return (
 		<div className="sidebar">

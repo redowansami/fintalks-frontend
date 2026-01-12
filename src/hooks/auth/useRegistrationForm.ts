@@ -1,24 +1,7 @@
 import { useState } from 'react';
 import { createInputChangeHandler } from '../../utils/auth';
 import { validateRegistrationForm } from '../../utils/auth';
-
-interface FormErrors {
-	[key: string]: string;
-}
-
-interface UseFormReturn {
-	formData: {
-		username: string;
-		name: string;
-		email: string;
-		password: string;
-		confirmPassword: string;
-	};
-	errors: FormErrors;
-	handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	validateForm: () => boolean;
-	resetForm: () => void;
-}
+import type { FormErrors, UseFormReturn } from '../../interfaces/hooks/auth';
 
 export const useForm = (): UseFormReturn => {
 	const [formData, setFormData] = useState({

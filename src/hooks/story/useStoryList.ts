@@ -1,19 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useParams, useNavigate } from 'react-router-dom';
 import { storyService } from '../../services/storyService';
-import type { Story } from '../../interfaces/services/story';
-
-interface UseStoryListReturn {
-	stories: Story[];
-	activeCategory: string | null;
-	isPending: boolean;
-	isFetchingNextPage: boolean;
-	error: Error | null;
-	pageTitle: string;
-	hasNextPage: boolean;
-	handleCategoryClick: (categoryName: string | null) => void;
-	handleLoadMore: () => void;
-}
+import type { UseStoryListReturn } from '../../interfaces/hooks/story';
 
 export const useStoryList = (): UseStoryListReturn => {
 	const { category } = useParams<{ category: string }>();

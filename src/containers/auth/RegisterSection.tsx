@@ -47,7 +47,7 @@ export const RegisterSection = () => {
 			<RegisterForm
 				formData={registerForm.formData}
 				errors={registerForm.errors}
-				isPending={registerHandler.isLoading}
+				isPending={registerHandler.isPending}
 				onInputChange={registerForm.handleInputChange}
 				onSubmit={handleFormSubmit}
 			/>

@@ -24,7 +24,7 @@ export const HomePage: React.FC = () => {
 				hasNextPage={hasNextPage}
 				onLoadMore={handleLoadMore}
 			/>
-			<HomeSidebar show={!activeCategory} />
+			<HomeSidebar isOpen={!activeCategory} onClose={() => {}} />
 		</div>
 	);
 };

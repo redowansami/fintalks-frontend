@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import type { FileInputProps } from '../interfaces/components/imageUpload';
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-	({ onFileSelect, isLoading }, ref) => {
+	({ onFileSelect, isPending }, ref) => {
 		const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
 			const file = e.target.files?.[0];
 			if (!file) return;
@@ -28,7 +28,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 				accept="image/*"
 				onChange={handleFileSelect}
 				style={{ display: 'none' }}
-				disabled={isLoading}
+				disabled={isPending}
 			/>
 		);
 	},

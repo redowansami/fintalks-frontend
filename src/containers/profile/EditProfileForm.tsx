@@ -5,13 +5,14 @@ import { ErrorDialog } from '../../components/ErrorComponents/ErrorDialog';
 import { InputField } from '../../components/InputField';
 import { PROFILE_FORM_VALIDATIONS } from '../../constants/profileFormConstants';
 import { extractValidationErrors } from '../../utils/errorExtractor';
-import type { EditProfileFormProps } from '../../interfaces/containers/profile';
+import type { BaseFormProps } from '../../interfaces/components/BaseFormProps';
+import type { UpdateProfileInput } from '../../interfaces/common/profile';
 
-export const EditProfileForm: React.FC<EditProfileFormProps> = ({
+export const EditProfileForm: React.FC<BaseFormProps<UpdateProfileInput>> = ({
 	formData,
-	handleChange,
+	onInputChange,
 	onSubmit,
-	isLoading = false,
+	isPending = false,
 	error,
 }) => {
 	return (
@@ -28,7 +29,7 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
 				name="name"
 				type="text"
 				value={formData.name}
-				onChange={handleChange}
+				onChange={onInputChange}
 				required
 				validationCriteria={PROFILE_FORM_VALIDATIONS.NAME.criteria}
 			/>
@@ -38,13 +39,13 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({
 				name="bio"
 				type="textarea"
 				value={formData.bio}
-				onChange={handleChange}
+				onChange={onInputChange}
 				rows={4}
 				validationCriteria={PROFILE_FORM_VALIDATIONS.BIO.criteria}
 			/>
 			<div className="edit-profile-actions">
-				<Button type="submit" variant="primary" disabled={isLoading}>
-					{isLoading ? 'Updating...' : 'Update Profile'}
+				<Button type="submit" variant="primary" disabled={isPending}>
+					{isPending ? 'Updating...' : 'Update Profile'}
 				</Button>
 			</div>
 		</form>

@@ -8,7 +8,7 @@ import { loadAuth } from '../utils/authLoader';
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 	const queryClient = useQueryClient();
 
-	const { data: authData = { token: null, user: null }, isLoading } = useQuery({
+	const { data: authData = { token: null, user: null }, isPending } = useQuery({
 		queryKey: AUTH_QUERY_KEY,
 		queryFn: loadAuth,
 		staleTime: Infinity,
@@ -19,7 +19,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 		() => ({
 			user: authData.user,
 			token: authData.token,
-			loading: isLoading,
+			loading: isPending,
 			isAuthenticated: !!authData.token && !!authData.user,
 			login: (newToken: string, newUser: User) => {
 				localStorage.setItem(AUTH_TOKENS.TOKEN, newToken);
@@ -32,7 +32,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 				queryClient.setQueryData(AUTH_QUERY_KEY, { token: null, user: null });
 			},
 		}),
-		[authData, isLoading, queryClient],
+		[authData, isPending, queryClient],
 	);
 
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

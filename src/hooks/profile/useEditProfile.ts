@@ -2,15 +2,11 @@ import { useState, useCallback } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { profileService } from '../../services/profileService';
 import type { UpdateProfileRequest } from '../../interfaces/services/profile';
+import type { UpdateProfileInput } from '../../interfaces/common/profile';
 
-interface EditProfileState {
-	name: string;
-	bio: string;
-}
-
-export const useEditProfile = (initialData: EditProfileState, onSuccess: () => void) => {
+export const useEditProfile = (initialData: UpdateProfileInput, onSuccess: () => void) => {
 	const queryClient = useQueryClient();
-	const [formData, setFormData] = useState<EditProfileState>(initialData);
+	const [formData, setFormData] = useState<UpdateProfileInput>(initialData);
 
 	const mutation = useMutation({
 		mutationFn: (data: UpdateProfileRequest) => profileService.updateProfile(data),
@@ -36,7 +32,7 @@ export const useEditProfile = (initialData: EditProfileState, onSuccess: () => v
 		formData,
 		handleChange,
 		saveProfile,
-		isLoading: mutation.isPending,
+		isPending: mutation.isPending,
 		error: mutation.error,
 	};
 };

@@ -5,10 +5,10 @@ import { FileInput } from '../../components/FileInput';
 import { ImagePreview } from '../../components/ImagePreview';
 import { Button } from '../../components/Buttons/Button';
 import '../../styles/containers/profile/ImageUploadModal.css';
-import type { ImageUploadModalProps } from '../../interfaces/containers/profile';
+import type { ViewableProps } from '../../interfaces/components/ViewableProps';
 
-export const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose }) => {
-	const { uploadProfilePicture, isLoading, error } = useProfilePictureUpload();
+export const ImageUploadModal: React.FC<ViewableProps> = ({ isOpen, onClose }) => {
+	const { uploadProfilePicture, isPending, error } = useProfilePictureUpload();
 	const [preview, setPreview] = useState<string | null>(null);
 	const [selectedFile, setSelectedFile] = useState<File | null>(null);
 	const fileInputRef = useRef<HTMLInputElement>(null);
@@ -41,21 +41,21 @@ export const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onCl
 					preview={preview}
 					onChangeImage={() => fileInputRef.current?.click()}
 					onSelectImage={() => fileInputRef.current?.click()}
-					isLoading={isLoading}
+					isPending={isPending}
 					error={error}
 				/>
 				<FileInput
 					ref={fileInputRef}
 					onFileSelect={handleFileSelect}
-					isLoading={isLoading}
+					isPending={isPending}
 				/>
 				<div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1.5rem' }}>
 					<Button
 						variant="primary"
 						onClick={handleUpload}
-						disabled={!selectedFile || isLoading}
+						disabled={!selectedFile || isPending}
 					>
-						{isLoading ? 'Uploading...' : 'Upload'}
+						{isPending ? 'Uploading...' : 'Upload'}
 					</Button>
 				</div>
 			</div>

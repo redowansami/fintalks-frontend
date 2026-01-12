@@ -1,25 +1,5 @@
 import { useState } from 'react';
-
-interface FormData {
-	title: string;
-	body: string;
-	imageFile: File | null;
-	categoryIds: string[];
-}
-
-interface FormHandlers {
-	setTitle: (title: string) => void;
-	setBody: (body: string) => void;
-	setImageFile: (file: File | null) => void;
-	setCategoryIds: (ids: string[]) => void;
-}
-
-interface useCreateStoryFormResult {
-	formData: FormData;
-	formHandlers: FormHandlers;
-	handleClose: (onClose: () => void) => void;
-	resetForm: () => void;
-}
+import type { useCreateStoryFormResult } from '../../interfaces/hooks/story';
 
 export const useCreateStoryForm = (): useCreateStoryFormResult => {
 	const [title, setTitle] = useState('');

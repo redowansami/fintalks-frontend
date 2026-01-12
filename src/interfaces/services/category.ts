@@ -1,10 +1,5 @@
 import type { BaseResponse } from './base';
-
-export interface Category {
-	categoryId: string;
-	name: string;
-	description: string;
-}
+import type { Category } from '../common/category';
 
 export interface CategoryResponse extends BaseResponse {
 	data: Category[];

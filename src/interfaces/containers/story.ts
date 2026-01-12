@@ -1,16 +1,9 @@
-import type { Story } from '../services/story';
-import type { Category } from '../services/category';
+import type { Category } from '../common/category';
+import type { Story } from '../common/story';
 
-export interface StoryCardProps {
-	storyId: string;
-	title: string;
-	body: string;
-	reliabilityScore: number;
-	categories: Array<{ name: string }>;
-	image?: string;
-	username: string;
-	createdAt: string;
-}
+export type StoryMetaProps = Pick<Story, 'username' | 'createdAt' | 'updatedAt'>;
+
+export type StoryCardProps = Story;
 
 export interface StoryCategoriesProps {
 	selectedIds: string[];
@@ -20,12 +13,6 @@ export interface StoryCategoriesProps {
 export interface StoryImageProps {
 	src?: string;
 	alt: string;
-}
-
-export interface StoryMetaProps {
-	username: string;
-	createdAt: string;
-	updatedAt?: string;
 }
 
 export interface StoryTagsProps {

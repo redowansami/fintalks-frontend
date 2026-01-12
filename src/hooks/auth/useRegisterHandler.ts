@@ -1,24 +1,15 @@
 import { useMutation } from '@tanstack/react-query';
 import { authService } from '../../services/authService';
 import { ApiError } from '../../services/apiClient';
-import type { SignUpRequest } from '../../interfaces/services/auth';
-
-interface UseRegisterHandlerReturn {
-	isLoading: boolean;
-	isError: boolean;
-	error: Error | null;
-	validationErrors?: Record<string, string | string[]>;
-	showSuccessModal: boolean;
-	setShowSuccessModal: (show: boolean) => void;
-	register: (data: SignUpRequest) => void;
-}
+import type { UseRegisterHandlerReturn } from '../../interfaces/hooks/auth';
+import type { RegisterData } from '../../interfaces/common/auth';
 
 export const useRegisterHandler = (validateForm: () => boolean): UseRegisterHandlerReturn => {
 	const mutation = useMutation({
-		mutationFn: (data: SignUpRequest) => authService.signUp(data),
+		mutationFn: (data: RegisterData) => authService.signUp(data),
 	});
 
-	const register = (data: SignUpRequest) => {
+	const register = (data: RegisterData) => {
 		if (!validateForm()) return;
 		mutation.mutate(data);
 	};
@@ -33,7 +24,8 @@ export const useRegisterHandler = (validateForm: () => boolean): UseRegisterHand
 		mutation.error instanceof ApiError ? mutation.error.validationErrors : undefined;
 
 	return {
-		isLoading: mutation.isPending,
+		isPending: mutation.isPending,
+		isSuccess: mutation.isSuccess,
 		isError: mutation.isError,
 		error: mutation.error,
 		validationErrors,

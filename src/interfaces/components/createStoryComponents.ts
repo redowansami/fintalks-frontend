@@ -1,6 +1,6 @@
-export interface StoryBodyFieldProps {
-	value: string;
-	onChange: (value: string) => void;
+import type { BaseInputProps } from './BaseInputProps';
+
+export interface StoryBodyFieldProps extends BaseInputProps {
 	validationCriteria?: string[];
 }
 
@@ -13,5 +13,5 @@ export interface StoryCategoryCheckboxProps {
 
 export interface StoryImageFieldProps {
 	onImageSelect: (file: File) => void;
-	isLoading: boolean;
+	isPending: boolean;
 }

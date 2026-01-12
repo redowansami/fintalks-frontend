@@ -6,9 +6,9 @@ import { ErrorDialog } from '../../components/ErrorComponents/ErrorDialog';
 import { extractValidationErrors } from '../../utils/errorExtractor';
 import { useChangePassword } from '../../hooks/profile';
 import { Typography } from '../../components/Typography';
-import type { ChangePasswordModalProps } from '../../interfaces/containers/profile';
+import type { ViewableProps } from '../../interfaces/components/ViewableProps';
 
-export const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({ isOpen, onClose }) => {
+export const ChangePasswordModal: React.FC<ViewableProps> = ({ isOpen, onClose }) => {
 	const passwordManager = useChangePassword(onClose);
 
 	if (passwordManager.showSuccess) {

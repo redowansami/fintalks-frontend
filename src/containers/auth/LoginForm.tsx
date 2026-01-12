@@ -1,6 +1,7 @@
 import { Button, InputField } from '../../components/index';
 import { PasswordInput } from '../../components/index';
-import type { LoginFormProps } from '../../interfaces/containers/auth';
+import type { BaseFormProps } from '../../interfaces/components/BaseFormProps';
+import type { LoginData } from '../../interfaces/common/auth';
 
 export const LoginForm = ({
 	formData,
@@ -8,7 +9,7 @@ export const LoginForm = ({
 	isPending,
 	onInputChange,
 	onSubmit,
-}: LoginFormProps) => {
+}: BaseFormProps<LoginData>) => {
 	return (
 		<form onSubmit={onSubmit} className="auth-form">
 			<InputField
@@ -27,7 +28,7 @@ export const LoginForm = ({
 				error={errors?.password}
 			/>
 
-			<Button type="submit" isLoading={isPending} loadingText="Logging in...">
+			<Button type="submit" isPending={isPending} loadingText="Logging in...">
 				Log in
 			</Button>
 		</form>

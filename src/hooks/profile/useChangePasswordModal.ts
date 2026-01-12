@@ -2,12 +2,7 @@ import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { profileService } from '../../services/profileService';
 import { ApiError } from '../../services/apiClient';
-
-interface PasswordForm {
-	currentPassword: string;
-	newPassword: string;
-	confirmPassword: string;
-}
+import type { PasswordForm } from '../../interfaces/hooks/profile';
 
 const INITIAL_STATE: PasswordForm = {
 	currentPassword: '',

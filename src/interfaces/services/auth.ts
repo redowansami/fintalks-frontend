@@ -9,22 +9,10 @@ export interface User {
 	role: string;
 }
 
-export interface LoginRequest {
-	email: string;
-	password: string;
-}
-
 export interface LoginResponse {
 	success: boolean;
 	token: string;
 	user: User;
-}
-
-export interface SignUpRequest {
-	username: string;
-	name: string;
-	email: string;
-	password: string;
 }
 
 export interface AuthContextType {
