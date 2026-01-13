@@ -1,0 +1,7 @@
+@reference "../../index.css";
+
+@layer components {
+	.user-search-filter {
+		@apply flex flex-col gap-3 items-stretch md:flex-row md:items-center md:justify-end;
+	}
+}
