@@ -7,12 +7,17 @@ import type {
 } from '../interfaces/services/story';
 
 export const storyApi = {
-	getAll: (params?: { category?: string | null; startAfter?: string | null }) => {
+	getAll: (params?: {
+		category?: string | null;
+		startAfter?: string | null;
+		search?: string | null;
+	}) => {
 		return apiClient.get<never, StoriesResponse>('/stories', {
 			params: {
 				limit: 5,
 				category: params?.category,
 				startAfter: params?.startAfter,
+				search: params?.search,
 			},
 		});
 	},

@@ -7,8 +7,9 @@ export const storyService = {
 	async getStories(
 		category?: string | null,
 		startAfter?: string | null,
+		search?: string | null,
 	): Promise<StoriesResponse> {
-		return await storyApi.getAll({ category, startAfter });
+		return await storyApi.getAll({ category, startAfter, search });
 	},
 
 	async getStoriesByUserId(userId: string, startAfter?: string | null): Promise<StoriesResponse> {
