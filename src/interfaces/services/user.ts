@@ -1,4 +1,5 @@
 import type { BaseResponse } from './base';
+import type { FilterOption } from '../../constants/userFilterConstants';
 
 export interface User {
 	userId: string;
@@ -13,7 +14,7 @@ export interface User {
 
 export interface GetAllUsersParams {
 	search?: string;
-	orderBy?: 'userId' | 'username' | 'name' | 'email' | 'joinDate';
+	orderBy?: FilterOption;
 	page?: number;
 	limit?: number;
 }
