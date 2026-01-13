@@ -1,13 +1,5 @@
 import { createContext } from 'react';
-
-export interface User {
-	userId: string;
-	username: string;
-	name: string;
-	email: string;
-	joinDate: string;
-	role: string;
-}
+import type { User } from './user';
 
 export interface LoginResponse {
 	success: boolean;

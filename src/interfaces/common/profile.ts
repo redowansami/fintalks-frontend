@@ -1,4 +1,4 @@
-import type { User } from '../services/auth';
+import type { User } from '../services/user';
 
 export interface UserProfile extends User {
 	bio: string | null;
