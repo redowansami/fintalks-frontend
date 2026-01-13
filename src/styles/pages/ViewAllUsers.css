@@ -1,0 +1,35 @@
+@reference "../../index.css";
+
+@layer components {
+	.view-all-users {
+		@apply w-full max-w-5xl mx-auto px-4 py-8 md:py-12;
+	}
+
+	.view-all-users--header {
+		@apply mb-8 md:mb-12 text-center;
+	}
+
+	.view-all-users--header h1 {
+		@apply mb-2 text-gray-900;
+	}
+
+	.view-all-users--error {
+		@apply bg-red-100 border border-red-300 rounded px-4 py-3 mb-6 text-red-700;
+	}
+
+	.view-all-users--grid {
+		@apply grid gap-6 md:gap-8 mb-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+	}
+
+	.view-all-users--pagination {
+		@apply flex flex-col items-center gap-4 md:gap-6 mt-8 md:mt-12;
+	}
+
+	.pagination {
+		@apply flex justify-center items-center gap-2 md:gap-3 flex-wrap;
+	}
+
+	.view-all-users--page-info {
+		@apply text-xs md:text-sm text-gray-600;
+	}
+}

@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { HomePage, StoryDetail, Profile, EditStory } from '../pages';
+import { HomePage, StoryDetail, Profile, EditStory, ViewAllUsers } from '../pages';
 import { Auth } from '../pages/Auth';
 import { MainLayout } from '../layouts/MainLayout';
 import { PublicRoute } from './guards/PublicRoute';
@@ -15,6 +15,7 @@ export const AppRoutes = () => (
 		<Route element={<MainLayout />}>
 			<Route path="/" element={<HomePage />} />
 			<Route path="/stories/:storyId" element={<StoryDetail />} />
+			<Route path="/users" element={<ViewAllUsers />} />
 			<Route element={<ProtectedRoute />}>
 				<Route path="/categories/:category" element={<HomePage />} />
 				<Route path="/create-story" element={<CreateStory />} />
