@@ -1,19 +1,23 @@
 import React from 'react';
+import { StoryListSection } from '../story/StoryListSection';
+import { useUserStories } from '../../hooks/story/useUserStories';
 import '../../styles/containers/profile/ProfileStories.css';
 import type { ProfileStoriesProps } from '../../interfaces/containers/profile';
 
-export const ProfileStories: React.FC<ProfileStoriesProps> = ({ storyCount = 0 }) => {
+export const ProfileStories: React.FC<ProfileStoriesProps> = ({ userId = '' }) => {
+	const { stories, isPending, isFetchingNextPage, pageTitle, hasNextPage, handleLoadMore } =
+		useUserStories({ userId });
+
 	return (
 		<section className="profile-stories-section">
-			<div className="stories-header">
-				<h2 className="stories-title">Published Stories</h2>
-				<span className="stories-badge">{storyCount} Articles</span>
-			</div>
-			<div className="stories-list">
-				<div className="no-stories">
-					<p>No published stories yet</p>
-				</div>
-			</div>
+			<StoryListSection
+				stories={stories}
+				isPending={isPending}
+				isLoadingMore={isFetchingNextPage}
+				pageTitle={pageTitle}
+				hasNextPage={hasNextPage}
+				onLoadMore={handleLoadMore}
+			/>
 		</section>
 	);
 };

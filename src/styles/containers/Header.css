@@ -4,9 +4,4 @@
 	.app-header {
 		@apply w-full border-b border-gray-200 bg-white sticky top-0 z-50 flex items-center justify-between h-20 px-4;
 	}
-
-	.header-left,
-	.header-center {
-		@apply hidden md:flex;
-	}
 }

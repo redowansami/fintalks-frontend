@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCreateStory, useCreateStoryForm } from '../hooks/story';
-import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
-import { Button } from '../components/Buttons/Button';
-import { Modal } from '../components/Modal';
-import { InputField } from '../components/InputField';
-import '../styles/pages/CreateStory.css';
-import { StoryBodyField, StoryImageField, StoryCategories } from '../containers/story';
-import { Typography } from '../components/Typography';
+import { useCreateStory, useStoryForm } from '../hooks/story';
+import { StoryFormContainer } from '../containers/story';
 
 export const CreateStory: React.FC = () => {
 	const navigate = useNavigate();
 	const { createStory, isPending, error, isSuccess, validationErrors } = useCreateStory();
-	const { formData, formHandlers, resetForm } = useCreateStoryForm();
-	const [showSuccessModal, setShowSuccessModal] = useState(false);
+	const { formData, formHandlers, resetForm } = useStoryForm();
 
 	const handleCreate = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -25,74 +18,27 @@ export const CreateStory: React.FC = () => {
 		});
 	};
 
-	const handleSuccessModalClose = () => {
-		setShowSuccessModal(false);
+	const handleSuccessClose = () => {
 		resetForm();
 		navigate('/');
 	};
 
-	if (isSuccess && !showSuccessModal) {
-		setShowSuccessModal(true);
-	}
-
 	return (
-		<div className="create-story-container">
-			<Typography variant="h1" textAlign="center" className="mb-2">
-				Create New Story
-			</Typography>
-			<Typography variant="body" textAlign="center" className="mb-6">
-				Share your thoughts with the world.
-			</Typography>
-
-			<form onSubmit={handleCreate}>
-				{error && (
-					<ErrorDialog message={error.message} validationErrors={validationErrors || undefined} />
-				)}
-
-				<section className="create-story-form-section">
-					<InputField
-						label="Title"
-						id="story-title"
-						name="title"
-						type="text"
-						placeholder="Enter an engaging title"
-						value={formData.title}
-						onChange={(e) => formHandlers.setTitle(e.target.value)}
-						validationCriteria={['Title should be between 3 to 100 characters']}
-					/>
-
-					<StoryBodyField value={formData.body} onChange={formHandlers.setBody} />
-
-					<StoryImageField
-						onImageSelect={formHandlers.setImageFile}
-						isPending={isPending}
-					/>
-
-					<StoryCategories
-						selectedIds={formData.categoryIds}
-						onChange={formHandlers.setCategoryIds}
-					/>
-				</section>
-
-				<div className="create-story-footer">
-					<Button type="submit" variant="primary" disabled={isPending}>
-						{isPending ? 'Publishing...' : 'Publish Story'}
-					</Button>
-				</div>
-			</form>
-
-			<Modal
-				isOpen={showSuccessModal}
-				onClose={handleSuccessModalClose}
-				title="Story Published"
-				message="Your story has been successfully published!"
-			>
-				<div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center' }}>
-					<Button variant="primary" onClick={handleSuccessModalClose}>
-						Go to Home
-					</Button>
-				</div>
-			</Modal>
-		</div>
+		<StoryFormContainer
+			title="Create New Story"
+			subtitle="Share your thoughts with the world."
+			formData={formData}
+			formHandlers={formHandlers}
+			onSubmit={handleCreate}
+			isLoading={isPending}
+			error={error}
+			validationErrors={validationErrors}
+			isSuccess={isSuccess}
+			onSuccessClose={handleSuccessClose}
+			submitButtonText="Publish Story"
+			submitButtonLoadingText="Publishing..."
+			successTitle="Story Published"
+			successMessage="Your story has been successfully published!"
+		/>
 	);
 };

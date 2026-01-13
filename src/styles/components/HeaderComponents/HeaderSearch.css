@@ -10,6 +10,6 @@
 	}
 
 	.header-tagline {
-		@apply text-sm font-medium text-primary;
+		@apply text-sm font-medium text-primary hidden md:inline;
 	}
 }

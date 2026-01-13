@@ -56,4 +56,7 @@
 	.layout-center {
 		@apply flex min-h-screen w-full items-center justify-center bg-card-light;
 	}
+	.container-fluid {
+		@apply w-full px-4 md:px-10 mx-auto max-w-[1920px];
+	}
 }

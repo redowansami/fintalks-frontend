@@ -1,0 +1,15 @@
+@reference '../../../index.css';
+
+@layer components {
+	.story-actions-menu-container {
+		@apply relative inline-block;
+	}
+
+	.story-actions-menu-backdrop {
+		@apply fixed inset-0 z-40 bg-transparent cursor-default;
+	}
+
+	.story-actions-menu {
+		@apply absolute top-full right-0 bg-white border border-gray-200 rounded-lg shadow-md min-w-40 z-50 overflow-hidden mt-1;
+	}
+}

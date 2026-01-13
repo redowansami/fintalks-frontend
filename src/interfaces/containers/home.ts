@@ -4,3 +4,9 @@ export interface Mover {
 	change: string;
 	isPositive: boolean;
 }
+
+export interface Author {
+	id: number;
+	name: string;
+	username: string;
+}

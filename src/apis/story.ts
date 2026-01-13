@@ -7,11 +7,25 @@ import type {
 } from '../interfaces/services/story';
 
 export const storyApi = {
-	getAll: (params?: { category?: string | null; startAfter?: string | null }) => {
+	getAll: (params?: {
+		category?: string | null;
+		startAfter?: string | null;
+		search?: string | null;
+	}) => {
 		return apiClient.get<never, StoriesResponse>('/stories', {
 			params: {
 				limit: 5,
 				category: params?.category,
+				startAfter: params?.startAfter,
+				search: params?.search,
+			},
+		});
+	},
+
+	getAllByUserId: (userId: string, params?: { startAfter?: string | null }) => {
+		return apiClient.get<never, StoriesResponse>(`/stories/users/${userId}`, {
+			params: {
+				limit: 5,
 				startAfter: params?.startAfter,
 			},
 		});
@@ -21,4 +35,10 @@ export const storyApi = {
 
 	create: (data: CreateStoryApiPayload) =>
 		apiClient.post<never, CreateStoryResponse>('/stories', data),
+
+	update: (storyId: string, data: CreateStoryApiPayload) =>
+		apiClient.patch<never, CreateStoryResponse>(`/stories/${storyId}`, data),
+
+	delete: (storyId: string) =>
+		apiClient.delete<never, { message: string }>(`/stories/${storyId}`),
 };

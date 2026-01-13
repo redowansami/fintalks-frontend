@@ -1,0 +1,75 @@
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { userService } from '../services/userService';
+import type { User, GetAllUsersParams } from '../interfaces/services/user';
+
+const USERS_QUERY_KEY = ['users'] as const;
+
+export interface UseGetAllUsersReturn {
+	users: User[];
+	currentPage: number;
+	totalPages: number;
+	loading: boolean;
+	error: Error | null;
+	setPage: (page: number) => void;
+	setSearch: (search: string) => void;
+	setOrderBy: (orderBy: GetAllUsersParams['orderBy']) => void;
+	refetch: () => void;
+}
+
+export const useGetAllUsers = (initialPage: number = 1): UseGetAllUsersReturn => {
+	const [page, setPageState] = React.useState(initialPage);
+	const [search, setSearchState] = React.useState('');
+	const [orderBy, setOrderByState] = React.useState<GetAllUsersParams['orderBy']>('username');
+
+	const {
+		data: response,
+		isPending: loading,
+		error,
+		refetch,
+	} = useQuery({
+		queryKey: [USERS_QUERY_KEY[0], page, search, orderBy],
+		queryFn: () =>
+			userService.getAllUsers({
+				page,
+				limit: 12,
+				search: search || undefined,
+				orderBy,
+			}),
+		staleTime: 1000 * 60 * 5,
+	});
+
+	const setPage = React.useCallback((newPage: number) => {
+		setPageState(newPage);
+	}, []);
+
+	const setSearch = React.useCallback((searchTerm: string) => {
+		setSearchState(searchTerm);
+		setPageState(1);
+	}, []);
+
+	const setOrderBy = React.useCallback((field: GetAllUsersParams['orderBy']) => {
+		setOrderByState(field);
+		setPageState(1);
+	}, []);
+
+	const calculateTotalPages = () => {
+		if (!response) return 1;
+		if (response.nextPage) {
+			return response.page + 1;
+		}
+		return response.page;
+	};
+
+	return {
+		users: response?.list || [],
+		currentPage: page,
+		totalPages: calculateTotalPages(),
+		loading,
+		error: error as Error | null,
+		setPage,
+		setSearch,
+		setOrderBy,
+		refetch,
+	};
+};

@@ -1,0 +1,47 @@
+@reference "../../index.css";
+
+@layer components {
+	.user-card {
+		@apply flex flex-col items-center bg-white rounded-lg p-4 md:p-6 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 relative;
+	}
+
+	.user-card--admin-actions {
+		@apply absolute top-2 right-2;
+	}
+
+	.user-card--actions-wrapper {
+		@apply relative;
+	}
+
+	.user-card--actions-backdrop {
+		@apply fixed inset-0 z-40;
+	}
+
+	.user-card--actions-menu {
+		@apply absolute right-0 top-full mt-1 bg-white rounded-md shadow-lg border border-gray-200 z-50 min-w-40;
+	}
+
+	.user-card--actions-menu button {
+		@apply w-full px-4 py-2 text-left;
+	}
+
+	.user-card--avatar {
+		@apply w-20 h-20 rounded-full flex items-center justify-center text-white text-2xl font-semibold mb-4;
+	}
+
+	.user-card--footer {
+		@apply w-full flex justify-between items-center gap-2 pt-3 border-t border-gray-100;
+	}
+
+	.user-card--email {
+		@apply flex items-center gap-1.5 flex-1 min-w-0;
+	}
+
+	.user-card--email svg {
+		@apply w-4 h-4 text-gray-600 shrink-0;
+	}
+
+	.user-card--view-profile {
+		@apply text-sm cursor-pointer hover:underline;
+	}
+}

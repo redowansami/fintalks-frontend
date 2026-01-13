@@ -18,5 +18,4 @@ export interface CreateStoryResponse extends BaseResponse {
 	story: Story;
 }
 
-// Export the base types again for convenience
 export type { Story, StoryDetail, StoryInput };

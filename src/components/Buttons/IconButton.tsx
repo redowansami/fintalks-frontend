@@ -11,7 +11,6 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
 		const variantClass = `icon-button--${variant}`;
 		const sizeClass = `icon-button--${size}`;
 		const classes = ['icon-button', variantClass, sizeClass, className].join(' ').trim();
-
 		return (
 			<button
 				ref={ref}
