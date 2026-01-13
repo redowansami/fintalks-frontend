@@ -5,7 +5,6 @@ export interface Story {
 	username: string;
 	title: string;
 	body: string;
-	summary: string;
 	reliabilityScore: number;
 	createdAt: string;
 	updatedAt?: string;
@@ -14,6 +13,7 @@ export interface Story {
 }
 
 export interface StoryDetail extends Story {
+	summary: string;
 	predictionComparison?: string;
 }
 

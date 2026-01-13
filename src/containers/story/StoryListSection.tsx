@@ -1,7 +1,6 @@
 import { StoryCard } from './StoryCard';
 import { Spinner } from '../../components/Spinner';
 import { Button } from '../../components/Buttons/Button';
-import type { Story } from '../../interfaces/services/story';
 import type { StoryListSectionProps } from '../../interfaces/containers/story';
 import '../../styles/containers/story/StoryList.css';
 import { Typography } from '../../components/Typography';
@@ -30,7 +29,7 @@ export const StoryListSection: React.FC<StoryListSectionProps> = ({
 								body={story.body}
 								reliabilityScore={story.reliabilityScore}
 								categories={story.categories}
-								image={story.imageUrl}
+								imageUrl={story.imageUrl}
 								username={story.username}
 								createdAt={story.createdAt}
 							/>
