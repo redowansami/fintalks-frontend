@@ -23,7 +23,20 @@ export const UserCard: React.FC<UserCardProps> = ({ user }) => {
 	return (
 		<div className="user-card">
 			<div className="user-card--avatar" style={{ backgroundColor: avatarColor }}>
-				{initials}
+				{user.profilePictureUrl ? (
+					<img
+						src={user.profilePictureUrl}
+						alt={user.name}
+						style={{
+							width: '100%',
+							height: '100%',
+							objectFit: 'cover',
+							borderRadius: 'inherit',
+						}}
+					/>
+				) : (
+					initials
+				)}
 			</div>
 			<Typography variant="h3" className="pb-2">
 				{user.name}
