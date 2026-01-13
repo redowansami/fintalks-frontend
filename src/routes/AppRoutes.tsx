@@ -5,6 +5,7 @@ import { MainLayout } from '../layouts/MainLayout';
 import { PublicRoute } from './guards/PublicRoute';
 import { ProtectedRoute } from './guards/ProtectedRoute';
 import { CreateStory } from '../pages/CreateStory';
+import { SearchPage } from '../pages/SearchPage';
 
 export const AppRoutes = () => (
 	<Routes>
@@ -14,6 +15,7 @@ export const AppRoutes = () => (
 		</Route>
 		<Route element={<MainLayout />}>
 			<Route path="/" element={<HomePage />} />
+			<Route path="/stories/search" element={<SearchPage />} />
 			<Route path="/stories/:storyId" element={<StoryDetail />} />
 			<Route path="/users" element={<ViewAllUsers />} />
 			<Route path="/profile/:userId" element={<Profile />} />
