@@ -2,7 +2,7 @@
 
 @layer components {
 	.search-bar {
-		@apply relative flex items-center bg-gray-100 border border-gray-300 rounded-lg px-3 h-10 flex-1 max-w-xs;
+		@apply relative flex items-center bg-gray-100 border border-gray-300 rounded-lg px-3 h-10 flex-1 w-full;
 	}
 
 	.search-bar--icon {
