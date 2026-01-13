@@ -12,8 +12,17 @@ import '../styles/pages/ViewAllUsers.css';
 
 export const ViewAllUsers: React.FC = () => {
 	const headerRef = useRef<HTMLDivElement>(null);
-	const { users, currentPage, totalPages, loading, error, setPage, setSearch, setOrderBy } =
-		useGetAllUsers();
+	const {
+		users,
+		currentPage,
+		totalPages,
+		loading,
+		error,
+		setPage,
+		setSearch,
+		setOrderBy,
+		refetch,
+	} = useGetAllUsers();
 	const [searchInputValue, setSearchInputValue] = React.useState('');
 	const [filterValue, setFilterValue] = React.useState<FilterOption>(DEFAULT_USER_FILTER);
 
@@ -114,7 +123,11 @@ export const ViewAllUsers: React.FC = () => {
 				<>
 					<div className="view-all-users--grid">
 						{users.map((user) => (
-							<UserCard key={user.userId} user={user} />
+							<UserCard
+								key={user.userId}
+								user={user}
+								onDeleteUser={() => refetch()}
+							/>
 						))}
 					</div>
 

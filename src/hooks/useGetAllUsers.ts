@@ -14,6 +14,7 @@ export interface UseGetAllUsersReturn {
 	setPage: (page: number) => void;
 	setSearch: (search: string) => void;
 	setOrderBy: (orderBy: GetAllUsersParams['orderBy']) => void;
+	refetch: () => void;
 }
 
 export const useGetAllUsers = (initialPage: number = 1): UseGetAllUsersReturn => {
@@ -25,6 +26,7 @@ export const useGetAllUsers = (initialPage: number = 1): UseGetAllUsersReturn =>
 		data: response,
 		isPending: loading,
 		error,
+		refetch,
 	} = useQuery({
 		queryKey: [USERS_QUERY_KEY[0], page, search, orderBy],
 		queryFn: () =>
@@ -68,5 +70,6 @@ export const useGetAllUsers = (initialPage: number = 1): UseGetAllUsersReturn =>
 		setPage,
 		setSearch,
 		setOrderBy,
+		refetch,
 	};
 };
