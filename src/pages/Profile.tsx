@@ -61,7 +61,7 @@ export const Profile = () => {
 						/>
 					)}
 				</section>
-				<ProfileStories storyCount={0} />
+				<ProfileStories userId={user.userId} />
 			</>
 		);
 	};
