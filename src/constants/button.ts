@@ -5,7 +5,8 @@ export type ButtonVariant =
 	| 'danger'
 	| 'item-default'
 	| 'item-danger'
-	| 'toolbar';
+	| 'toolbar'
+	| 'pagination';
 export type IconButtonVariant = 'ghost' | 'primary' | 'danger';
 export type IconButtonSize = 'sm' | 'md' | 'lg';
 export type TabVariant = 'pill' | 'folder';

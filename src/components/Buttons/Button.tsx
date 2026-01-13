@@ -19,6 +19,7 @@ export const Button: React.FC<ButtonProps> = ({
 	const getShapeClass = (v: ButtonVariant) => {
 		if (v.startsWith('item-')) return 'btn-shape-item';
 		if (v === 'toolbar') return 'btn-shape-toolbar';
+		if (v === 'pagination') return 'btn-shape-pagination';
 		return 'btn-shape-standard';
 	};
 
