@@ -17,6 +17,15 @@ export const storyApi = {
 		});
 	},
 
+	getAllByUserId: (userId: string, params?: { startAfter?: string | null }) => {
+		return apiClient.get<never, StoriesResponse>(`/stories/users/${userId}`, {
+			params: {
+				limit: 5,
+				startAfter: params?.startAfter,
+			},
+		});
+	},
+
 	getById: (storyId: string) => apiClient.get<never, StoryDetailResponse>(`/stories/${storyId}`),
 
 	create: (data: CreateStoryApiPayload) =>

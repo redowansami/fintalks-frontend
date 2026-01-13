@@ -1,6 +1,7 @@
 import { storyApi } from '../apis/story';
 import { uploadImageToImgbb } from './imageUploadService';
-import type { CreateStoryInput, StoriesResponse, StoryDetail } from '../interfaces/services/story';
+import type { StoriesResponse, StoryDetail } from '../interfaces/services/story';
+import type { StoryInput } from '../interfaces/services/story';
 
 export const storyService = {
 	async getStories(
@@ -10,12 +11,16 @@ export const storyService = {
 		return await storyApi.getAll({ category, startAfter });
 	},
 
+	async getStoriesByUserId(userId: string, startAfter?: string | null): Promise<StoriesResponse> {
+		return await storyApi.getAllByUserId(userId, { startAfter });
+	},
+
 	async getStoryDetail(storyId: string): Promise<StoryDetail> {
 		const data = await storyApi.getById(storyId);
 		return data.story;
 	},
 
-	async createStory(input: CreateStoryInput) {
+	async createStory(input: StoryInput) {
 		let imageUrl = '';
 
 		if (input.imageFile) {
@@ -36,7 +41,7 @@ export const storyService = {
 		return await storyApi.delete(storyId);
 	},
 
-	async updateStory(storyId: string, input: CreateStoryInput) {
+	async updateStory(storyId: string, input: StoryInput) {
 		let imageUrl = '';
 
 		if (input.imageFile) {
