@@ -3,5 +3,12 @@ import type { GetAllUsersResponse, GetAllUsersParams } from '../interfaces/servi
 
 export const userApi = {
 	getAllUsers: (params: GetAllUsersParams = {}) =>
-		apiClient.get<GetAllUsersResponse>('/api/v1/users', { params }),
+		apiClient.get<never, GetAllUsersResponse>('/users', {
+			params: {
+				page: params.page || 1,
+				limit: params.limit || 12,
+				search: params.search,
+				orderBy: params.orderBy,
+			},
+		}),
 };
