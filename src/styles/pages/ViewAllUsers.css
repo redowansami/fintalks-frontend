@@ -13,14 +13,6 @@
 		@apply flex flex-col md:flex-row md:items-start md:justify-between gap-6;
 	}
 
-	.view-all-users--header h1 {
-		@apply mb-2 text-gray-900;
-	}
-
-	.view-all-users--error {
-		@apply bg-red-100 border border-red-300 rounded px-4 py-3 mb-6 text-red-700;
-	}
-
 	.view-all-users--grid {
 		@apply grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4;
 	}
