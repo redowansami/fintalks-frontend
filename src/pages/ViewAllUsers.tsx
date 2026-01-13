@@ -1,15 +1,36 @@
 import React, { useRef } from 'react';
 import { UserCard } from '../components/UserCard';
+import { UserSearchFilter } from '../containers/UserSearchFilter';
 import { Typography } from '../components/Typography';
 import { Spinner } from '../components/Spinner';
 import { ErrorDialog } from '../components/ErrorComponents/ErrorDialog';
 import { Button } from '../components/Buttons/Button';
 import { useGetAllUsers } from '../hooks/useGetAllUsers';
+import { useDebounce } from '../hooks/useDebounce';
+import { DEFAULT_USER_FILTER, type FilterOption } from '../constants/userFilterConstants';
 import '../styles/pages/ViewAllUsers.css';
 
 export const ViewAllUsers: React.FC = () => {
 	const headerRef = useRef<HTMLDivElement>(null);
-	const { users, currentPage, totalPages, loading, error, setPage } = useGetAllUsers();
+	const { users, currentPage, totalPages, loading, error, setPage, setSearch, setOrderBy } =
+		useGetAllUsers();
+	const [searchInputValue, setSearchInputValue] = React.useState('');
+	const [filterValue, setFilterValue] = React.useState<FilterOption>(DEFAULT_USER_FILTER);
+
+	const debouncedSearchValue = useDebounce(searchInputValue, 300);
+
+	React.useEffect(() => {
+		setSearch(debouncedSearchValue);
+	}, [debouncedSearchValue, setSearch]);
+
+	const handleSearchChange = (value: string) => {
+		setSearchInputValue(value);
+	};
+
+	const handleFilterChange = (value: FilterOption) => {
+		setFilterValue(value);
+		setOrderBy(value);
+	};
 
 	const handlePageChange = (newPage: number) => {
 		if (newPage > 0 && newPage <= totalPages) {
@@ -31,7 +52,7 @@ export const ViewAllUsers: React.FC = () => {
 		buttons.push(
 			<Button
 				key="prev"
-				variant="pagination"
+				variant="box"
 				onClick={() => handlePageChange(currentPage - 1)}
 				disabled={currentPage === 1}
 			>
@@ -43,7 +64,7 @@ export const ViewAllUsers: React.FC = () => {
 			buttons.push(
 				<Button
 					key={i}
-					variant="pagination"
+					variant="box"
 					className={i === currentPage ? 'active' : ''}
 					onClick={() => handlePageChange(i)}
 				>
@@ -55,7 +76,7 @@ export const ViewAllUsers: React.FC = () => {
 		buttons.push(
 			<Button
 				key="next"
-				variant="pagination"
+				variant="box"
 				onClick={() => handlePageChange(currentPage + 1)}
 				disabled={currentPage === totalPages}
 			>
@@ -69,10 +90,20 @@ export const ViewAllUsers: React.FC = () => {
 	return (
 		<div className="view-all-users">
 			<div className="view-all-users--header" ref={headerRef}>
-				<Typography variant="h1">All Users</Typography>
-				<Typography variant="body" color="muted">
-					Browse all users on the platform
-				</Typography>
+				<div className="view-all-users--header-top">
+					<div>
+						<Typography variant="h1">All Users</Typography>
+						<Typography variant="body" color="muted">
+							Browse all users on the platform
+						</Typography>
+					</div>
+					<UserSearchFilter
+						searchValue={searchInputValue}
+						onSearchChange={handleSearchChange}
+						filterValue={filterValue}
+						onFilterChange={handleFilterChange}
+					/>
+				</div>
 			</div>
 
 			{error && <ErrorDialog message={error.message || 'Failed to load users'} />}

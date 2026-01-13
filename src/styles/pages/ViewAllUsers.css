@@ -6,7 +6,11 @@
 	}
 
 	.view-all-users--header {
-		@apply mb-8 md:mb-12 text-center;
+		@apply mb-8 md:mb-12;
+	}
+
+	.view-all-users--header-top {
+		@apply flex flex-col md:flex-row md:items-start md:justify-between gap-6;
 	}
 
 	.view-all-users--header h1 {
