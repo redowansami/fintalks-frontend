@@ -12,4 +12,7 @@ export const userService = {
 	getUserById: async (userId: string): Promise<GetUserByIdResponse> => {
 		return await userApi.getUserById(userId);
 	},
+	deleteUser: async (userId: string): Promise<{ message: string }> => {
+		return await userApi.deleteUser(userId);
+	},
 };

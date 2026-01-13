@@ -16,4 +16,6 @@ export const userApi = {
 			},
 		}),
 	getUserById: (userId: string) => apiClient.get<never, GetUserByIdResponse>(`/users/${userId}`),
+	deleteUser: (userId: string) =>
+		apiClient.delete<never, { message: string }>(`/users/${userId}`),
 };
