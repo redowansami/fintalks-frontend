@@ -5,6 +5,8 @@ export interface User {
 	username: string;
 	name: string;
 	email: string;
+	bio: string;
+	profilePictureUrl: string;
 	joinDate: string;
 	role: string;
 }
@@ -20,4 +22,8 @@ export interface GetAllUsersResponse extends BaseResponse {
 	list: User[];
 	page: number;
 	nextPage?: number;
+}
+
+export interface GetUserByIdResponse extends BaseResponse {
+	user: User;
 }

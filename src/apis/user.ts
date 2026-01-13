@@ -1,5 +1,9 @@
 import { apiClient } from '../services/apiClient';
-import type { GetAllUsersResponse, GetAllUsersParams } from '../interfaces/services/user';
+import type {
+	GetAllUsersResponse,
+	GetAllUsersParams,
+	GetUserByIdResponse,
+} from '../interfaces/services/user';
 
 export const userApi = {
 	getAllUsers: (params: GetAllUsersParams = {}) =>
@@ -11,4 +15,5 @@ export const userApi = {
 				orderBy: params.orderBy,
 			},
 		}),
+	getUserById: (userId: string) => apiClient.get<never, GetUserByIdResponse>(`/users/${userId}`),
 };
