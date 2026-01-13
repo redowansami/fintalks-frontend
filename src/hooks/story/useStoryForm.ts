@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import type { StoryDetail } from '../../types/story';
+import type { StoryDetail } from '../../interfaces/common/story';
 
 export interface StoryFormData {
 	title: string;
