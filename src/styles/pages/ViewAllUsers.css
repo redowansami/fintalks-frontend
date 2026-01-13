@@ -2,11 +2,11 @@
 
 @layer components {
 	.view-all-users {
-		@apply w-full max-w-5xl mx-auto px-4 py-8 md:py-12;
+		@apply w-full max-w-5xl 2xl:max-w-7xl mx-auto px-4;
 	}
 
 	.view-all-users--header {
-		@apply mb-8 md:mb-12;
+		@apply mt-8 mb-8 md:mb-12;
 	}
 
 	.view-all-users--header-top {
@@ -22,7 +22,7 @@
 	}
 
 	.view-all-users--grid {
-		@apply grid gap-6 md:gap-8 mb-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+		@apply grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4;
 	}
 
 	.view-all-users--pagination {
@@ -34,6 +34,6 @@
 	}
 
 	.view-all-users--page-info {
-		@apply text-xs md:text-sm text-gray-600;
+		@apply mb-5 text-xs md:text-sm text-gray-600;
 	}
 }
