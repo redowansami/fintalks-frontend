@@ -16,7 +16,8 @@ export interface ProfileBioProps {
 
 export interface ProfilePictureProps {
 	profile: Pick<UserProfile, 'profilePictureUrl' | 'name'>;
-	onEditPicture: () => void;
+	onEditPicture?: () => void;
+	isEditable?: boolean;
 }
 
 export interface ProfileStoriesProps {

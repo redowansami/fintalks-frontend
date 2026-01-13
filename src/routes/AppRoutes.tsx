@@ -16,6 +16,7 @@ export const AppRoutes = () => (
 			<Route path="/" element={<HomePage />} />
 			<Route path="/stories/:storyId" element={<StoryDetail />} />
 			<Route path="/users" element={<ViewAllUsers />} />
+			<Route path="/profile/:userId" element={<Profile />} />
 			<Route element={<ProtectedRoute />}>
 				<Route path="/categories/:category" element={<HomePage />} />
 				<Route path="/create-story" element={<CreateStory />} />

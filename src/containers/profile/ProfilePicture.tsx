@@ -4,7 +4,11 @@ import { Button } from '../../components/Buttons/Button';
 import '../../styles/containers/profile/ProfilePicture.css';
 import type { ProfilePictureProps } from '../../interfaces/containers/profile';
 
-export const ProfilePicture: React.FC<ProfilePictureProps> = ({ profile, onEditPicture }) => {
+export const ProfilePicture: React.FC<ProfilePictureProps> = ({
+	profile,
+	onEditPicture,
+	isEditable = true,
+}) => {
 	return (
 		<div className="profile-picture-wrapper">
 			{profile.profilePictureUrl ? (
@@ -15,9 +19,11 @@ export const ProfilePicture: React.FC<ProfilePictureProps> = ({ profile, onEditP
 				</div>
 			)}
 
-			<Button className="image-edit-btn" onClick={onEditPicture}>
-				<Icon icon="material-symbols:photo-camera" />
-			</Button>
+			{isEditable && (
+				<Button className="image-edit-btn" onClick={onEditPicture}>
+					<Icon icon="material-symbols:photo-camera" />
+				</Button>
+			)}
 		</div>
 	);
 };
