@@ -21,5 +21,5 @@ export interface ProfilePictureProps {
 }
 
 export interface ProfileStoriesProps {
-	storyCount?: number;
+	userId: string;
 }
