@@ -1,6 +1,6 @@
 import { ErrorList } from './ErrorList';
 import type { ErrorDialogProps } from '../../interfaces/components/errorComponents';
-import '../../styles/components/errorComponents/errorDialog.css';
+import '../../styles/components/ErrorComponents/ErrorDialog.css';
 import { Typography } from '../Typography';
 
 export const ErrorDialog = ({ message, validationErrors, children }: ErrorDialogProps) => {

@@ -1,8 +1,9 @@
 import type { BaseResponse } from './base';
-import type { UserProfile, UpdateProfileInput, ChangePasswordInput } from '../common/profile';
+import type { UpdateProfileInput, ChangePasswordInput } from '../common/profile';
+import type { User } from '../common/auth';
 
 export interface ProfileResponse extends BaseResponse {
-	profile: UserProfile;
+	profile: User;
 }
 
 export interface UpdateProfileRequest extends UpdateProfileInput {

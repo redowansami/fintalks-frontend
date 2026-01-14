@@ -8,7 +8,7 @@ import { Typography } from '../../components/Typography';
 export const StoryListSection: React.FC<StoryListSectionProps> = ({
 	stories,
 	isPending,
-	isLoadingMore,
+	isPendingMore,
 	pageTitle,
 	hasNextPage,
 	onLoadMore,
@@ -35,10 +35,10 @@ export const StoryListSection: React.FC<StoryListSectionProps> = ({
 							/>
 						))}
 					</div>
-					{isLoadingMore && <Spinner />}
+					{isPendingMore && <Spinner />}
 					{hasNextPage && (
 						<div className="story-list-footer">
-							<Button variant="primary" onClick={onLoadMore} disabled={isLoadingMore}>
+							<Button variant="primary" onClick={onLoadMore} disabled={isPendingMore}>
 								Load More
 							</Button>
 						</div>

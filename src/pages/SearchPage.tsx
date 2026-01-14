@@ -29,7 +29,7 @@ export const SearchPage: React.FC = () => {
 				<StoryListSection
 					stories={stories}
 					isPending={isPending}
-					isLoadingMore={isFetchingNextPage}
+					isPendingMore={isFetchingNextPage}
 					pageTitle={pageTitle}
 					hasNextPage={hasNextPage}
 					onLoadMore={handleLoadMore}

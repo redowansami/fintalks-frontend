@@ -20,10 +20,10 @@ interface StoryFormContainerProps {
 		setCategoryIds: (ids: string[]) => void;
 	};
 	onSubmit: (e: React.FormEvent) => void;
-	isLoading: boolean;
+	isPending: boolean;
 	error: string | null;
 	validationErrors?: Record<string, string | string[]>;
-	isSuccess: boolean;
+	isSuccess: boolean | undefined;
 	onSuccessClose: () => void;
 	submitButtonText: string;
 	submitButtonLoadingText: string;
@@ -41,7 +41,7 @@ export const StoryFormContainer: React.FC<StoryFormContainerProps> = ({
 	formData,
 	formHandlers,
 	onSubmit,
-	isLoading,
+	isPending,
 	error,
 	validationErrors,
 	isSuccess,
@@ -96,7 +96,7 @@ export const StoryFormContainer: React.FC<StoryFormContainerProps> = ({
 
 					<StoryImageField
 						onImageSelect={formHandlers.setImageFile}
-						isLoading={isLoading}
+						isPending={isPending}
 						existingImageUrl={existingImageUrl}
 					/>
 
@@ -107,8 +107,8 @@ export const StoryFormContainer: React.FC<StoryFormContainerProps> = ({
 				</section>
 
 				<div className="create-story-footer">
-					<Button type="submit" variant="primary" disabled={isLoading || !isFormDirty}>
-						{isLoading ? submitButtonLoadingText : submitButtonText}
+					<Button type="submit" variant="primary" disabled={isPending || !isFormDirty}>
+						{isPending ? submitButtonLoadingText : submitButtonText}
 					</Button>
 					{showResetButton && (
 						<Button

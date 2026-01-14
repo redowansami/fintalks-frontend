@@ -42,7 +42,7 @@ export const ImageUploadModal: React.FC<ViewableProps> = ({ isOpen, onClose }) =
 					onChangeImage={() => fileInputRef.current?.click()}
 					onSelectImage={() => fileInputRef.current?.click()}
 					isPending={isPending}
-					error={error}
+					error={error?.message || null}
 				/>
 				<FileInput
 					ref={fileInputRef}

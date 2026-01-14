@@ -29,7 +29,7 @@ export interface AIReliabilityCardProps {
 export interface StoryListSectionProps {
 	stories: Story[];
 	isPending: boolean;
-	isLoadingMore: boolean;
+	isPendingMore: boolean;
 	pageTitle: string;
 	hasNextPage: boolean | undefined;
 	onLoadMore: () => void;
