@@ -1,0 +1,11 @@
+@reference "../../../index.css";
+
+@layer components {
+	.header-logo-link {
+		@apply flex-none flex justify-center px-4;
+	}
+
+	.header-logo-image {
+		@apply h-10 md:h-14 w-auto;
+	}
+}

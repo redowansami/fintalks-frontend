@@ -1,0 +1,35 @@
+@reference '../../../index.css';
+
+@layer components {
+	.top-authors-card {
+		@apply bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden;
+	}
+
+	.top-authors-header {
+		@apply px-6 py-4 border-b border-gray-200 bg-gray-50;
+	}
+
+	.author-row {
+		@apply px-6 py-4 border-b border-gray-200 flex items-center gap-4 last:border-b-0;
+	}
+
+	.author-icon {
+		@apply text-2xl text-gray-600 shrink-0;
+	}
+
+	.author-info {
+		@apply flex-1;
+	}
+
+	.author-name {
+		@apply font-semibold text-sm text-gray-900 block mb-1;
+	}
+
+	.author-designation {
+		@apply text-gray-600;
+	}
+
+	.top-authors-footer {
+		@apply py-3 px-6 bg-gray-50 text-center border-t border-gray-200;
+	}
+}

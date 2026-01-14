@@ -1,0 +1,15 @@
+@reference '../../../index.css';
+
+@layer components {
+	.story-categories-grid {
+		@apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4 mt-4;
+	}
+
+	.story-categories-label {
+		@apply flex items-center cursor-pointer transition-all duration-200;
+	}
+
+	.story-categories-checkbox {
+		@apply mr-2 w-[18px] h-[18px] accent-blue-500 cursor-pointer transition-all duration-200;
+	}
+}

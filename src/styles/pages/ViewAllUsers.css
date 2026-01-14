@@ -1,0 +1,31 @@
+@reference "../../index.css";
+
+@layer components {
+	.view-all-users {
+		@apply w-full max-w-5xl 2xl:max-w-7xl mx-auto px-4;
+	}
+
+	.view-all-users--header {
+		@apply mt-8 mb-8 md:mb-12;
+	}
+
+	.view-all-users--header-top {
+		@apply flex flex-col md:flex-row md:items-start md:justify-between gap-6;
+	}
+
+	.view-all-users--grid {
+		@apply grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4;
+	}
+
+	.view-all-users--pagination {
+		@apply flex flex-col items-center gap-4 md:gap-6 mt-8 md:mt-12;
+	}
+
+	.pagination {
+		@apply flex justify-center items-center gap-2 md:gap-3 flex-wrap;
+	}
+
+	.view-all-users--page-info {
+		@apply mb-5 text-xs md:text-sm text-gray-600;
+	}
+}

@@ -1,0 +1,19 @@
+@reference '../../index.css';
+
+@layer components {
+	.footer {
+		@apply w-full bg-primary text-white py-8 mt-auto flex flex-col items-center text-center md:items-end md:text-right md:pr-12;
+	}
+
+	.footer-logo {
+		@apply font-display text-white text-2xl font-bold mb-2;
+	}
+
+	.footer-text {
+		@apply text-xs text-gray-400 my-0.5;
+	}
+
+	.footer-address {
+		@apply text-xs text-gray-500;
+	}
+}

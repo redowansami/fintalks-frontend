@@ -1,0 +1,30 @@
+.story-list-section {
+	padding: 0.5rem 1rem;
+	margin: 0 auto;
+}
+
+.story-list-header {
+	margin-bottom: 1rem;
+}
+
+.story-list-title-home {
+	text-align: left;
+}
+
+.story-list-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.story-list-empty {
+	text-align: center;
+	padding: 2rem;
+}
+
+.story-list-footer {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+	padding: 1rem 0;
+}

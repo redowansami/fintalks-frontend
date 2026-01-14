@@ -1,0 +1,7 @@
+@reference '../../../index.css';
+
+@layer components {
+	.error-dialog {
+		@apply p-4 my-4 rounded border border-red-300 bg-red-100;
+	}
+}

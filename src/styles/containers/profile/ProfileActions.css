@@ -1,0 +1,15 @@
+@reference '../../../index.css';
+
+@layer components {
+	.profile-actions-wrapper {
+		@apply absolute top-8 right-8;
+	}
+
+	.profile-actions-backdrop {
+		@apply fixed inset-0 z-40 bg-transparent cursor-default;
+	}
+
+	.profile-actions-menu {
+		@apply absolute top-12 right-0 min-w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden;
+	}
+}

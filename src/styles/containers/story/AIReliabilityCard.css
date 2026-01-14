@@ -1,0 +1,35 @@
+@reference '../../../index.css';
+
+@layer components {
+	.ai-reliability-card {
+		@apply bg-white rounded-xl p-6 md:p-8 mb-10 border border-gray-200;
+	}
+
+	.ai-score-section {
+		@apply mb-6;
+	}
+
+	.ai-score-header {
+		@apply flex items-end justify-between mb-2 max-w-sm;
+	}
+
+	.ai-score-value {
+		@apply text-lg font-semibold;
+	}
+
+	.ai-score-bar {
+		@apply w-full max-w-sm h-3 bg-gray-300 rounded-full overflow-hidden mb-2;
+	}
+
+	.ai-score-fill {
+		@apply h-full transition-all duration-300 ease-out;
+	}
+
+	.ai-score-description {
+		@apply text-xs text-gray-500 mt-2;
+	}
+
+	.ai-summary-section {
+		@apply bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6;
+	}
+}
