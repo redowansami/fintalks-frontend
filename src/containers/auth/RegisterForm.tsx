@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Button, InputField } from '../../components/index';
 import { PasswordInput } from '../../components/index';
 import { PasswordRequirements } from './PasswordRequirements';
@@ -12,6 +13,8 @@ export const RegisterForm = ({
 	onInputChange,
 	onSubmit,
 }: BaseFormProps<RegisterFormData>) => {
+	const [showPasswordRequirements, setShowPasswordRequirements] = useState(false);
+
 	return (
 		<form onSubmit={onSubmit} className="auth-form">
 			{REGISTER_FORM_FIELDS.map((field) => (
@@ -43,7 +46,19 @@ export const RegisterForm = ({
 				value={formData.password}
 				onChange={onInputChange}
 				error={errors?.password}
+				onFocus={() => setShowPasswordRequirements(true)}
+				onBlur={() => setShowPasswordRequirements(false)}
 			/>
+
+			{showPasswordRequirements && (
+				<>
+					<div
+						className="password-requirements-backdrop"
+						onClick={() => setShowPasswordRequirements(false)}
+					/>
+					<PasswordRequirements password={formData.password} />
+				</>
+			)}
 
 			<PasswordInput
 				id="confirm"
@@ -54,9 +69,12 @@ export const RegisterForm = ({
 				error={errors?.confirmPassword}
 			/>
 
-			<PasswordRequirements password={formData.password} />
-
-			<Button type="submit" isPending={isPending} loadingText="Registering...">
+			<Button
+				type="submit"
+				className="mt-4"
+				isPending={isPending}
+				loadingText="Registering..."
+			>
 				Register
 			</Button>
 		</form>

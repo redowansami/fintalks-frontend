@@ -2,10 +2,10 @@
 
 @layer components {
 	.auth-card {
-		@apply w-full max-w-sm rounded-lg bg-white p-8 shadow-md;
+		@apply w-full max-w-sm rounded-lg bg-white p-8 mt-4 mb-4 shadow-md;
 	}
 
 	.auth-form {
-		@apply flex flex-col gap-5 my-6;
+		@apply flex flex-col my-6;
 	}
 }
