@@ -28,7 +28,12 @@ export const LoginForm = ({
 				error={errors?.password}
 			/>
 
-			<Button type="submit" isPending={isPending} loadingText="Logging in...">
+			<Button
+				type="submit"
+				className="mt-4"
+				isPending={isPending}
+				loadingText="Logging in..."
+			>
 				Log in
 			</Button>
 		</form>

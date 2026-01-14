@@ -6,7 +6,7 @@
 	}
 
 	.input-header {
-		@apply flex justify-between;
+		@apply flex justify-between items-center;
 	}
 
 	.input-control {
