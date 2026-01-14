@@ -30,8 +30,8 @@ export const CreateStory: React.FC = () => {
 			formData={formData}
 			formHandlers={formHandlers}
 			onSubmit={handleCreate}
-			isLoading={isPending}
-			error={error}
+			isPending={isPending}
+			error={error?.message || null}
 			validationErrors={validationErrors}
 			isSuccess={isSuccess}
 			onSuccessClose={handleSuccessClose}

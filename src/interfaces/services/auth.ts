@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import type { User } from './user';
+import type { User } from '../common/auth';
 
 export interface LoginResponse {
 	success: boolean;

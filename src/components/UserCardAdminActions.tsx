@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 import { IconButton } from './Buttons/IconButton';
 import { Button } from './Buttons/Button';
 import { useDeleteUser } from '../hooks/profile/useDeleteUser';
-import type { User } from '../interfaces/services/user';
+import type { User } from '../interfaces/common/auth';
 
 interface UserCardAdminActionsProps {
 	user: User;

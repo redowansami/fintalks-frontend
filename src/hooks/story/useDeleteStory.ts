@@ -3,7 +3,7 @@ import { storyService } from '../../services/storyService';
 
 interface UseDeleteStoryResult {
 	deleteStory: (storyId: string) => void;
-	isLoading: boolean;
+	isPending: boolean;
 	error: string | null;
 	isSuccess: boolean;
 }
@@ -20,7 +20,7 @@ export const useDeleteStory = (): UseDeleteStoryResult => {
 
 	return {
 		deleteStory: mutation.mutate,
-		isLoading: mutation.isPending,
+		isPending: mutation.isPending,
 		error: mutation.error instanceof Error ? mutation.error.message : null,
 		isSuccess: mutation.isSuccess,
 	};
