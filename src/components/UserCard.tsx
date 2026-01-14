@@ -6,7 +6,7 @@ import { Typography } from './Typography';
 import { getAvatarInitials, getAvatarColor } from '../utils/avatar';
 import '../styles/components/UserCard.css';
 import { useAuthContext } from '../hooks/useAuthContext';
-import type { User } from '../interfaces/services/user';
+import type { User } from '../interfaces/common/auth';
 
 interface UserCardProps {
 	user: User;

@@ -13,7 +13,7 @@ export const ProfileStories: React.FC<ProfileStoriesProps> = ({ userId = '' }) =
 			<StoryListSection
 				stories={stories}
 				isPending={isPending}
-				isLoadingMore={isFetchingNextPage}
+				isPendingMore={isFetchingNextPage}
 				pageTitle={pageTitle}
 				hasNextPage={hasNextPage}
 				onLoadMore={handleLoadMore}

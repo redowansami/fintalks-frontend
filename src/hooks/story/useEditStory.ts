@@ -5,7 +5,7 @@ import type { StoryInput } from '../../interfaces/common/story';
 
 interface UseEditStoryResult {
 	editStory: (storyId: string, input: StoryInput) => void;
-	isLoading: boolean;
+	isPending: boolean;
 	error: string | null;
 	isSuccess: boolean;
 	validationErrors?: Record<string, string | string[]>;
@@ -28,7 +28,7 @@ export const useEditStory = (): UseEditStoryResult => {
 
 	return {
 		editStory: (storyId: string, input: StoryInput) => mutation.mutate({ storyId, input }),
-		isLoading: mutation.isPending,
+		isPending: mutation.isPending,
 		error: mutation.error instanceof Error ? mutation.error.message : null,
 		isSuccess: mutation.isSuccess,
 		validationErrors,

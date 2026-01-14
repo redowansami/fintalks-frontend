@@ -8,8 +8,8 @@ import { StoryFormContainer } from '../containers/story';
 export const EditStory: React.FC = () => {
 	const { storyId } = useParams<{ storyId: string }>();
 	const navigate = useNavigate();
-	const { story, isLoading: isLoadingStory, error: loadError } = useStoryDetail(storyId);
-	const { editStory, isLoading, error, isSuccess, validationErrors } = useEditStory();
+	const { story, isPending: isPendingStory, error: loadError } = useStoryDetail(storyId);
+	const { editStory, isPending, error, isSuccess, validationErrors } = useEditStory();
 	const { formData, formHandlers, resetForm, isFormDirty } = useStoryForm(story || undefined);
 
 	const handleEdit = (e: React.FormEvent) => {
@@ -28,7 +28,7 @@ export const EditStory: React.FC = () => {
 		navigate(`/stories/${storyId}`);
 	};
 
-	if (isLoadingStory) {
+	if (isPendingStory) {
 		return (
 			<div className="create-story-container">
 				<Spinner />
@@ -51,7 +51,7 @@ export const EditStory: React.FC = () => {
 			formData={formData}
 			formHandlers={formHandlers}
 			onSubmit={handleEdit}
-			isLoading={isLoading}
+			isPending={isPending}
 			error={error}
 			validationErrors={validationErrors}
 			isSuccess={isSuccess}

@@ -1,16 +1,6 @@
 import type { BaseResponse } from './base';
 import type { FilterOption } from '../../constants/userFilterConstants';
-
-export interface User {
-	userId: string;
-	username: string;
-	name: string;
-	email: string;
-	bio: string;
-	profilePictureUrl: string;
-	joinDate: string;
-	role: string;
-}
+import type { User } from '../common/auth';
 
 export interface GetAllUsersParams {
 	search?: string;

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { userService } from '../services/userService';
-import type { User, GetAllUsersParams } from '../interfaces/services/user';
+import type { GetAllUsersParams } from '../interfaces/services/user';
+import type { User } from '../interfaces/common/auth';
 
 const USERS_QUERY_KEY = ['users'] as const;
 

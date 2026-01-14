@@ -1,4 +1,5 @@
-import type { UserProfile, UpdateProfileInput } from '../common/profile';
+import type { UpdateProfileInput } from '../common/profile';
+import type { User } from '../common/auth';
 import type { ViewableProps } from '../components/ViewableProps';
 
 export interface ProfileActionsProps {
@@ -11,11 +12,11 @@ export interface EditProfileModalProps extends ViewableProps {
 }
 
 export interface ProfileBioProps {
-	profile: UserProfile;
+	profile: User;
 }
 
 export interface ProfilePictureProps {
-	profile: Pick<UserProfile, 'profilePictureUrl' | 'name'>;
+	profile: Pick<User, 'profilePictureUrl' | 'name'>;
 	onEditPicture?: () => void;
 	isEditable?: boolean;
 }

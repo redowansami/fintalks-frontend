@@ -1,5 +1,5 @@
 import { AUTH_TOKENS } from '../constants/authConstants';
-import type { User } from '../interfaces/services/user';
+import type { User } from '../interfaces/common/auth';
 
 export const loadAuth = async (): Promise<{ token: string | null; user: User | null }> => {
 	const token = localStorage.getItem(AUTH_TOKENS.TOKEN);

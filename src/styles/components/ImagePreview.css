@@ -2,7 +2,7 @@
 
 @layer components {
 	.image-preview-container {
-		@apply flex flex-col gap-4;
+		@apply flex flex-col gap-4 max-h-100;
 	}
 
 	.image-preview-display {
