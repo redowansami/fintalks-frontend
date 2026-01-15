@@ -16,4 +16,9 @@ export type {
 	UseStoryListReturn,
 } from './story';
 
-export type { AsyncState, UseMarkdownInsertReturn, CategoryContextType } from './common';
+export type {
+	AsyncState,
+	UseMarkdownInsertReturn,
+	CategoryContextType,
+	UseTopAuthorsReturn,
+} from './common';
