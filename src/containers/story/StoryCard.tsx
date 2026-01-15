@@ -25,6 +25,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 	const { deleteStory, isSuccess } = useDeleteStory();
 	const [showSuccessModal, setShowSuccessModal] = useState(false);
 	const isOwner = user?.username === username;
+	const isAdmin = user?.role.includes('ADMIN');
 
 	const handleClick = () => navigate(`/stories/${storyId}`);
 	const handleEdit = () => navigate(`/stories/${storyId}/edit`);
@@ -63,9 +64,13 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 			<div className="story-card-header">
 				<img src={imageUrl || placeholderImage} alt={title} className="story-card-image" />
 			</div>
-			{isOwner && (
+			{(isOwner || isAdmin) && (
 				<div className="story-card-actions" onClick={(e) => e.stopPropagation()}>
-					<StoryActionsMenu onEdit={handleEdit} onDelete={handleDelete} />
+					<StoryActionsMenu
+						isOwner={isOwner}
+						onEdit={handleEdit}
+						onDelete={handleDelete}
+					/>
 				</div>
 			)}
 			<div className="story-card-content">
