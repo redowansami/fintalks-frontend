@@ -25,6 +25,7 @@ export const StoryDetail: React.FC = () => {
 	}
 
 	const isOwner = user?.username === story.username;
+	const isAdmin = user?.role.includes('ADMIN');
 
 	const handleEdit = () => {
 		navigate(`/stories/${storyId}/edit`);
@@ -45,7 +46,13 @@ export const StoryDetail: React.FC = () => {
 			<div className="w-full max-w-3xl mx-auto px-4 py-10">
 				<div className="flex justify-between items-start gap-4 mb-5">
 					<Typography variant="h1">{story.title}</Typography>
-					{isOwner && <StoryActionsMenu onEdit={handleEdit} onDelete={handleDelete} />}
+					{(isOwner || isAdmin) && (
+						<StoryActionsMenu
+							isOwner={isOwner}
+							onEdit={handleEdit}
+							onDelete={handleDelete}
+						/>
+					)}
 				</div>
 				<StoryImage src={story.imageUrl} alt={story.title} />
 				<StoryMeta

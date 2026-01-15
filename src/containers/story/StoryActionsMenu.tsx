@@ -4,11 +4,12 @@ import { Button } from '../../components/Buttons/Button';
 import { IconButton } from '../../components/Buttons/IconButton';
 
 interface StoryActionsMenuProps {
+	isOwner: boolean;
 	onEdit: () => void;
 	onDelete: () => void;
 }
 
-export const StoryActionsMenu: React.FC<StoryActionsMenuProps> = ({ onEdit, onDelete }) => {
+export const StoryActionsMenu: React.FC<StoryActionsMenuProps> = ({ isOwner, onEdit, onDelete }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const handleAction = (callback: () => void) => {
@@ -27,9 +28,11 @@ export const StoryActionsMenu: React.FC<StoryActionsMenuProps> = ({ onEdit, onDe
 				<>
 					<div className="story-actions-menu-backdrop" onClick={() => setIsOpen(false)} />
 					<div className="story-actions-menu">
-						<Button variant="item-default" onClick={() => handleAction(onEdit)}>
-							Edit Story
-						</Button>
+						{isOwner && (
+							<Button variant="item-default" onClick={() => handleAction(onEdit)}>
+								Edit Story
+							</Button>
+						)}
 						<Button variant="item-danger" onClick={() => handleAction(onDelete)}>
 							Delete Story
 						</Button>
