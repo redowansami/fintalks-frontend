@@ -83,9 +83,9 @@ export const StoryCard: React.FC<StoryCardProps> = ({
 
 				<Typography variant="xs">{categories.map((cat) => cat.name).join(' ')}</Typography>
 
-				<Typography variant="body">
+				<div className="typography typography--body">
 					<MarkdownPreview content={truncateText(body, 150)} />
-				</Typography>
+				</div>
 
 				<div className="story-card-reliability">
 					<span className="story-card-reliability-score" style={{ color: scoreColor }}>
