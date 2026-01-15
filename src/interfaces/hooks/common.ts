@@ -1,4 +1,5 @@
 import type { Category } from '../common/category';
+import type { User } from '../common/auth';
 
 export interface AsyncState {
 	isPending: boolean;
@@ -14,6 +15,12 @@ export interface UseMarkdownInsertReturn {
 
 export interface CategoryContextType {
 	categories: Category[];
+	loading: boolean;
+	error: Error | null;
+}
+
+export interface UseTopAuthorsReturn {
+	authors: User[];
 	loading: boolean;
 	error: Error | null;
 }

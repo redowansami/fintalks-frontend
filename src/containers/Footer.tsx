@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
 				FinTalks
 			</Typography>
 			<Typography variant="muted" className="footer-text">
-				© 2025 Cefalo Bangladesh Ltd
+				© 2026 Cefalo Bangladesh Ltd
 			</Typography>
 			<Typography variant="muted" className="footer-address">
 				House no: 26, Road no: 05, Dhaka 1205
