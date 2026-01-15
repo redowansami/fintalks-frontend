@@ -6,7 +6,7 @@ export const AdvertisementSpace: React.FC = () => {
 		<div className="ad-space">
 			<Typography variant="muted">ADVERTISEMENT</Typography>
 			<div className="ad-content">
-				<Typography>Ad Space 300x250</Typography>
+				<Typography>Ad Space</Typography>
 			</div>
 		</div>
 	);
